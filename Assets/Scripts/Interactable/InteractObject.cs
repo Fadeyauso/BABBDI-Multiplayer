@@ -10,37 +10,46 @@ public class InteractObject : Interactable
 
     public Rigidbody rb;
 
-    private float timer;
     private float defaultYPos;
 
     public AudioClip interactionClip;
 
     public Collider collider;
 
+    float timer = 0;
+
 
     public override void OnFocus()
     {
-        Debug.Log("asccaca");
+        
     }
 
     public override void OnInteract()
     {
         SoundManager.Instance.PlaySound(interactionClip);
 
-        if (GetComponent<ItemProperties>().id == 0 || GetComponent<ItemProperties>().id == 1)
+        if (GetComponent<ItemProperties>().id == 0 || GetComponent<ItemProperties>().id == 1 || GetComponent<ItemProperties>().id == 2)
         {
             transform.position = GameObject.Find("ObjectPos").transform.position;
             inHands = !inHands;
+
             throwObject = true;
+            timer = 0.3f;
+        
         }
 
-
+        if (GetComponent<ItemProperties>().id == 3)
+        {
+            GameManager.secretsFound ++;
+            //Debug.Log(GameManager.secretsFound);
+            Destroy(this.gameObject);
+        }
         
     }
 
     public override void OnLoseFocus()
     {
-        Debug.Log("aaaa");
+        
 
     }
 
@@ -53,6 +62,8 @@ public class InteractObject : Interactable
 
     public void Update()
     {
+        timer -= Time.deltaTime;
+
         if (inHands)
         {
             collider.isTrigger = true;
@@ -69,7 +80,7 @@ public class InteractObject : Interactable
                 rb.velocity = new Vector3(0,0,0);
                 transform.rotation = GameObject.Find("ObjectPos").transform.rotation;
             }
-            else if (throwObject) 
+            else if (throwObject ) 
             {
                 rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
                 //rb.constraints = 0;
@@ -83,12 +94,62 @@ public class InteractObject : Interactable
         {
             if (inHands) 
             {
-                
+                if (!extended && timer < 0)
+                {
+                    if (Input.GetKeyDown(KeyCode.E) && GameObject.Find("Player").GetComponent<FirstPersonController>().currentInteractable == null) 
+                    {
+                        throwObject = true;
+                        inHands = false;
+                    }
+                }
                 rb.useGravity = false;
                 rb.velocity = new Vector3(0,0,0);
                 
 
                 if (Input.GetButton("Fire1"))
+                {
+                    transform.position = GameObject.Find("ObjectPos3").transform.position;
+                    transform.rotation = GameObject.Find("ObjectPos3").transform.rotation;
+                    extended = true;
+                }
+                else
+                {
+                    transform.rotation = GameObject.Find("ObjectPos2").transform.rotation;
+                    transform.position = GameObject.Find("ObjectPos2").transform.position;
+                    extended = false;
+                }
+            }
+            else if (throwObject) 
+            {
+                
+                rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
+                //rb.constraints = 0;
+                //rb.constraints = RigidbodyConstraints.FreezeRotation;
+                rb.useGravity = true;
+                throwObject = false;
+            }
+        }
+
+        if (GetComponent<ItemProperties>().id == 2)
+        {
+            if (inHands) 
+            {
+                if (!extended && timer < 0)
+                {
+                    if (Input.GetKeyDown(KeyCode.E) && GameObject.Find("Player").GetComponent<FirstPersonController>().currentInteractable == null && GetComponent<Climber>().trigger == false) 
+                    {
+                        throwObject = true;
+                        inHands = false;
+                    }
+                }
+                rb.useGravity = false;
+                rb.velocity = new Vector3(0,0,0);
+                
+                if (extended && GameObject.Find("Climber").GetComponent<Climber>().trigger)
+                {
+                    transform.position = transform.position;
+                }
+                else if (Input.GetButton("Fire1"))
                 {
                     transform.position = GameObject.Find("ObjectPos3").transform.position;
                     transform.rotation = GameObject.Find("ObjectPos3").transform.rotation;
