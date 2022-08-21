@@ -111,6 +111,7 @@ public class FirstPersonController : MonoBehaviour
     public GameObject club;
     public GameObject climber;
     public bool frontRay;
+    public bool clubRay;
     public bool climbRay;
 
     [HideInInspector]
@@ -138,7 +139,8 @@ public class FirstPersonController : MonoBehaviour
     void Update()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit prejumpHit, 2f) && Input.GetKeyDown(jumpKey)) prejump = true;
-        frontRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit ss, 4f));
+        frontRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit ss, 4f));
+        clubRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit st, 2.3f));
         climbRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit sz, 3f));
         dialogueActive = dialogueBox.activeSelf;
 

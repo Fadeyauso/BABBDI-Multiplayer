@@ -24,7 +24,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayMusic(AudioClip clip, int loop){
         _musicSource.volume = 1;
-        _effectsSource.PlayOneShot(clip);
+        _musicSource.PlayOneShot(clip);
         if (loop == 1) _musicSource.loop = true;
         if (loop == 0) _musicSource.loop = false;
     }
@@ -33,6 +33,8 @@ public class SoundManager : MonoBehaviour
     {
         while (_musicSource.volume > 0)
             _musicSource.volume -= 0.1f * Time.deltaTime;
+
+        _musicSource.Stop();
     }
 
     public void ChangeMasterVolume(float value){

@@ -10,6 +10,8 @@ public class Club : MonoBehaviour
     public AudioClip hit;
 
     public bool trigger;
+    private bool hitb;
+    public float timer = 0;
 
     public bool touch;
 
@@ -33,10 +35,14 @@ public class Club : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
-
+            hitb = true;
         }
+        timer -= Time.deltaTime;
+
+        if (player.GetComponent<FirstPersonController>().frontRay && player.GetComponent<FirstPersonController>().clubRay) timer = 0.3f;
+
         
     }
 
@@ -52,13 +58,15 @@ public class Club : MonoBehaviour
             trigger = true;
         }
 
-        if (collisionInfo.gameObject.layer == 7 && GetComponent<InteractObject>().extended && touch || collisionInfo.gameObject.layer == 0 && GetComponent<InteractObject>().extended && touch)
+        if (collisionInfo.gameObject.layer == 7 && GetComponent<InteractObject>().extended && touch && hitb|| collisionInfo.gameObject.layer == 0 && GetComponent<InteractObject>().extended && touch && hitb)
         {
             SoundManager.Instance.PlaySound(hit);
             touch = false;
-            if (player.GetComponent<FirstPersonController>().frontRay) 
+            hitb = false;
+
+            if (timer > 0) 
             {
-                player.GetComponent<FirstPersonController>().moveDirection += -player.GetComponent<FirstPersonController>().playerCamera.transform.forward * impactForce * 2;
+                player.GetComponent<FirstPersonController>().moveDirection += -player.transform.forward * impactForce + new Vector3(0,3,0);
             }
             else player.GetComponent<FirstPersonController>().moveDirection.y = impactForce;
         }
