@@ -11,6 +11,7 @@ public class Climber : MonoBehaviour
     public AudioClip hit;
 
     public bool trigger;
+    public bool pick = false;
 
     public bool touch;
 
@@ -30,7 +31,7 @@ public class Climber : MonoBehaviour
         timer -= Time.deltaTime;
         if (Input.GetButtonDown("Jump") && trigger)
         {
-            
+            pick = false;
             timer = 0.2f;
             trigger = false;
             player.GetComponent<FirstPersonController>().moveDirection.y = player.GetComponent<FirstPersonController>().jumpForce;
@@ -47,6 +48,7 @@ public class Climber : MonoBehaviour
         {
             timer = 0f;
             hitb = true;
+            pick = true;
         }
 
         if (GetComponent<InteractObject>().extended && timer > 0 && timer < 0.05f)
@@ -65,8 +67,9 @@ public class Climber : MonoBehaviour
     void OnTriggerStay(Collider collisionInfo)
     {
 
-        if (collisionInfo.gameObject.layer == 7 && GetComponent<InteractObject>().extended || collisionInfo.gameObject.layer == 0 && GetComponent<InteractObject>().extended)
+        if (collisionInfo.gameObject.layer == 7 && GetComponent<InteractObject>().extended && pick || collisionInfo.gameObject.layer == 0 && GetComponent<InteractObject>().extended && pick)
         {
+            pick = false;
             touch = false;
             if (timer < 0) trigger = true;
 
