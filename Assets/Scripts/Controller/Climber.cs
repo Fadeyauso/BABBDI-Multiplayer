@@ -69,7 +69,7 @@ public class Climber : MonoBehaviour
 
         if (collisionInfo.gameObject.layer == 7 && GetComponent<InteractObject>().extended && pick || collisionInfo.gameObject.layer == 0 && GetComponent<InteractObject>().extended && pick)
         {
-            pick = false;
+            
             touch = false;
             if (timer < 0) trigger = true;
 
@@ -77,6 +77,7 @@ public class Climber : MonoBehaviour
             {
                 SoundManager.Instance.PlaySound(hit);
                 hitb = false;
+                pick = false;
             }
             
 
