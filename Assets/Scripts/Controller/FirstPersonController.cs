@@ -111,8 +111,15 @@ public class FirstPersonController : MonoBehaviour
     public GameObject club;
     public GameObject climber;
     public bool frontRay;
+    public bool backRay;
+    public bool rightRay;
+    public bool leftRay;
     public bool clubRay;
     public bool climbRay;
+
+    [Header("System")]
+    public bool pause;
+    public GameObject pauseMenu;
 
     [HideInInspector]
     public Camera playerCamera;
@@ -138,8 +145,35 @@ public class FirstPersonController : MonoBehaviour
 
     void Update()
     {
+        //Pause Menu
+        if (pauseMenu.activeSelf == true)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenu.SetActive(!pauseMenu.activeSelf);
+            if (pause) 
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            
+        }
+        pause = pauseMenu.activeSelf;
+
+
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit prejumpHit, 2f) && Input.GetKeyDown(jumpKey)) prejump = true;
         frontRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit ss, 4f));
+        backRay = (Physics.Raycast(playerCamera.transform.position, -transform.forward, out RaycastHit sww, 3f));
+        rightRay = (Physics.Raycast(playerCamera.transform.position, transform.right, out RaycastHit swwww, 3f));
+        leftRay = (Physics.Raycast(playerCamera.transform.position, -transform.right, out RaycastHit sw, 3f));
         clubRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit st, 2.3f));
         climbRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit sz, 3f));
         dialogueActive = dialogueBox.activeSelf;
@@ -158,12 +192,14 @@ public class FirstPersonController : MonoBehaviour
 
         if (climber != null) 
         {
-            if (climber.GetComponent<Climber>().trigger) canMove = false;
+
+            if (pauseMenu.activeSelf == true) canMove = false;
+            else if (climber.GetComponent<Climber>().trigger) canMove = false;
             else canMove = !dialogueActive;
         }
         if (climber == null) canMove = !dialogueActive;
         
-        HandleMouseLook();
+        if (!pause) HandleMouseLook();
 
         if (canMove)
         {
@@ -325,16 +361,16 @@ public class FirstPersonController : MonoBehaviour
                 switch(hit.collider.tag)
                 {
                     case "Footsteps/Wood":
-                        footstepAudioSource.PlayOneShot(woodClips[Random.Range(0, woodClips.Length - 1)]);
+                        SoundManager.Instance.PlaySound(woodClips[Random.Range(0, woodClips.Length - 1)]);
                         break;
                     case "Footsteps/Stone":
-                        footstepAudioSource.PlayOneShot(stoneClips[Random.Range(0, stoneClips.Length - 1)]);
+                        SoundManager.Instance.PlaySound(stoneClips[Random.Range(0, stoneClips.Length - 1)]);
                         break;
                     case "Footsteps/Grass":
-                        footstepAudioSource.PlayOneShot(grassClips[Random.Range(0, grassClips.Length - 1)]);
+                        SoundManager.Instance.PlaySound(grassClips[Random.Range(0, grassClips.Length - 1)]);
                         break;
                     default:
-                        footstepAudioSource.PlayOneShot(stoneClips[Random.Range(0, stoneClips.Length - 1)]);
+                        SoundManager.Instance.PlaySound(stoneClips[Random.Range(0, stoneClips.Length - 1)]);
                         break;
                 }
             }
