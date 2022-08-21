@@ -15,9 +15,11 @@ namespace UnityStandardAssets.Effects
         private bool m_Exploded;
 
 
+
         // implementing one method from monobehviour to ensure that the enable/disable tickbox appears in the inspector
         private void Start()
         {
+
         }
 
 
@@ -40,6 +42,7 @@ namespace UnityStandardAssets.Effects
                             m_Exploded = true;
 
                             SendMessage("Immobilize");
+
                         }
                     }
                 }
