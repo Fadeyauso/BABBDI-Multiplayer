@@ -149,7 +149,7 @@ public class InteractObject : Interactable
                 {
                     transform.position = transform.position;
                 }
-                else if (Input.GetButton("Fire1"))
+                else if (Input.GetButton("Fire1") && GameObject.Find("Climber").GetComponent<Climber>().pick)
                 {
                     transform.position = GameObject.Find("ObjectPos3").transform.position;
                     transform.rotation = GameObject.Find("ObjectPos3").transform.rotation;
