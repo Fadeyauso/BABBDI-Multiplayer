@@ -15,4 +15,5 @@ MonoBehaviour:
   modifiedAssetPathList:
   - Assets/Bakery/examples/content/sponza/sponza.FBX
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout00.fbx
-  modifiedAssetPaddingHash: aaf8cc2e363fd3d9
+  - Assets/Environment/Props/SM_Table00.fbx
+  modifiedAssetPaddingHash: aaf8cc2e363fd3d9cf318883

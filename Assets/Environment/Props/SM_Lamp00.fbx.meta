@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: af165ff5a9263ad42adb8d214943cee2
+guid: 4ef7806b8ec2d604d8e453e90c56fa19
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable: []
   externalObjects: {}
   materials:
-    materialImportMode: 2
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -31,14 +31,14 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties:
-    - '#BAKERY{"meshName":["SM_Table00"],"padding":[181],"unwrapper":[0]}'
+    - '#BAKERY{"meshName":["SM_Lamp00"],"padding":[256],"unwrapper":[0]}'
     clipAnimations: []
     isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
