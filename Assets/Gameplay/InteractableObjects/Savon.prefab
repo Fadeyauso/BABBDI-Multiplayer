@@ -114,7 +114,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inHands: 0
   throwObject: 0
+  extended: 0
   rb: {fileID: 9041970249428903563}
+  interactionClip: {fileID: 8300000, guid: f2d20b496dbdaee489acc4aa20487f96, type: 3}
+  collider: {fileID: 0}
 --- !u!114 &9041970249428903561
 MonoBehaviour:
   m_ObjectHideFlags: 0

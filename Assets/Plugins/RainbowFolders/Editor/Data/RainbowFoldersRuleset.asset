@@ -473,11 +473,11 @@ MonoBehaviour:
     Key: Assets/Sounds
     Ordinal: 38
     Priority: 0
-    IconType: 510
+    IconType: 170
     SmallIcon: {fileID: 0}
     LargeIcon: {fileID: 0}
     IsIconRecursive: 0
-    BackgroundType: 0
+    BackgroundType: 20
     BackgroundTexture: {fileID: 0}
     IsBackgroundRecursive: 0
     IsHidden: 0

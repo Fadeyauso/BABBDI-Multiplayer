@@ -37,8 +37,13 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField, Range(1, 10)] private float lowerLookLimit = 90f;
 
     [Header("Jumping Parameters")]
-    [SerializeField] private float jumpForce = 8.0f;
+    [SerializeField] public float jumpForce = 8.0f;
     [SerializeField] private float gravity = 30.0f;
+    public AudioClip jumpClip;
+    public AudioClip landClip;
+    private bool landing;
+    public float landTimer;
+    public float airTime;
 
     [Header("Crouch Parameters")]
     [SerializeField] private float crouchHeight = 0.5f;
@@ -97,15 +102,19 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private Vector3 interactionRayPoint = default;
     [SerializeField] private float interactionDistance = default;
     [SerializeField] private LayerMask interactionLayer = default;
-    private Interactable currentInteractable;
+    [HideInInspector] public Interactable currentInteractable;
     public GameObject currentObject;
     public GameObject dialogueBox;
     public bool dialogueActive;
 
     [Header("Objects")]
     public GameObject club;
+    public GameObject climber;
+    public bool frontRay;
+    public bool climbRay;
 
-    private Camera playerCamera;
+    [HideInInspector]
+    public Camera playerCamera;
     private CharacterController characterController;
 
     public Vector3 moveDirection;
@@ -129,11 +138,35 @@ public class FirstPersonController : MonoBehaviour
     void Update()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit prejumpHit, 2f) && Input.GetKeyDown(jumpKey)) prejump = true;
+        frontRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit ss, 4f));
+        climbRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit sz, 3f));
+        dialogueActive = dialogueBox.activeSelf;
+
+        if (!characterController.isGrounded) 
+        {
+            landing = true;
+            airTime -= Time.deltaTime;
+        }
+        else 
+        {
+            airTime = 0.3f;
+        }
+        landTimer -= Time.deltaTime;
         
+
+        if (climber != null) 
+        {
+            if (climber.GetComponent<Climber>().trigger) canMove = false;
+            else canMove = !dialogueActive;
+        }
+        if (climber == null) canMove = !dialogueActive;
+        
+        HandleMouseLook();
+
         if (canMove)
         {
             HandleMovementInput();
-            HandleMouseLook();
+            
 
             if (canJump) HandleJump();
 
@@ -149,12 +182,24 @@ public class FirstPersonController : MonoBehaviour
                 HandleInteractionInput();
             }
 
-            dialogueActive = dialogueBox.activeSelf;
+            
+
+            
 
             ApplyFinalMovements();
 
             if (characterController.isGrounded)
+            {
                 moveDirection.y = -0.5f;
+                if (landing && airTime < 0)
+                {
+                    landTimer = 0.2f;
+                    landing = false;
+                    if (!prejump) SoundManager.Instance.PlaySound(landClip);
+                }
+                
+            }
+                
         }
     }
 
@@ -163,7 +208,10 @@ public class FirstPersonController : MonoBehaviour
         currentInput = new Vector2((isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Vertical"), (isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Horizontal"));
         
         float  moveDirectionY = moveDirection.y;
-        moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y);
+        if (club != null)
+        {
+            if (!club.GetComponent<Club>().trigger) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y);
+        } 
         moveDirection.y = moveDirectionY;
     }
 
@@ -178,11 +226,18 @@ public class FirstPersonController : MonoBehaviour
 
     private void HandleJump()
     {
-        if (ShouldJump) moveDirection.y = jumpForce;
-        if (prejump && characterController.isGrounded) 
+        if (ShouldJump)
         {
             moveDirection.y = jumpForce;
+            SoundManager.Instance.PlaySound(jumpClip);
+            landing = true;
+        } 
+        if (prejump && characterController.isGrounded) 
+        {
+            SoundManager.Instance.PlaySound(jumpClip);
+            moveDirection.y = jumpForce;
             prejump = false;
+            landing = true;
         }
         
     }
@@ -197,11 +252,19 @@ public class FirstPersonController : MonoBehaviour
     {
         if (!characterController.isGrounded) return;
 
-        if (Mathf.Abs(moveDirection.x) > 0.1f || Mathf.Abs(moveDirection.z) > 0.1f)
+
+        if (landTimer > 0)
+        {
+            timer += Time.deltaTime * sprintBobSpeed;
+            playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(timer) * sprintBobAmount * 2, playerCamera.transform.localPosition.z);
+        }
+        else if (Mathf.Abs(moveDirection.x) > 0.1f || Mathf.Abs(moveDirection.z) > 0.1f)
         {
             timer += Time.deltaTime * (isCrouching ? crouchBobSpeed : IsSprinting ? sprintBobSpeed : walkBobSpeed);
             playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(timer) * (isCrouching ? crouchBobAmount : IsSprinting ? sprintBobAmount : walkBobAmount), playerCamera.transform.localPosition.z);
         }
+
+        
     }
 
     private void HandleInteractionCheck()
