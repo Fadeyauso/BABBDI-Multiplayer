@@ -15,7 +15,9 @@ MonoBehaviour:
   modifiedAssetPathList:
   - Assets/Bakery/examples/content/sponza/sponza.FBX
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout00.fbx
-  modifiedAssetPaddingHash: aaf8cc2e363fd3d9
+  - Assets/Environment/Props/SM_Lamp00.fbx
+  - Assets/Environment/Props/SM_Table00.fbx
+  modifiedAssetPaddingHash: aaf8cc2e363fd3d900000000cf318883
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -402,6 +404,14 @@ MonoBehaviour:
     - SM_Scene_A_Blockout00
     padding: 01000000
     unwrapper: 00000000
+  - meshName:
+    - SM_Lamp00
+    padding: 00010000
+    unwrapper: 00000000
+  - meshName:
+    - SM_Table00
+    padding: b5000000
+    unwrapper: 00000000
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
   - Assets/Bakery/examples/content/floor_lamp.FBX
@@ -515,5 +525,5 @@ MonoBehaviour:
   renderSettingsRTPVSceneView: 0
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
-  modifiedMeshPaddingArray: 01000000
+  modifiedMeshPaddingArray: b5000000
   modifiedMeshUnwrapperArray: 00000000
