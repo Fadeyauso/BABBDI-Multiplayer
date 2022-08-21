@@ -15,7 +15,7 @@ MonoBehaviour:
   modifiedAssetPathList:
   - Assets/Bakery/examples/content/sponza/sponza.FBX
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout00.fbx
-  modifiedAssetPaddingHash: aaf8cc2e393fd3d9
+  modifiedAssetPaddingHash: aaf8cc2e363fd3d9
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -400,7 +400,7 @@ MonoBehaviour:
     unwrapper: 
   - meshName:
     - SM_Scene_A_Blockout00
-    padding: 02000000
+    padding: 01000000
     unwrapper: 00000000
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
@@ -409,7 +409,24 @@ MonoBehaviour:
   - Assets/Plugins/Colorful Fog/Sample Scene/Meshes/stone.obj
   - Assets/Plugins/Colorful Fog/Sample Scene/Meshes/pineTree.obj
   - Assets/PostProcessing/Utilities/CustomMotionTexture/Models/WheelMovecs.FBX
-  uvOverlapAssetList: 00000000ffffffff01010000000000000101000000000000
+  - Assets/Environment/Unique/Scene_A/SM_Chair00.fbx
+  - Assets/Environment/Unique/Scene_A/SM_BaseballBat00.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Fork00.fbx
+  - Assets/Environment/Unique/Scene_A/SM_DoubleDoor_00_Right.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Kasset00.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Table00.fbx
+  - Assets/Environment/Unique/Scene_A/SM_DoubleDoor_00_Left.fbx
+  - Assets/Environment/Unique/Scene_A/SM_NeonSign00.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Chair01.fbx
+  - Assets/Environment/Items/SM_PickAxe00.fbx
+  - Assets/Environment/Props/SM_DoubleDoor_00_Left.fbx
+  - Assets/Environment/Props/SM_DoubleDoor_00_Right.fbx
+  - Assets/Environment/Props/SM_Kasset00.fbx
+  - Assets/Environment/Props/SM_Chair00.fbx
+  - Assets/Environment/Props/SM_Fork00.fbx
+  - Assets/Environment/Props/SM_Chair01.fbx
+  - Assets/Environment/Props/SM_Table00.fbx
+  uvOverlapAssetList: 00000000ffffffff010100000000000001010000000000000101000001010000010100000101000001010000010100000101000001010000010100000000000001010000010100000101000001010000010100000101000001010000
   xatlasWarningShown: 0
   foundCompatibleSetup: 1
   gpuName: NVIDIA GeForce RTX 3080
@@ -495,5 +512,5 @@ MonoBehaviour:
   renderSettingsRTPVSceneView: 0
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
-  modifiedMeshPaddingArray: 02000000
+  modifiedMeshPaddingArray: 01000000
   modifiedMeshUnwrapperArray: 00000000
