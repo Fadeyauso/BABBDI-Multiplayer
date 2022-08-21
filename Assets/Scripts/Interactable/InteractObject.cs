@@ -30,6 +30,7 @@ public class InteractObject : Interactable
 
         if (GetComponent<ItemProperties>().id == 0 || GetComponent<ItemProperties>().id == 1 || GetComponent<ItemProperties>().id == 2 || GetComponent<ItemProperties>().id == 4)
         {
+           // if ()
             transform.position = GameObject.Find("ObjectPos").transform.position;
             inHands = !inHands;
 
