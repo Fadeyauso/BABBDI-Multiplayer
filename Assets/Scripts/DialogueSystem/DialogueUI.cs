@@ -5,11 +5,12 @@ using TMPro;
 
 public class DialogueUI : MonoBehaviour
 {
-    public GameObject player;
+    public string name;
     public int NPCid;
 
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text textLabel;
+    [SerializeField] private TMP_Text name_label;
     [SerializeField] public DialogueObject currentDialogue;
 
     private TypewriterEffect typewriterEffect;
@@ -23,6 +24,7 @@ public class DialogueUI : MonoBehaviour
     public void ShowDialogue(DialogueObject dialogueObject)
     {
         dialogueBox.SetActive(true);
+        name_label.text = name;
         StartCoroutine(StepThroughDialogue(dialogueObject));
     }
 

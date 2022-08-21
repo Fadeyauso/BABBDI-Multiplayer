@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Monsieur
   m_EditorClassIdentifier: 
   dialogue:
-  - Va te coucher.
+  - 'Go to the main city to try out new clothes, you''re smelly ... '
+  - You smell garbaage you know this pudding thing
+  - ...
