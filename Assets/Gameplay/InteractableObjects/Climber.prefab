@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3766401875146369466
+--- !u!1 &5276874165985068277
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,51 +8,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3766401875146369470}
-  - component: {fileID: 3766401875146369465}
-  - component: {fileID: 3766401875146369464}
-  - component: {fileID: 3766401875146369467}
-  - component: {fileID: 3766401875146369468}
-  - component: {fileID: 3766401875146369471}
-  - component: {fileID: 7134068282754936057}
-  - component: {fileID: 3766401875146369469}
+  - component: {fileID: 4787583363488259663}
+  - component: {fileID: 8493562541023597034}
+  - component: {fileID: 5925546788379845920}
+  - component: {fileID: 7646695481874698156}
+  - component: {fileID: 8493562541023596566}
+  - component: {fileID: 8493562541023596567}
+  - component: {fileID: 8493562541023597032}
+  - component: {fileID: 8493562541023597033}
   m_Layer: 7
   m_Name: Climber
-  m_TagString: Object/Wood
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3766401875146369470
+--- !u!4 &4787583363488259663
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3766401875146369466}
-  m_LocalRotation: {x: -0.85338587, y: -0, z: -0, w: 0.5212799}
-  m_LocalPosition: {x: -1.033, y: 1.093, z: 3.833}
-  m_LocalScale: {x: 0.8926903, y: 0.8926903, z: 0.8926902}
+  m_GameObject: {fileID: 5276874165985068277}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.16, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -117.164, y: 0, z: 0}
---- !u!33 &3766401875146369465
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8493562541023597034
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3766401875146369466}
-  m_Mesh: {fileID: 3917525248998833773, guid: d6d5e01de1f55d04d8daca91f2ae9a9e, type: 3}
---- !u!23 &3766401875146369464
+  m_GameObject: {fileID: 5276874165985068277}
+  m_Mesh: {fileID: 9141184662783268846, guid: 9bb546da42c280442918f67729145aa2, type: 3}
+--- !u!23 &5925546788379845920
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3766401875146369466}
+  m_GameObject: {fileID: 5276874165985068277}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -66,7 +66,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6699446615349125189, guid: d6d5e01de1f55d04d8daca91f2ae9a9e, type: 3}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88,26 +89,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3766401875146369467
-BoxCollider:
+--- !u!64 &7646695481874698156
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3766401875146369466}
+  m_GameObject: {fileID: 5276874165985068277}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.09635534, y: 1.6155947, z: 0.13142417}
-  m_Center: {x: 0.007084388, y: -0.5029013, z: 0.005075879}
---- !u!114 &3766401875146369468
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 9141184662783268846, guid: 9bb546da42c280442918f67729145aa2, type: 3}
+--- !u!114 &8493562541023596566
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3766401875146369466}
+  m_GameObject: {fileID: 5276874165985068277}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0bb5560d4fa71b42a298b60d766c521, type: 3}
@@ -116,16 +118,16 @@ MonoBehaviour:
   inHands: 0
   throwObject: 0
   extended: 0
-  rb: {fileID: 3766401875146369469}
+  rb: {fileID: 8493562541023597033}
   interactionClip: {fileID: 8300000, guid: f2d20b496dbdaee489acc4aa20487f96, type: 3}
   collider: {fileID: 0}
---- !u!114 &3766401875146369471
+--- !u!114 &8493562541023596567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3766401875146369466}
+  m_GameObject: {fileID: 5276874165985068277}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35872f01afae5004a958c003d23aa8a4, type: 3}
@@ -134,13 +136,13 @@ MonoBehaviour:
   id: 2
   name: Climber
   value: 0
---- !u!114 &7134068282754936057
+--- !u!114 &8493562541023597032
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3766401875146369466}
+  m_GameObject: {fileID: 5276874165985068277}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07c64cac6b589934fa2f9bdc133b29f7, type: 3}
@@ -149,20 +151,21 @@ MonoBehaviour:
   hold: {fileID: 0}
   hit: {fileID: 8300000, guid: ae3479eddfc98ad47a62a2a3eaa49939, type: 3}
   trigger: 0
+  pick: 0
   touch: 0
---- !u!54 &3766401875146369469
+--- !u!54 &8493562541023597033
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3766401875146369466}
+  m_GameObject: {fileID: 5276874165985068277}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
