@@ -17,7 +17,11 @@ MonoBehaviour:
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout00.fbx
   - Assets/Environment/Props/SM_Lamp00.fbx
   - Assets/Environment/Props/SM_Table00.fbx
-  modifiedAssetPaddingHash: aaf8cc2e363fd3d9ecc12491cf318883
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_Fence00.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_WaterPlane00.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout02.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout01.fbx
+  modifiedAssetPaddingHash: aaf8cc2e363fd3d9ecc12491ecc12491b05634b73e3fd3d980c5d8909b50cf35
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -410,7 +414,23 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - SM_Table00
-    padding: b5000000
+    padding: 00010000
+    unwrapper: 00000000
+  - meshName:
+    - SM_Scene_A_Fence00
+    padding: 89000000
+    unwrapper: 00000000
+  - meshName:
+    - SM_Scene_A_WaterPlane00
+    padding: 09000000
+    unwrapper: 00000000
+  - meshName:
+    - SM_Scene_A_Blockout02
+    padding: 0e000000
+    unwrapper: 00000000
+  - meshName:
+    - SM_Scene_A_Blockout01
+    padding: c6000000
     unwrapper: 00000000
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
@@ -525,5 +545,5 @@ MonoBehaviour:
   renderSettingsRTPVSceneView: 0
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
-  modifiedMeshPaddingArray: b5000000
+  modifiedMeshPaddingArray: 01000000
   modifiedMeshUnwrapperArray: 00000000
