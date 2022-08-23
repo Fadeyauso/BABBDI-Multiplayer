@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &996831808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 996831809}
+  m_Layer: 0
+  m_Name: PogoPos01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &996831809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996831808}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.3, y: 0.014, z: 1.7400031}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7482973070762915167}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1092824474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1092824475}
+  m_Layer: 0
+  m_Name: PogoPos00
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1092824475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092824474}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.014, z: 1.7400031}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7482973070762915167}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1122962887
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +353,8 @@ Transform:
   - {fileID: 7797617259295385596}
   - {fileID: 1835058297}
   - {fileID: 1122962888}
+  - {fileID: 1092824475}
+  - {fileID: 996831809}
   m_Father: {fileID: 7482973072534782208}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -545,6 +609,7 @@ MonoBehaviour:
   blower: {fileID: 9132271906163460838, guid: 646d6e9cc6f5a434e952f90a7debf828, type: 3}
   flashlight: {fileID: 551960531536534201, guid: 9fec533f8e871b0428051f5a1cd1b791, type: 3}
   soap: {fileID: 9041970249428903564, guid: 8b2ab7045e4d4624c849764aef3e091c, type: 3}
+  ball: {fileID: 9041970249428903564, guid: 9368bf7caf852574a9313e06794f38e0, type: 3}
 --- !u!114 &7482973072534782210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,6 +701,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   firstInterface: {fileID: 0}
   library: {fileID: 0}
+  options: {fileID: 0}
   playerCamera: {fileID: 0}
   characterController: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}

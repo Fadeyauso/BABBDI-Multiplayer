@@ -30,5 +30,11 @@ public class EnterZone : MonoBehaviour
             SoundManager.Instance.StopAllMusic();
             SoundManager.Instance.PlayMusic(outdoor, 1);
         }
+        if (collisionInfo.tag == "Achievement/wayClimber")
+        {
+            if (!GameObject.Find("GameManager").GetComponent<GameManager>().wayClimber) GameObject.Find("GameManager").GetComponent<GameManager>().Popup();
+            GameObject.Find("GameManager").GetComponent<GameManager>().wayClimber = true;
+            GameObject.Find("GameManager").GetComponent<GameManager>().lastAchievement = "Way of the climber";
+        }
     }
 }

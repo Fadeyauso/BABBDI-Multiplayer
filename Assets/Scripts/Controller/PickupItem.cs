@@ -11,7 +11,6 @@ public class PickupItem : MonoBehaviour
     public GameObject flashlight;
     public GameObject soap;
     public GameObject ball;
-    public GameObject pogo;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,12 +56,6 @@ public class PickupItem : MonoBehaviour
                 GameObject obj = Instantiate(blower, GameObject.Find("BlowerPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
                 obj.GetComponent<InteractObject>().inHands = true;
                 GameObject.Find("Player").GetComponent<FirstPersonController>().blower = obj;
-            }
-            if (GameObject.Find("GameManager").GetComponent<GameManager>().item == 8) 
-            {
-                GameObject obj = Instantiate(pogo, GameObject.Find("PogoPos00").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
-                obj.GetComponent<InteractObject>().inHands = true;
-                GameObject.Find("Player").GetComponent<FirstPersonController>().pogo = obj;
             }
             
         }

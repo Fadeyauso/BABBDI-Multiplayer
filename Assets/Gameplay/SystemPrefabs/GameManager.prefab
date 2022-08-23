@@ -44,3 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b05947a7510c745a1bd04f58964025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickup: 0
+  item: 0
+  wayClimber: 0
+  lastAchievement: 
+  wayClimberToggle: {fileID: 0}
+  jingle:
+  - {fileID: 8300000, guid: 9b4450cbc45e5184e82e58a297df557d, type: 3}
+  - {fileID: 8300000, guid: fdaa57320b7787441b6b688260e24a01, type: 3}
+  - {fileID: 8300000, guid: e48004175cf3211489cf8ff6f7243706, type: 3}
+  - {fileID: 8300000, guid: d5d4b57e7a172cc4a9aecd087bd1e8ff, type: 3}
+  - {fileID: 8300000, guid: 8d9b8da01a1ffd44e93fcea61da70de7, type: 3}
+  - {fileID: 8300000, guid: d3dc7deeae285e644a7d657272a4428f, type: 3}

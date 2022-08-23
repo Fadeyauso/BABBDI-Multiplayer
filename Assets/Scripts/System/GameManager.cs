@@ -14,7 +14,12 @@ public class GameManager : MonoBehaviour
     //Achievements
     [Header("Achievements")]
     public bool wayClimber;
+    public string lastAchievement;
     [SerializeField] private Toggle wayClimberToggle;
+
+
+    [SerializeField] private AudioClip[] jingle = default;
+    public bool popup;
 
     void Awake()
     {
@@ -38,5 +43,11 @@ public class GameManager : MonoBehaviour
     public void AddSecret()
     {
         secretsFound ++;
+    }
+
+    public void Popup() 
+    {
+        popup = true;
+        SoundManager.Instance.PlaySound(jingle[Random.Range(0, jingle.Length - 1)]);
     }
 }

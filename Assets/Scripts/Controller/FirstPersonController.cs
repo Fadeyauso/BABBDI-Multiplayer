@@ -112,7 +112,6 @@ public class FirstPersonController : MonoBehaviour
     public GameObject climber;
     public GameObject propeller;
     public GameObject blower;
-    public GameObject pogo;
     public bool inHands;
     public bool canThrow;
     public bool frontRay;
@@ -153,7 +152,6 @@ public class FirstPersonController : MonoBehaviour
         climber = GameObject.Find("Climber");
         propeller = GameObject.Find("Propeller");
         blower = GameObject.Find("Blower");
-        pogo = GameObject.Find("Pogo");
     }
 
     void Update()
@@ -281,12 +279,7 @@ public class FirstPersonController : MonoBehaviour
         float  moveDirectionY = moveDirection.y;
         if (club != null)
         {
-            if (pogo.GetComponent<Pogo>().active) 
-            {
-                moveDirection.y = pogo.GetComponent<Pogo>().pogoMovement.y;
-                moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + pogo.GetComponent<Pogo>().pogoMovement;
-            }
-            else if (blower.GetComponent<Blower>().isActive && characterController.isGrounded) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) * 1.7f;
+            if (blower.GetComponent<Blower>().isActive && characterController.isGrounded) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) * 1.7f;
             else if (blower.GetComponent<Blower>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + blower.GetComponent<Blower>().blowMovement;
             else if (!club.GetComponent<Club>().trigger && !propeller.GetComponent<Propeller>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y);
         } 

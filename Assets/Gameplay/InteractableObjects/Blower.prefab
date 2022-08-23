@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   origin: {fileID: 0}
-  power: 0.6
+  power: 0.2
   burstPower: 10
   isActive: 0
   burstClip: {fileID: 0}

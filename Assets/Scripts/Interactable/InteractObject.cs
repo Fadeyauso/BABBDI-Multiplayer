@@ -291,40 +291,6 @@ public class InteractObject : Interactable
                 }
             }
 
-            if (GetComponent<ItemProperties>().id == 8)
-            {
-
-                if (inHands) 
-                {
-                    rb.useGravity = false;
-                    rb.velocity = new Vector3(0,0,0);
-                    
-
-                    if (Input.GetButton("Fire1"))
-                    {
-                        transform.position = GameObject.Find("PogoPos01").transform.position;
-                        transform.rotation = GameObject.Find("PogoPos01").transform.rotation;
-                        extended = true;
-                    }
-                    else
-                    {
-                        transform.rotation = GameObject.Find("PogoPos00").transform.rotation;
-                        transform.position = GameObject.Find("PogoPos00").transform.position;
-                        extended = false;
-                    }
-                }
-                else if (throwObject) 
-                {
-                    transform.SetParent(null);
-                    rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
-                    //rb.constraints = 0;
-                    //rb.constraints = RigidbodyConstraints.FreezeRotation;
-                    rb.useGravity = true;
-                    throwObject = false;
-                }
-                
-                
-            }
         }
 
         
