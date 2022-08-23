@@ -255,9 +255,10 @@ public class FirstPersonController : MonoBehaviour
 
             
 
-            ApplyFinalMovements();
+            if (GetComponent<EnterZone>().inLift && GameObject.Find("RestaurantLift").GetComponent<Lift>().isTriggered) ;
+            else ApplyFinalMovements();
 
-            if (characterController.isGrounded)
+            if (characterController.isGrounded && !GetComponent<EnterZone>().inLift)
             {
                 moveDirection.y = -0.5f;
                 if (landing && airTime < 0)
@@ -454,5 +455,6 @@ public class FirstPersonController : MonoBehaviour
 
         duringCrouchAnimation = false;
     }
+    
     
 }

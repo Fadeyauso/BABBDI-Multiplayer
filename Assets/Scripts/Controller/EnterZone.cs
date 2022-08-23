@@ -6,6 +6,8 @@ public class EnterZone : MonoBehaviour
 {
     public AudioClip indoor;
     public AudioClip outdoor;
+
+    [HideInInspector] public bool inLift;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,5 +38,19 @@ public class EnterZone : MonoBehaviour
             GameObject.Find("GameManager").GetComponent<GameManager>().wayClimber = true;
             GameObject.Find("GameManager").GetComponent<GameManager>().lastAchievement = "Way of the climber";
         }
+        if (collisionInfo.tag == "Lift")
+        {
+            Debug.Log("caca");
+            transform.SetParent(GameObject.Find("RestaurantLift").transform);
+            inLift = true;
+        }
+        
+    }
+
+    void OnTriggerExit(Collider collisionInfo)
+    {
+        transform.parent = null;
+        inLift = false;
+
     }
 }

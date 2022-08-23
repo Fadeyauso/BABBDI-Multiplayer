@@ -6,8 +6,6 @@ public class SystemActivator : Interactable
 {
     public GameObject objectToActivate;
     public AudioClip activateClip;
-    public Animator anim;
-    private bool trigger;
 
     public override void OnFocus()
     {
@@ -20,10 +18,7 @@ public class SystemActivator : Interactable
         {
             if (objectToActivate.GetComponent<Lift>() != null && objectToActivate.GetComponent<Lift>().isTriggered == false) objectToActivate.GetComponent<Lift>().isTriggered = true;
             SoundManager.Instance.PlaySound(activateClip);
-            trigger = !trigger;
         }
-
-        anim.SetBool("trigger", trigger);
     }
 
     public override void OnLoseFocus()
