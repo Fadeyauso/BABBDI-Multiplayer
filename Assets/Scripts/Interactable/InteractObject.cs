@@ -131,7 +131,11 @@ public class InteractObject : Interactable
                     }
                     rb.useGravity = false;
                     rb.velocity = new Vector3(0,0,0);
-                    
+                    if (Input.GetKeyDown(KeyCode.E) && player.GetComponent<FirstPersonController>().canThrow && GetComponent<Climber>().trigger == false) 
+                        {
+                            throwObject = true;
+                            inHands = false;
+                        }
 
                     if (Input.GetButton("Fire1"))
                     {
