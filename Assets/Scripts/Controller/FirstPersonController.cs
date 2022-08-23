@@ -102,7 +102,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private Vector3 interactionRayPoint = default;
     [SerializeField] private float interactionDistance = default;
     [SerializeField] private LayerMask interactionLayer = default;
-    [HideInInspector] public Interactable currentInteractable;
+    public Interactable currentInteractable;
     public GameObject currentObject;
     public GameObject dialogueBox;
     public bool dialogueActive;
@@ -110,20 +110,27 @@ public class FirstPersonController : MonoBehaviour
     [Header("Objects")]
     public GameObject club;
     public GameObject climber;
+    public GameObject propeller;
+    public GameObject blower;
+    public GameObject pogo;
+    public bool inHands;
+    public bool canThrow;
     public bool frontRay;
     public bool backRay;
-    public bool rightRay;
-    public bool leftRay;
+    public bool headRay;
+    public bool upRay;
     public bool clubRay;
     public bool climbRay;
 
     [Header("System")]
     public bool pause;
     public GameObject pauseMenu;
+    public GameObject firstInterface;
+    public GameObject library;
+    public GameObject options;
 
-    [HideInInspector]
-    public Camera playerCamera;
-    private CharacterController characterController;
+    [HideInInspector] public Camera playerCamera;
+    [HideInInspector] public CharacterController characterController;
 
     public Vector3 moveDirection;
     private Vector2 currentInput;
@@ -141,6 +148,12 @@ public class FirstPersonController : MonoBehaviour
         defaultYPos = playerCamera.transform.localPosition.y;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        club = GameObject.Find("Club");
+        climber = GameObject.Find("Climber");
+        propeller = GameObject.Find("Propeller");
+        blower = GameObject.Find("Blower");
+        pogo = GameObject.Find("Pogo");
     }
 
     void Update()
@@ -159,8 +172,26 @@ public class FirstPersonController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             pauseMenu.SetActive(!pauseMenu.activeSelf);
+            firstInterface.SetActive(true);
+            library.SetActive(false);
+            options.SetActive(false);
             if (pause) 
             {
+                
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            
+        }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            pauseMenu.SetActive(!pauseMenu.activeSelf);
+            firstInterface.SetActive(false);
+            options.SetActive(false);
+            library.SetActive(true);
+            if (pause) 
+            {
+                
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
@@ -172,10 +203,12 @@ public class FirstPersonController : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit prejumpHit, 2f) && Input.GetKeyDown(jumpKey)) prejump = true;
         frontRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit ss, 4f));
         backRay = (Physics.Raycast(playerCamera.transform.position, -transform.forward, out RaycastHit sww, 3f));
-        rightRay = (Physics.Raycast(playerCamera.transform.position, transform.right, out RaycastHit swwww, 3f));
-        leftRay = (Physics.Raycast(playerCamera.transform.position, -transform.right, out RaycastHit sw, 3f));
+        headRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit si, 1f));
+        upRay = (Physics.Raycast(playerCamera.transform.position, transform.up, out RaycastHit so, 1.2f));
+
         clubRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit st, 2.3f));
         climbRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit sz, 3f));
+
         dialogueActive = dialogueBox.activeSelf;
 
         if (!characterController.isGrounded) 
@@ -248,7 +281,14 @@ public class FirstPersonController : MonoBehaviour
         float  moveDirectionY = moveDirection.y;
         if (club != null)
         {
-            if (!club.GetComponent<Club>().trigger) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y);
+            if (pogo.GetComponent<Pogo>().active) 
+            {
+                moveDirection.y = pogo.GetComponent<Pogo>().pogoMovement.y;
+                moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + pogo.GetComponent<Pogo>().pogoMovement;
+            }
+            else if (blower.GetComponent<Blower>().isActive && characterController.isGrounded) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) * 1.7f;
+            else if (blower.GetComponent<Blower>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + blower.GetComponent<Blower>().blowMovement;
+            else if (!club.GetComponent<Club>().trigger && !propeller.GetComponent<Propeller>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y);
         } 
         moveDirection.y = moveDirectionY;
     }
@@ -266,8 +306,9 @@ public class FirstPersonController : MonoBehaviour
     {
         if (ShouldJump)
         {
-            moveDirection.y = jumpForce;
             SoundManager.Instance.PlaySound(jumpClip);
+            moveDirection.y = jumpForce;
+            
             landing = true;
         } 
         if (prejump && characterController.isGrounded) 
@@ -318,11 +359,22 @@ public class FirstPersonController : MonoBehaviour
                 if (currentInteractable)
                     currentInteractable.OnFocus();
             }
+
+            
         }
         else if (currentInteractable)
         {
             currentInteractable.OnLoseFocus();
             currentInteractable = null;
+        }
+
+        if (Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hit2, interactionDistance*2.5f))
+        {
+            if (hit2.collider.tag == "DontThrow" || headRay)
+            {
+                canThrow = false;
+            }
+            else canThrow = true;
         }
     }
 
@@ -338,6 +390,8 @@ public class FirstPersonController : MonoBehaviour
     {
         if (!characterController.isGrounded)
             moveDirection.y -= gravity * Time.deltaTime;
+
+        if (upRay) moveDirection.y -= moveDirection.y * Time.deltaTime * 7;
 
         if (WillSlideOnSlopes && IsSliding)
         {

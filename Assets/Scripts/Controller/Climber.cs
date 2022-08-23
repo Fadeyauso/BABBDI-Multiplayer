@@ -77,7 +77,7 @@ public class Climber : MonoBehaviour
             {
                 SoundManager.Instance.PlaySound(hit);
                 hitb = false;
-                pick = false;
+                //pick = false;
             }
             
 

@@ -45,10 +45,7 @@ public class Club : MonoBehaviour
 
         if (player.GetComponent<FirstPersonController>().frontRay && player.GetComponent<FirstPersonController>().clubRay) timer = 0.3f;
 
-        if (!player.GetComponent<FirstPersonController>().frontRay) 
-            if (player.GetComponent<FirstPersonController>().backRay || player.GetComponent<FirstPersonController>().rightRay || player.GetComponent<FirstPersonController>().leftRay)
-                canTouch = false;
-        else canTouch = true;
+        canTouch = true;
         
     }
 
@@ -74,7 +71,8 @@ public class Club : MonoBehaviour
 
                 if (timer > 0) 
                 {
-                    player.GetComponent<FirstPersonController>().moveDirection += -player.transform.forward * impactForce + new Vector3(0,3,0);
+                    player.GetComponent<FirstPersonController>().moveDirection += -player.transform.forward * impactForce;
+                    player.GetComponent<FirstPersonController>().moveDirection.y =  impactForce / 4;
                 }
                 else player.GetComponent<FirstPersonController>().moveDirection.y = impactForce;
             }
