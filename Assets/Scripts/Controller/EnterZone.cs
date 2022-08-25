@@ -50,7 +50,7 @@ public class EnterZone : MonoBehaviour
     void OnTriggerExit(Collider collisionInfo)
     {
         transform.parent = null;
-        inLift = false;
+        inLift = false; 
 
     }
 }

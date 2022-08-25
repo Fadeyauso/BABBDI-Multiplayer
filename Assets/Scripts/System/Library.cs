@@ -15,6 +15,6 @@ public class Library : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "You collected " + GameManager.secretsFound + "/24 secrets.";
+        text.text = "You collected " + GameManager.secretsFound + "/24 secret objects.";
     }
 }

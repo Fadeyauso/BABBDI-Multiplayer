@@ -18,6 +18,8 @@ public class InteractObject : Interactable
 
     public Collider collider;
 
+    public GameObject secret;
+
     float timer = 0;
 
 
@@ -56,6 +58,7 @@ public class InteractObject : Interactable
                 GameManager.secretsFound ++;
                 //Debug.Log(GameManager.secretsFound);
                 Destroy(this.gameObject);
+                secret.GetComponent<SecretObjectDisplay>().collected = true;
             }
         }
         

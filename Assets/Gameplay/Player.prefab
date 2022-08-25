@@ -381,7 +381,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 75
   orthographic: 0
@@ -591,6 +591,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indoor: {fileID: 8300000, guid: da8cfb14851c8bb42b0ba99fdd991c7a, type: 3}
   outdoor: {fileID: 8300000, guid: ea11906ebfe07b54f8294c264b0b90f4, type: 3}
+  inLift: 0
 --- !u!114 &3072209578988679877
 MonoBehaviour:
   m_ObjectHideFlags: 0
