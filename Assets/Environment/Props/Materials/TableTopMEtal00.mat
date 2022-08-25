@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_PaintedWall00 1
+  m_Name: TableTopMEtal00
   m_Shader: {fileID: 4800000, guid: 5e7433799e2ec70478a37af16f74a551, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BC:
-        m_Texture: {fileID: 2800000, guid: 067ad7394c524e848852a8b265fa1bde, type: 3}
+        m_Texture: {fileID: 2800000, guid: e20a0fd39f0b9b14fa00048680a12f74, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -80,6 +80,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1

@@ -21,4 +21,9 @@ MonoBehaviour:
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_WaterPlane00.fbx
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout02.fbx
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout01.fbx
-  modifiedAssetPaddingHash: aaf8cc2e363fd3d9ecc12491ecc12491af67e2a8323fd3d93e3fd3d9b35634b7
+  - Assets/Environment/Props/SM_CeilingLamp00.fbx
+  - Assets/Environment/Props/SM_Table01.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout05.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout04.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout06.fbx
+  modifiedAssetPaddingHash: aaf8cc2e363fd3d90cf43a06ecc12491393fd3d9363fd3d9393fd3d995c2a693323b8033ef37ed04363fd3d9363fd3d9c25031ee
