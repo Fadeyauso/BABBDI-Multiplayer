@@ -22,6 +22,11 @@ public class SoundManager : MonoBehaviour
         _effectsSource.PlayOneShot(clip);
     }
 
+    public void PlayContinuousSound(AudioClip clop){
+        _effectsSource.clip = clop;
+        _effectsSource.Play();
+    }
+
     public void PlayMusic(AudioClip clip, int loop){
         _musicSource.PlayOneShot(clip);
         if (loop == 1) _musicSource.loop = true;
@@ -32,6 +37,12 @@ public class SoundManager : MonoBehaviour
     {
 
         _musicSource.Stop();
+    }
+
+    public void StopSound()
+    {
+
+        _effectsSource.Stop();
     }
 
     public void ChangeMasterVolume(float value){

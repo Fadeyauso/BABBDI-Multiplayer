@@ -16,8 +16,11 @@ public class SystemActivator : Interactable
     {
         if (objectToActivate != null)
         {
-            if (objectToActivate.GetComponent<Lift>() != null && objectToActivate.GetComponent<Lift>().isTriggered == false) objectToActivate.GetComponent<Lift>().isTriggered = true;
-            SoundManager.Instance.PlaySound(activateClip);
+            if (objectToActivate.GetComponent<Lift>() != null && objectToActivate.GetComponent<Lift>().isTriggered == false) 
+            {
+                objectToActivate.GetComponent<Lift>().isTriggered = true;
+                SoundManager.Instance.PlaySound(activateClip);
+            }
         }
     }
 

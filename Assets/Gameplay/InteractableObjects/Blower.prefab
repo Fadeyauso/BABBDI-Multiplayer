@@ -36,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4780663158137708537
 MeshFilter:
@@ -107,6 +107,7 @@ MonoBehaviour:
   rb: {fileID: 4780663158137708538}
   interactionClip: {fileID: 8300000, guid: f2d20b496dbdaee489acc4aa20487f96, type: 3}
   collider: {fileID: 0}
+  secret: {fileID: 0}
 --- !u!114 &4780663158137708036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,9 +138,11 @@ MonoBehaviour:
   origin: {fileID: 0}
   power: 0.2
   burstPower: 10
+  maxEnergy: 30
+  energy: 0
   isActive: 0
-  burstClip: {fileID: 0}
-  motorClip: {fileID: 0}
+  motorClip: {fileID: 8300000, guid: 2fefc9a530da0814bb201ae06cee723a, type: 3}
+  endClip: {fileID: 8300000, guid: 420c1af1d91c49c44b9f1fd979dde9d7, type: 3}
   blowMovement: {x: 0, y: 0, z: 0}
 --- !u!54 &4780663158137708538
 Rigidbody:

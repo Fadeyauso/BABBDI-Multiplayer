@@ -38,13 +38,17 @@ public class EnterZone : MonoBehaviour
             GameObject.Find("GameManager").GetComponent<GameManager>().wayClimber = true;
             GameObject.Find("GameManager").GetComponent<GameManager>().lastAchievement = "Way of the climber";
         }
+        
+        
+    }
+
+    void OnTriggerStay(Collider collisionInfo)
+    {
         if (collisionInfo.tag == "Lift")
         {
-            Debug.Log("caca");
             transform.SetParent(GameObject.Find("RestaurantLift").transform);
             inLift = true;
         }
-        
     }
 
     void OnTriggerExit(Collider collisionInfo)

@@ -96,6 +96,21 @@ public class FirstPersonController : MonoBehaviour
 
     }
 
+    [Header("Slope Parameters")]
+    [SerializeField] private float slopeForce;
+    [SerializeField] private float slopeForceRayLength;
+
+    private bool OnSlope()
+    {
+        if (!characterController.isGrounded) return false;
+        
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, characterController.height/2 * slopeForceRayLength))
+            if (hit.normal != Vector3.up && GetComponent<Slope>().downhill)
+                return true;
+        return false;
+    }
+
     private bool prejump;
 
     [Header("Interaction")]
@@ -226,6 +241,7 @@ public class FirstPersonController : MonoBehaviour
 
             if (pauseMenu.activeSelf == true) canMove = false;
             else if (climber.GetComponent<Climber>().trigger) canMove = false;
+            else if (GetComponent<EnterZone>().inLift && GameObject.Find("GameManager").GetComponent<GameManager>().inActivatedLift) canMove = false;
             else canMove = !dialogueActive;
         }
         if (climber == null) canMove = !dialogueActive;
@@ -255,8 +271,7 @@ public class FirstPersonController : MonoBehaviour
 
             
 
-            if (GetComponent<EnterZone>().inLift && GameObject.Find("RestaurantLift").GetComponent<Lift>().isTriggered) ;
-            else ApplyFinalMovements();
+            ApplyFinalMovements();
 
             if (characterController.isGrounded && !GetComponent<EnterZone>().inLift)
             {
@@ -380,10 +395,29 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
+    private bool jumpSlope = false;
+
     private void ApplyFinalMovements()
     {
-        if (!characterController.isGrounded)
+        if (currentInput.magnitude != 0 && OnSlope())
+        {
+            moveDirection.y -= gravity * slopeForce * Time.deltaTime;
+            if (ShouldJump)
+            {
+                moveDirection.y = 0;
+                jumpSlope = true;
+            } 
+        }
+        else if (!characterController.isGrounded)
+        {
             moveDirection.y -= gravity * Time.deltaTime;
+            if (jumpSlope)
+            {
+                jumpSlope = false;
+                moveDirection.y = jumpForce;
+            }
+        }
+            
 
         if (upRay) moveDirection.y -= moveDirection.y * Time.deltaTime * 7;
 

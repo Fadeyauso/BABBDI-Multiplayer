@@ -22,7 +22,7 @@ public class SecretObjectDisplay : MonoBehaviour
     {
         if (collected) 
         {
-            transform.Rotate(0,3,0);
+            transform.Rotate(0,1,0);
             GetComponent<Renderer>().material = displayed;
         }
         else

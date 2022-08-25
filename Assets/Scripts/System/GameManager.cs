@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public static int secretsFound = 0;
     [HideInInspector] public bool pickup;
     [HideInInspector] public int item;
+    [HideInInspector] public bool inActivatedLift;
 
     //Achievements
     [Header("Achievements")]
