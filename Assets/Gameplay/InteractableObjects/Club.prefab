@@ -119,6 +119,7 @@ MonoBehaviour:
   rb: {fileID: 2788863020918150928}
   interactionClip: {fileID: 8300000, guid: f2d20b496dbdaee489acc4aa20487f96, type: 3}
   collider: {fileID: 0}
+  secret: {fileID: 0}
 --- !u!114 &2788863020918150930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +153,7 @@ MonoBehaviour:
   timer: 0
   touch: 0
   canTouch: 0
-  impactForce: 10
+  impactForce: 15
 --- !u!54 &2788863020918150928
 Rigidbody:
   m_ObjectHideFlags: 0

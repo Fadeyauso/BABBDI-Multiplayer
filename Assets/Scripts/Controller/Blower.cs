@@ -7,11 +7,10 @@ public class Blower : MonoBehaviour
     public Transform origin;
     private GameObject player;
     public float power = 0.2f; 
-    public float burstPower = 4f;
-    public float maxEnergy = 10f;
-    public float energy = 0f;
     public bool isActive;
-    private bool canBurst;
+    private bool canfly;
+
+    private float timer = 0;
 
     public AudioClip motorClip;
     public AudioClip endClip;
@@ -26,46 +25,45 @@ public class Blower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.GetComponent<FirstPersonController>().characterController.isGrounded) 
-        {
-            canBurst = true;
-            energy = maxEnergy;
-        }
-
-        /*if (Input.GetButtonDown("Fire1") && GetComponent<InteractObject>().inHands && canBurst)
-        {
-            SoundManager.Instance.PlaySound(burstClip);
-            player.GetComponent<FirstPersonController>().moveDirection = -player.GetComponent<FirstPersonController>().playerCamera.transform.forward * burstPower;
-            canBurst = false;
-        }*/
+        canfly = Physics.Raycast(player.transform.position, Vector3.down, out RaycastHit flyHit, 15f);
+        timer -= Time.deltaTime;
 
         if (Input.GetButtonDown("Fire1") && GetComponent<InteractObject>().inHands)
         {
             SoundManager.Instance.PlayContinuousSound(motorClip);
         }
 
-        if (Input.GetButton("Fire1") && GetComponent<InteractObject>().inHands && energy > 0)
+        if (Input.GetButton("Fire1") && GetComponent<InteractObject>().inHands)
         {
+            timer = 0.05f;
             isActive = true;
-            energy -= 1f * Time.deltaTime;
-            blowMovement += -player.GetComponent<FirstPersonController>().playerCamera.transform.forward * power / 4;
-            player.GetComponent<FirstPersonController>().moveDirection += -player.GetComponent<FirstPersonController>().playerCamera.transform.forward * power;
+            if (canfly)
+            {
+                if (Physics.Raycast(player.transform.position, player.GetComponent<FirstPersonController>().playerCamera.transform.forward, out RaycastHit slopeHit, 3f))
+                {
+                    if (player.GetComponent<FirstPersonController>().characterController.isGrounded && Vector3.Angle(slopeHit.normal, Vector3.up) < player.GetComponent<FirstPersonController>().characterController.slopeLimit) player.GetComponent<FirstPersonController>().moveDirection.y = 4;
+                }
+                blowMovement += -player.GetComponent<FirstPersonController>().playerCamera.transform.forward * power / 4 * Time.deltaTime;
+                player.GetComponent<FirstPersonController>().moveDirection += -player.GetComponent<FirstPersonController>().playerCamera.transform.forward * power * Time.deltaTime;
+            }
+            else blowMovement = new Vector3(0,0,0);
+            
         }
-        else 
+        else if (timer > 0 && GetComponent<InteractObject>().inHands)
         {
             
+            SoundManager.Instance.StopSound();
+            SoundManager.Instance.PlaySound(endClip);
+        }
+        else if (GetComponent<InteractObject>().inHands)
+        {
             blowMovement = new Vector3(0,0,0);
             isActive = false;
         }
 
-        void OnMouseUp()
-        {
-            if (GetComponent<InteractObject>().inHands)
-            {
-                SoundManager.Instance.StopSound();
-            SoundManager.Instance.PlaySound(endClip);
-            }
-        }
+
+
+        
 
 
         

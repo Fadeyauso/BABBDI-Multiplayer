@@ -1719,6 +1719,7 @@ MonoBehaviour:
   rb: {fileID: 1466430277130733418}
   interactionClip: {fileID: 8300000, guid: f2d20b496dbdaee489acc4aa20487f96, type: 3}
   collider: {fileID: 0}
+  secret: {fileID: 0}
 --- !u!114 &1466430277130733204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1750,8 +1751,8 @@ MonoBehaviour:
   motorUp: {fileID: 1064986578}
   motorUp2: {fileID: 641516747}
   audio: {fileID: 701267011}
-  power: 0.2
-  flypower: 0.15
+  power: 10
+  flypower: 20
   rotateSpeed: 40
   rotation: 0
   isActive: 0

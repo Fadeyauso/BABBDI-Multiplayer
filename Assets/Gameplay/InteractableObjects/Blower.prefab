@@ -36,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4780663158137708537
 MeshFilter:
@@ -136,10 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   origin: {fileID: 0}
-  power: 0.2
-  burstPower: 10
-  maxEnergy: 30
-  energy: 0
+  power: 10
   isActive: 0
   motorClip: {fileID: 8300000, guid: 2fefc9a530da0814bb201ae06cee723a, type: 3}
   endClip: {fileID: 8300000, guid: 420c1af1d91c49c44b9f1fd979dde9d7, type: 3}

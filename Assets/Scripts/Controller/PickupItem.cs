@@ -23,9 +23,9 @@ public class PickupItem : MonoBehaviour
         if (GameObject.Find("GameManager").GetComponent<GameManager>().pickup)
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().pickup = false;
-            if (GameObject.Find("GameManager").GetComponent<GameManager>().item == 0 || GameObject.Find("GameManager").GetComponent<GameManager>().item == 7) 
+            if (GameObject.Find("GameManager").GetComponent<GameManager>().item == 0) 
             {
-                GameObject obj = Instantiate(ball, GameObject.Find("ObjectPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
+                GameObject obj = Instantiate(soap, GameObject.Find("ObjectPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
                 obj.GetComponent<InteractObject>().inHands = true;
             }
             if (GameObject.Find("GameManager").GetComponent<GameManager>().item == 1) 
@@ -56,6 +56,11 @@ public class PickupItem : MonoBehaviour
                 GameObject obj = Instantiate(blower, GameObject.Find("BlowerPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
                 obj.GetComponent<InteractObject>().inHands = true;
                 GameObject.Find("Player").GetComponent<FirstPersonController>().blower = obj;
+            }
+            if (GameObject.Find("GameManager").GetComponent<GameManager>().item == 7) 
+            {
+                GameObject obj = Instantiate(ball, GameObject.Find("ObjectPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
+                obj.GetComponent<InteractObject>().inHands = true;
             }
             
         }
