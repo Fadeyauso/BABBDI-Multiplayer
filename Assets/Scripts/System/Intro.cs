@@ -27,7 +27,22 @@ public class Intro : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-        if (timer < 0f)
+         if (timer < -4f)
+        {
+            tempColor.a -= Time.deltaTime * fadeSpeed * 6;
+        image.color = tempColor;
+        }
+        else if (timer < -3f)
+        {
+            tempColor.a -= Time.deltaTime * fadeSpeed * 4;
+        image.color = tempColor;
+        }
+        else if (timer < -2f)
+        {
+            tempColor.a -= Time.deltaTime * fadeSpeed * 2;
+        image.color = tempColor;
+        }
+        else if (timer < 0f)
         {
             tempColor.a -= Time.deltaTime * fadeSpeed;
         image.color = tempColor;

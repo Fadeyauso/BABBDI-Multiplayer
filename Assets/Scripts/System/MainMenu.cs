@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
 
     [SerializeField] private AudioClip pointer;
+    [SerializeField] private AudioClip click;
     [SerializeField] private AudioSource audio;
 
     public void PlayGame()
@@ -22,6 +23,12 @@ public class MainMenu : MonoBehaviour
     public void OnPointerEnter()
     {
         audio.PlayOneShot(pointer);
+        
+    }
+
+    public void OnClick()
+    {
+        audio.PlayOneShot(click);
     }
 
 }

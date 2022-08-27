@@ -622,7 +622,7 @@ Transform:
   - {fileID: 952962484}
   - {fileID: 2041110508}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &7482973072534782209
 CharacterController:
@@ -691,7 +691,7 @@ MonoBehaviour:
   canSprint: 1
   canJump: 1
   canCrouch: 1
-  canUseHeadbob: 1
+  canUseHeadbob: 0
   WillSlideOnSlopes: 1
   useFootsteps: 1
   canInteract: 1
@@ -707,17 +707,16 @@ MonoBehaviour:
   lookSpeedY: 2
   upperLookLimit: 90
   lowerLookLimit: 90
+  offset: {x: 0, y: 0, z: 0}
   jumpForce: 7
   gravity: 22
   jumpClip: {fileID: 8300000, guid: 703f1030347769943a8507b5026d9b7a, type: 3}
   landClip: {fileID: 8300000, guid: eb199323d1a12ce4c846db77269b6c6c, type: 3}
   landTimer: 0
   airTime: 0
-  crouchHeight: 0.5
-  standingHeight: 2
-  timeToCrouch: 0.25
-  crouchingCenter: {x: 0, y: 0.5, z: 0}
-  standingCenter: {x: 0, y: 0, z: 0}
+  crouchingSpeed: 10
+  standHeight: 2
+  crouchHeight: 1
   walkBobSpeed: 14
   walkBobAmount: 0.05
   sprintBobSpeed: 18

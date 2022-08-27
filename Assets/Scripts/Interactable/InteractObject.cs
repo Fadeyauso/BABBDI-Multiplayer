@@ -89,6 +89,9 @@ public class InteractObject : Interactable
     {
         timer -= Time.deltaTime;
 
+        if (inHands) player.GetComponent<FirstPersonController>().inHands = true;
+        if (throwObject) player.GetComponent<FirstPersonController>().inHands = false;
+
         if  (!player.GetComponent<FirstPersonController>().pause)
         {
             if (inHands)
