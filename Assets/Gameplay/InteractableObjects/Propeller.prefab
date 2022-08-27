@@ -1752,8 +1752,8 @@ MonoBehaviour:
   motorUp2: {fileID: 641516747}
   audio: {fileID: 701267011}
   power: 10
-  flypower: 20
-  rotateSpeed: 40
+  flypower: 30
+  rotateSpeed: 1000
   rotation: 0
   isActive: 0
 --- !u!54 &1466430277130733418
