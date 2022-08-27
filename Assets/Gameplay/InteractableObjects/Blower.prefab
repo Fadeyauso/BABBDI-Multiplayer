@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   origin: {fileID: 0}
-  power: 10
+  power: 30
   isActive: 0
   motorClip: {fileID: 8300000, guid: 2fefc9a530da0814bb201ae06cee723a, type: 3}
   endClip: {fileID: 8300000, guid: 420c1af1d91c49c44b9f1fd979dde9d7, type: 3}

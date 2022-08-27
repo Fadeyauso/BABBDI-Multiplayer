@@ -23,7 +23,7 @@ public class Blower : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         canfly = Physics.Raycast(player.transform.position, Vector3.down, out RaycastHit flyHit, 15f);
         timer -= Time.deltaTime;
