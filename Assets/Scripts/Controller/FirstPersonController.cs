@@ -106,7 +106,7 @@ public class FirstPersonController : MonoBehaviour
         
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, characterController.height/2 * slopeForceRayLength))
-            if (hit.normal != Vector3.up && GetComponent<Slope>().downhill)
+            if (hit.normal != Vector3.up && GetComponent<Slope>().downhill && Vector3.Angle(hit.normal, Vector3.up) > 10)
                 return true;
         return false;
     }
