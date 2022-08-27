@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 193749913935983338}
   - component: {fileID: 193749913935983339}
   - component: {fileID: 193749913935983340}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Kasset00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,13 +29,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040682622388768678}
-  m_LocalRotation: {x: -0, y: -0.083853215, z: -0, w: 0.99647814}
+  m_LocalRotation: {x: 0, y: -0.083851665, z: 0, w: 0.99647826}
   m_LocalPosition: {x: 3.6748273, y: 1.166, z: 8.014348}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: -9.62, z: 0}
 --- !u!33 &3644877116515343033
 MeshFilter:
