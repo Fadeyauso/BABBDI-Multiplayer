@@ -34,12 +34,12 @@ public class AchievementPopup : MonoBehaviour
 
         if (timer > 0)
         {
-            if (transform.position.y < upPos.transform.position.y) transform.position += new Vector3(0,30,0) * Time.deltaTime;
+            if (transform.position.y < upPos.transform.position.y) transform.position += new Vector3(0,130,0) * Time.deltaTime;
         }
 
         if (timer < 0)
         {
-            if (transform.position.y > initPos.transform.position.y) transform.position -= new Vector3(0,30,0) * Time.deltaTime;
+            if (transform.position.y > initPos.transform.position.y) transform.position -= new Vector3(0,130,0) * Time.deltaTime;
         }
     }
 

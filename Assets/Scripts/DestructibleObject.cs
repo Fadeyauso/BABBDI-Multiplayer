@@ -24,9 +24,21 @@ public class DestructibleObject : MonoBehaviour
         
     }
 
-    void OnTriggerEnter(Collider collisionInfo)
+    void OnTriggerStay(Collider collisionInfo)
     {
         if (collisionInfo.gameObject.layer == 7 && Input.GetButton("Fire1"))
+        {
+            transform.parent = null;
+            r.constraints = 0;
+            r.AddForce(player.GetComponent<FirstPersonController>().playerCamera.transform.forward * 10f, ForceMode.Impulse);
+        }
+
+        
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.layer == 7 && Input.GetButton("Fire1"))
         {
             transform.parent = null;
             r.constraints = 0;

@@ -29,7 +29,7 @@ public class Propeller : MonoBehaviour
         {
             motorUp.transform.Rotate(0, 30, 0);
             motorUp2.transform.Rotate(0, -30, 0);
-            player.GetComponent<FirstPersonController>().moveDirection.y += flypower;
+            player.GetComponent<FirstPersonController>().moveDirection.y += flypower * Time.deltaTime;
         }
 
         motor.transform.Rotate(0, rotation, 0);
@@ -40,9 +40,8 @@ public class Propeller : MonoBehaviour
             rotation = rotateSpeed;
             turn = true;
             if (player.GetComponent<FirstPersonController>().characterController.velocity.magnitude < 30)
-                player.GetComponent<FirstPersonController>().moveDirection += player.GetComponent<FirstPersonController>().playerCamera.transform.forward * power;
+                player.GetComponent<FirstPersonController>().moveDirection += player.GetComponent<FirstPersonController>().playerCamera.transform.forward * power * Time.deltaTime;
 
-            Debug.Log(player.GetComponent<FirstPersonController>().characterController.velocity.magnitude);
 
             
         }
