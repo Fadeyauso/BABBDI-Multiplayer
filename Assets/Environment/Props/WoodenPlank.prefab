@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 424493450267221764}
   - component: {fileID: 424493450267221765}
   - component: {fileID: 424493450267221762}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.016
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 3769672735519348862}
   - component: {fileID: 3769672735519348863}
   - component: {fileID: 3769672735519348860}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.018
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 1409940135010986007}
   - component: {fileID: 1409940135010986004}
   - component: {fileID: 1409940135010986005}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 3132080323886845170}
   - component: {fileID: 3132080323886845171}
   - component: {fileID: 3132080323886845168}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,7 +522,7 @@ GameObject:
   - component: {fileID: 2166665743308415662}
   - component: {fileID: 2166665743308415663}
   - component: {fileID: 2166665743308415660}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.015
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -649,7 +649,7 @@ GameObject:
   - component: {fileID: 2392158164775339985}
   - component: {fileID: 2392158164775339998}
   - component: {fileID: 2392158164775339999}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 2703661058436473025}
   - component: {fileID: 2703661058436473038}
   - component: {fileID: 2703661058436473039}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.017
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -903,7 +903,7 @@ GameObject:
   - component: {fileID: 3797290887791296344}
   - component: {fileID: 3797290887791296345}
   - component: {fileID: 3797290887791296326}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1030,7 +1030,7 @@ GameObject:
   - component: {fileID: 3315142188069004105}
   - component: {fileID: 3315142188069004214}
   - component: {fileID: 3315142188069004215}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1157,7 +1157,7 @@ GameObject:
   - component: {fileID: 3600209655422679171}
   - component: {fileID: 3600209655422679168}
   - component: {fileID: 3600209655422679169}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1284,7 +1284,7 @@ GameObject:
   - component: {fileID: 3654843944209376770}
   - component: {fileID: 3654843944209376771}
   - component: {fileID: 3654843944209376768}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1411,7 +1411,7 @@ GameObject:
   - component: {fileID: 4254051708664841289}
   - component: {fileID: 4254051708664841398}
   - component: {fileID: 4254051708664841399}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1538,7 +1538,7 @@ GameObject:
   - component: {fileID: 4335453948608379374}
   - component: {fileID: 4335453948608379375}
   - component: {fileID: 4335453948608379372}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1665,7 +1665,7 @@ GameObject:
   - component: {fileID: 1727621208717477814}
   - component: {fileID: 1727621208717477815}
   - component: {fileID: 1727621208717477812}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.014
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1787,7 +1787,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5245116799181097433}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WoodenPlank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1801,7 +1801,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5245116799181097432}
-  m_LocalRotation: {x: -0, y: -0.6526099, z: -0, w: 0.75769407}
+  m_LocalRotation: {x: 0, y: -0.6526076, z: 0, w: 0.75769603}
   m_LocalPosition: {x: 12.95, y: -25.52, z: 54.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1826,7 +1826,7 @@ Transform:
   - {fileID: 5376279852675673734}
   - {fileID: 2306773252814129568}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -81.477, z: 0}
 --- !u!1 &5331370851848635660
 GameObject:
@@ -1842,7 +1842,7 @@ GameObject:
   - component: {fileID: 2451871804228867965}
   - component: {fileID: 2451871804228867962}
   - component: {fileID: 2451871804228867963}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1969,7 +1969,7 @@ GameObject:
   - component: {fileID: 4032653305387577226}
   - component: {fileID: 4032653305387577227}
   - component: {fileID: 4032653305387577224}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2096,7 +2096,7 @@ GameObject:
   - component: {fileID: 2381742619282194444}
   - component: {fileID: 2381742619282194445}
   - component: {fileID: 2381742619282194442}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2223,7 +2223,7 @@ GameObject:
   - component: {fileID: 3435134601259150973}
   - component: {fileID: 3435134601259150970}
   - component: {fileID: 3435134601259150971}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2350,7 +2350,7 @@ GameObject:
   - component: {fileID: 8234513782927771464}
   - component: {fileID: 8234513782927771465}
   - component: {fileID: 8234513782927771574}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_WoodBars00.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}

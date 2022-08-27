@@ -210,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227882263400622812}
   m_LocalRotation: {x: -0.56229985, y: 0, z: 0, w: 0.82693344}
-  m_LocalPosition: {x: 0.39, y: -0.76, z: 0.9}
+  m_LocalPosition: {x: 0.39, y: -0.76, z: 1.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -401,7 +401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7482973070762915162}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.594, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -641,7 +641,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.2
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &7482973072534782223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -691,7 +691,7 @@ MonoBehaviour:
   canSprint: 1
   canJump: 1
   canCrouch: 1
-  canUseHeadbob: 0
+  canUseHeadbob: 1
   WillSlideOnSlopes: 1
   useFootsteps: 1
   canInteract: 1
@@ -716,7 +716,8 @@ MonoBehaviour:
   airTime: 0
   crouchingSpeed: 10
   standHeight: 2
-  crouchHeight: 1
+  crouchHeight: 0.6
+  standing: 0
   walkBobSpeed: 14
   walkBobAmount: 0.05
   sprintBobSpeed: 18
@@ -741,10 +742,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b576aa201a4dfcc4889d117fdfc10de0, type: 3}
   - {fileID: 8300000, guid: 37d00a2ca59a1dd4bbc4e6e00c5c62bb, type: 3}
   - {fileID: 8300000, guid: bee3e667d19a4f140a4c314a137f495d, type: 3}
-  slopeForce: 50
+  slopeForce: 100
   slopeForceRayLength: 2
   interactionRayPoint: {x: 0.5, y: 0.5, z: 0}
-  interactionDistance: 4
+  interactionDistance: 6
   interactionLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -761,6 +762,7 @@ MonoBehaviour:
   frontRay: 0
   backRay: 0
   headRay: 0
+  interactionRay: 0
   upRay: 0
   clubRay: 0
   climbRay: 0
@@ -804,9 +806,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.7802155
-  m_Height: 2.7502635
+  m_Height: 2.8707047
   m_Direction: 1
-  m_Center: {x: 0.056645747, y: -0.03932774, z: 0.026705265}
+  m_Center: {x: 0.05664575, y: 1.0806475, z: 0.026705265}
 --- !u!167 &1802910641
 AudioReverbZone:
   m_ObjectHideFlags: 0

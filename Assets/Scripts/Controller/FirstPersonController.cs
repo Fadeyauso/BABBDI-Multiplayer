@@ -130,8 +130,10 @@ public class FirstPersonController : MonoBehaviour
     public bool inHands;
     public bool canThrow;
     public bool frontRay;
+    public bool throwRay;
     public bool backRay;
     public bool headRay;
+    public bool interactionRay;
     public bool upRay;
     public bool clubRay;
     public bool climbRay;
@@ -219,8 +221,10 @@ public class FirstPersonController : MonoBehaviour
 
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit prejumpHit, 2f) && Input.GetKeyDown(jumpKey)) prejump = true;
         frontRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit ss, 4f));
+        throwRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit ssss, 1f));
         backRay = (Physics.Raycast(playerCamera.transform.position, -transform.forward, out RaycastHit sww, 3f));
         headRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit si, 1f));
+        interactionRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit interact, interactionDistance, interactionLayer));
         upRay = (Physics.Raycast(playerCamera.transform.position, transform.up, out RaycastHit so, 1.2f));
 
         clubRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit st, 2.3f));
@@ -380,12 +384,12 @@ public class FirstPersonController : MonoBehaviour
 
         
     }
-
+// 
     private void HandleInteractionCheck()
     {
-        if (Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hit, interactionDistance))
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, interactionDistance, interactionLayer))
         {
-            if (hit.collider.gameObject.layer == 7 && (currentInteractable == null || hit.collider.gameObject.GetInstanceID() != currentInteractable.GetInstanceID()))
+            if (hit.collider.gameObject.layer == 7)
             {
                 hit.collider.TryGetComponent(out currentInteractable);
 
@@ -403,19 +407,20 @@ public class FirstPersonController : MonoBehaviour
             currentInteractable = null;
         }
 
-        if (Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hit2, interactionDistance*2.5f))
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit2, interactionDistance * 2f, interactionLayer))
         {
-            if (hit2.collider.tag == "DontThrow" || headRay)
+            if (hit2.collider.tag == "DontThrow" || throwRay || (isCrouching && headRay))
             {
                 canThrow = false;
             }
             else canThrow = true;
         }
+        else canThrow = true;
     }
 
     private void HandleInteractionInput()
     {
-        if ((Input.GetKeyDown(interactKey) || Input.GetKeyDown(KeyCode.F)) && currentInteractable != null && Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hit, interactionDistance, interactionLayer))
+        if ((Input.GetKeyDown(interactKey) || Input.GetKeyDown(KeyCode.F)) && currentInteractable != null && interactionRay)
         {
             currentInteractable.OnInteract();
         }
