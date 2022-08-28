@@ -27,7 +27,7 @@ public class InteractObject : Interactable
     {
         foreach (Material mat in materials)
         {
-            //mat.SetColor("_Color", new Color(mat.color.g, mat.color.b, 0.25f));
+            if (!inHands) mat.SetFloat("_OutlineWidth", 0.015f);
         }
     }
 
@@ -69,7 +69,8 @@ public class InteractObject : Interactable
     {
         foreach (Material mat in materials)
         {
-            //mat.SetColor("_Color", new Color(mat.color.g, mat.color.b, 1f));
+            if (!inHands) mat.SetFloat("_OutlineWidth", 0);
+
         }
 
     }

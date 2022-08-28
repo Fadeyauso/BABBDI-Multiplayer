@@ -66,8 +66,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8c3a7ee7d06089d4f94cb29c6c693946, type: 2}
-  - {fileID: 2100000, guid: a2e2dc7b47596a841a674f218751b639, type: 2}
+  - {fileID: 2100000, guid: cb0e9f813eb6b8a40a3e43de964d9c9b, type: 2}
+  - {fileID: 2100000, guid: a2830626dc4be5a41b72fb35e8f92e8d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,6 +121,7 @@ MonoBehaviour:
   rb: {fileID: 8493562541023597033}
   interactionClip: {fileID: 8300000, guid: f2d20b496dbdaee489acc4aa20487f96, type: 3}
   collider: {fileID: 0}
+  secret: {fileID: 0}
 --- !u!114 &8493562541023596567
 MonoBehaviour:
   m_ObjectHideFlags: 0
