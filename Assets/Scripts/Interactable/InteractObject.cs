@@ -92,6 +92,7 @@ public class InteractObject : Interactable
 
         if (inHands) player.GetComponent<FirstPersonController>().inHands = true;
         if (throwObject) player.GetComponent<FirstPersonController>().inHands = false;
+        
 
         if  (!player.GetComponent<FirstPersonController>().pause)
         {
@@ -132,10 +133,6 @@ public class InteractObject : Interactable
             {
                 if (inHands) 
                 {
-                    if (!extended && timer < 0)
-                    {
-                        
-                    }
                     rb.useGravity = false;
                     rb.velocity = new Vector3(0,0,0);
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow) 

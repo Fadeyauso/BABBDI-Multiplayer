@@ -11,18 +11,19 @@ public class Club : MonoBehaviour
 
     public bool trigger;
     private bool hitb;
-    public float timer = 0;
+
 
     public bool touch;
+    private bool wall;
 
-    public bool canTouch = false;
 
     
     
     
 
 
-    public float impactForce = 2;
+    [SerializeField] private float wallImpactForce = 25;
+    [SerializeField] private float groundImpactForce = 18;
 
     void Awake(){
         player = GameObject.Find("Player");
@@ -39,51 +40,39 @@ public class Club : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            hitb = true;
+            touch = true;
         }
-        timer -= Time.deltaTime;
 
-        if (player.GetComponent<FirstPersonController>().frontRay && player.GetComponent<FirstPersonController>().clubRay) timer = 0.3f;
+        if (Input.GetButtonUp("Fire1")) touch = false;
 
-        canTouch = true;
-        
+        if (player.GetComponent<FirstPersonController>().frontRay && !player.GetComponent<FirstPersonController>().characterController.isGrounded)
+            wall = true;
+        else if (player.GetComponent<FirstPersonController>().rotationX < 45 && player.GetComponent<FirstPersonController>().characterController.isGrounded)
+            wall = true;
+        else wall = false;
     }
 
-    void OnTriggerEnter(Collider collisionInfo)
-    {
-        touch = true;
-    }
 
     void OnTriggerStay(Collider collisionInfo)
     {
-        if (collisionInfo.gameObject.layer == 7 && GetComponent<InteractObject>().extended || collisionInfo.gameObject.layer == 0 && GetComponent<InteractObject>().extended)
+
+        if (touch && collisionInfo.tag != "Player")
         {
-            trigger = true;
+            SoundManager.Instance.PlaySound(hit);
+
+            touch = false;
+
+            if (!player.GetComponent<FirstPersonController>().clubRay && player.GetComponent<FirstPersonController>().rotationX > -75 && !player.GetComponent<FirstPersonController>().characterController.isGrounded && !player.GetComponent<FirstPersonController>().rightRay && !player.GetComponent<FirstPersonController>().leftRay && player.GetComponent<FirstPersonController>().rotationX < 45)
+                player.GetComponent<FirstPersonController>().moveDirection.y = groundImpactForce / 1.5f;
+
+            else if (wall && (player.GetComponent<FirstPersonController>().frontRay || player.GetComponent<FirstPersonController>().clubRay))
+                player.GetComponent<FirstPersonController>().AddForce(new Vector3(-player.GetComponent<FirstPersonController>().playerCamera.transform.forward.x, 0, -player.GetComponent<FirstPersonController>().playerCamera.transform.forward.z), wallImpactForce);
+
+            else 
+                player.GetComponent<FirstPersonController>().AddForce(-player.GetComponent<FirstPersonController>().playerCamera.transform.forward, groundImpactForce);
         }
-
-        if (collisionInfo.gameObject.layer == 7 && GetComponent<InteractObject>().extended && touch && hitb|| collisionInfo.gameObject.layer == 0 && GetComponent<InteractObject>().extended && touch && hitb)
-        {
-            if (canTouch)
-            {
-                SoundManager.Instance.PlaySound(hit);
-                touch = false;
-                hitb = false;
-
-                if (player.GetComponent<FirstPersonController>().clubRay && player.GetComponent<FirstPersonController>().rotationX > -45)
-                {
-                    player.GetComponent<FirstPersonController>().AddForce(-player.GetComponent<FirstPersonController>().playerCamera.transform.forward, 25f);
-                    
-                }
-                else player.GetComponent<FirstPersonController>().moveDirection.y = impactForce;
-            }
-            
-        }
-
-    }
-
-    void OnTriggerExit(Collider collisionInfo)
-    {
-        trigger = false;
         
+
     }
+
 }

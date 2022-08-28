@@ -99,8 +99,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.17883432, y: 1.8650254, z: 0.19522575}
-  m_Center: {x: -0.00478257, y: -0.43981034, z: 0.010742975}
+  m_Size: {x: 0.33851373, y: 2.5509877, z: 0.29353344}
+  m_Center: {x: -0.01518022, y: -0.3025854, z: 0.018475574}
 --- !u!114 &2788863020918150929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,10 +150,9 @@ MonoBehaviour:
   hold: {fileID: 0}
   hit: {fileID: 8300000, guid: 7e5579af8a092924ba9b16e11c6d7a16, type: 3}
   trigger: 0
-  timer: 0
   touch: 0
-  canTouch: 0
-  impactForce: 15
+  wallImpactForce: 25
+  groundImpactForce: 18
 --- !u!54 &2788863020918150928
 Rigidbody:
   m_ObjectHideFlags: 0
