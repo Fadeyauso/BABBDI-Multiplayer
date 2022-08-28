@@ -40,4 +40,9 @@ MonoBehaviour:
   - Assets/Characters/Meshes/SM_Arlend_00_Head.fbx
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_SpielPlatz00.fbx
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_ClubEntrance00.fbx
-  modifiedAssetPaddingHash: aaf8cc2e363fd3d90cf43a06ecc124913f3fd3d9353fd3d93e3fd3d9b35634b7323b8033ef37ed04393fd3d9393fd3d9a768e2a8bb09ecc0de09ecc0797e9363363fd3d9f437ed04f437ed04ecc12491ecc12491ecc12491ecc12491ecc12491ecc124913c4efff008b309ce
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout07.fbx
+  - Assets/Environment/Props/SM_AC_00.fbx
+  - Assets/Environment/Props/SM_Lamp01.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_Metal00.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_Metal01.fbx
+  modifiedAssetPaddingHash: aaf8cc2e363fd3d90cf43a06ecc124913f3fd3d9353fd3d9343fd3d9b35634b7323b8033ef37ed04363fd3d9393fd3d9a768e2a8bb09ecc0de09ecc0797e9363363fd3d9f437ed04f437ed04ecc12491ecc12491ecc12491ecc12491ecc12491ecc124914adc894babdb894b363fd3d9ecc12491ecc12491797e9363b7f23a06

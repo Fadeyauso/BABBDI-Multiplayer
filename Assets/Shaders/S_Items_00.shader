@@ -88,7 +88,7 @@ Shader "S_Items_00"
 }
 /*ASEBEGIN
 Version=15401
-2560;437;1906;929;671.0748;245.9789;1;True;True
+2560;437;1906;929;697.8704;402.3402;1.3;True;True
 Node;AmplifyShaderEditor.RangedFloatNode;9;-80.50249,396.3044;Float;False;Property;_OutlineWidth;OutlineWidth;3;0;Create;True;0;0;False;0;0;0.015;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;13;-81.64393,299.8866;Float;False;Constant;_Float0;Float 0;3;0;Create;True;0;0;False;0;0;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.ColorNode;8;-36.30268,73.10436;Float;False;Property;_OutlineColor;OutlineColor;4;0;Create;True;0;0;False;0;1,1,1,0;1,1,1,0;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -107,4 +107,4 @@ WireConnection;0;3;5;0
 WireConnection;0;4;2;0
 WireConnection;0;11;6;0
 ASEEND*/
-//CHKSM=6B3CC38AF067FA73639B3423EFE68E8FD334B952
+//CHKSM=315A5E48AC152C4BD962574D588FEFE2194970E3
