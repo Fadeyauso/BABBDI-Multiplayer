@@ -69,16 +69,9 @@ public class Club : MonoBehaviour
                 touch = false;
                 hitb = false;
 
-                if (timer > 0 && !player.GetComponent<FirstPersonController>().characterController.isGrounded)
+                if (player.GetComponent<FirstPersonController>().clubRay && player.GetComponent<FirstPersonController>().rotationX > -45)
                 {
-                    if (player.GetComponent<FirstPersonController>().currentObject != null)
-                    {
-                        if (player.GetComponent<FirstPersonController>().currentObject.layer != 9)
-                        {
-                            player.GetComponent<FirstPersonController>().moveDirection += -player.transform.forward * impactForce;
-                            player.GetComponent<FirstPersonController>().moveDirection.y =  impactForce / 4;
-                        }
-                    }
+                    player.GetComponent<FirstPersonController>().AddForce(-player.GetComponent<FirstPersonController>().playerCamera.transform.forward, 25f);
                     
                 }
                 else player.GetComponent<FirstPersonController>().moveDirection.y = impactForce;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class FirstPersonController : MonoBehaviour
 {
     public bool canMove { get; private set; } = true;
-    private bool IsSprinting => canSprint && Input.GetKey(sprintKey);
+    private bool IsSprinting => canSprint && Input.GetKey(sprintKey) && currentInputRaw != new Vector2(0,0);
     private bool ShouldJump => Input.GetKeyDown(jumpKey) && characterController.isGrounded;
     private bool ShouldCrouch => Input.GetKey(crouchKey) && characterController.isGrounded;
 
@@ -29,6 +29,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float sprintSpeed = 6.0f;
     [SerializeField] private float crouchSpeed = 1.5f;
     [SerializeField] private float slopeSpeed = 8f;
+    [SerializeField] private float boostPower = 8f;
 
     [Header("Look Parameters")]
     [SerializeField, Range(1, 10)] private float lookSpeedX = 2.0f;
@@ -64,6 +65,13 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float crouchBobAmount = 0.025f;
     private float defaultYPos = 0;
     private float timer;
+
+    [Header("Camera Controller")]
+    [SerializeField] private float zoomSpeed = 5f;
+    [SerializeField] private float zoomFOV = 30f;
+    [SerializeField] private float runFOV = 90f;
+    private bool isZooming;
+    private float defaultFOV;
 
     [Header("Footsteps Parameters")]
     [SerializeField] private float baseStepSpeed = 0.5f;
@@ -151,8 +159,9 @@ public class FirstPersonController : MonoBehaviour
 
     public Vector3 moveDirection;
     private Vector2 currentInput;
+    private Vector2 currentInputRaw;
 
-    private float rotationX = 0;
+    public float rotationX = 0;
 
     public static FirstPersonController instance;
 
@@ -163,6 +172,7 @@ public class FirstPersonController : MonoBehaviour
         playerCamera = GetComponentInChildren<Camera>();
         characterController = GetComponent<CharacterController>();
         defaultYPos = characterController.center.y + characterController.height / 2 + offset.y;
+        defaultFOV = playerCamera.fieldOfView;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -220,13 +230,13 @@ public class FirstPersonController : MonoBehaviour
         pause = pauseMenu.activeSelf;
 
 
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit prejumpHit, 2f) && Input.GetKeyDown(jumpKey)) prejump = true;
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit prejumpHit, 1f) && Input.GetKeyDown(jumpKey)) prejump = true;
         frontRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit ss, 4f));
         throwRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit ssss, 1f));
-        backRay = (Physics.Raycast(playerCamera.transform.position, -transform.forward, out RaycastHit sww, 3f));
+        backRay = (Physics.Raycast(playerCamera.transform.position, -transform.forward, out RaycastHit sww, 0.9f));
         headRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit si, 1f));
         interactionRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit interact, interactionDistance, interactionLayer));
-        upRay = (Physics.Raycast(playerCamera.transform.position, transform.up, out RaycastHit so, 1.2f));
+        upRay = (Physics.Raycast(playerCamera.transform.position, transform.up, out RaycastHit so, 0.5f));
 
         clubRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit st, 2.3f));
         climbRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit sz, 3f));
@@ -261,6 +271,7 @@ public class FirstPersonController : MonoBehaviour
         if (canMove)
         {
             HandleMovementInput();
+            if (characterController.isGrounded) MovementBoost();
             
 
             if (canJump) HandleJump();
@@ -276,6 +287,11 @@ public class FirstPersonController : MonoBehaviour
                 HandleInteractionCheck();
                 HandleInteractionInput();
             }
+
+            //Adding Force
+            HandleAddingForce();
+
+            HandleCameraController();
 
             
 
@@ -298,18 +314,114 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
+    private void MovementBoost()
+    {
+        if (IsSprinting)
+        {
+            if (Input.GetKeyDown(KeyCode.D)) AddForce(transform.right, 6f);
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Q)) AddForce(-transform.right, 6f);
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Z)) AddForce(transform.forward, 6f);
+            if (Input.GetKeyDown(KeyCode.S)) AddForce(-transform.forward, 6f);
+        }
+
+        if (Input.GetKey(KeyCode.D))
+            if (Input.GetKeyDown(sprintKey) && currentInput != new Vector2(0,0)) AddForce(transform.right, 6f);
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q))
+            if (Input.GetKeyDown(sprintKey) && currentInput != new Vector2(0,0)) AddForce(-transform.right, 6f);
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z))
+            if (Input.GetKeyDown(sprintKey) && currentInput != new Vector2(0,0)) AddForce(transform.forward, 6f);
+        if (Input.GetKey(KeyCode.S))
+            if (Input.GetKeyDown(sprintKey) && currentInput != new Vector2(0,0)) AddForce(-transform.forward, 6f);
+        
+
+        
+    }
+
+    
+
+    //Custom addforce physics function
+    public bool addingForce;
+    public Vector3 forceAdded;
+    public Vector3 force;
+    public float forceFactor;
+    public float initforceFactor;
+    public float forceSpeed = 4;
+    public float tempforceSpeed;
+
+    public void AddForce(Vector3 tempforce, float tempforceFactor)
+    {
+        moveDirection = new Vector3(0,0,0);
+        forceFactor = tempforceFactor;
+        force = tempforce;
+        moveDirection.y = force.y * forceFactor;
+        tempforceSpeed = forceSpeed;
+        initforceFactor = tempforceFactor;
+    }  
+
+    private void HandleAddingForce()
+    {
+        if (initforceFactor > 20f && tempforceSpeed < 10f) tempforceSpeed = 10f;
+        else if (tempforceSpeed < 2f) tempforceSpeed = 2f;
+        if (!characterController.isGrounded)
+        {
+            if (forceFactor < 0.8f) forceFactor = 0.8f;
+            if (forceFactor > 0) tempforceSpeed -= Time.deltaTime * initforceFactor / 2;
+        }
+        else tempforceSpeed = forceSpeed;
+
+        
+
+        forceFactor -= Time.deltaTime * tempforceSpeed;
+
+        if (forceFactor > 0)
+        {
+            addingForce = true;
+            forceAdded = force * forceFactor;
+        }
+        else
+        {
+            addingForce = false;
+            forceAdded = new Vector3(0,0,0);
+            forceFactor = 0;
+            force = new Vector3(0,0,0);
+        }
+    }
+
+    private float verticalInput;
+    private float horizontalInput;
+
+    private float verticalInputRaw;
+    private float horizontalInputRaw;
+
     private void HandleMovementInput()
     {
-        currentInput = new Vector2((isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Vertical"), (isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Horizontal"));
+        if (Input.GetKey(KeyCode.D)) horizontalInput = Mathf.Lerp(horizontalInput, 1, 15f * Time.deltaTime);
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q)) horizontalInput = Mathf.Lerp(horizontalInput, -1, 15f * Time.deltaTime);
+        else horizontalInput = Mathf.Lerp(horizontalInput, 0, 15f * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z)) verticalInput = Mathf.Lerp(verticalInput, 1, 15f * Time.deltaTime);
+        else if (Input.GetKey(KeyCode.S)) verticalInput = Mathf.Lerp(verticalInput, -1, 15f * Time.deltaTime);
+        else verticalInput = Mathf.Lerp(verticalInput, 0, 10f * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.D)) horizontalInputRaw = 1;
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q)) horizontalInputRaw = -1;
+        else horizontalInputRaw = 0;
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z)) verticalInputRaw = 1;
+        else if (Input.GetKey(KeyCode.S)) verticalInputRaw = -1;
+        else verticalInputRaw = 0;
+
+        currentInput = new Vector2((isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * verticalInput, (isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * horizontalInput);
+        currentInputRaw = new Vector2((isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * verticalInputRaw, (isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * horizontalInputRaw);
         
         float  moveDirectionY = moveDirection.y;
         if (club != null && inHands)
         {
-            if (blower.GetComponent<Blower>().isActive && characterController.isGrounded) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) * 1.7f;
-            else if (blower.GetComponent<Blower>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + blower.GetComponent<Blower>().blowMovement;
-            else if (!club.GetComponent<Club>().trigger && !propeller.GetComponent<Propeller>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y);
+            if (blower.GetComponent<Blower>().isActive && characterController.isGrounded) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) * 1.7f + forceAdded;
+            else if (blower.GetComponent<Blower>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + blower.GetComponent<Blower>().blowMovement + forceAdded;
+            else if (!club.GetComponent<Club>().trigger && !propeller.GetComponent<Propeller>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + forceAdded;
         }
-        else moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y);
+        else moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + forceAdded;
         moveDirection.y = moveDirectionY;
     }
 
@@ -321,7 +433,7 @@ public class FirstPersonController : MonoBehaviour
 
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
 
-        if (standing && playerCamera.transform.localPosition.y != defaultYPos && landTimer < 0 && (Mathf.Abs(moveDirection.x) == 0 && Mathf.Abs(moveDirection.z) == 0))
+        if (standing && playerCamera.transform.localPosition.y != defaultYPos && landTimer < 0 && currentInputRaw != new Vector2(0,0))
         {
             playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, characterController.center + new Vector3(0, characterController.height / 2, 0) + offset, 10f * Time.deltaTime);
             headbobEndTimer = 3f;
@@ -374,6 +486,20 @@ public class FirstPersonController : MonoBehaviour
         else standing = false;
     }
 
+    private void HandleCameraController()
+    {
+        if (IsSprinting) isZooming = false;
+        else isZooming = Input.GetKey(KeyCode.C);
+
+        var desiredFOV = IsSprinting && verticalInputRaw == 1 ? runFOV : isZooming ? zoomFOV : defaultFOV;
+
+        if (playerCamera.fieldOfView != desiredFOV)
+        {
+            Zoom(desiredFOV);
+
+        }
+    }
+
     private void HandleHeadbob()
     {
         if (!characterController.isGrounded) return;
@@ -384,14 +510,14 @@ public class FirstPersonController : MonoBehaviour
             timer += Time.deltaTime * sprintBobSpeed;
             playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(timer) * sprintBobAmount * 2, playerCamera.transform.localPosition.z);
         }
-        else if (Mathf.Abs(moveDirection.x) > 0.1f || Mathf.Abs(moveDirection.z) > 0.1f)
+        else if (currentInputRaw != new Vector2(0,0))
         {
             timer += Time.deltaTime * (isCrouching ? crouchBobSpeed : IsSprinting ? sprintBobSpeed : walkBobSpeed);
             playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(timer) * (isCrouching ? crouchBobAmount : IsSprinting ? sprintBobAmount : walkBobAmount), playerCamera.transform.localPosition.z);
         }
         
     }
-// 
+
     private void HandleInteractionCheck()
     {
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, interactionDistance, interactionLayer))
@@ -445,7 +571,8 @@ public class FirstPersonController : MonoBehaviour
     {
         if (currentInput.magnitude != 0 && OnSlope())
         {
-            moveDirection.y -= gravity * slopeForce * Time.deltaTime;
+            moveDirection.y -= gravity * Time.deltaTime;
+            moveDirection.y -= slopeForce * Time.deltaTime;
             if (ShouldJump)
             {
                 moveDirection.y = 0;
@@ -461,9 +588,15 @@ public class FirstPersonController : MonoBehaviour
                 moveDirection.y = jumpForce;
             }
         }
+
+        if (backRay && forceFactor > 0)
+        {
+            force.x = 0;
+            force.z = 0;
+        }
             
 
-        if (upRay) moveDirection.y -= moveDirection.y * Time.deltaTime * 7;
+        if (upRay && !characterController.isGrounded) AddForce(new Vector3(0, -1, 0), 2f);
 
         if (WillSlideOnSlopes && IsSliding)
         {
@@ -476,7 +609,7 @@ public class FirstPersonController : MonoBehaviour
     private void HandleFootsteps()
     {
         if (!characterController.isGrounded) return;
-        if (currentInput == Vector2.zero) return;
+        if (currentInputRaw == Vector2.zero) return;
 
         footstepTimer -= Time.deltaTime;
 
@@ -511,6 +644,11 @@ public class FirstPersonController : MonoBehaviour
 
         characterController.height = Mathf.Lerp(characterController.height, height, crouchingSpeed * Time.deltaTime);
         characterController.center = Vector3.Lerp(characterController.center, new Vector3(0, center, 0), crouchingSpeed * Time.deltaTime);
+    }
+
+    private void Zoom(float fov)
+    {
+        playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, fov, zoomSpeed * Time.deltaTime);
     }
 
 

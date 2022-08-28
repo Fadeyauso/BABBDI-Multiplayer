@@ -703,6 +703,7 @@ MonoBehaviour:
   sprintSpeed: 8
   crouchSpeed: 1.5
   slopeSpeed: 8
+  boostPower: 8
   lookSpeedX: 2
   lookSpeedY: 2
   upperLookLimit: 90
@@ -724,6 +725,9 @@ MonoBehaviour:
   sprintBobAmount: 0.08
   crouchBobSpeed: 8
   crouchBobAmount: 0.025
+  zoomSpeed: 5
+  zoomFOV: 30
+  runFOV: 90
   baseStepSpeed: 0.5
   crouchStepMultiplier: 1.5
   sprintStepMultiplier: 0.6
@@ -775,6 +779,14 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   characterController: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
+  rotationX: 0
+  addingForce: 0
+  forceAdded: {x: 0, y: 0, z: 0}
+  force: {x: 0, y: 0, z: 0}
+  forceFactor: 0
+  initforceFactor: 0
+  forceSpeed: 30
+  tempforceSpeed: 0
 --- !u!114 &519846068298027556
 MonoBehaviour:
   m_ObjectHideFlags: 0
