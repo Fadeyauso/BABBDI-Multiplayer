@@ -8,6 +8,9 @@ TagManager:
   - Fire
   - Door/Indoor
   - Door/Outdoor
+  - DontThrow
+  - Achievement/wayClimber
+  - Footsteps/Stone
   layers:
   - Default
   - TransparentFX
@@ -18,7 +21,7 @@ TagManager:
   - 
   - Interactable
   - Tool
-  - 
+  - Destructible
   - 
   - 
   - 
