@@ -52,6 +52,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float crouchHeight = 1f;
     private bool isCrouching;
     private float crouchTimer = 0;
+    private float headbobEndTimer = 0;
     public bool standing;
 
     [Header("Headbob Parameters")]
@@ -161,7 +162,7 @@ public class FirstPersonController : MonoBehaviour
 
         playerCamera = GetComponentInChildren<Camera>();
         characterController = GetComponent<CharacterController>();
-        defaultYPos = characterController.center.y + characterController.height / 2+ offset.y;
+        defaultYPos = characterController.center.y + characterController.height / 2 + offset.y;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -242,6 +243,7 @@ public class FirstPersonController : MonoBehaviour
             airTime = 0.3f;
         }
         landTimer -= Time.deltaTime;
+        headbobEndTimer -= Time.deltaTime;
         
 
         if (climber != null) 
@@ -319,7 +321,13 @@ public class FirstPersonController : MonoBehaviour
 
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
 
-        playerCamera.transform.localPosition = characterController.center + new Vector3(0, characterController.height / 2, 0) + offset;
+        if (standing && playerCamera.transform.localPosition.y != defaultYPos && landTimer < 0 && (Mathf.Abs(moveDirection.x) == 0 && Mathf.Abs(moveDirection.z) == 0))
+        {
+            playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, characterController.center + new Vector3(0, characterController.height / 2, 0) + offset, 10f * Time.deltaTime);
+            headbobEndTimer = 3f;
+        }
+        else if (headbobEndTimer < 0 && headbobEndTimer > -0.25f) playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, characterController.center + new Vector3(0, characterController.height / 2, 0) + offset, 8f * Time.deltaTime);
+        else if (headbobEndTimer < 0.25f || !standing) playerCamera.transform.localPosition = characterController.center + new Vector3(0, characterController.height / 2, 0) + offset;
     }
 
     private void HandleJump()
@@ -348,7 +356,7 @@ public class FirstPersonController : MonoBehaviour
         if (isCrouching && upRay);
         else isCrouching = ShouldCrouch;
 
-        if (ShouldCrouch) crouchTimer = 0.3f;
+        if (ShouldCrouch) crouchTimer = 0.35f;
     }
 
     void LateUpdate()
@@ -381,7 +389,6 @@ public class FirstPersonController : MonoBehaviour
             timer += Time.deltaTime * (isCrouching ? crouchBobSpeed : IsSprinting ? sprintBobSpeed : walkBobSpeed);
             playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(timer) * (isCrouching ? crouchBobAmount : IsSprinting ? sprintBobAmount : walkBobAmount), playerCamera.transform.localPosition.z);
         }
-
         
     }
 // 
@@ -407,13 +414,19 @@ public class FirstPersonController : MonoBehaviour
             currentInteractable = null;
         }
 
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit2, interactionDistance * 2f, interactionLayer))
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit2, interactionDistance * 2f))
         {
-            if (hit2.collider.tag == "DontThrow" || throwRay || (isCrouching && headRay))
+            
+            if (hit2.collider.tag == "DontThrow")
             {
                 canThrow = false;
             }
+            else if ((isCrouching && headRay) || throwRay) canThrow = false;
             else canThrow = true;
+        }
+        else if ((isCrouching && headRay) || throwRay)
+        {
+            canThrow = false;
         }
         else canThrow = true;
     }

@@ -707,7 +707,7 @@ MonoBehaviour:
   lookSpeedY: 2
   upperLookLimit: 90
   lowerLookLimit: 90
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: -0.25, z: 0}
   jumpForce: 7
   gravity: 22
   jumpClip: {fileID: 8300000, guid: 703f1030347769943a8507b5026d9b7a, type: 3}
@@ -716,7 +716,7 @@ MonoBehaviour:
   airTime: 0
   crouchingSpeed: 10
   standHeight: 2
-  crouchHeight: 0.6
+  crouchHeight: 0.9
   standing: 0
   walkBobSpeed: 14
   walkBobAmount: 0.05
@@ -745,7 +745,7 @@ MonoBehaviour:
   slopeForce: 100
   slopeForceRayLength: 2
   interactionRayPoint: {x: 0.5, y: 0.5, z: 0}
-  interactionDistance: 6
+  interactionDistance: 5
   interactionLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -760,6 +760,7 @@ MonoBehaviour:
   inHands: 0
   canThrow: 0
   frontRay: 0
+  throwRay: 0
   backRay: 0
   headRay: 0
   interactionRay: 0
@@ -918,14 +919,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7797617258422789961}
-  m_LocalRotation: {x: 0.7544065, y: -0.11161895, z: 0.13302228, w: 0.63302225}
-  m_LocalPosition: {x: 0.3, y: -0.2, z: 0.65}
+  m_LocalRotation: {x: 0.41619772, y: -0.15737876, z: 0.073386915, w: 0.89253896}
+  m_LocalPosition: {x: 0.4, y: -0.4, z: 0.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7482973070762915167}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 100, y: -20, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: -20, z: 0}
 --- !u!1 &7797617259295385597
 GameObject:
   m_ObjectHideFlags: 0
