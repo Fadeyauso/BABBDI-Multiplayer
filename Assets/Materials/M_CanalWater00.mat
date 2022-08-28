@@ -16,7 +16,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 5000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -122,7 +122,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorDeep: {r: 0.22067462, g: 0.26038885, b: 0.2735849, a: 0}
     - _ColorShallow: {r: 0.42691714, g: 0.4339623, b: 0.38688147, a: 0}
-    - _DeepColor: {r: 0.38161922, g: 0.4528302, b: 0.13029547, a: 0}
+    - _DeepColor: {r: 0.38161907, g: 0.4528299, b: 0.1302953, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _ShalowColor: {r: 0.7264151, g: 0, b: 0, a: 0}

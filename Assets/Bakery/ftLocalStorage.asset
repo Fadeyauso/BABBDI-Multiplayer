@@ -26,4 +26,18 @@ MonoBehaviour:
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout05.fbx
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout04.fbx
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout06.fbx
-  modifiedAssetPaddingHash: aaf8cc2e363fd3d90cf43a06ecc12491393fd3d9363fd3d9393fd3d995c2a693323b8033ef37ed04363fd3d9363fd3d9c25031ee
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_Fence01.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_WaterPlane02.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_WaterPlane01.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_WaterPlane03.fbx
+  - Assets/Environment/Unique/Scene_A/SM_NeonSign01.fbx
+  - Assets/Environment/Unique/Scene_A/SM_NeonSign02.fbx
+  - Assets/Characters/Meshes/SM_Arlend_00_Body.fbx
+  - Assets/Environment/Props/SM_Table02.fbx
+  - Assets/Characters/Meshes/SM_Amir00.fbx
+  - Assets/Characters/Meshes/SM_Arthur00.fbx
+  - Assets/Characters/Meshes/SM_ DoorWatch00.fbx
+  - Assets/Characters/Meshes/SM_Arlend_00_Head.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_SpielPlatz00.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_ClubEntrance00.fbx
+  modifiedAssetPaddingHash: aaf8cc2e363fd3d90cf43a06ecc124913f3fd3d9353fd3d93e3fd3d9b35634b7323b8033ef37ed04393fd3d9393fd3d9a768e2a8bb09ecc0de09ecc0797e9363363fd3d9f437ed04f437ed04ecc12491ecc12491ecc12491ecc12491ecc12491ecc124913c4efff008b309ce
