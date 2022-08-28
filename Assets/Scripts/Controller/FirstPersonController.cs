@@ -70,6 +70,8 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float zoomSpeed = 5f;
     [SerializeField] private float zoomFOV = 30f;
     [SerializeField] private float runFOV = 90f;
+    [SerializeField] private float tiltAmount = 7f;
+    [SerializeField] private float tiltSpeed = 7f;
     private bool isZooming;
     private float defaultFOV;
 
@@ -139,11 +141,14 @@ public class FirstPersonController : MonoBehaviour
     public bool inHands;
     public bool canThrow;
     public bool frontRay;
+    public bool rightRay;
+    public bool leftRay;
     public bool throwRay;
     public bool backRay;
     public bool headRay;
     public bool interactionRay;
     public bool upRay;
+    public bool crouchUpRay;
     public bool clubRay;
     public bool climbRay;
 
@@ -162,6 +167,7 @@ public class FirstPersonController : MonoBehaviour
     private Vector2 currentInputRaw;
 
     public float rotationX = 0;
+    public float rotationZ = 0;
 
     public static FirstPersonController instance;
 
@@ -232,13 +238,16 @@ public class FirstPersonController : MonoBehaviour
 
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit prejumpHit, 1f) && Input.GetKeyDown(jumpKey)) prejump = true;
         frontRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit ss, 4f));
+        leftRay = (Physics.Raycast(playerCamera.transform.position, -transform.right, out RaycastHit ssssss, 2f));
+        rightRay = (Physics.Raycast(playerCamera.transform.position, transform.right, out RaycastHit ssssaw, 2f));
         throwRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit ssss, 1f));
         backRay = (Physics.Raycast(playerCamera.transform.position, -transform.forward, out RaycastHit sww, 0.9f));
         headRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit si, 1f));
         interactionRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit interact, interactionDistance, interactionLayer));
-        upRay = (Physics.Raycast(playerCamera.transform.position, transform.up, out RaycastHit so, 0.5f));
+        upRay = (Physics.Raycast(playerCamera.transform.position, transform.up, out RaycastHit so, 1f));
+        crouchUpRay = (Physics.Raycast(playerCamera.transform.position, transform.up, out RaycastHit sk, 2f));
 
-        clubRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit st, 2.3f));
+        clubRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit st, 4f));
         climbRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit sz, 3f));
 
         dialogueActive = dialogueBox.activeSelf;
@@ -310,6 +319,8 @@ public class FirstPersonController : MonoBehaviour
                 }
                 
             }
+
+            Debug.DrawRay(playerCamera.transform.position, transform.up * 2f, Color.green);
                 
         }
     }
@@ -419,7 +430,8 @@ public class FirstPersonController : MonoBehaviour
         {
             if (blower.GetComponent<Blower>().isActive && characterController.isGrounded) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) * 1.7f + forceAdded;
             else if (blower.GetComponent<Blower>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + blower.GetComponent<Blower>().blowMovement + forceAdded;
-            else if (!club.GetComponent<Club>().trigger && !propeller.GetComponent<Propeller>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + forceAdded;
+            else if (!propeller.GetComponent<Propeller>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + forceAdded;
+            else moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + forceAdded;
         }
         else moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + forceAdded;
         moveDirection.y = moveDirectionY;
@@ -429,7 +441,7 @@ public class FirstPersonController : MonoBehaviour
     {
         rotationX -= Input.GetAxis("Mouse Y") * lookSpeedY;
         rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
-        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, rotationZ);
 
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
 
@@ -465,10 +477,10 @@ public class FirstPersonController : MonoBehaviour
     {
         
 
-        if (isCrouching && upRay);
+        if (isCrouching && crouchUpRay);
         else isCrouching = ShouldCrouch;
 
-        if (ShouldCrouch) crouchTimer = 0.35f;
+        if (isCrouching) crouchTimer = 0.35f;
     }
 
     void LateUpdate()
@@ -491,12 +503,20 @@ public class FirstPersonController : MonoBehaviour
         if (IsSprinting) isZooming = false;
         else isZooming = Input.GetKey(KeyCode.C);
 
-        var desiredFOV = IsSprinting && verticalInputRaw == 1 ? runFOV : isZooming ? zoomFOV : defaultFOV;
+        var desiredFOV = IsSprinting && standing && verticalInputRaw == 1 ? runFOV : isZooming ? zoomFOV : defaultFOV;
 
         if (playerCamera.fieldOfView != desiredFOV)
         {
             Zoom(desiredFOV);
+        }
 
+
+        //Camera Tilt
+        var desiredTilt = IsSprinting && standing && horizontalInputRaw == 1 ? -tiltAmount : IsSprinting && standing && horizontalInputRaw == -1 ? tiltAmount : 0;
+
+        if (rotationZ != desiredTilt)
+        {
+            SideTilt(desiredTilt);
         }
     }
 
@@ -649,6 +669,11 @@ public class FirstPersonController : MonoBehaviour
     private void Zoom(float fov)
     {
         playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, fov, zoomSpeed * Time.deltaTime);
+    }
+
+    private void SideTilt(float temptiltAmount)
+    {
+        rotationZ = Mathf.Lerp(rotationZ, temptiltAmount, tiltSpeed * Time.deltaTime);
     }
 
 

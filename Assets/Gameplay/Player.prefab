@@ -210,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227882263400622812}
   m_LocalRotation: {x: -0.56229985, y: 0, z: 0, w: 0.82693344}
-  m_LocalPosition: {x: 0.39, y: -0.76, z: 1.07}
+  m_LocalPosition: {x: 0.215, y: -0.76, z: 1.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -400,7 +400,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7482973070762915162}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -430,7 +430,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -452,7 +452,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 183
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -489,9 +489,9 @@ MonoBehaviour:
   heightFog: 0
   height: 0
   heightDensity: 2
-  startDistance: 0
+  startDistance: 15
   fogMode: 2
-  fogDensity: 0.01
+  fogDensity: 0.005
   fogStart: 50
   fogEnd: 100
   coloringMode: 3
@@ -622,7 +622,7 @@ Transform:
   - {fileID: 952962484}
   - {fileID: 2041110508}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &7482973072534782209
 CharacterController:
@@ -728,6 +728,8 @@ MonoBehaviour:
   zoomSpeed: 5
   zoomFOV: 30
   runFOV: 90
+  tiltAmount: 4
+  tiltSpeed: 5
   baseStepSpeed: 0.5
   crouchStepMultiplier: 1.5
   sprintStepMultiplier: 0.6
@@ -764,11 +766,14 @@ MonoBehaviour:
   inHands: 0
   canThrow: 0
   frontRay: 0
+  rightRay: 0
+  leftRay: 0
   throwRay: 0
   backRay: 0
   headRay: 0
   interactionRay: 0
   upRay: 0
+  crouchUpRay: 0
   clubRay: 0
   climbRay: 0
   pause: 0
@@ -780,6 +785,7 @@ MonoBehaviour:
   characterController: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   rotationX: 0
+  rotationZ: 0
   addingForce: 0
   forceAdded: {x: 0, y: 0, z: 0}
   force: {x: 0, y: 0, z: 0}
