@@ -15,11 +15,12 @@ public class Door : Interactable
     private void Start()
     {
         anim = GetComponent<Animator>();
+        gameObject.layer = 11;
     }
 
     public override void OnFocus()
     {
-        Debug.Log("asccaca");
+
     }
 
     public override void OnInteract()
@@ -42,7 +43,6 @@ public class Door : Interactable
 
     public override void OnLoseFocus()
     {
-        Debug.Log("aaaa");
 
     }
 

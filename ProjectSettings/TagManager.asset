@@ -11,6 +11,7 @@ TagManager:
   - DontThrow
   - Achievement/wayClimber
   - Footsteps/Stone
+  - Lift
   layers:
   - Default
   - TransparentFX
@@ -22,9 +23,9 @@ TagManager:
   - Interactable
   - Tool
   - Destructible
-  - 
-  - 
-  - 
+  - Player
+  - Door
+  - DontCollideWithPlayer
   - 
   - 
   - 

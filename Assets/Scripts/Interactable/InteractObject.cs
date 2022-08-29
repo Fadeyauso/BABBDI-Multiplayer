@@ -22,6 +22,8 @@ public class InteractObject : Interactable
 
     float timer = 0;
 
+    private bool club;
+
 
     public override void OnFocus()
     {
@@ -38,7 +40,7 @@ public class InteractObject : Interactable
         if (!inHands)
         {
             SoundManager.Instance.PlaySound(interactionClip);
-            if (GetComponent<ItemProperties>().id == 0 || GetComponent<ItemProperties>().id == 1 || GetComponent<ItemProperties>().id == 2 || GetComponent<ItemProperties>().id == 4|| GetComponent<ItemProperties>().id == 5 || GetComponent<ItemProperties>().id == 6 || GetComponent<ItemProperties>().id == 7 || GetComponent<ItemProperties>().id == 8)
+            if (GetComponent<ItemProperties>().id == 0 || GetComponent<ItemProperties>().id == 1 || GetComponent<ItemProperties>().id == 2 || GetComponent<ItemProperties>().id == 4|| GetComponent<ItemProperties>().id == 5 || GetComponent<ItemProperties>().id == 6 || GetComponent<ItemProperties>().id == 7 || GetComponent<ItemProperties>().id == 8 )
             {
             // if ()
                 transform.position = GameObject.Find("ObjectPos").transform.position;
@@ -113,14 +115,16 @@ public class InteractObject : Interactable
                         inHands = false;
                     }
 
-                    transform.position = GameObject.Find("ObjectPos").transform.position;
                     rb.useGravity = false;
+                    rb.isKinematic = true;
                     rb.velocity = new Vector3(0,0,0);
-                    transform.rotation = GameObject.Find("ObjectPos").transform.rotation;
+                    TiltSway(GameObject.Find("ObjectPos").transform.localRotation);
+                    WeaponSway(GameObject.Find("ObjectPos").transform.position);
                 }
                 else if (throwObject ) 
                 {
                     transform.SetParent(null);
+                    rb.isKinematic = false;
                     rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
                     //rb.constraints = 0;
                     //rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -134,6 +138,7 @@ public class InteractObject : Interactable
                 if (inHands) 
                 {
                     rb.useGravity = false;
+                    rb.isKinematic = true;
                     rb.velocity = new Vector3(0,0,0);
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow) 
                         {
@@ -149,21 +154,26 @@ public class InteractObject : Interactable
                     }
                     else
                     {
-                        transform.rotation = GameObject.Find("ObjectPos2").transform.rotation;
-                        transform.position = GameObject.Find("ObjectPos2").transform.position;
+                        TiltSway(GameObject.Find("ObjectPos2").transform.localRotation);
+                        WeaponSway(GameObject.Find("ObjectPos2").transform.position);
+                        club = true;
                         extended = false;
                     }
                 }
                 else if (throwObject) 
                 {
                     transform.SetParent(null);
+                    rb.isKinematic = false;
                     rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
                     //rb.constraints = 0;
                     //rb.constraints = RigidbodyConstraints.FreezeRotation;
                     rb.useGravity = true;
+                    club = false;
+                    
                     throwObject = false;
                 }
             }
+            
 
             if (GetComponent<ItemProperties>().id == 2)
             {
@@ -178,6 +188,7 @@ public class InteractObject : Interactable
                         }
                     }
                     rb.useGravity = false;
+                    rb.isKinematic = true;
                     rb.velocity = new Vector3(0,0,0);
                     
                     if (extended && GameObject.Find("Climber(Clone)").GetComponent<Climber>().trigger)
@@ -193,14 +204,14 @@ public class InteractObject : Interactable
                     else
                     {
                         transform.SetParent(null);
-                        transform.rotation = GameObject.Find("Pickaxe01").transform.rotation;
-                        transform.position = GameObject.Find("Pickaxe01").transform.position;
+                        TiltSway(GameObject.Find("Pickaxe01").transform.rotation);
+                        WeaponSway(GameObject.Find("Pickaxe01").transform.position);
                         extended = false;
                     }
                 }
                 else if (throwObject) 
                 {
-                    
+                    rb.isKinematic = false;
                     rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
                     //rb.constraints = 0;
                     //rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -299,6 +310,39 @@ public class InteractObject : Interactable
                 }
             }
 
+            if (GetComponent<ItemProperties>().id == 8)
+            {
+                if (inHands) 
+                {
+    
+                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0) 
+                    {
+                        throwObject = true;
+                        inHands = false;
+                    }
+                    
+                    rb.useGravity = false;
+                    rb.velocity = new Vector3(0,0,0);
+
+                    GameObject.Find("Player").GetComponent<FirstPersonController>().bigball = true;
+                    
+
+                    transform.rotation = GameObject.Find("BigBallPos").transform.rotation;
+                    transform.position = GameObject.Find("BigBallPos").transform.position;
+                    
+                }
+                else if (throwObject) 
+                {
+                    GameObject.Find("Player").GetComponent<FirstPersonController>().bigball = false;
+                    transform.SetParent(null);
+                    rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
+                    //rb.constraints = 0;
+                    //rb.constraints = RigidbodyConstraints.FreezeRotation;
+                    rb.useGravity = true;
+                    throwObject = false;
+                }
+            }
+
         }
 
         
@@ -307,8 +351,49 @@ public class InteractObject : Interactable
         
     }
 
-    public void FixedUpdate()
+
+    [Header("Position")]
+    public float amount = 0.02f;
+    public float maxAmount = 0.06f;
+    public float smoothAmount = 6f;
+
+    [Header("Rotation")]
+    public float rotationAmount = 4f;
+    public float maxRotationAmount = 5f;
+    public float smoothRotation = 12f;
+
+    [Space]
+    public bool rotationX = true;
+    public bool rotationY = true;
+    public bool rotationZ = true;
+
+
+
+    private float InputX;
+    private float InputY;
+
+    public void WeaponSway(Vector3 initialPosition)
     {
+        InputX = -Input.GetAxis("Mouse X");
+        InputY = -Input.GetAxis("Mouse Y");
+
+        float moveX = Mathf.Clamp(InputX * amount, -maxAmount, maxAmount);
+        float moveY = Mathf.Clamp(InputY * amount, -maxAmount, maxAmount);
         
+        Vector3 finalPosition = new Vector3(moveX, moveY, 0);
+
+        transform.position = Vector3.Lerp(rb.position, initialPosition, Time.deltaTime * smoothAmount);
+        rb.position = Vector3.Lerp(rb.position, initialPosition, Time.deltaTime * smoothAmount);
     }
+
+    public void TiltSway(Quaternion initialRotation)
+    {
+        float tiltY = Mathf.Clamp(InputX * rotationAmount, -maxRotationAmount, maxRotationAmount);
+        float tiltX = Mathf.Clamp(InputY * rotationAmount, -maxRotationAmount, maxRotationAmount);
+
+        Quaternion finalRotation = Quaternion.Euler(new Vector3(rotationX ? tiltX : 0f, rotationY ? tiltY : 0f, rotationZ ? tiltY : 0f));
+
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, finalRotation * initialRotation, Time.deltaTime * smoothRotation);
+    }
+    
 }

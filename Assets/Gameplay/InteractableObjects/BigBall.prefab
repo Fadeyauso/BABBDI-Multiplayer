@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5276874165985068277
+--- !u!1 &6143136128502822149
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,51 +8,50 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4787583363488259663}
-  - component: {fileID: 8493562541023597034}
-  - component: {fileID: 5925546788379845920}
-  - component: {fileID: 7646695481874698156}
-  - component: {fileID: 8493562541023596566}
-  - component: {fileID: 8493562541023596567}
-  - component: {fileID: 8493562541023597032}
-  - component: {fileID: 8493562541023597033}
-  m_Layer: 7
-  m_Name: Climber
-  m_TagString: Untagged
+  - component: {fileID: 6143136128502822145}
+  - component: {fileID: 6143136128502822150}
+  - component: {fileID: 6143136128502822151}
+  - component: {fileID: 6143136128502822147}
+  - component: {fileID: 6143136128502822144}
+  - component: {fileID: 6143136128502822146}
+  - component: {fileID: 2898987526393491704}
+  m_Layer: 11
+  m_Name: BigBall
+  m_TagString: Object/Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4787583363488259663
+--- !u!4 &6143136128502822145
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5276874165985068277}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.16, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 6143136128502822149}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 160.55, y: 43.51, z: -29.61}
+  m_LocalScale: {x: 1.8516, y: 1.8516, z: 1.8516}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8493562541023597034
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!33 &6143136128502822150
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5276874165985068277}
-  m_Mesh: {fileID: 9141184662783268846, guid: 9bb546da42c280442918f67729145aa2, type: 3}
---- !u!23 &5925546788379845920
+  m_GameObject: {fileID: 6143136128502822149}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &6143136128502822151
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5276874165985068277}
+  m_GameObject: {fileID: 6143136128502822149}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -66,8 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cb0e9f813eb6b8a40a3e43de964d9c9b, type: 2}
-  - {fileID: 2100000, guid: a2830626dc4be5a41b72fb35e8f92e8d, type: 2}
+  - {fileID: 2100000, guid: e3bd639f50ae1a247823079047a8dc01, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89,27 +87,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7646695481874698156
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5276874165985068277}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 9141184662783268846, guid: 9bb546da42c280442918f67729145aa2, type: 3}
---- !u!114 &8493562541023596566
+--- !u!114 &6143136128502822147
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5276874165985068277}
+  m_GameObject: {fileID: 6143136128502822149}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0bb5560d4fa71b42a298b60d766c521, type: 3}
@@ -118,58 +102,32 @@ MonoBehaviour:
   inHands: 0
   throwObject: 0
   extended: 0
-  rb: {fileID: 8493562541023597033}
+  rb: {fileID: 6143136128502822146}
   interactionClip: {fileID: 8300000, guid: f2d20b496dbdaee489acc4aa20487f96, type: 3}
   collider: {fileID: 0}
   secret: {fileID: 0}
-  amount: 12
-  maxAmount: 16
-  smoothAmount: 30
-  rotationAmount: 16
-  maxRotationAmount: 20
-  smoothRotation: 12
-  rotationX: 0
-  rotationY: 0
-  rotationZ: 0
---- !u!114 &8493562541023596567
+--- !u!114 &6143136128502822144
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5276874165985068277}
+  m_GameObject: {fileID: 6143136128502822149}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35872f01afae5004a958c003d23aa8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 2
-  name: Climber
+  id: 8
+  name: BigBall
   value: 0
---- !u!114 &8493562541023597032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5276874165985068277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c64cac6b589934fa2f9bdc133b29f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hold: {fileID: 0}
-  hit: {fileID: 8300000, guid: ae3479eddfc98ad47a62a2a3eaa49939, type: 3}
-  trigger: 0
-  pick: 0
-  touch: 0
---- !u!54 &8493562541023597033
+--- !u!54 &6143136128502822146
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5276874165985068277}
+  m_GameObject: {fileID: 6143136128502822149}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -179,3 +137,16 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!135 &2898987526393491704
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6143136128502822149}
+  m_Material: {fileID: 13400000, guid: 001b7b9f1660d3046ba0fd2277146154, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Center: {x: 0, y: 0, z: 0}

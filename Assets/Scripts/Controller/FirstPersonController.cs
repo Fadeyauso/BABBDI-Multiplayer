@@ -63,8 +63,11 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float sprintBobAmount = 0.11f;
     [SerializeField] private float crouchBobSpeed = 8f;
     [SerializeField] private float crouchBobAmount = 0.025f;
+    [SerializeField] private float fallBobSpeed = 8f;
+    [SerializeField] private float fallBobAmount = 0.025f;
     private float defaultYPos = 0;
     private float timer;
+    private float fallTimer;
 
     [Header("Camera Controller")]
     [SerializeField] private float zoomSpeed = 5f;
@@ -128,6 +131,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private Vector3 interactionRayPoint = default;
     [SerializeField] private float interactionDistance = default;
     [SerializeField] private LayerMask interactionLayer = default;
+    [SerializeField] private LayerMask doorLayer = default;
     public Interactable currentInteractable;
     public GameObject currentObject;
     public GameObject dialogueBox;
@@ -138,6 +142,9 @@ public class FirstPersonController : MonoBehaviour
     public GameObject climber;
     public GameObject propeller;
     public GameObject blower;
+    public bool bigball;
+    [SerializeField] private float ballWeight = 0.3f;
+    private float currentWeight = 1;
     public bool inHands;
     public bool canThrow;
     public bool frontRay;
@@ -145,6 +152,7 @@ public class FirstPersonController : MonoBehaviour
     public bool leftRay;
     public bool throwRay;
     public bool backRay;
+    public bool downRay;
     public bool headRay;
     public bool interactionRay;
     public bool upRay;
@@ -238,13 +246,14 @@ public class FirstPersonController : MonoBehaviour
 
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit prejumpHit, 1f) && Input.GetKeyDown(jumpKey)) prejump = true;
         frontRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit ss, 4f));
-        leftRay = (Physics.Raycast(playerCamera.transform.position, -transform.right, out RaycastHit ssssss, 2f));
-        rightRay = (Physics.Raycast(playerCamera.transform.position, transform.right, out RaycastHit ssssaw, 2f));
+        leftRay = (Physics.Raycast(transform.position + Vector3.up, -transform.right, out RaycastHit ssssss, 2f));
+        rightRay = (Physics.Raycast(transform.position + Vector3.up, transform.right, out RaycastHit ssssaw, 2f));
         throwRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit ssss, 1f));
-        backRay = (Physics.Raycast(playerCamera.transform.position, -transform.forward, out RaycastHit sww, 0.9f));
+        backRay = (Physics.Raycast(transform.position + Vector3.up, -transform.forward, out RaycastHit sww, 0.9f));
         headRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit si, 1f));
-        interactionRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit interact, interactionDistance, interactionLayer));
+        interactionRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit interact, interactionDistance));
         upRay = (Physics.Raycast(playerCamera.transform.position, transform.up, out RaycastHit so, 1f));
+        downRay = (Physics.Raycast(transform.position, -transform.up, out RaycastHit down, 1f));
         crouchUpRay = (Physics.Raycast(playerCamera.transform.position, transform.up, out RaycastHit sk, 2f));
 
         clubRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit st, 4f));
@@ -320,7 +329,10 @@ public class FirstPersonController : MonoBehaviour
                 
             }
 
-            Debug.DrawRay(playerCamera.transform.position, transform.up * 2f, Color.green);
+            Debug.DrawRay(transform.position, -Vector3.down, Color.green);
+
+            if (bigball) currentWeight = ballWeight;
+            else currentWeight = 1;
                 
         }
     }
@@ -362,6 +374,16 @@ public class FirstPersonController : MonoBehaviour
     public void AddForce(Vector3 tempforce, float tempforceFactor)
     {
         moveDirection = new Vector3(0,0,0);
+        forceFactor = tempforceFactor;
+        force = tempforce;
+        moveDirection.y = force.y * forceFactor;
+        tempforceSpeed = forceSpeed;
+        initforceFactor = tempforceFactor;
+    } 
+
+    public void AddAccumulatedForce(Vector3 tempforce, float tempforceFactor)
+    {
+        moveDirection = new Vector3(moveDirection.x,0,moveDirection.z);
         forceFactor = tempforceFactor;
         force = tempforce;
         moveDirection.y = force.y * forceFactor;
@@ -430,8 +452,8 @@ public class FirstPersonController : MonoBehaviour
         {
             if (blower.GetComponent<Blower>().isActive && characterController.isGrounded) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) * 1.7f + forceAdded;
             else if (blower.GetComponent<Blower>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + blower.GetComponent<Blower>().blowMovement + forceAdded;
-            else if (!propeller.GetComponent<Propeller>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + forceAdded;
-            else moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + forceAdded;
+            else if (!propeller.GetComponent<Propeller>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + forceAdded + forceAdded + propeller.GetComponent<Propeller>().propellerMovement;
+            else moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + forceAdded + propeller.GetComponent<Propeller>().propellerMovement;
         }
         else moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + forceAdded;
         moveDirection.y = moveDirectionY;
@@ -445,9 +467,9 @@ public class FirstPersonController : MonoBehaviour
 
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
 
-        if (standing && playerCamera.transform.localPosition.y != defaultYPos && landTimer < 0 && currentInputRaw != new Vector2(0,0))
+        if (standing && playerCamera.transform.localPosition.y != defaultYPos && landTimer < 0 && currentInputRaw == Vector2.zero)
         {
-            playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, characterController.center + new Vector3(0, characterController.height / 2, 0) + offset, 10f * Time.deltaTime);
+            playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, characterController.center + new Vector3(0, characterController.height / 2, 0) + offset, 5f * Time.deltaTime);
             headbobEndTimer = 3f;
         }
         else if (headbobEndTimer < 0 && headbobEndTimer > -0.25f) playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, characterController.center + new Vector3(0, characterController.height / 2, 0) + offset, 8f * Time.deltaTime);
@@ -527,22 +549,24 @@ public class FirstPersonController : MonoBehaviour
 
         if (landTimer > 0)
         {
-            timer += Time.deltaTime * sprintBobSpeed;
-            playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(timer) * sprintBobAmount * 2, playerCamera.transform.localPosition.z);
+            fallTimer += Time.deltaTime * fallBobSpeed;
+            playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(fallTimer) * fallBobAmount * 2, playerCamera.transform.localPosition.z);
         }
         else if (currentInputRaw != new Vector2(0,0))
         {
+            fallTimer = 0;
             timer += Time.deltaTime * (isCrouching ? crouchBobSpeed : IsSprinting ? sprintBobSpeed : walkBobSpeed);
             playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(timer) * (isCrouching ? crouchBobAmount : IsSprinting ? sprintBobAmount : walkBobAmount), playerCamera.transform.localPosition.z);
         }
+        else fallTimer = 0;
         
     }
 
     private void HandleInteractionCheck()
     {
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, interactionDistance, interactionLayer))
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, interactionDistance))
         {
-            if (hit.collider.gameObject.layer == 7)
+            if (hit.collider.gameObject.layer == 7 || hit.collider.gameObject.layer == 11)
             {
                 hit.collider.TryGetComponent(out currentInteractable);
 
@@ -551,8 +575,11 @@ public class FirstPersonController : MonoBehaviour
                 if (currentInteractable)
                     currentInteractable.OnFocus();
             }
-
-            
+            else if (currentInteractable)
+            {
+                currentInteractable.OnLoseFocus();
+                currentInteractable = null;
+            }       
         }
         else if (currentInteractable)
         {
@@ -609,21 +636,23 @@ public class FirstPersonController : MonoBehaviour
             }
         }
 
-        if (backRay && forceFactor > 0)
+        if (backRay && characterController.velocity.magnitude > 30)
         {
+            moveDirection.x /= 4;
+            moveDirection.z /= 4;
             force.x = 0;
             force.z = 0;
         }
             
 
-        if (upRay && !characterController.isGrounded) AddForce(new Vector3(0, -1, 0), 2f);
+        if (upRay && !characterController.isGrounded) AddAccumulatedForce(new Vector3(0, -1, 0), 2f);
 
         if (WillSlideOnSlopes && IsSliding)
         {
             moveDirection += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * slopeSpeed;
         }
 
-        characterController.Move(moveDirection * Time.deltaTime);
+        characterController.Move(moveDirection * Time.deltaTime * currentWeight);
     }
     
     private void HandleFootsteps()

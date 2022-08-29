@@ -62,7 +62,7 @@ public class Club : MonoBehaviour
 
             touch = false;
 
-            if (!player.GetComponent<FirstPersonController>().clubRay && player.GetComponent<FirstPersonController>().rotationX > -75 && !player.GetComponent<FirstPersonController>().characterController.isGrounded && !player.GetComponent<FirstPersonController>().rightRay && !player.GetComponent<FirstPersonController>().leftRay && player.GetComponent<FirstPersonController>().rotationX < 45)
+            if (!player.GetComponent<FirstPersonController>().clubRay && player.GetComponent<FirstPersonController>().rotationX > -75 && !player.GetComponent<FirstPersonController>().characterController.isGrounded && !player.GetComponent<FirstPersonController>().rightRay && !player.GetComponent<FirstPersonController>().leftRay && player.GetComponent<FirstPersonController>().rotationX < 45 && !player.GetComponent<FirstPersonController>().downRay)
                 player.GetComponent<FirstPersonController>().moveDirection.y = groundImpactForce / 1.5f;
 
             else if (wall && (player.GetComponent<FirstPersonController>().frontRay || player.GetComponent<FirstPersonController>().clubRay))

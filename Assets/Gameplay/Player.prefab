@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 952962484}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 996831809}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PogoPos01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1092824475}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PogoPos00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1122962888}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BlowerPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,6 +124,37 @@ Transform:
   m_Father: {fileID: 7482973070762915167}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 62.49, y: 0, z: 0}
+--- !u!1 &1175882408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1175882409}
+  m_Layer: 10
+  m_Name: BigBallPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1175882409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175882408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.36, z: 1.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7482973070762915167}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1835058296
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1835058297}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PropellerPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2041110508}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1227882263400622815}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ObjectPos3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,14 +240,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227882263400622812}
-  m_LocalRotation: {x: -0.56229985, y: 0, z: 0, w: 0.82693344}
-  m_LocalPosition: {x: 0.215, y: -0.76, z: 1.07}
+  m_LocalRotation: {x: -0.7757021, y: -0.030226197, z: -0.037259705, w: 0.6292729}
+  m_LocalPosition: {x: 0.215, y: -0.5, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7482973070762915167}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: -68.43, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -101.9, y: -5.5, z: 0}
 --- !u!1 &1227882263483112470
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1227882263483112473}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ObjectPos2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1227882264038074879}
   - component: {fileID: 1227882264038074849}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: ToolCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1227882264276423631}
   - component: {fileID: 1227882264276423628}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Projector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +417,7 @@ GameObject:
   - component: {fileID: 7482973070762915160}
   - component: {fileID: 7482973070762915161}
   - component: {fileID: 4050533500286054381}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -417,6 +448,7 @@ Transform:
   - {fileID: 1122962888}
   - {fileID: 1092824475}
   - {fileID: 996831809}
+  - {fileID: 1175882409}
   m_Father: {fileID: 7482973072534782208}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -451,7 +483,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 183
+    m_Bits: 2147483647
   m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -543,7 +575,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7482973071737554913}
   - component: {fileID: 7482973071737554912}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WeaponHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +630,7 @@ GameObject:
   - component: {fileID: 519846068298027556}
   - component: {fileID: 7482973072534782213}
   - component: {fileID: 1802910641}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -622,7 +654,7 @@ Transform:
   - {fileID: 952962484}
   - {fileID: 2041110508}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &7482973072534782209
 CharacterController:
@@ -676,6 +708,7 @@ MonoBehaviour:
   flashlight: {fileID: 551960531536534201, guid: 9fec533f8e871b0428051f5a1cd1b791, type: 3}
   soap: {fileID: 9041970249428903564, guid: 8b2ab7045e4d4624c849764aef3e091c, type: 3}
   ball: {fileID: 9041970249428903564, guid: 9368bf7caf852574a9313e06794f38e0, type: 3}
+  bigball: {fileID: 6143136128502822149, guid: be2cc8eb343d57b4cbb199e598b2976b, type: 3}
 --- !u!114 &7482973072534782210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,9 +758,11 @@ MonoBehaviour:
   sprintBobAmount: 0.08
   crouchBobSpeed: 8
   crouchBobAmount: 0.025
+  fallBobSpeed: 8
+  fallBobAmount: 0.025
   zoomSpeed: 5
   zoomFOV: 30
-  runFOV: 90
+  runFOV: 85
   tiltAmount: 4
   tiltSpeed: 5
   baseStepSpeed: 0.5
@@ -755,6 +790,9 @@ MonoBehaviour:
   interactionLayer:
     serializedVersion: 2
     m_Bits: 128
+  doorLayer:
+    serializedVersion: 2
+    m_Bits: 0
   currentInteractable: {fileID: 0}
   currentObject: {fileID: 0}
   dialogueBox: {fileID: 0}
@@ -763,6 +801,8 @@ MonoBehaviour:
   climber: {fileID: 0}
   propeller: {fileID: 0}
   blower: {fileID: 0}
+  bigball: 0
+  ballWeight: 0.3
   inHands: 0
   canThrow: 0
   frontRay: 0
@@ -770,6 +810,7 @@ MonoBehaviour:
   leftRay: 0
   throwRay: 0
   backRay: 0
+  downRay: 0
   headRay: 0
   interactionRay: 0
   upRay: 0
@@ -861,7 +902,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7482973072813218180}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ObjectPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -892,7 +933,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7797617258203054354}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pickaxe01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -923,7 +964,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7797617258422789960}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pickaxe00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -954,7 +995,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7797617259295385596}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LightPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

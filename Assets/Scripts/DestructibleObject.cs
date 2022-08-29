@@ -29,6 +29,7 @@ public class DestructibleObject : MonoBehaviour
         if (collisionInfo.gameObject.layer == 7 && Input.GetButton("Fire1"))
         {
             transform.parent = null;
+            gameObject.layer = 12;
             r.constraints = 0;
             r.AddForce(player.GetComponent<FirstPersonController>().playerCamera.transform.forward * 10f, ForceMode.Impulse);
         }
@@ -41,6 +42,7 @@ public class DestructibleObject : MonoBehaviour
         if (collision.collider.gameObject.layer == 7 && Input.GetButton("Fire1"))
         {
             transform.parent = null;
+            gameObject.layer = 12;
             r.constraints = 0;
             r.AddForce(player.GetComponent<FirstPersonController>().playerCamera.transform.forward * 10f, ForceMode.Impulse);
         }

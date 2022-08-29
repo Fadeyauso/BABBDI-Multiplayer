@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scene_ACOPY.unity
     guid: 7b141f84b24772a40802e198a06dc683
+  - enabled: 1
+    path: Assets/Scenes/SissouTests.unity
+    guid: 062a9ee2066b7e94587e35be208836dd
   m_configObjects: {}

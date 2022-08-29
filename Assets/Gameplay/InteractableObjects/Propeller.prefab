@@ -1751,7 +1751,9 @@ MonoBehaviour:
   motorUp: {fileID: 1064986578}
   motorUp2: {fileID: 641516747}
   audio: {fileID: 701267011}
-  power: 10
+  propellerMovement: {x: 0, y: 0, z: 0}
+  power: 30
+  acceleration: 1
   flypower: 30
   rotateSpeed: 1000
   rotation: 0

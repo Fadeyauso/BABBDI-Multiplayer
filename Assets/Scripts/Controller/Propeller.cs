@@ -9,7 +9,9 @@ public class Propeller : MonoBehaviour
     public GameObject motorUp2;
     private GameObject player;
     [SerializeField] private AudioSource audio;
+    public Vector3 propellerMovement;
     public float power = 2f;
+    public float acceleration = 10f;
     public float flypower = 0.8f;
     public float rotateSpeed = 100f;
     public float rotation;
@@ -39,11 +41,8 @@ public class Propeller : MonoBehaviour
             isActive = true;
             rotation = rotateSpeed;
             turn = true;
-            if (player.GetComponent<FirstPersonController>().characterController.velocity.magnitude < 30)
-                player.GetComponent<FirstPersonController>().moveDirection += player.GetComponent<FirstPersonController>().playerCamera.transform.forward * power * Time.deltaTime;
+            player.GetComponent<FirstPersonController>().moveDirection.y += propellerMovement.y * Time.deltaTime;
 
-
-            
         }
         else 
         {
@@ -61,10 +60,16 @@ public class Propeller : MonoBehaviour
             if (isActive == false) audio.mute = true;
         }
 
-        
+        Vector3 desiredSpeed = isActive ? player.GetComponent<FirstPersonController>().playerCamera.transform.forward * power : Vector3.zero;
 
-        
+        if (propellerMovement != desiredSpeed)
+        {
+            GetSpeed(desiredSpeed);
+        }
+    }
 
-
+    private void GetSpeed(Vector3 tempspeed)
+    {
+        propellerMovement = Vector3.Lerp(propellerMovement, tempspeed, acceleration * Time.deltaTime);
     }
 }

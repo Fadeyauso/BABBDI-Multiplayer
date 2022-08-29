@@ -120,6 +120,15 @@ MonoBehaviour:
   interactionClip: {fileID: 8300000, guid: f2d20b496dbdaee489acc4aa20487f96, type: 3}
   collider: {fileID: 0}
   secret: {fileID: 0}
+  amount: 0.02
+  maxAmount: 0.06
+  smoothAmount: 20
+  rotationAmount: 16
+  maxRotationAmount: 20
+  smoothRotation: 12
+  rotationX: 1
+  rotationY: 1
+  rotationZ: 1
 --- !u!114 &2788863020918150930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,8 +160,8 @@ MonoBehaviour:
   hit: {fileID: 8300000, guid: 7e5579af8a092924ba9b16e11c6d7a16, type: 3}
   trigger: 0
   touch: 0
-  wallImpactForce: 25
-  groundImpactForce: 18
+  wallImpactForce: 18
+  groundImpactForce: 15
 --- !u!54 &2788863020918150928
 Rigidbody:
   m_ObjectHideFlags: 0

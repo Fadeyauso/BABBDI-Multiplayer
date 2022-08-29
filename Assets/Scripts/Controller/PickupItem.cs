@@ -11,6 +11,7 @@ public class PickupItem : MonoBehaviour
     public GameObject flashlight;
     public GameObject soap;
     public GameObject ball;
+    public GameObject bigball;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +61,11 @@ public class PickupItem : MonoBehaviour
             if (GameObject.Find("GameManager").GetComponent<GameManager>().item == 7) 
             {
                 GameObject obj = Instantiate(ball, GameObject.Find("ObjectPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
+                obj.GetComponent<InteractObject>().inHands = true;
+            }
+            if (GameObject.Find("GameManager").GetComponent<GameManager>().item == 8) 
+            {
+                GameObject obj = Instantiate(bigball, GameObject.Find("BigBallPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
                 obj.GetComponent<InteractObject>().inHands = true;
             }
             
