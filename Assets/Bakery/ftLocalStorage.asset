@@ -45,4 +45,11 @@ MonoBehaviour:
   - Assets/Environment/Props/SM_Lamp01.fbx
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_Metal00.fbx
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_Metal01.fbx
-  modifiedAssetPaddingHash: aaf8cc2e363fd3d90cf43a06ecc124913f3fd3d9353fd3d9343fd3d9b35634b7323b8033ef37ed04363fd3d9393fd3d9a768e2a8bb09ecc0de09ecc0797e9363363fd3d9f437ed04f437ed04ecc12491ecc12491ecc12491ecc12491ecc12491ecc124914adc894babdb894b363fd3d9ecc12491ecc12491797e9363b7f23a06
+  - Assets/Environment/Props/SM_Matress01.fbx
+  - Assets/Environment/Props/SM_Matress00.fbx
+  - Assets/Environment/Props/SM_Cloud01.fbx
+  - Assets/Environment/Props/SM_Cloud00.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_FloorPlane00.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_WaterPlane04.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout08.fbx
+  modifiedAssetPaddingHash: aaf8cc2e363fd3d90cf43a06ecc12491383fd3d9393fd3d9383fd3d9cedb894bee37ed04cbc12491363fd3d9363fd3d995c2a6933e3fd3d9323fd3d9323fd3d9333fd3d99f3980339f398033d6318883f537ed04d8c1249101b309cefcb209ceecc12491343fd3d9194efff0363fd3d9b15634b7ecc12491323fd3d9e55031eed0c12491e837ed04363fd3d9363fd3d93f3fd3d9333fd3d9363fd3d9
