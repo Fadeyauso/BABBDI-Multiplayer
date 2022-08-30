@@ -686,8 +686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b39984101f9571b4ea726d618b43945a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indoor: {fileID: 8300000, guid: da8cfb14851c8bb42b0ba99fdd991c7a, type: 3}
-  outdoor: {fileID: 8300000, guid: ea11906ebfe07b54f8294c264b0b90f4, type: 3}
   inLift: 0
 --- !u!114 &3072209578988679877
 MonoBehaviour:
@@ -721,6 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcff912bef3a6c746a2967055de0a096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  preslide: 0
   canSprint: 1
   canJump: 1
   canCrouch: 1
@@ -735,7 +734,11 @@ MonoBehaviour:
   walkSpeed: 5
   sprintSpeed: 8
   crouchSpeed: 1.5
+  inairCrouchSpeed: 10
+  slopeSlideSpeed: 7
   slopeSpeed: 8
+  sprintSlideImpulsion: 240
+  slideImpulsion: 130
   boostPower: 8
   lookSpeedX: 2
   lookSpeedY: 2
@@ -750,7 +753,7 @@ MonoBehaviour:
   airTime: 0
   crouchingSpeed: 10
   standHeight: 2
-  crouchHeight: 0.9
+  crouchHeight: 1
   standing: 0
   walkBobSpeed: 14
   walkBobAmount: 0.05
@@ -758,9 +761,10 @@ MonoBehaviour:
   sprintBobAmount: 0.08
   crouchBobSpeed: 8
   crouchBobAmount: 0.025
-  fallBobSpeed: 8
-  fallBobAmount: 0.025
-  zoomSpeed: 5
+  fallBobSpeed: -12
+  fallBobUpSpeed: -0.02
+  fallBobAmount: 0.3
+  zoomSpeed: 2.5
   zoomFOV: 30
   runFOV: 85
   tiltAmount: 4
@@ -834,6 +838,7 @@ MonoBehaviour:
   initforceFactor: 0
   forceSpeed: 30
   tempforceSpeed: 0
+  slideCountdown: 0
 --- !u!114 &519846068298027556
 MonoBehaviour:
   m_ObjectHideFlags: 0

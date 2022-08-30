@@ -6,7 +6,8 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
-    [SerializeField] private AudioSource _musicSource, _effectsSource;
+    [SerializeField] private AudioSource _musicSource, _effectsSource, _indoorSource, _outdoorSource;
+    [SerializeField] private float blendSpeed;
 
     void Awake(){
         if (Instance == null){
@@ -53,6 +54,17 @@ public class SoundManager : MonoBehaviour
     }
     public void ChangeEffectVolume(float value){
         _effectsSource.volume = value;
+    }
+
+    public void IndoorBlend()
+    {
+        _indoorSource.volume = Mathf.Lerp(_indoorSource.volume, 1, blendSpeed * Time.deltaTime);
+        _outdoorSource.volume = Mathf.Lerp(_outdoorSource.volume, 0, blendSpeed * Time.deltaTime);
+    }
+    public void OutdoorBlend()
+    {
+        _indoorSource.volume = Mathf.Lerp(_indoorSource.volume, 0, blendSpeed * Time.deltaTime);
+        _outdoorSource.volume = Mathf.Lerp(_outdoorSource.volume, 1, blendSpeed * Time.deltaTime);
     }
 
     public void ToggleEffects(){

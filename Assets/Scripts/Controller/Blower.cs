@@ -49,7 +49,7 @@ public class Blower : MonoBehaviour
             else blowMovement = new Vector3(0,0,0);
             
         }
-        else if (timer > 0 && GetComponent<InteractObject>().inHands)
+        if (Input.GetButtonUp("Fire1") && GetComponent<InteractObject>().inHands)
         {
             
             SoundManager.Instance.StopSound();

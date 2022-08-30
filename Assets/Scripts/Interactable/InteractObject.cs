@@ -23,6 +23,8 @@ public class InteractObject : Interactable
     float timer = 0;
 
     private bool club;
+    private bool climber;
+    private bool tinyobject;
 
 
     public override void OnFocus()
@@ -118,7 +120,7 @@ public class InteractObject : Interactable
                     rb.useGravity = false;
                     rb.isKinematic = true;
                     rb.velocity = new Vector3(0,0,0);
-                    TiltSway(GameObject.Find("ObjectPos").transform.localRotation);
+                    tinyobject = true;
                     WeaponSway(GameObject.Find("ObjectPos").transform.position);
                 }
                 else if (throwObject ) 
@@ -151,12 +153,12 @@ public class InteractObject : Interactable
                         transform.position = GameObject.Find("ObjectPos3").transform.position;
                         transform.rotation = GameObject.Find("ObjectPos3").transform.rotation;
                         extended = true;
+                        club = false;
                     }
                     else
                     {
-                        TiltSway(GameObject.Find("ObjectPos2").transform.localRotation);
-                        WeaponSway(GameObject.Find("ObjectPos2").transform.position);
                         club = true;
+                        WeaponSway(GameObject.Find("ObjectPos2").transform.position);
                         extended = false;
                     }
                 }
@@ -193,24 +195,27 @@ public class InteractObject : Interactable
                     
                     if (extended && GameObject.Find("Climber(Clone)").GetComponent<Climber>().trigger)
                     {
-                        transform.position = transform.position;
+                        transform.position = GameObject.Find("Climber(Clone)").GetComponent<Climber>().pickPos;
+                        transform.rotation = GameObject.Find("Climber(Clone)").GetComponent<Climber>().pickRot;
+                        climber = false;
                     }
                     else if (Input.GetButton("Fire1") && GameObject.Find("Climber(Clone)").GetComponent<Climber>().pick)
                     {
                         transform.position = GameObject.Find("Pickaxe00").transform.position;
                         transform.rotation = GameObject.Find("Pickaxe00").transform.rotation;
                         extended = true;
+                        climber = false;
                     }
                     else
                     {
-                        transform.SetParent(null);
-                        TiltSway(GameObject.Find("Pickaxe01").transform.rotation);
+                        climber = true;
                         WeaponSway(GameObject.Find("Pickaxe01").transform.position);
                         extended = false;
                     }
                 }
                 else if (throwObject) 
                 {
+                    transform.SetParent(null);
                     rb.isKinematic = false;
                     rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
                     //rb.constraints = 0;
@@ -351,6 +356,16 @@ public class InteractObject : Interactable
         
     }
 
+    void FixedUpdate()
+    {
+        if (inHands)
+        {
+            if (tinyobject && (GetComponent<ItemProperties>().id == 0 || tinyobject && GetComponent<ItemProperties>().id == 7)) TiltSway(GameObject.Find("ObjectPos").transform.localRotation);
+            if (GetComponent<ItemProperties>().id == 1 && club) TiltSway(GameObject.Find("ObjectPos2").transform.localRotation);
+            if (GetComponent<ItemProperties>().id == 2 && climber) TiltSway(GameObject.Find("Pickaxe01").transform.localRotation);
+        } 
+    }
+
 
     [Header("Position")]
     public float amount = 0.02f;
@@ -388,8 +403,8 @@ public class InteractObject : Interactable
 
     public void TiltSway(Quaternion initialRotation)
     {
-        float tiltY = Mathf.Clamp(InputX * rotationAmount, -maxRotationAmount, maxRotationAmount);
-        float tiltX = Mathf.Clamp(InputY * rotationAmount, -maxRotationAmount, maxRotationAmount);
+        float tiltY = Mathf.Clamp(-Input.GetAxis("Mouse X") * rotationAmount, -maxRotationAmount, maxRotationAmount);
+        float tiltX = Mathf.Clamp(-Input.GetAxis("Mouse Y") * rotationAmount, -maxRotationAmount, maxRotationAmount);
 
         Quaternion finalRotation = Quaternion.Euler(new Vector3(rotationX ? tiltX : 0f, rotationY ? tiltY : 0f, rotationZ ? tiltY : 0f));
 

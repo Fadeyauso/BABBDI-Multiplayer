@@ -32,32 +32,21 @@ public class ScreenShot : MonoBehaviour
 
     public void TakeScreenshot()
     {
-        screenshotName = RandomStringGenerator(1);
+        string timeNow = DateTime.Now.ToString("dd-MMMM-yyyy HHmmss");
+
+        SoundManager.Instance.PlaySound(screenshotClip);
+
+        screenshotName = RandomStringGenerator(6);
+        
         
         string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
         string screenshotPath = Path.Combine(documentsPath, Application.productName, directoryName);
 
         DirectoryInfo screenshotDirectory = Directory.CreateDirectory(screenshotPath);
-        for (int i = 0; i <= 1000; i++){
-            Debug.Log(i);
-            var j = i + 1;
-            if(System.IO.File.Exists(screenshotName + "(" + i + ")")){
-                i++;
-                ScreenCapture.CaptureScreenshot(Path.Combine(screenshotDirectory.FullName, screenshotName + "(" + j + ")" + ".png"));
-                
-                return;
-            }
-            else 
-            {
-                ScreenCapture.CaptureScreenshot(Path.Combine(screenshotDirectory.FullName, screenshotName + "(" + "0" + ")" + ".png"));
-                return;
-            }
-        }       
-        
 
-        SoundManager.Instance.PlaySound(screenshotClip);
-
-    }
+        ScreenCapture.CaptureScreenshot(Path.Combine(screenshotDirectory.FullName, screenshotName + "(" + timeNow + ")" + ".png"));
+        return;
+    }       
 
     
 }
