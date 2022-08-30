@@ -10,6 +10,9 @@ public class Climber : MonoBehaviour
     public AudioClip hold;
     public AudioClip hit;
 
+    public Vector3 pickPos;
+    public Quaternion pickRot;
+
     public bool trigger;
     public bool pick = false;
 
@@ -71,13 +74,14 @@ public class Climber : MonoBehaviour
         {
             
             touch = false;
-            if (timer < 0) trigger = true;
+            trigger = true;
 
             if (hitb) 
             {
                 SoundManager.Instance.PlaySound(hit);
                 hitb = false;
-                //pick = false;
+                pickPos = transform.position;
+                pickRot = transform.rotation;
             }
             
 
