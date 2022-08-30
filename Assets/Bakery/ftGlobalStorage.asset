@@ -52,7 +52,7 @@ MonoBehaviour:
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_FloorPlane00.fbx
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_WaterPlane04.fbx
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_Blockout08.fbx
-  modifiedAssetPaddingHash: aaf8cc2e363fd3d9ecc124910cf43a06383fd3d9393fd3d9383fd3d9cedb894bcbc1249195c2a693363fd3d9363fd3d9ee37ed04e837ed04d0c124913e3fd3d9323fd3d9323fd3d9333fd3d99f3980339f398033d6318883f537ed04d8c1249101b309cefcb209ceecc12491343fd3d9194efff0363fd3d9b15634b7ecc12491323fd3d9e55031ee363fd3d9363fd3d93f3fd3d9333fd3d9363fd3d9
+  modifiedAssetPaddingHash: aaf8cc2e363fd3d91828c1150cf43a06363fd3d9363fd3d9363fd3d9d7c2a69304c5d890797e9363363fd3d9363fd3d98109ecc01c7e9363fd7d9363383fd3d9363fd3d9363fd3d9363fd3d9d7c2a693d7c2a6937c398033be3980339f398033cedb894b695031eef437ed04393fd3d914f33a06363fd3d9be39803378c6d890393fd3d9353fd3d9363fd3d9363fd3d9393fd3d9363fd3d9363fd3d9
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -700,5 +700,5 @@ MonoBehaviour:
   renderSettingsRTPVSceneView: 0
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
-  modifiedMeshPaddingArray: 81000000
+  modifiedMeshPaddingArray: 2d000000
   modifiedMeshUnwrapperArray: 00000000

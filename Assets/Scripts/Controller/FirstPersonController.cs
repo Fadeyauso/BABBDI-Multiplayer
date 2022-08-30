@@ -10,7 +10,6 @@ public class FirstPersonController : MonoBehaviour
     private bool ShouldCrouch => (Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C)) && characterController.isGrounded && !OnSlope();
     private bool ShouldCrouchInAir => (Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C)) && !characterController.isGrounded && !OnSlope();
     private bool FlatSlide => (Input.GetKeyDown(crouchKey) || Input.GetKeyDown(KeyCode.C)) && characterController.isGrounded && currentInputRaw != Vector2.zero;
-    private bool SlopeSlide => (Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C)) && characterController.isGrounded && OnSlope();
     private bool InAirCrouch;   
     public bool preslide;
 
@@ -120,6 +119,21 @@ public class FirstPersonController : MonoBehaviour
 
     }
 
+    private bool CrouchSliding
+    {
+        get
+        {
+            if (characterController.isGrounded && Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, characterController.height/2 * slopeForceRayLength) && ShouldCrouch)
+            {
+                return true;
+            }
+
+            else
+                return false;
+        }
+
+    }
+
     [Header("Slope Parameters")]
     [SerializeField] private float slopeForce;
     [SerializeField] private float slopeForceRayLength;
@@ -142,6 +156,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float interactionDistance = default;
     [SerializeField] private LayerMask interactionLayer = default;
     [SerializeField] private LayerMask doorLayer = default;
+    [SerializeField] private LayerMask defaultLayer = default;
     public Interactable currentInteractable;
     public GameObject currentObject;
     public GameObject dialogueBox;
@@ -158,6 +173,7 @@ public class FirstPersonController : MonoBehaviour
     public bool inHands;
     public bool canThrow;
     public bool frontRay;
+    public bool shortfrontRay;
     public bool vaulRayDown;
     public bool vaulRayUp;
     public bool rightRay;
@@ -214,6 +230,7 @@ public class FirstPersonController : MonoBehaviour
 
     void Update()
     {
+        if (CrouchSliding) Debug.Log("Caca");
         //Pause Menu
         if (pauseMenu.activeSelf == true)
         {
@@ -258,8 +275,9 @@ public class FirstPersonController : MonoBehaviour
 
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit prejumpHit, 1f) && Input.GetKeyDown(jumpKey)) prejump = true;
         frontRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit sst, 4f));
-        vaulRayDown = (Physics.Raycast(transform.position, transform.forward, out RaycastHit ssq, 1f));
-        vaulRayUp = (Physics.Raycast(transform.position + Vector3.up, transform.forward, out RaycastHit ss, 1f));
+        shortfrontRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit swst, 1f));
+        vaulRayDown = (Physics.Raycast(transform.position, transform.forward, out RaycastHit ssq, 1f, defaultLayer));
+        vaulRayUp = (Physics.Raycast(transform.position + Vector3.up, transform.forward, out RaycastHit ss, 1f, defaultLayer));
         leftRay = (Physics.Raycast(transform.position + Vector3.up, -transform.right, out RaycastHit ssssss, 2f));
         rightRay = (Physics.Raycast(transform.position + Vector3.up, transform.right, out RaycastHit ssssaw, 2f));
         throwRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit ssss, 1f));
@@ -267,7 +285,7 @@ public class FirstPersonController : MonoBehaviour
         headRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit si, 1f));
         interactionRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit interact, interactionDistance));
         upRay = (Physics.Raycast(playerCamera.transform.position, transform.up, out RaycastHit so, 1f));
-        downRay = (Physics.Raycast(transform.position, -transform.up, out RaycastHit down, 1f));
+        downRay = (Physics.Raycast(transform.position, -transform.up, out RaycastHit down, 0.6f));
         crouchUpRay = (Physics.Raycast(playerCamera.transform.position, transform.up, out RaycastHit sk, 2f));
 
         clubRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit st, 4f));
@@ -382,7 +400,7 @@ public class FirstPersonController : MonoBehaviour
     private bool vault;
     private void CheckForVault()
     {
-        if (!characterController.isGrounded && vaulRayDown && !vaulRayUp && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.W)))
+        if (!shortfrontRay && !characterController.isGrounded && !downRay && vaulRayDown && !vaulRayUp && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.W)))
         {
             moveDirection.y = 5f;
         }
@@ -493,26 +511,16 @@ public class FirstPersonController : MonoBehaviour
         else if (Input.GetKey(KeyCode.S)) verticalInputRaw = -1;
         else verticalInputRaw = 0;
 
-        if (SlopeSlide)
-        {
-            currentInput = new Vector2(0, (isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * horizontalInput);
-            currentInputRaw = new Vector2(0, (isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * horizontalInputRaw);
-        }
-        else
-        {
-            currentInput = new Vector2((InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * verticalInput, (InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * horizontalInput);
-            currentInputRaw = new Vector2((InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * verticalInputRaw, (InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * horizontalInputRaw);
-        }
+
+        currentInput = new Vector2((InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * verticalInput, (InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * horizontalInput);
+        currentInputRaw = new Vector2((InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * verticalInputRaw, (InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * horizontalInputRaw);
+
         
         
         
         float  moveDirectionY = moveDirection.y;
 
-        if (SlopeSlide)
-        {
-            moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + forceAdded + (transform.forward * slopeSlideSpeed) + propeller.GetComponent<Propeller>().propellerMovement + blower.GetComponent<Blower>().blowMovement;
-        }
-        else if (isCrouching && forceAdded != Vector3.zero && characterController.isGrounded)
+        if (isCrouching && forceAdded != Vector3.zero && characterController.isGrounded)
         {
             moveDirection = forceAdded;
         }
@@ -586,7 +594,7 @@ public class FirstPersonController : MonoBehaviour
 
         if (isCrouching) crouchTimer = 0.35f;
 
-        if ((FlatSlide || (preslide && characterController.isGrounded)) && tempslideCountdown < 0) 
+        if ((FlatSlide || (preslide && characterController.isGrounded)) && tempslideCountdown < 0 && verticalInputRaw > 0) 
         {
             preslide = false;
             AddHorizontalForce(transform.forward / 12, IsSprinting ? sprintSlideImpulsion : slideImpulsion);
@@ -609,7 +617,7 @@ public class FirstPersonController : MonoBehaviour
     {
         crouchTimer -= Time.deltaTime;
 
-        var desiredHeight = isCrouching || InAirCrouch || SlopeSlide ? crouchHeight : standHeight;
+        var desiredHeight = isCrouching || InAirCrouch ? crouchHeight : standHeight;
 
         if (characterController.height != desiredHeight)
         {
@@ -755,6 +763,10 @@ public class FirstPersonController : MonoBehaviour
         {
             moveDirection += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * slopeSpeed;
         }
+        else if (WillSlideOnSlopes && CrouchSliding)
+        {
+            moveDirection += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * slopeSlideSpeed;
+        }
 
         characterController.Move(moveDirection * Time.deltaTime * currentWeight);
     }
@@ -766,7 +778,7 @@ public class FirstPersonController : MonoBehaviour
 
         footstepTimer -= Time.deltaTime;
 
-        if (footstepTimer <= 0)
+        if (footstepTimer <= 0 && isCrouching && forceAdded != Vector3.zero)
         {
             if (Physics.Raycast(playerCamera.transform.position, Vector3.down, out RaycastHit hit, 3f))
             {
