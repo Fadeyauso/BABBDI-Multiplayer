@@ -556,13 +556,6 @@ public class FirstPersonController : MonoBehaviour
 
     private void HandleJump()
     {
-        if (ShouldJump)
-        {
-            SoundManager.Instance.PlaySound(jumpClip);
-            moveDirection.y = jumpForce;
-            
-            landing = true;
-        } 
         if (prejump && characterController.isGrounded) 
         {
             SoundManager.Instance.PlaySound(jumpClip);
@@ -570,7 +563,14 @@ public class FirstPersonController : MonoBehaviour
             prejump = false;
             landing = true;
         }
-        
+        else if (ShouldJump)
+        {
+            SoundManager.Instance.PlaySound(jumpClip);
+            moveDirection.y = jumpForce;
+            
+            landing = true;
+        } 
+
     }
     
     private float slideTimer;
