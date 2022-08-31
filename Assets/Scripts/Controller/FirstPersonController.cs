@@ -167,6 +167,7 @@ public class FirstPersonController : MonoBehaviour
     public GameObject climber;
     public GameObject propeller;
     public GameObject blower;
+    public GameObject grabber;
     public bool bigball;
     [SerializeField] private float ballWeight = 0.3f;
     private float currentWeight = 1;
@@ -222,6 +223,7 @@ public class FirstPersonController : MonoBehaviour
         climber = GameObject.Find("Climber");
         propeller = GameObject.Find("Propeller");
         blower = GameObject.Find("Blower");
+        grabber = GameObject.Find("Grabber");
     }
 
     void Start(){
@@ -418,10 +420,11 @@ public class FirstPersonController : MonoBehaviour
     public float initforceFactor;
     public float forceSpeed = 4;
     public float tempforceSpeed;
-    [Range(1.0f, 100.0f)] private float deceleration = 1;
+    [Range(0f, 100.0f)] public float deceleration = 1;
 
     public void AddForce(Vector3 tempforce, float tempforceFactor)
     {
+        deceleration = 1;
         moveDirection = new Vector3(0,0,0);
         forceFactor = tempforceFactor;
         force = tempforce;
@@ -442,6 +445,7 @@ public class FirstPersonController : MonoBehaviour
 
     public void AddHorizontalForce(Vector3 tempforce, float tempforceFactor)
     {
+        deceleration = 1;
         moveDirection = new Vector3(0, moveDirection.y, 0);
         forceFactor = tempforceFactor;
         force = tempforce;
@@ -451,6 +455,7 @@ public class FirstPersonController : MonoBehaviour
     
     public void AddVerticalForce(Vector3 tempforce, float tempforceFactor)
     {
+        deceleration = 1;
         moveDirection = new Vector3(moveDirection.x, 0, moveDirection.z);
         forceFactor = tempforceFactor;
         force = tempforce;
@@ -465,7 +470,7 @@ public class FirstPersonController : MonoBehaviour
         else if (tempforceSpeed < 2f) tempforceSpeed = 2f;
         if (!characterController.isGrounded)
         {
-            if (forceFactor < 0.8f) forceFactor = 0.8f;
+            if (forceFactor < 0f) forceFactor = 0f;
             if (forceFactor > 0) tempforceSpeed -= Time.deltaTime * initforceFactor / 2;
         }
         else tempforceSpeed = forceSpeed;
@@ -486,6 +491,8 @@ public class FirstPersonController : MonoBehaviour
             forceFactor = 0;
             force = new Vector3(0,0,0);
         }
+
+        if (forceFactor <= 1) deceleration = 1;
     }
 
     private float verticalInput;
@@ -556,13 +563,6 @@ public class FirstPersonController : MonoBehaviour
 
     private void HandleJump()
     {
-        if (ShouldJump)
-        {
-            SoundManager.Instance.PlaySound(jumpClip);
-            moveDirection.y = jumpForce;
-            
-            landing = true;
-        } 
         if (prejump && characterController.isGrounded) 
         {
             SoundManager.Instance.PlaySound(jumpClip);
@@ -570,7 +570,14 @@ public class FirstPersonController : MonoBehaviour
             prejump = false;
             landing = true;
         }
-        
+        else if (ShouldJump)
+        {
+            SoundManager.Instance.PlaySound(jumpClip);
+            moveDirection.y = jumpForce;
+            
+            landing = true;
+        } 
+
     }
     
     private float slideTimer;
@@ -609,7 +616,6 @@ public class FirstPersonController : MonoBehaviour
             forceFactor = 0;
             Debug.Log("caca");
         }
-        else if (standing) deceleration = 1;
 
         
     }

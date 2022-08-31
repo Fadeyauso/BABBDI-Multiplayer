@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8906888670568420534}
   - component: {fileID: 8906888670568420533}
   - component: {fileID: 5771581332040775588}
+  - component: {fileID: 1829769206}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -71,3 +72,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eab77e4a7212a1b4b984b65eb1b3c8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenshotClip: {fileID: 8300000, guid: 7acff23bf1071e84babaa1dce0ab0cc5, type: 3}
+--- !u!114 &1829769206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8906888670568420535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d37fe1df7556fd744a18bba9ab31b60d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music:
+  - {fileID: 8300000, guid: 5bcbbad3d5e71a2479051529c1a7d21a, type: 3}
+  - {fileID: 8300000, guid: 49e2d7ce9065eb14ebdab9f6aa07fd72, type: 3}
+  - {fileID: 8300000, guid: 58164cf2c666a3a4f88cd1f5d51a8cfc, type: 3}

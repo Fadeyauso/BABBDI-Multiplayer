@@ -13,6 +13,7 @@ public class PickupItem : MonoBehaviour
     public GameObject ball;
     public GameObject bigball;
     public GameObject stick;
+    public GameObject grabber;
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +74,12 @@ public class PickupItem : MonoBehaviour
             {
                 GameObject obj = Instantiate(stick, GameObject.Find("StickPos01").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
                 obj.GetComponent<InteractObject>().inHands = true;
+            }
+            if (GameObject.Find("GameManager").GetComponent<GameManager>().item == 10) 
+            {
+                GameObject obj = Instantiate(grabber, GameObject.Find("GrabberPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
+                obj.GetComponent<InteractObject>().inHands = true;
+                GameObject.Find("Player").GetComponent<FirstPersonController>().grabber = obj;
             }
             
         }
