@@ -155,6 +155,68 @@ Transform:
   m_Father: {fileID: 7482973070762915167}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1246247443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1246247444}
+  m_Layer: 10
+  m_Name: StickPos00
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1246247444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246247443}
+  m_LocalRotation: {x: -0.9830316, y: 0, z: 0, w: 0.18343675}
+  m_LocalPosition: {x: 0.85, y: -0.76, z: 1.14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7482973070762915167}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: -158.86, y: 0, z: 0}
+--- !u!1 &1570248698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1570248699}
+  m_Layer: 10
+  m_Name: StickPos01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1570248699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570248698}
+  m_LocalRotation: {x: -0.7757021, y: -0.030226197, z: -0.037259705, w: 0.6292729}
+  m_LocalPosition: {x: 0.215, y: -0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7482973070762915167}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: -101.9, y: -5.5, z: 0}
 --- !u!1 &1835058296
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +546,8 @@ Transform:
   - {fileID: 1092824475}
   - {fileID: 996831809}
   - {fileID: 1175882409}
+  - {fileID: 1246247444}
+  - {fileID: 1570248699}
   m_Father: {fileID: 7482973072534782208}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
