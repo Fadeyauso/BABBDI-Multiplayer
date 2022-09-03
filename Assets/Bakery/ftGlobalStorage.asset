@@ -55,7 +55,8 @@ MonoBehaviour:
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_Escalator00.fbx
   - Assets/Environment/Props/SM_TableDesk_01.fbx
   - Assets/Environment/Props/SM_Chair02.fbx
-  modifiedAssetPaddingHash: aaf8cc2e363fd3d9ecc124910cf43a06323fd3d9353fd3d9343fd3d9b35634b7ecc12491a768e2a8393fd3d9363fd3d9ecc12491ecc12491ecc12491bb09ecc0de09ecc0797e9363af67e2a8f437ed04717f9363ecc12491ecc12491ecc12491ecc12491ecc12491ecc124914adc894babdb894b383fd3d9ecc12491ecc12491de09ecc05267e2a8383fd3d9363fd3d9d7c2a6933e3fd3d9383fd3d9377e9363ecc12491ecc12491
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_Carts00.fbx
+  modifiedAssetPaddingHash: aaf8cc2e363fd3d9ecc124910cf43a06323fd3d9353fd3d9343fd3d9b35634b7ecc12491a768e2a8393fd3d9363fd3d9ecc12491ecc12491ecc12491bb09ecc0de09ecc0797e9363af67e2a8f437ed04717f9363ecc12491ecc12491ecc12491ecc12491ecc12491ecc124914adc894b5bc2a693383fd3d9ecc12491ecc12491de09ecc05267e2a8383fd3d9363fd3d9d7c2a6933e3fd3d9383fd3d9377e9363ecc12491ecc1249123c5d890
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -548,7 +549,7 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_ClubEntrance00
-    padding: 42000000
+    padding: 3b000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Blockout07
@@ -601,6 +602,10 @@ MonoBehaviour:
   - meshName:
     - SM_Chair_01
     padding: 00010000
+    unwrapper: 00000000
+  - meshName:
+    - SM_Scene_A_Carts00
+    padding: 2c000000
     unwrapper: 00000000
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
