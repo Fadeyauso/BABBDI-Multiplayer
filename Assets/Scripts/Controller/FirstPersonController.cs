@@ -45,6 +45,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField, Range(1, 10)] private float upperLookLimit = 90f;
     [SerializeField, Range(1, 10)] private float lowerLookLimit = 90f;
     [SerializeField] private Vector3 offset;
+    private Quaternion initialRotation;
 
     [Header("Jumping Parameters")]
     [SerializeField] public float jumpForce = 8.0f;
@@ -151,6 +152,7 @@ public class FirstPersonController : MonoBehaviour
     }
 
     private bool prejump;
+    private bool inJump;
 
     [Header("Interaction")]
     [SerializeField] private Vector3 interactionRayPoint = default;
@@ -229,6 +231,8 @@ public class FirstPersonController : MonoBehaviour
         blower = GameObject.Find("Blower");
         grabber = GameObject.Find("Grabber");
         motorBike = GameObject.Find("Moto");
+
+        initialRotation = playerCamera.transform.rotation;
     }
 
     void Start(){
@@ -383,6 +387,8 @@ public class FirstPersonController : MonoBehaviour
             }
 
             Debug.DrawRay(transform.position + transform.up, transform.up * 1.99f, Color.green);
+
+            if (characterController.isGrounded) inJump = false;
 
             if (bigball) currentWeight = ballWeight;
             else currentWeight = 1;
@@ -545,8 +551,8 @@ public class FirstPersonController : MonoBehaviour
         else verticalInputRaw = 0;
 
 
-        currentInput = new Vector2((InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * verticalInput, (InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * horizontalInput);
-        currentInputRaw = new Vector2((InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * verticalInputRaw, (InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * horizontalInputRaw);
+        currentInput = new Vector2((InAirCrouch && inJump ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting && slideTimer < 0 ? sprintSpeed : walkSpeed) * verticalInput, (InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * horizontalInput);
+        currentInputRaw = new Vector2((InAirCrouch && inJump ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting && slideTimer < 0 ? sprintSpeed : walkSpeed) * verticalInputRaw, (InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * horizontalInputRaw);
     }
 
     private void HandleMovementInput()
@@ -573,8 +579,16 @@ public class FirstPersonController : MonoBehaviour
         moveDirection.y = moveDirectionY;
     }
 
+
+    [Header("Camera mouse incidence")]
+    public float rotationAmount = 4f;
+    public float maxRotationAmount = 5f;
+    public float smoothRotation = 12f;
+
     private void HandleMouseLook()
     {
+        
+
         rotationX -= Input.GetAxis("Mouse Y") * lookSpeedY;
         rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, rotationZ);
@@ -582,7 +596,7 @@ public class FirstPersonController : MonoBehaviour
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
 
 
-        if (standing && playerCamera.transform.localPosition.y != defaultYPos && landTimer < 0) //&& currentInputRaw == Vector2.zero)
+        if (standing && playerCamera.transform.localPosition.y != defaultYPos && landTimer < 0 ) //&& currentInputRaw == Vector2.zero)
         {
             playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, characterController.center + new Vector3(0, characterController.height / 2, 0) + offset, 5f * Time.deltaTime);
             headbobEndTimer = 3f;
@@ -600,19 +614,21 @@ public class FirstPersonController : MonoBehaviour
             prejump = false;
             landing = true;
             aftervaultjumpTimer = 0;
+            inJump = true;
         }
-        if (prejump && characterController.isGrounded) 
+        else if (prejump && characterController.isGrounded) 
         {
             SoundManager.Instance.PlaySound(jumpClip);
             moveDirection.y = jumpForce;
             prejump = false;
             landing = true;
+            inJump = true;
         }
-        else if (ShouldJump || airTime > 0.1f && Input.GetKeyDown(jumpKey))
+        else if (ShouldJump || (airTime > 0.1f && Input.GetKeyDown(jumpKey) && !inJump))
         {
             SoundManager.Instance.PlaySound(jumpClip);
             moveDirection.y = jumpForce;
-            
+            inJump = true;
             landing = true;
         } 
 
@@ -621,6 +637,7 @@ public class FirstPersonController : MonoBehaviour
     private float slideTimer;
     private float tempslideCountdown;
     public float slideCountdown = 1;
+    private float keyUpTimer;
 
     private void HandleCrouch()
     {
@@ -629,9 +646,9 @@ public class FirstPersonController : MonoBehaviour
 
 
         slideTimer -= Time.deltaTime;
+        keyUpTimer -= Time.deltaTime;
 
         if (standing && characterController.isGrounded) tempslideCountdown -= Time.deltaTime;
-
         if (isCrouching && crouchUpRay);
         else 
         {
@@ -645,16 +662,20 @@ public class FirstPersonController : MonoBehaviour
         {
             preslide = false;
             AddHorizontalForce(transform.forward / 12, IsSprinting ? sprintSlideImpulsion : slideImpulsion);
-            deceleration = IsSprinting ? 9f : 3f;
+            deceleration = IsSprinting ? 3f : 3f;
             slideTimer = 3f;
             Debug.Log("cacaca");
             tempslideCountdown = slideCountdown;
         }
+        else if (!characterController.isGrounded && slideTimer > 0) deceleration = 9;
         else if ((Input.GetKeyUp(crouchKey) || Input.GetKeyUp(KeyCode.C)) && characterController.isGrounded) 
         {
+            slideTimer = 0.1f;
             forceFactor = 0;
             Debug.Log("caca");
         }
+
+        if (((Input.GetKeyUp(crouchKey) || Input.GetKeyUp(KeyCode.C)) && !characterController.isGrounded)) keyUpTimer = 0.5f;
 
         
     }
@@ -685,13 +706,16 @@ public class FirstPersonController : MonoBehaviour
             Zoom(desiredFOV);
         }
 
+        
+
 
         //Camera Tilt
         var desiredTilt = InAirCrouch && !characterController.isGrounded ? 0 : IsSprinting && standing && horizontalInputRaw == 1 ? -tiltAmount : IsSprinting && standing && horizontalInputRaw == -1 ? tiltAmount : 0;
+        SideTilt(desiredTilt);
 
         if (rotationZ != desiredTilt)
         {
-            SideTilt(desiredTilt);
+            
         }
     }
 
@@ -699,7 +723,7 @@ public class FirstPersonController : MonoBehaviour
     {
 
 
-        if (!characterController.isGrounded && landTimer > -0.06f)
+        if (!characterController.isGrounded && (landTimer > -0.06f || keyUpTimer > 0))
         {
             fallTimer = 0;
             playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, characterController.center + new Vector3(0, characterController.height / 2, 0) + offset, 8f * Time.deltaTime);
@@ -794,6 +818,8 @@ public class FirstPersonController : MonoBehaviour
             }
         }
 
+        
+
         if (backRay && characterController.velocity.magnitude > 30)
         {
             moveDirection.x /= 4;
@@ -864,7 +890,10 @@ public class FirstPersonController : MonoBehaviour
 
     private void SideTilt(float temptiltAmount)
     {
-        rotationZ = Mathf.Lerp(rotationZ, temptiltAmount, tiltSpeed * Time.deltaTime);
+        //Mouse Movement Incidence
+        float tiltY = Mathf.Clamp(-Input.GetAxis("Mouse X") * rotationAmount, -maxRotationAmount, maxRotationAmount);
+
+        rotationZ = Mathf.Lerp(rotationZ, temptiltAmount, tiltSpeed * Time.deltaTime) + Mathf.Lerp(transform.localRotation.z, tiltY, Time.deltaTime * smoothRotation);
     }
 
 
