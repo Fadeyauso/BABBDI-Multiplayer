@@ -158,8 +158,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c64cac6b589934fa2f9bdc133b29f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  launchForce: 8
   hold: {fileID: 0}
   hit: {fileID: 8300000, guid: ae3479eddfc98ad47a62a2a3eaa49939, type: 3}
+  pickPos: {x: 0, y: 0, z: 0}
+  pickRot: {x: 0, y: 0, z: 0, w: 0}
   trigger: 0
   pick: 0
   touch: 0

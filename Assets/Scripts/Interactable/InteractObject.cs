@@ -43,7 +43,7 @@ public class InteractObject : Interactable
         if (!inHands)
         {
             SoundManager.Instance.PlaySound(interactionClip);
-            if (GetComponent<ItemProperties>().id == 0 || GetComponent<ItemProperties>().id == 1 || GetComponent<ItemProperties>().id == 2 || GetComponent<ItemProperties>().id == 4|| GetComponent<ItemProperties>().id == 5 || GetComponent<ItemProperties>().id == 6 || GetComponent<ItemProperties>().id == 7 || GetComponent<ItemProperties>().id == 8 || GetComponent<ItemProperties>().id == 9 || GetComponent<ItemProperties>().id == 10) 
+            if (GetComponent<ItemProperties>().id == 0 || GetComponent<ItemProperties>().id == 1 || GetComponent<ItemProperties>().id == 2 || GetComponent<ItemProperties>().id == 4|| GetComponent<ItemProperties>().id == 5 || GetComponent<ItemProperties>().id == 6 || GetComponent<ItemProperties>().id == 7 || GetComponent<ItemProperties>().id == 8 || GetComponent<ItemProperties>().id == 9 || GetComponent<ItemProperties>().id == 10 || GetComponent<ItemProperties>().id == 11) 
             {
             // if ()
                 transform.position = GameObject.Find("ObjectPos").transform.position;
@@ -431,6 +431,37 @@ public class InteractObject : Interactable
             
 
         }
+
+            if (GetComponent<ItemProperties>().id == 11)
+            {
+                if (inHands) 
+                {
+                    collider.isTrigger = true;
+                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
+                    {
+                        throwObject = true;
+                        inHands = false;
+                    }
+                    
+                    rb.useGravity = false;
+                    rb.velocity = new Vector3(0,0,0);
+                    
+
+                    transform.rotation = GameObject.Find("MotoPos").transform.rotation;
+                    transform.position = GameObject.Find("MotoPos").transform.position;
+                    
+                }
+                else if (throwObject) 
+                {
+                    collider.isTrigger = false;
+                    transform.SetParent(null);
+                    rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
+                    //rb.constraints = 0;
+                    //rb.constraints = RigidbodyConstraints.FreezeRotation;
+                    rb.useGravity = true;
+                    throwObject = false;
+                }
+            }
 
         
 

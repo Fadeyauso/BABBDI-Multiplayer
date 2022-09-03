@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("Scene_ACOPY");
+        SceneManager.LoadScene("NEwSSISOU");
     }
 
     public void QuitGame()

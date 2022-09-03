@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +6,6 @@ public class Propeller : MonoBehaviour
 {
     public GameObject motor;
     public GameObject motorUp;
-    public GameObject motorUp2;
     private GameObject player;
     [SerializeField] private AudioSource audio;
     public Vector3 propellerMovement;
@@ -30,7 +29,6 @@ public class Propeller : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && GetComponent<InteractObject>().inHands && player.transform.position.y < 120)
         {
             motorUp.transform.Rotate(0, 30, 0);
-            motorUp2.transform.Rotate(0, -30, 0);
             player.GetComponent<FirstPersonController>().moveDirection.y += flypower * Time.deltaTime;
         }
 

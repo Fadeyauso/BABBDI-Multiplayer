@@ -6,6 +6,8 @@ public class Climber : MonoBehaviour
 {
     private GameObject player;
     float timer = 0;
+    [SerializeField] private float launchForce;
+    private float mousey;
 
     public AudioClip hold;
     public AudioClip hit;
@@ -31,13 +33,16 @@ public class Climber : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        mousey = -Mathf.Clamp(Input.GetAxis("Mouse Y"), -2, 2);
+
         timer -= Time.deltaTime;
         if (Input.GetButtonDown("Jump") && trigger)
         {
             pick = false;
             timer = 0.2f;
             trigger = false;
-            player.GetComponent<FirstPersonController>().moveDirection.y = player.GetComponent<FirstPersonController>().jumpForce;
+            player.GetComponent<FirstPersonController>().AddForce((player.transform.right / 15) * player.GetComponent<FirstPersonController>().currentInputRaw.y, launchForce);
+            player.GetComponent<FirstPersonController>().moveDirection.y = player.GetComponent<FirstPersonController>().jumpForce * (mousey > 1 ? mousey : 1);
         }
 
         if (!Input.GetButton("Fire1"))
