@@ -976,10 +976,10 @@ MonoBehaviour:
   walkSpeed: 5
   sprintSpeed: 8
   crouchSpeed: 1.5
-  inairCrouchSpeed: 10
+  inairCrouchSpeed: 8
   slopeSlideSpeed: 18
   slopeSpeed: 8
-  sprintSlideImpulsion: 220
+  sprintSlideImpulsion: 150
   slideImpulsion: 130
   boostPower: 8
   lookSpeedX: 2
