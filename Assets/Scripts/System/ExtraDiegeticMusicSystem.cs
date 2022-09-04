@@ -25,6 +25,6 @@ public class ExtraDiegeticMusicSystem : MonoBehaviour
     private void PlayRandomMusic()
     {
         timer = Random.Range(150, 300);
-        SoundManager.Instance.PlayMusic(music[Random.Range(0, music.Length - 1)], 0);
+        //SoundManager.Instance.PlayMusic(music[Random.Range(0, music.Length - 1)], 0);
     }
 }

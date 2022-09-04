@@ -8,6 +8,8 @@ public class AmbientVoiceEmitter : MonoBehaviour
     [SerializeField] private AudioClip sound;
     [SerializeField] private float playFrequency;
     private float timer;
+    public bool active;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -19,7 +21,7 @@ public class AmbientVoiceEmitter : MonoBehaviour
     {
         timer -= Time.deltaTime;
 
-        if (timer < 0)
+        if (timer < 0 && active)
         {
             timer = playFrequency;
             

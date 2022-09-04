@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour, ISaveable
     [HideInInspector] public int item;
     [HideInInspector] public bool inActivatedLift;
     [HideInInspector] public bool secretPopup;
+    public bool endGame;
+    public float gameTime = 0;
+    public int secondPart;
+    public int haveTicket;
 
     //Achievements
     [Header("Achievements")]
@@ -51,6 +55,8 @@ public class GameManager : MonoBehaviour, ISaveable
     // Update is called once per frame
     void Update() 
     {
+        if (!endGame && !GameObject.Find("Player").GetComponent<FirstPersonController>().pause) gameTime += Time.deltaTime;
+
         wayClimberToggle.isOn = wayClimber;
     }
 
@@ -73,6 +79,9 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         return new SaveData()
         {
+            ticket = this.haveTicket,
+            parttwo = this.secondPart,
+
             //Achievements
             wayClimber = this.wayClimberState,
 
@@ -85,6 +94,9 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         var saveData = (SaveData)state;
 
+        haveTicket = saveData.ticket;
+        secondPart = saveData.parttwo;
+
         //Achievements
         wayClimberState = saveData.wayClimber;
         if (wayClimberState == 1) wayClimber = true;
@@ -96,6 +108,9 @@ public class GameManager : MonoBehaviour, ISaveable
     [Serializable]
     private struct SaveData
     {
+        public int ticket;
+        public int parttwo;
+
         //Achievements
         public int wayClimber;
 

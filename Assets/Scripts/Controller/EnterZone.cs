@@ -9,6 +9,7 @@ public class EnterZone : MonoBehaviour
     private float outdoortimer;
 
     [HideInInspector] public bool inLift;
+    
 
     // Update is called once per frame
     void Update()
@@ -39,6 +40,11 @@ public class EnterZone : MonoBehaviour
             GameObject.Find("GameManager").GetComponent<GameManager>().wayClimberState = 1;
             GameObject.Find("GameManager").GetComponent<GameManager>().lastAchievement = "Way of the climber";
         }
+        if (collisionInfo.tag == "Train")
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().endGame = true;
+        }
+
         
         
     }
@@ -47,7 +53,7 @@ public class EnterZone : MonoBehaviour
     {
         if (collisionInfo.tag == "Lift")
         {
-            transform.SetParent(GameObject.Find("RestaurantLift").transform);
+            transform.SetParent(collisionInfo.GetComponent<SetLift>().lift.transform);
             inLift = true;
         }
     }

@@ -68,6 +68,11 @@ public class InteractObject : Interactable
                 Destroy(this.gameObject);
                 GameObject.Find("GameManager").GetComponent<GameManager>().secretState[secret.GetComponent<SecretObjectDisplay>().secretId] = 1;
             }
+            if (GetComponent<ItemProperties>().id == 50)
+            {
+                GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket = 1;
+                Destroy(this.gameObject);
+            }
         }
         
         

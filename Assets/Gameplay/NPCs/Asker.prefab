@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1183473301333498489
+--- !u!1 &8247568275804078587
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,54 +8,54 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1183473301333498488}
-  - component: {fileID: 1183473301333498482}
-  - component: {fileID: 1183473301333498483}
-  - component: {fileID: 1183473301333498484}
-  - component: {fileID: 1183473301333498767}
-  - component: {fileID: 1183473301333498480}
-  - component: {fileID: 1183473301333498481}
-  - component: {fileID: 1183473301333498487}
-  - component: {fileID: 1183473301333498764}
-  - component: {fileID: 1183473301333498766}
-  - component: {fileID: 1183473301333498763}
+  - component: {fileID: 8736683156169890625}
+  - component: {fileID: 5661364067855111396}
+  - component: {fileID: 7599195270328016942}
+  - component: {fileID: 5859327943273433762}
+  - component: {fileID: 9130017417313418402}
+  - component: {fileID: 9130017417313418403}
+  - component: {fileID: 5661364067855111399}
+  - component: {fileID: 9130017417313418400}
+  - component: {fileID: 2753127302255240032}
+  - component: {fileID: 3268166225627121977}
+  - component: {fileID: 1711813855611353188}
   m_Layer: 7
-  m_Name: Monsieur
-  m_TagString: DontThrow
+  m_Name: Asker
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!4 &1183473301333498488
+--- !u!4 &8736683156169890625
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183473301333498489}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.321, y: 0.947, z: -2.784}
-  m_LocalScale: {x: 0.326034, y: 1.6868958, z: 0.63156664}
+  m_GameObject: {fileID: 8247568275804078587}
+  m_LocalRotation: {x: 0.0024559028, y: 0.70710254, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 166.752, y: 43.038, z: -5.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!33 &1183473301333498482
+  m_LocalEulerAnglesHint: {x: 0.199, y: 90, z: 0.199}
+--- !u!33 &5661364067855111396
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183473301333498489}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1183473301333498483
+  m_GameObject: {fileID: 8247568275804078587}
+  m_Mesh: {fileID: 3187412376533669578, guid: 47f37ce1410e4634cb653c6735780f3d, type: 3}
+--- !u!23 &7599195270328016942
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183473301333498489}
+  m_GameObject: {fileID: 8247568275804078587}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -91,105 +91,69 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1183473301333498484
-BoxCollider:
+--- !u!64 &5859327943273433762
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183473301333498489}
+  m_GameObject: {fileID: 8247568275804078587}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1183473301333498767
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3187412376533669578, guid: 47f37ce1410e4634cb653c6735780f3d, type: 3}
+--- !u!114 &9130017417313418402
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183473301333498489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8b2aaee23b5dd2459a6d8b997edce54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  typewriterSpeed: 50
---- !u!114 &1183473301333498480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183473301333498489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65d00bba4763f8841a36dea25d5bbe67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Monsieur
-  NPCid: 0
-  speaking: 0
-  dialogueBox: {fileID: 5453049818342691552, guid: 3372f205f505b554dbf624042a3cb7cd, type: 3}
-  textLabel: {fileID: 0}
-  name_label: {fileID: 0}
-  currentDialogue: {fileID: 11400000, guid: b250f1005a4d931408ab53d9935f7208, type: 2}
---- !u!114 &1183473301333498481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183473301333498489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e844210ee60b0949af8b31f455f308d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionClip: {fileID: 8300000, guid: 3c06e9590684dcb468a4d9e4de2604ba, type: 3}
-  npcId: 0
-  dialogue:
-  - {fileID: 11400000, guid: 5dbaa4ddac7a59d46aa4cf8abef526c4, type: 2}
---- !u!54 &1183473301333498487
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183473301333498489}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!114 &1183473301333498764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183473301333498489}
+  m_GameObject: {fileID: 8247568275804078587}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bfffc043aba38a4ca6c1eb616bae6e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 4d313d391130e55488f1b516d40ca3c4, type: 3}
-  playFrequency: 3
+  playFrequency: 40
   active: 0
---- !u!82 &1183473301333498766
+--- !u!114 &9130017417313418403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8247568275804078587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e4bbebcd3782840899af7ca769f268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio: {fileID: 9130017417313418400}
+--- !u!114 &5661364067855111399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8247568275804078587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f6550092b0bfe48832b42bf993c773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondDialogue: {fileID: 11400000, guid: 1750b6cb3f1550a4c941f35e891d603d, type: 2}
+  ticket: {fileID: 0}
+--- !u!82 &9130017417313418400
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183473301333498489}
+  m_GameObject: {fileID: 8247568275804078587}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -203,8 +167,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.55
-  MaxDistance: 30
+  MinDistance: 0
+  MaxDistance: 330.14026
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -279,16 +243,52 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1183473301333498763
+--- !u!114 &2753127302255240032
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183473301333498489}
+  m_GameObject: {fileID: 8247568275804078587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8e4bbebcd3782840899af7ca769f268, type: 3}
+  m_Script: {fileID: 11500000, guid: a8b2aaee23b5dd2459a6d8b997edce54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 1183473301333498766}
+  typewriterSpeed: 50
+--- !u!114 &3268166225627121977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8247568275804078587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d00bba4763f8841a36dea25d5bbe67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Asker
+  NPCid: 0
+  speaking: 0
+  dialogueBox: {fileID: 0}
+  textLabel: {fileID: 0}
+  name_label: {fileID: 0}
+  currentDialogue: {fileID: 11400000, guid: b250f1005a4d931408ab53d9935f7208, type: 2}
+--- !u!114 &1711813855611353188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8247568275804078587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e844210ee60b0949af8b31f455f308d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionClip: {fileID: 8300000, guid: 3c06e9590684dcb468a4d9e4de2604ba, type: 3}
+  npcId: 1
+  dialogue:
+  - {fileID: 11400000, guid: b250f1005a4d931408ab53d9935f7208, type: 2}
+  dialogueIndex: 0
