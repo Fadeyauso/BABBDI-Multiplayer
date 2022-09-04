@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8906888670568420533}
   - component: {fileID: 5771581332040775588}
   - component: {fileID: 1829769206}
+  - component: {fileID: 5741962901931131908}
+  - component: {fileID: 652224374518585023}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -49,8 +51,9 @@ MonoBehaviour:
   pickup: 0
   item: 0
   inActivatedLift: 0
-  wayClimber: 0
+  secretPopup: 0
   lastAchievement: 
+  wayClimber: 0
   wayClimberToggle: {fileID: 0}
   jingle:
   - {fileID: 8300000, guid: 9b4450cbc45e5184e82e58a297df557d, type: 3}
@@ -60,6 +63,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8d9b8da01a1ffd44e93fcea61da70de7, type: 3}
   - {fileID: 8300000, guid: d3dc7deeae285e644a7d657272a4428f, type: 3}
   popup: 0
+  secrets:
+  - {fileID: 0}
+  secretState: 
 --- !u!114 &5771581332040775588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,3 +95,28 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5bcbbad3d5e71a2479051529c1a7d21a, type: 3}
   - {fileID: 8300000, guid: 49e2d7ce9065eb14ebdab9f6aa07fd72, type: 3}
   - {fileID: 8300000, guid: 58164cf2c666a3a4f88cd1f5d51a8cfc, type: 3}
+--- !u!114 &5741962901931131908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8906888670568420535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67ef8aa9f32d4dd46bac443cab6c739e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: c843da07-b275-4055-9856-124c3fb1c0a1
+--- !u!114 &652224374518585023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8906888670568420535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44955ef4946619d4eb600a9081084333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

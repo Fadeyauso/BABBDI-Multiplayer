@@ -7,6 +7,7 @@ public class DialogueUI : MonoBehaviour
 {
     public string name;
     public int NPCid;
+    public bool speaking;
 
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text textLabel;
@@ -23,6 +24,7 @@ public class DialogueUI : MonoBehaviour
 
     public void ShowDialogue(DialogueObject dialogueObject)
     {
+        speaking = true;
         dialogueBox.SetActive(true);
         name_label.text = name;
         StartCoroutine(StepThroughDialogue(dialogueObject));
@@ -60,6 +62,7 @@ public class DialogueUI : MonoBehaviour
 
     private void CloseDialogueBox()
     {
+        speaking = false;
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
         //player.GetComponent<CollectItems>().dialogueActive = false;

@@ -6,8 +6,10 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
-    [SerializeField] private AudioSource _musicSource, _effectsSource, _indoorSource, _outdoorSource;
+    [SerializeField] private AudioSource _musicSource, _effectsSource, _ambientSource, _indoorSource, _outdoorSource;
     [SerializeField] private float blendSpeed;
+    private bool outdoor = true;
+    private bool indoor = false;
 
     void Awake(){
         if (Instance == null){
@@ -19,8 +21,17 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+
+    }
+
     public void PlaySound(AudioClip clip){
         _effectsSource.PlayOneShot(clip);
+    }
+
+    public void PlayAmbientSound(AudioClip clip){
+        _ambientSource.PlayOneShot(clip);
     }
 
     public void PlayContinuousSound(AudioClip clop){
@@ -55,16 +66,26 @@ public class SoundManager : MonoBehaviour
     public void ChangeEffectVolume(float value){
         _effectsSource.volume = value;
     }
+    public void ChangeAmbientVolume(float value){
+        _ambientSource.volume = value;
+
+        if (indoor) _indoorSource.volume = _ambientSource.volume;
+        if (outdoor) _outdoorSource.volume = _ambientSource.volume;
+    }
 
     public void IndoorBlend()
     {
-        _indoorSource.volume = Mathf.Lerp(_indoorSource.volume, 1, blendSpeed * Time.deltaTime);
+        indoor = true;
+        outdoor = false;
+        _indoorSource.volume = Mathf.Lerp(_indoorSource.volume, _ambientSource.volume, blendSpeed * Time.deltaTime);
         _outdoorSource.volume = Mathf.Lerp(_outdoorSource.volume, 0, blendSpeed * Time.deltaTime);
     }
     public void OutdoorBlend()
     {
+        indoor = false;
+        outdoor = true;
         _indoorSource.volume = Mathf.Lerp(_indoorSource.volume, 0, blendSpeed * Time.deltaTime);
-        _outdoorSource.volume = Mathf.Lerp(_outdoorSource.volume, 1, blendSpeed * Time.deltaTime);
+        _outdoorSource.volume = Mathf.Lerp(_outdoorSource.volume, _ambientSource.volume, blendSpeed * Time.deltaTime);
     }
 
     public void ToggleEffects(){

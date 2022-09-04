@@ -6,7 +6,7 @@ public class FirstPersonController : MonoBehaviour
 {
     public bool canMove { get; private set; } = true;
     private bool IsSprinting => canSprint && Input.GetKey(sprintKey) && currentInputRaw != new Vector2(0,0) && !motorBike.GetComponent<MotorBike>().isActive;
-    private bool ShouldJump => Input.GetKeyDown(jumpKey) && characterController.isGrounded;
+    private bool ShouldJump => Input.GetKeyDown(jumpKey) && characterController.isGrounded && onFlatGround;
     private bool ShouldCrouch => (Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C)) && characterController.isGrounded && !motorBike.GetComponent<MotorBike>().isActive;
     private bool ShouldCrouchInAir => (Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C)) && !characterController.isGrounded && !OnSlope();
     private bool FlatSlide => (Input.GetKeyDown(crouchKey) || Input.GetKeyDown(KeyCode.C)) && characterController.isGrounded && currentInputRaw != Vector2.zero;
@@ -135,6 +135,7 @@ public class FirstPersonController : MonoBehaviour
         }
 
     }
+    private bool onFlatGround;
 
     [Header("Slope Parameters")]
     [SerializeField] private float slopeForce;
@@ -152,6 +153,7 @@ public class FirstPersonController : MonoBehaviour
     }
 
     private bool prejump;
+    private float prejumpCancelTimer;
     private bool inJump;
 
     [Header("Interaction")]
@@ -241,7 +243,8 @@ public class FirstPersonController : MonoBehaviour
 
     void Update()
     {
-        if (OnSlope()) Debug.Log("Caca");
+        if (IsSliding) onFlatGround = false;
+        else onFlatGround = true;
         //Pause Menu
         if (pauseMenu.activeSelf == true)
         {
@@ -288,7 +291,11 @@ public class FirstPersonController : MonoBehaviour
         pause = pauseMenu.activeSelf;
 
 
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit prejumpHit, 1f) && Input.GetKeyDown(jumpKey)) prejump = true;
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit prejumpHit, 1f) && Input.GetKeyDown(jumpKey) && characterController.velocity.y < 0) 
+        {
+            prejump = true;
+            prejumpCancelTimer = 1f;
+        }
         frontRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit sst, 4f));
         shortfrontRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit swst, 1f));
         vaulRayDown = (Physics.Raycast(transform.position, transform.forward, out RaycastHit ssq, 1.3f, defaultLayer));
@@ -321,6 +328,7 @@ public class FirstPersonController : MonoBehaviour
         landTimer -= Time.deltaTime;
         headbobEndTimer -= Time.deltaTime;
         aftervaultjumpTimer -= Time.deltaTime;
+        prejumpCancelTimer -= Time.deltaTime;
         
 
         if (climber != null) 
@@ -616,7 +624,7 @@ public class FirstPersonController : MonoBehaviour
             aftervaultjumpTimer = 0;
             inJump = true;
         }
-        else if (prejump && characterController.isGrounded) 
+        else if (prejump && characterController.isGrounded && prejumpCancelTimer > 0) 
         {
             SoundManager.Instance.PlaySound(jumpClip);
             moveDirection.y = jumpForce;
@@ -728,7 +736,7 @@ public class FirstPersonController : MonoBehaviour
             fallTimer = 0;
             playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, characterController.center + new Vector3(0, characterController.height / 2, 0) + offset, 8f * Time.deltaTime);
         }
-        else if ((currentInputRaw != Vector2.zero ? landTimer > -0.06f : landTimer > 0) && !ShouldCrouch && !InAirCrouch)
+        else if ((currentInputRaw != Vector2.zero ? landTimer > -0.06f : landTimer > 0) && !ShouldCrouch && !InAirCrouch && keyUpTimer < 0)
         {
             
             if (fallTimer < 0.5f) fallTimer += Time.deltaTime * fallBobSpeed;

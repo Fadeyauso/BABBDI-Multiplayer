@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 3982678383776825753}
   - component: {fileID: 3982678383776825752}
   - component: {fileID: 3982678383776825755}
+  - component: {fileID: 2726434965888799176}
   - component: {fileID: 9128256878204351193}
   m_Layer: 7
   m_Name: Propeller
@@ -484,6 +485,19 @@ MonoBehaviour:
   rotateSpeed: 1000
   rotation: 0
   isActive: 0
+--- !u!114 &2726434965888799176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4327537369094118176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e4bbebcd3782840899af7ca769f268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio: {fileID: 2376502431350012020}
 --- !u!54 &9128256878204351193
 Rigidbody:
   m_ObjectHideFlags: 0

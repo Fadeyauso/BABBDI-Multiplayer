@@ -36,6 +36,7 @@ public class EnterZone : MonoBehaviour
         {
             if (!GameObject.Find("GameManager").GetComponent<GameManager>().wayClimber) GameObject.Find("GameManager").GetComponent<GameManager>().Popup();
             GameObject.Find("GameManager").GetComponent<GameManager>().wayClimber = true;
+            GameObject.Find("GameManager").GetComponent<GameManager>().wayClimberState = 1;
             GameObject.Find("GameManager").GetComponent<GameManager>().lastAchievement = "Way of the climber";
         }
         

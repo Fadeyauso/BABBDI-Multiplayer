@@ -64,8 +64,9 @@ public class InteractObject : Interactable
             {
                 GameManager.secretsFound ++;
                 //Debug.Log(GameManager.secretsFound);
+                GameObject.Find("GameManager").GetComponent<GameManager>().secretPopup = true;
                 Destroy(this.gameObject);
-                secret.GetComponent<SecretObjectDisplay>().collected = true;
+                GameObject.Find("GameManager").GetComponent<GameManager>().secretState[secret.GetComponent<SecretObjectDisplay>().secretId] = 1;
             }
         }
         

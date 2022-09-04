@@ -20,6 +20,9 @@ public class SecretObjectDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameObject.Find("GameManager").GetComponent<GameManager>().secretState[secretId] == 1) collected = true;
+        else collected = false;
+
         if (collected) 
         {
             transform.Rotate(0,100 * Time.deltaTime,0);

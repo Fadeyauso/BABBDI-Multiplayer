@@ -1093,6 +1093,9 @@ MonoBehaviour:
   forceSpeed: 30
   tempforceSpeed: 0
   deceleration: 1
+  rotationAmount: 8
+  maxRotationAmount: 12
+  smoothRotation: 4
   slideCountdown: 0
 --- !u!114 &519846068298027556
 MonoBehaviour:
