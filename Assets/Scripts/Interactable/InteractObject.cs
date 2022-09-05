@@ -461,7 +461,6 @@ public class InteractObject : Interactable
                 {
                     collider.isTrigger = false;
                     transform.SetParent(null);
-                    rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
                     //rb.constraints = 0;
                     //rb.constraints = RigidbodyConstraints.FreezeRotation;
                     rb.useGravity = true;

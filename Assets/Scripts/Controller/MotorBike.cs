@@ -10,12 +10,23 @@ public class MotorBike : MonoBehaviour
     public float power = 2f;
     public float acceleration = 10f;
     public bool isActive;
+    private Quaternion initRotation;
+    public GameObject guidon;
+
+    float rotationZ;
+
+
 
 
     // Start is called before the first frame update
     void Awake()
     {
         player = GameObject.Find("Player");
+    }
+
+    void Start()
+    {
+        initRotation = transform.rotation;
     }
 
     // Update is called once per frame
@@ -25,6 +36,15 @@ public class MotorBike : MonoBehaviour
         if (Input.GetButton("Fire1") && GetComponent<InteractObject>().inHands)
         {
             isActive = true;
+            float tiltY = Mathf.Clamp(-Input.GetAxis("Mouse X") * rotationAmount, -maxRotationAmount, maxRotationAmount);
+
+
+            var desiredTilt = player.GetComponent<FirstPersonController>().verticalInputRaw;
+            var desiredRotation = tiltY;
+            if (rotationZ != desiredTilt) SideTilt(desiredTilt);
+            if (guidon.transform.localRotation != desiredRotation) GuidonTilt(desiredRotation);
+
+            transform.rotation = new Quaternion.Euler(0, 0, rotationZ);
         }
         else 
         {
@@ -56,5 +76,16 @@ public class MotorBike : MonoBehaviour
     private void GetSpeed(Vector3 tempspeed)
     {
         motorMovement = Vector3.Lerp(motorMovement, tempspeed, acceleration * Time.deltaTime);
+    }
+
+    private void SideTilt(float desiredTilt)
+    {
+        rotationZ = Mathf.Lerp(rotationZ, temptiltAmount, tiltSpeed * Time.deltaTime);
+    }
+
+    private void GuidonTilt()
+    {
+        float tiltY = Mathf.Clamp(-Input.GetAxis("Mouse X") * rotationAmount, -maxRotationAmount, maxRotationAmount);
+        Mathf.Lerp(guidon.transform.localRotation.z, tiltY, Time.deltaTime * smoothRotation);
     }
 }

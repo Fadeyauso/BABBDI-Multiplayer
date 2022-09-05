@@ -763,7 +763,7 @@ MonoBehaviour:
     m_Bits: 2147483647
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
-  antialiasingMode: 3
+  antialiasingMode: 2
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25
@@ -948,7 +948,7 @@ MonoBehaviour:
   bigball: {fileID: 6143136128502822149, guid: be2cc8eb343d57b4cbb199e598b2976b, type: 3}
   stick: {fileID: 3053535668974563233, guid: 7ce228f7f883add4abe720ce1cfae981, type: 3}
   grabber: {fileID: 7985272994639486628, guid: 13680d62e2a6ef84180884fc8f20d5c2, type: 3}
-  motorBike: {fileID: 8595361496982867180, guid: fa16efb66a67ec344adaa1a6bfca54f8, type: 3}
+  motorBike: {fileID: 2662358873661873262, guid: a71fc38d59de2f840825517c6c8dbc45, type: 3}
 --- !u!114 &7482973072534782210
 MonoBehaviour:
   m_ObjectHideFlags: 0

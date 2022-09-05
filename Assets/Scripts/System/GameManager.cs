@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 using UnityEngine.EventSystems;
 using Random=UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, ISaveable
 {
@@ -50,6 +51,14 @@ public class GameManager : MonoBehaviour, ISaveable
     void Start()
     {
         
+    }
+
+    public void ReturnToMenu()
+    {
+        secondPart = 0;
+        haveTicket = 0;
+        GetComponent<SaveLoadSystem>().Save();
+        SceneManager.LoadScene("MainMenu");
     }
 
     // Update is called once per frame

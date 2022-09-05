@@ -246,7 +246,7 @@ public class FirstPersonController : MonoBehaviour
         if (IsSliding) onFlatGround = false;
         else onFlatGround = true;
         //Pause Menu
-        if (pauseMenu.activeSelf == true)
+        if (pause == true)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -288,8 +288,8 @@ public class FirstPersonController : MonoBehaviour
             }
             
         }
-        pause = pauseMenu.activeSelf;
-
+        if (pauseMenu.activeSelf || GameObject.Find("GameManager").GetComponent<GameManager>().endGame) pause = true;
+        else pause = false;
 
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit prejumpHit, 1f) && Input.GetKeyDown(jumpKey) && characterController.velocity.y < 0) 
         {
@@ -843,9 +843,9 @@ public class FirstPersonController : MonoBehaviour
         {
             moveDirection += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * slopeSpeed;
         }
-        else if (WillSlideOnSlopes && CrouchSliding && GetComponent<Slope>().surfaceAngle >= 20)
+        else if (WillSlideOnSlopes && CrouchSliding && GetComponent<Slope>().surfaceAngle >= 12)
         {
-            moveDirection += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * slopeSlideSpeed * hitPointNormal.magnitude;
+            moveDirection += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * (GetComponent<Slope>().surfaceAngle < 20 ? slopeSlideSpeed * 4 : slopeSlideSpeed) * hitPointNormal.magnitude;
         }
 
         characterController.Move(moveDirection * Time.deltaTime * currentWeight);
