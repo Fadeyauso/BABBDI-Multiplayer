@@ -60,7 +60,11 @@ MonoBehaviour:
   - Assets/Environment/Props/SM_TrainATM_00.fbx
   - Assets/Environment/Unique/Scene_A/SM_NeonSign03.fbx
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_Fence02.fbx
-  modifiedAssetPaddingHash: aaf8cc2e363fd3d9ecc124910cf43a061b3a80333c4efff03c4efff0ecc12491ecc12491ecc12491343fd3d9333fd3d9ecc12491ecc12491ecc12491abdb894ba35031ee95c2a6933ec5d890ecc12491ecc12491ecc12491ecc12491ecc12491ecc12491ecc12491ecc124917ac2a693c4d150803e3fd3d9ecc12491ecc12491a35031eee837ed043e3fd3d9393fd3d95bc2a693194efff03e3fd3d9f627c115ecc12491ecc12491b35634b709b309ceecc12491ecc12491ecc12491
+  - Assets/Environment/Props/SM_Palette00.fbx
+  - Assets/Environment/Props/SM_Crate01.fbx
+  - Assets/Environment/Props/SM_Barrel00.fbx
+  - Assets/Environment/Props/SM_Crate00.fbx
+  modifiedAssetPaddingHash: aaf8cc2e363fd3d9ecc124910cf43a06383fd3d9383fd3d9383fd3d919c2a693d84608c804c5d890363fd3d9363fd3d9c6d15080c1d15080dc4608c8797e9363343fd3d9343fd3d9353fd3d9275031ee9f398033ecc12491cf3188830c38ed040938ed041638ed04ecc124913e3fd3d9d9398033363fd3d9d0318883ecc12491343fd3d95dc5d890363fd3d9363fd3d9af67e2a8323fd3d9363fd3d9f1f23a06d0318883ecc1249127dc894b377e9363f327c115ba5634b7cedb894bd1318883eec3a693cd31888309a3ddde
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -457,71 +461,71 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Fence00
-    padding: 0f000000
+    padding: 03000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_WaterPlane00
-    padding: 12000000
+    padding: 03000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Blockout02
-    padding: 12000000
+    padding: 03000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Blockout01
-    padding: 00010000
+    padding: 4f000000
     unwrapper: 00000000
   - meshName:
     - SM_Table01
-    padding: 00010000
+    padding: d8000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Blockout06
-    padding: 00010000
+    padding: 36000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Blockout04
-    padding: 07000000
+    padding: 01000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Blockout05
-    padding: 04000000
+    padding: 01000000
     unwrapper: 00000000
   - meshName:
     - SM_CeilingLamp00
-    padding: 00010000
+    padding: ab000000
     unwrapper: 00000000
   - meshName:
     - SM_Matress00
-    padding: 00010000
+    padding: ae000000
     unwrapper: 00000000
   - meshName:
     - SM_Matress01
-    padding: 00010000
+    padding: d4000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Fence01
-    padding: 42000000
+    padding: 0d000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_WaterPlane02
-    padding: 25000000
+    padding: 07000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_WaterPlane01
-    padding: 27000000
+    padding: 07000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_WaterPlane03
-    padding: 22000000
+    padding: 06000000
     unwrapper: 00000000
   - meshName:
     - SM_NeonSign01
-    padding: 00010000
+    padding: 4d000000
     unwrapper: 00000000
   - meshName:
     - SM_NeonSign02
-    padding: 00010000
+    padding: 37000000
     unwrapper: 00000000
   - meshName:
     - SM_Arlend_00_Body
@@ -529,19 +533,19 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - SM_Table02
-    padding: 00010000
+    padding: b5000000
     unwrapper: 00000000
   - meshName:
     - SM_Amir00
-    padding: 00010000
+    padding: df000000
     unwrapper: 00000000
   - meshName:
     - SM_Arthur00
-    padding: 00010000
+    padding: e2000000
     unwrapper: 00000000
   - meshName:
     - SM_ DoorWatch00
-    padding: 00010000
+    padding: e5000000
     unwrapper: 00000000
   - meshName:
     - SM_Arlend_00_Head
@@ -549,19 +553,19 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_SpielPlatz00
-    padding: 31000000
-    unwrapper: 00000000
-  - meshName:
-    - SM_Scene_A_ClubEntrance00
-    padding: b1000000
-    unwrapper: 00000000
-  - meshName:
-    - SM_Scene_A_Blockout07
     padding: 09000000
     unwrapper: 00000000
   - meshName:
+    - SM_Scene_A_ClubEntrance00
+    padding: 23000000
+    unwrapper: 00000000
+  - meshName:
+    - SM_Scene_A_Blockout07
+    padding: 01000000
+    unwrapper: 00000000
+  - meshName:
     - SM_AC_00
-    padding: 00010000
+    padding: b6000000
     unwrapper: 00000000
   - meshName:
     - SM_Lamp01
@@ -569,39 +573,39 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Metal00
-    padding: 25000000
+    padding: 07000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Metal01
-    padding: 7c000000
+    padding: 18000000
     unwrapper: 00000000
   - meshName:
     - SM_Cloud01
-    padding: 09000000
+    padding: 01000000
     unwrapper: 00000000
   - meshName:
     - SM_Cloud00
-    padding: 02000000
+    padding: 01000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_FloorPlane00
-    padding: 3b000000
+    padding: 0b000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_WaterPlane04
-    padding: 1c000000
+    padding: 05000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Blockout08
-    padding: 09000000
+    padding: 01000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Escalator00
-    padding: 64000000
+    padding: 14000000
     unwrapper: 00000000
   - meshName:
     - SM_TableDesk_01
-    padding: 00010000
+    padding: b6000000
     unwrapper: 00000000
   - meshName:
     - SM_Chair_01
@@ -609,23 +613,39 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Carts00
-    padding: 84000000
+    padding: 1a000000
     unwrapper: 00000000
   - meshName:
     - SM_NeonSign04
-    padding: a9000000
+    padding: 21000000
     unwrapper: 00000000
   - meshName:
     - SM_TrainATM_00
-    padding: 00010000
+    padding: 69000000
     unwrapper: 00000000
   - meshName:
     - SM_NeonSign03
-    padding: 00010000
+    padding: 8b000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Fence02
-    padding: 00010000
+    padding: 38000000
+    unwrapper: 00000000
+  - meshName:
+    - SM_Palette00
+    padding: b7000000
+    unwrapper: 00000000
+  - meshName:
+    - SM_Crate01
+    padding: 59000000
+    unwrapper: 00000000
+  - meshName:
+    - SM_Barrel00
+    padding: bb000000
+    unwrapper: 00000000
+  - meshName:
+    - SM_Crate00
+    padding: 93000000
     unwrapper: 00000000
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
@@ -740,5 +760,5 @@ MonoBehaviour:
   renderSettingsRTPVSceneView: 0
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
-  modifiedMeshPaddingArray: 12000000
+  modifiedMeshPaddingArray: 69000000
   modifiedMeshUnwrapperArray: 00000000
