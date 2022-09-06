@@ -26,6 +26,7 @@ public class InteractObject : Interactable
     private bool climber;
     private bool tinyobject;
     private bool stick;
+    private bool moto;
 
 
     public override void OnFocus()
@@ -442,6 +443,7 @@ public class InteractObject : Interactable
             {
                 if (inHands) 
                 {
+                    onMoto = true;
                     collider.isTrigger = true;
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
@@ -453,12 +455,12 @@ public class InteractObject : Interactable
                     rb.velocity = new Vector3(0,0,0);
                     
 
-                    transform.rotation = GameObject.Find("MotoPos").transform.rotation;
-                    transform.position = GameObject.Find("MotoPos").transform.position;
+                    transform.position = new Vector3(GameObject.Find("MotoPos").transform.position.x, player.transform.position.y, GameObject.Find("MotoPos").transform.position.z);
                     
                 }
                 else if (throwObject) 
                 {
+                    onMoto = false;
                     collider.isTrigger = false;
                     transform.SetParent(null);
                     //rb.constraints = 0;
@@ -473,6 +475,7 @@ public class InteractObject : Interactable
 
         
     }
+    public bool onMoto;
 
     void FixedUpdate()
     {
@@ -483,6 +486,10 @@ public class InteractObject : Interactable
             if (GetComponent<ItemProperties>().id == 2 && climber) TiltSway(GameObject.Find("Pickaxe01").transform.localRotation);
             if (GetComponent<ItemProperties>().id == 9 && stick) TiltSway(GameObject.Find("StickPos01").transform.localRotation);
             if (GetComponent<ItemProperties>().id == 9 && !stick) TiltSway(GameObject.Find("StickPos00").transform.localRotation);
+            if (GetComponent<ItemProperties>().id == 11 && inHands) 
+            {
+                TiltSway(Quaternion.Euler(0, GameObject.Find("MotoPos").transform.localRotation.y - 90, 0));
+            }
         } 
     }
 
@@ -529,6 +536,16 @@ public class InteractObject : Interactable
         Quaternion finalRotation = Quaternion.Euler(new Vector3(rotationX ? tiltX : 0f, rotationY ? tiltY : 0f, rotationZ ? tiltY : 0f));
 
         transform.localRotation = Quaternion.Slerp(transform.localRotation, finalRotation * initialRotation, Time.deltaTime * smoothRotation);
+    }
+
+    public void TiltSwayGlobal(Quaternion initialRotation)
+    {
+        float tiltY = Mathf.Clamp(-Input.GetAxis("Mouse X") * rotationAmount, -maxRotationAmount, maxRotationAmount);
+        float tiltX = Mathf.Clamp(-Input.GetAxis("Mouse Y") * rotationAmount, -maxRotationAmount, maxRotationAmount);
+
+        Quaternion finalRotation = Quaternion.Euler(new Vector3(rotationX ? tiltX : 0f, rotationY ? tiltY : 0f, rotationZ ? tiltY : 0f));
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, finalRotation * initialRotation, Time.deltaTime * smoothRotation);
     }
     
 }

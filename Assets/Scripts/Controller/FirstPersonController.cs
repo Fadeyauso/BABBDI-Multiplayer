@@ -349,16 +349,16 @@ public class FirstPersonController : MonoBehaviour
         if (canMove)
         {
             HandleMovementInput();
-            if (characterController.isGrounded && !motorBike.GetComponent<MotorBike>().isActive) MovementBoost();
+            if (characterController.isGrounded && !motorBike.GetComponent<InteractObject>().onMoto) MovementBoost();
             
 
             if (canJump) HandleJump();
 
             if (canCrouch) HandleCrouch();
 
-            if (canUseHeadbob && standing && !motorBike.GetComponent<MotorBike>().isActive) HandleHeadbob();
+            if (canUseHeadbob && standing && !motorBike.GetComponent<InteractObject>().onMoto) HandleHeadbob();
 
-            if (useFootsteps && !motorBike.GetComponent<MotorBike>().isActive) HandleFootsteps();
+            if (useFootsteps && !motorBike.GetComponent<InteractObject>().onMoto) HandleFootsteps();
 
             if (canInteract)
             {
@@ -558,9 +558,19 @@ public class FirstPersonController : MonoBehaviour
         else if (Input.GetKey(KeyCode.S)) verticalInputRaw = -1;
         else verticalInputRaw = 0;
 
+        if (motorBike.GetComponent<InteractObject>().onMoto) 
+        {
+            currentInput = Vector2.zero;
+            currentInputRaw = Vector2.zero;
+        }
+        else
+        {
+            currentInput = new Vector2((InAirCrouch && inJump ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting && (slideTimer < 0 || (!Input.GetKey(crouchKey) && !Input.GetKey(KeyCode.C))) ? sprintSpeed : walkSpeed) * verticalInput, (InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * horizontalInput);
+            currentInputRaw = new Vector2((InAirCrouch && inJump ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting && (slideTimer < 0 || (!Input.GetKey(crouchKey) && !Input.GetKey(KeyCode.C))) ? sprintSpeed : walkSpeed) * verticalInputRaw, (InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * horizontalInputRaw);
+        }
 
-        currentInput = new Vector2((InAirCrouch && inJump ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting && (slideTimer < 0 || (!Input.GetKey(crouchKey) && !Input.GetKey(KeyCode.C))) ? sprintSpeed : walkSpeed) * verticalInput, (InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * horizontalInput);
-        currentInputRaw = new Vector2((InAirCrouch && inJump ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting && (slideTimer < 0 || (!Input.GetKey(crouchKey) && !Input.GetKey(KeyCode.C))) ? sprintSpeed : walkSpeed) * verticalInputRaw, (InAirCrouch ? inairCrouchSpeed : isCrouching && force == Vector3.zero ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * horizontalInputRaw);
+
+        
     }
 
     private void HandleMovementInput()

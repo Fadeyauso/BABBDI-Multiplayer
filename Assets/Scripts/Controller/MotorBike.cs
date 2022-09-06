@@ -10,13 +10,11 @@ public class MotorBike : MonoBehaviour
     public float power = 2f;
     public float acceleration = 10f;
     public bool isActive;
-    private Quaternion initRotation;
     public GameObject guidon;
+    Vector3 desiredSpeed;
 
-    float rotationZ;
-
-
-
+    [SerializeField] private float tiltAmount = 7f;
+    [SerializeField] private float tiltSpeed = 7f;
 
     // Start is called before the first frame update
     void Awake()
@@ -26,7 +24,7 @@ public class MotorBike : MonoBehaviour
 
     void Start()
     {
-        initRotation = transform.rotation;
+
     }
 
     // Update is called once per frame
@@ -36,15 +34,6 @@ public class MotorBike : MonoBehaviour
         if (Input.GetButton("Fire1") && GetComponent<InteractObject>().inHands)
         {
             isActive = true;
-            float tiltY = Mathf.Clamp(-Input.GetAxis("Mouse X") * rotationAmount, -maxRotationAmount, maxRotationAmount);
-
-
-            var desiredTilt = player.GetComponent<FirstPersonController>().verticalInputRaw;
-            var desiredRotation = tiltY;
-            if (rotationZ != desiredTilt) SideTilt(desiredTilt);
-            if (guidon.transform.localRotation != desiredRotation) GuidonTilt(desiredRotation);
-
-            transform.rotation = new Quaternion.Euler(0, 0, rotationZ);
         }
         else 
         {
@@ -65,7 +54,7 @@ public class MotorBike : MonoBehaviour
             }
         }
 
-        Vector3 desiredSpeed = isActive ? new Vector3(player.GetComponent<FirstPersonController>().playerCamera.transform.forward.x, 0, player.GetComponent<FirstPersonController>().playerCamera.transform.forward.z) * power : Vector3.zero;
+        if (player.GetComponent<FirstPersonController>().characterController.isGrounded) desiredSpeed = isActive ? new Vector3(player.transform.forward.x, 0, player.transform.forward.z) * power : Vector3.zero;
 
         if (motorMovement != desiredSpeed)
         {
@@ -76,16 +65,5 @@ public class MotorBike : MonoBehaviour
     private void GetSpeed(Vector3 tempspeed)
     {
         motorMovement = Vector3.Lerp(motorMovement, tempspeed, acceleration * Time.deltaTime);
-    }
-
-    private void SideTilt(float desiredTilt)
-    {
-        rotationZ = Mathf.Lerp(rotationZ, temptiltAmount, tiltSpeed * Time.deltaTime);
-    }
-
-    private void GuidonTilt()
-    {
-        float tiltY = Mathf.Clamp(-Input.GetAxis("Mouse X") * rotationAmount, -maxRotationAmount, maxRotationAmount);
-        Mathf.Lerp(guidon.transform.localRotation.z, tiltY, Time.deltaTime * smoothRotation);
     }
 }
