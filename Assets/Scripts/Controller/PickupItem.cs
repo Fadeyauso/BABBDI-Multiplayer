@@ -84,7 +84,7 @@ public class PickupItem : MonoBehaviour
             }
             if (GameObject.Find("GameManager").GetComponent<GameManager>().item == 11) 
             {
-                GameObject obj = Instantiate(motorBike, GameObject.Find("MotoPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
+                GameObject obj = Instantiate(motorBike, GameObject.Find("MotoPos").transform.position, Quaternion.identity, GameObject.Find("Player").transform);
                 obj.GetComponent<InteractObject>().inHands = true;
                 GameObject.Find("Player").GetComponent<FirstPersonController>().motorBike = obj;
             }

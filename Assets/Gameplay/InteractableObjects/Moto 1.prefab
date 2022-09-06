@@ -123,15 +123,16 @@ MonoBehaviour:
   interactionClip: {fileID: 8300000, guid: f2d20b496dbdaee489acc4aa20487f96, type: 3}
   collider: {fileID: 564961322651457335}
   secret: {fileID: 0}
+  onMoto: 0
   amount: 0.02
   maxAmount: 0.06
   smoothAmount: 6
   rotationAmount: 4
   maxRotationAmount: 5
   smoothRotation: 12
-  rotationX: 1
+  rotationX: 0
   rotationY: 1
-  rotationZ: 1
+  rotationZ: 0
 --- !u!114 &2896923537395855425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +181,9 @@ MonoBehaviour:
   power: 30
   acceleration: 2
   isActive: 0
+  guidon: {fileID: 8118453985259307440}
+  tiltAmount: 7
+  tiltSpeed: 7
 --- !u!1 &4868007707446919377
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +428,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6584713960496002374, guid: 080ed1ca5f58d884c9df8f2659d99703, type: 3}
