@@ -31,7 +31,7 @@ public class MotorBike : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButton("Fire1") && GetComponent<InteractObject>().inHands)
+        if (Input.GetButton("Fire1") && GetComponent<InteractObject>().onMoto)
         {
             isActive = true;
         }
@@ -58,7 +58,7 @@ public class MotorBike : MonoBehaviour
 
         if (motorMovement != desiredSpeed)
         {
-            GetSpeed(desiredSpeed);
+            if (player.GetComponent<FirstPersonController>().characterController.isGrounded) GetSpeed(desiredSpeed);
         }
     }
 

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour, ISaveable
     [HideInInspector] public int item;
     [HideInInspector] public bool inActivatedLift;
     [HideInInspector] public bool secretPopup;
+    [HideInInspector] public int requestTrain = 0;
     public bool endGame;
     public float gameTime = 0;
     public int secondPart;
@@ -90,6 +91,7 @@ public class GameManager : MonoBehaviour, ISaveable
         {
             ticket = this.haveTicket,
             parttwo = this.secondPart,
+            endtrain = this.requestTrain,
 
             //Achievements
             wayClimber = this.wayClimberState,
@@ -105,6 +107,7 @@ public class GameManager : MonoBehaviour, ISaveable
 
         haveTicket = saveData.ticket;
         secondPart = saveData.parttwo;
+        requestTrain = saveData.endtrain;
 
         //Achievements
         wayClimberState = saveData.wayClimber;
@@ -119,6 +122,7 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         public int ticket;
         public int parttwo;
+        public int endtrain;
 
         //Achievements
         public int wayClimber;

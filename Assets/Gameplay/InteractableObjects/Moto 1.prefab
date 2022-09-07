@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audio: {fileID: 4868007707446919379}
   motorMovement: {x: 0, y: 0, z: 0}
-  power: 30
+  power: 26
   acceleration: 2
   isActive: 0
   guidon: {fileID: 8118453985259307440}
@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 1850519973966077641}
   - component: {fileID: 9000984209393394575}
   - component: {fileID: 5656303794737525110}
+  - component: {fileID: 1083211064}
   m_Layer: 7
   m_Name: SM_MotoGuidon00
   m_TagString: Untagged
@@ -431,3 +432,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6584713960496002374, guid: 080ed1ca5f58d884c9df8f2659d99703, type: 3}
+--- !u!114 &1083211064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8118453985259307440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d8b87967ce25bb4280a4748d92b6f7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationAmount: 60
+  maxRotationAmount: 70
+  smoothRotation: 5
+  rotationX: 0
+  rotationY: 1
+  rotationZ: 0
