@@ -64,7 +64,9 @@ MonoBehaviour:
   - Assets/Environment/Props/SM_Crate01.fbx
   - Assets/Environment/Props/SM_Barrel00.fbx
   - Assets/Environment/Props/SM_Crate00.fbx
-  modifiedAssetPaddingHash: aaf8cc2e363fd3d9ecc124910cf43a06383fd3d9383fd3d9383fd3d919c2a693d84608c804c5d890363fd3d9363fd3d9c6d15080c1d15080dc4608c8797e9363343fd3d9343fd3d9353fd3d9275031ee9f398033ecc12491cf3188830c38ed040938ed041638ed04ecc124913e3fd3d9d9398033363fd3d9d0318883ecc12491343fd3d95dc5d890363fd3d9363fd3d9af67e2a8323fd3d9363fd3d9f1f23a06d0318883ecc1249127dc894b377e9363f327c115ba5634b7cedb894bd1318883eec3a693cd31888309a3ddde
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_Woodwork00.fbx
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_Rugs00.fbx
+  modifiedAssetPaddingHash: aaf8cc2e363fd3d9ecc124919650cf35383fd3d9383fd3d9383fd3d919c2a693d84608c804c5d890363fd3d9363fd3d9c6d15080c1d15080dc4608c8797e9363343fd3d9343fd3d9353fd3d9275031ee9f398033ecc12491cf3188830c38ed040938ed041638ed04ecc124913e3fd3d9d9398033363fd3d9d0318883ecc12491343fd3d9567e9363363fd3d9363fd3d9af67e2a8323fd3d9363fd3d9f1f23a06d0318883ecc1249127dc894b377e9363f327c115ba5634b7cedb894bd1318883eec3a693cd31888309a3ddde885031ee907f9363
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -457,7 +459,7 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - SM_Table00
-    padding: 00010000
+    padding: c1000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Fence00
@@ -577,7 +579,7 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Metal01
-    padding: 18000000
+    padding: 17000000
     unwrapper: 00000000
   - meshName:
     - SM_Cloud01
@@ -646,6 +648,14 @@ MonoBehaviour:
   - meshName:
     - SM_Crate00
     padding: 93000000
+    unwrapper: 00000000
+  - meshName:
+    - SM_Scene_A_Woodwork00
+    padding: 2f000000
+    unwrapper: 00000000
+  - meshName:
+    - SM_Scene_A_Rugs00
+    padding: 53000000
     unwrapper: 00000000
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
@@ -760,5 +770,5 @@ MonoBehaviour:
   renderSettingsRTPVSceneView: 0
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
-  modifiedMeshPaddingArray: b5000000
+  modifiedMeshPaddingArray: 17000000
   modifiedMeshUnwrapperArray: 00000000
