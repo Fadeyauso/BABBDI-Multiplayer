@@ -42,8 +42,8 @@ public class FirstPersonController : MonoBehaviour
     [Header("Look Parameters")]
     [SerializeField, Range(1, 10)] public float lookSpeedX = 2.0f;
     [SerializeField, Range(1, 10)] public float lookSpeedY = 2.0f;
-    [SerializeField, Range(1, 10)] private float upperLookLimit = 90f;
-    [SerializeField, Range(1, 10)] private float lowerLookLimit = 90f;
+    [SerializeField] private float upperLookLimit = 90f;
+    [SerializeField] private float lowerLookLimit = 90f;
     [SerializeField] private Vector3 offset;
     private Quaternion initialRotation;
 
@@ -147,7 +147,16 @@ public class FirstPersonController : MonoBehaviour
         
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, slopeForceRayLength))
-            if (hit.normal != Vector3.up && GetComponent<Slope>().downhill && Vector3.Angle(hit.normal, Vector3.up) > 15)
+            if (hit.normal != Vector3.up && Vector3.Angle(hit.normal, Vector3.up) > 15)
+                return true;
+        return false;
+    }
+
+    private bool OnSteepSlope()
+    { 
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, slopeForceRayLength))
+            if (hit.normal != Vector3.up && GetComponent<Slope>().uphill && Vector3.Angle(hit.normal, Vector3.up) > 40)
                 return true;
         return false;
     }
@@ -291,7 +300,7 @@ public class FirstPersonController : MonoBehaviour
         if (pauseMenu.activeSelf || GameObject.Find("GameManager").GetComponent<GameManager>().endGame) pause = true;
         else pause = false;
 
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit prejumpHit, 1f) && Input.GetKeyDown(jumpKey) && characterController.velocity.y < 0) 
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit prejumpHit, 1.3f) && Input.GetKeyDown(jumpKey) && characterController.velocity.y < 0) 
         {
             prejump = true;
             prejumpCancelTimer = 1f;
@@ -402,7 +411,10 @@ public class FirstPersonController : MonoBehaviour
             else currentWeight = 1;
                 
         }
+        jumpTimer -= Time.deltaTime;
+        if (Input.GetKeyDown(jumpKey) && characterController.isGrounded) jumpTimer = 0.3f;
     }
+    private float jumpTimer = 0;
 
     private void MovementBoost()
     {
@@ -436,11 +448,11 @@ public class FirstPersonController : MonoBehaviour
         {
             vault = true;
             moveDirection.y = 5f;
-            aftervaultjumpTimer = 0.2f;
+            aftervaultjumpTimer = 0.3f;
         }
         else if (aftervaultjumpTimer > 0 && downRay && !characterController.isGrounded)
         {
-            aftervaultjumpTimer = 0f;
+            //aftervaultjumpTimer = 0f;
             moveDirection.y = -1.5f;
             vault = false;
         }
@@ -495,7 +507,7 @@ public class FirstPersonController : MonoBehaviour
     public void AddVerticalForce(Vector3 tempforce, float tempforceFactor)
     {
         deceleration = 1;
-        moveDirection = new Vector3(moveDirection.x, 0, moveDirection.z);
+        moveDirection = new Vector3(moveDirection.x, -1, moveDirection.z);
         forceFactor = tempforceFactor;
         force = tempforce;
         moveDirection.y = force.y * forceFactor;
@@ -624,8 +636,17 @@ public class FirstPersonController : MonoBehaviour
     }
 
     private void HandleJump()
-    {
-        if (aftervaultjumpTimer > 0 && Input.GetKeyDown(jumpKey))
+    {            
+        if (jumpSlope)
+        {
+            jumpTimer = 0;
+            jumpSlope = false;
+            SoundManager.Instance.PlaySound(jumpClip);
+            moveDirection.y = jumpForce;
+            inJump = true;
+            landing = true;
+        }
+        else if (aftervaultjumpTimer > 0 && Input.GetKeyDown(jumpKey))
         {
             SoundManager.Instance.PlaySound(jumpClip);
             moveDirection.y = jumpForce;
@@ -642,7 +663,7 @@ public class FirstPersonController : MonoBehaviour
             landing = true;
             inJump = true;
         }
-        else if (ShouldJump || (airTime > 0.1f && Input.GetKeyDown(jumpKey) && !inJump))
+        else if (Input.GetKeyDown(jumpKey) && characterController.isGrounded && airTime > 0.1f || (airTime > 0.1f && Input.GetKeyDown(jumpKey) && !inJump))
         {
             SoundManager.Instance.PlaySound(jumpClip);
             moveDirection.y = jumpForce;
@@ -753,7 +774,7 @@ public class FirstPersonController : MonoBehaviour
             else fallTimer += Time.deltaTime * (currentInputRaw != Vector2.zero ? fallBobUpSpeed / 4 : fallBobUpSpeed);
             playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(fallTimer) * fallBobAmount * 2, playerCamera.transform.localPosition.z);
         }
-        else if (currentInputRaw != new Vector2(0,0) && landTimer < -0.15f && characterController.isGrounded)
+        else if (currentInputRaw != new Vector2(0,0) && landTimer < -0.25f && characterController.isGrounded)
         {
             timer += Time.deltaTime * (isCrouching ? crouchBobSpeed : IsSprinting ? sprintBobSpeed : walkBobSpeed);
             playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(timer) * (isCrouching ? crouchBobAmount : IsSprinting ? sprintBobAmount : walkBobAmount), playerCamera.transform.localPosition.z);
@@ -816,24 +837,23 @@ public class FirstPersonController : MonoBehaviour
 
     private void ApplyFinalMovements()
     {
-        if (currentInputRaw.magnitude != 0 && OnSlope())
+        if (currentInputRaw.magnitude != 0 && OnSlope() && !Input.GetKey(jumpKey))
         {
-            moveDirection.y -= gravity * Time.deltaTime;
-            moveDirection.y -= slopeForce * Time.deltaTime;
-            if (ShouldJump)
+            if (Input.GetKeyDown(jumpKey))
             {
                 moveDirection.y = 0;
                 jumpSlope = true;
             } 
+            else jumpSlope = false;
+            if (!jumpSlope)
+            {
+                moveDirection.y -= gravity * slopeForce * Time.deltaTime;
+            }
         }
         else if (!characterController.isGrounded)
         {
             moveDirection.y -= gravity * Time.deltaTime;
-            if (jumpSlope)
-            {
-                jumpSlope = false;
-                moveDirection.y = jumpForce;
-            }
+
         }
 
         
@@ -849,14 +869,15 @@ public class FirstPersonController : MonoBehaviour
 
         if (upRay && !characterController.isGrounded) AddVerticalForce(new Vector3(0, -1, 0), 2f);
 
-        if (WillSlideOnSlopes && IsSliding)
-        {
-            moveDirection += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * slopeSpeed;
-        }
-        else if (WillSlideOnSlopes && CrouchSliding && GetComponent<Slope>().surfaceAngle >= 12)
+        if (WillSlideOnSlopes && CrouchSliding && GetComponent<Slope>().surfaceAngle >= 12)
         {
             moveDirection += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * (GetComponent<Slope>().surfaceAngle < 20 ? slopeSlideSpeed * 4 : slopeSlideSpeed) * hitPointNormal.magnitude;
         }
+        else if (WillSlideOnSlopes && IsSliding)
+        {
+            moveDirection += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * slopeSpeed;
+        }
+        
 
         characterController.Move(moveDirection * Time.deltaTime * currentWeight);
     }
