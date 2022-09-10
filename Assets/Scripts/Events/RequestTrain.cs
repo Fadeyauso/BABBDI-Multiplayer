@@ -6,6 +6,8 @@ public class RequestTrain : Interactable
 {
     private GameObject GameManager;
     private Material[] materials;
+    public AudioClip train;
+    public AudioClip sound;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +16,7 @@ public class RequestTrain : Interactable
 
      public override void OnFocus()
     {
-        foreach (Material mat in materials)
-        {
-            mat.SetFloat("_OutlineWidth", 0.015f);
-        }
+
     }
 
     public override void OnInteract()
@@ -26,6 +25,8 @@ public class RequestTrain : Interactable
         {
             GameManager.GetComponent<GameManager>().haveTicket = 0;
             GameManager.GetComponent<GameManager>().requestTrain = 1;
+            SoundManager.Instance.PlaySound(sound);
+            SoundManager.Instance.PlaySound(train);
 
 
             
@@ -34,10 +35,6 @@ public class RequestTrain : Interactable
 
     public override void OnLoseFocus()
     {
-        foreach (Material mat in materials)
-        {
-            mat.SetFloat("_OutlineWidth", 0);
-        }
 
     }
 

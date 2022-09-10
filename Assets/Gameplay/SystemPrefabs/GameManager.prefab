@@ -48,12 +48,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b05947a7510c745a1bd04f58964025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
+  confirmReturnHome: {fileID: 0}
   pickup: 0
   item: 0
   inActivatedLift: 0
   secretPopup: 0
+  requestTrain: 0
+  endGame: 0
+  gameTime: 0
+  secondPart: 0
+  haveTicket: 0
   lastAchievement: 
   wayClimber: 0
+  wayClimberState: 0
   wayClimberToggle: {fileID: 0}
   jingle:
   - {fileID: 8300000, guid: 9b4450cbc45e5184e82e58a297df557d, type: 3}

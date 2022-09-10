@@ -9,6 +9,8 @@ public class EnterZone : MonoBehaviour
     private float outdoortimer;
 
     [HideInInspector] public bool inLift;
+
+    public AudioClip endGameClip;
     
 
     // Update is called once per frame
@@ -33,6 +35,22 @@ public class EnterZone : MonoBehaviour
             outdoortimer = 4;
             indoortimer = 0;
         }
+        if (collisionInfo.tag == "Subway/In")
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().inSubway = true;
+        }
+        if (collisionInfo.tag == "Subway/Out")
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().inSubway = false;
+        }
+        if (collisionInfo.tag == "Club/In")
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().inClub = true;
+        }
+        if (collisionInfo.tag == "Club/Out")
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().inClub = false;
+        }
         if (collisionInfo.tag == "Achievement/wayClimber")
         {
             if (!GameObject.Find("GameManager").GetComponent<GameManager>().wayClimber) GameObject.Find("GameManager").GetComponent<GameManager>().Popup();
@@ -42,7 +60,27 @@ public class EnterZone : MonoBehaviour
         }
         if (collisionInfo.tag == "Train")
         {
+            SoundManager.Instance.PlayRealMusic(endGameClip, 1);
             GameObject.Find("GameManager").GetComponent<GameManager>().endGame = true;
+        }
+        if (collisionInfo.tag == "KillZ")
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().ReturnHome();
+        }
+        if (collisionInfo.tag == "MusicZone" && collisionInfo.GetComponent<MusicZone>().timer < 0)
+        {
+            SoundManager.Instance.PlayMusic(collisionInfo.GetComponent<MusicZone>().music, 0);
+            collisionInfo.GetComponent<MusicZone>().timer = collisionInfo.GetComponent<MusicZone>().countown;
+        }
+        if (collisionInfo.tag == "MusicZonePartTwo" && GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1 && collisionInfo.GetComponent<MusicZone>().timer < 0)
+        {
+            SoundManager.Instance.PlayMusic(collisionInfo.GetComponent<MusicZone>().music, 0);
+            collisionInfo.GetComponent<MusicZone>().timer = collisionInfo.GetComponent<MusicZone>().countown;
+        }
+        if (collisionInfo.tag == "MusicZonePartOne" && GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 0 && collisionInfo.GetComponent<MusicZone>().timer < 0)
+        {
+            SoundManager.Instance.PlayMusic(collisionInfo.GetComponent<MusicZone>().music, 0);
+            collisionInfo.GetComponent<MusicZone>().timer = collisionInfo.GetComponent<MusicZone>().countown;
         }
 
         
@@ -55,6 +93,10 @@ public class EnterZone : MonoBehaviour
         {
             transform.SetParent(collisionInfo.GetComponent<SetLift>().lift.transform);
             inLift = true;
+        }
+        if (collisionInfo.tag == "Train")
+        {
+            transform.parent = collisionInfo.transform;
         }
     }
 

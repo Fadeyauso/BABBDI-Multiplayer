@@ -19,6 +19,6 @@ public class TrainMovement : MonoBehaviour
     {
         if (!GameObject.Find("Player").GetComponent<FirstPersonController>().pause) transform.position += Vector3.right * trainSpeed * Time.deltaTime;
 
-        if (trainSpeed < 0 ? transform.position.x < endPos.position.x : transform.position.x > endPos.position.x) transform.position = new Vector3(startPos.position.x, transform.position.y, transform.position.z);
+        if ((trainSpeed < 0 ? transform.position.x < endPos.position.x : transform.position.x > endPos.position.x) && GameObject.Find("GameManager").GetComponent<GameManager>().requestTrain == 0) transform.position = new Vector3(startPos.position.x, transform.position.y, transform.position.z);
     }
 }

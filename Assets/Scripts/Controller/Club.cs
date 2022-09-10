@@ -38,25 +38,29 @@ public class Club : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (GetComponent<InteractObject>().inHands)
         {
-            touch = true;
+            if (Input.GetButtonDown("Fire1"))
+            {
+                touch = true;
+            }
+
+            if (Input.GetButtonUp("Fire1")) touch = false;
+
+            if (player.GetComponent<FirstPersonController>().frontRay && !player.GetComponent<FirstPersonController>().characterController.isGrounded)
+                wall = true;
+            else if (player.GetComponent<FirstPersonController>().rotationX < 45 && player.GetComponent<FirstPersonController>().characterController.isGrounded)
+                wall = true;
+            else wall = false;
         }
-
-        if (Input.GetButtonUp("Fire1")) touch = false;
-
-        if (player.GetComponent<FirstPersonController>().frontRay && !player.GetComponent<FirstPersonController>().characterController.isGrounded)
-            wall = true;
-        else if (player.GetComponent<FirstPersonController>().rotationX < 45 && player.GetComponent<FirstPersonController>().characterController.isGrounded)
-            wall = true;
-        else wall = false;
+        
     }
 
 
     void OnTriggerStay(Collider collisionInfo)
     {
 
-        if (touch && collisionInfo.tag != "Player")
+        if (touch && collisionInfo.tag != "Player" && GetComponent<InteractObject>().inHands)
         {
             SoundManager.Instance.PlaySound(hit);
 

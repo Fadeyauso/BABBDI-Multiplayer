@@ -255,7 +255,7 @@ public class FirstPersonController : MonoBehaviour
         if (IsSliding) onFlatGround = false;
         else onFlatGround = true;
         //Pause Menu
-        if (pause == true)
+        if (pause == true || (GameObject.Find("Outro").GetComponent<Outro>().timer < -4f))
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -265,7 +265,7 @@ public class FirstPersonController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameObject.Find("GameManager").GetComponent<GameManager>().endGame)
         {
             pauseMenu.SetActive(!pauseMenu.activeSelf);
             firstInterface.SetActive(true);
@@ -281,7 +281,7 @@ public class FirstPersonController : MonoBehaviour
             }
             
         }
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && !GameObject.Find("GameManager").GetComponent<GameManager>().endGame)
         {
             pauseMenu.SetActive(!pauseMenu.activeSelf);
             firstInterface.SetActive(false);
@@ -297,13 +297,13 @@ public class FirstPersonController : MonoBehaviour
             }
             
         }
-        if (pauseMenu.activeSelf || GameObject.Find("GameManager").GetComponent<GameManager>().endGame) pause = true;
+        if (pauseMenu.activeSelf) pause = true;
         else pause = false;
 
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit prejumpHit, 1.3f) && Input.GetKeyDown(jumpKey) && characterController.velocity.y < 0) 
         {
             prejump = true;
-            prejumpCancelTimer = 1f;
+            prejumpCancelTimer = 0.4f;
         }
         frontRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit sst, 4f));
         shortfrontRay = (Physics.Raycast(playerCamera.transform.position, transform.forward, out RaycastHit swst, 1f));
@@ -339,8 +339,8 @@ public class FirstPersonController : MonoBehaviour
         aftervaultjumpTimer -= Time.deltaTime;
         prejumpCancelTimer -= Time.deltaTime;
         
-
-        if (climber != null) 
+        if (GameObject.Find("GameManager").GetComponent<GameManager>().endGame) canMove = false;
+        else if (climber != null) 
         {
 
             if (pauseMenu.activeSelf == true) canMove = false;
@@ -350,7 +350,7 @@ public class FirstPersonController : MonoBehaviour
         }
         if (climber == null) canMove = !dialogueActive;
         
-        if (!pause) HandleMouseLook();
+        if (!pause && (GameObject.Find("Outro").GetComponent<Outro>().timer > -4f)) HandleMouseLook();
 
         CalculateMovementInput();
         HandleAddingForce();
@@ -834,6 +834,7 @@ public class FirstPersonController : MonoBehaviour
     }
 
     private bool jumpSlope = false;
+    private bool leaveSlope;
 
     private void ApplyFinalMovements()
     {
@@ -849,12 +850,15 @@ public class FirstPersonController : MonoBehaviour
             {
                 moveDirection.y -= gravity * slopeForce * Time.deltaTime;
             }
+            leaveSlope = true;
         }
         else if (!characterController.isGrounded)
         {
             moveDirection.y -= gravity * Time.deltaTime;
 
         }
+
+        
 
         
 
@@ -869,7 +873,7 @@ public class FirstPersonController : MonoBehaviour
 
         if (upRay && !characterController.isGrounded) AddVerticalForce(new Vector3(0, -1, 0), 2f);
 
-        if (WillSlideOnSlopes && CrouchSliding && GetComponent<Slope>().surfaceAngle >= 12)
+        if (WillSlideOnSlopes && CrouchSliding && GetComponent<Slope>().surfaceAngle >= 12 && !Input.GetKey(jumpKey))
         {
             moveDirection += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * (GetComponent<Slope>().surfaceAngle < 20 ? slopeSlideSpeed * 4 : slopeSlideSpeed) * hitPointNormal.magnitude;
         }
@@ -891,7 +895,7 @@ public class FirstPersonController : MonoBehaviour
 
         if (footstepTimer <= 0 && !isCrouching && currentInputRaw != Vector2.zero)
         {
-            if (Physics.Raycast(playerCamera.transform.position, Vector3.down, out RaycastHit hit, 3f))
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 3f))
             {
                 switch(hit.collider.tag)
                 {

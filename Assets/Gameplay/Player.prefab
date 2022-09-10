@@ -893,7 +893,7 @@ Transform:
   - {fileID: 2427017149897209492}
   - {fileID: 1227882264276423631}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &7482973072534782209
 CharacterController:
@@ -926,6 +926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inLift: 0
+  endGameClip: {fileID: 8300000, guid: edc0ea2d2d0b05846afe58f7d9b23c9f, type: 3}
 --- !u!114 &3072209578988679877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,7 +976,7 @@ MonoBehaviour:
   interactKey: 101
   walkSpeed: 5
   sprintSpeed: 8
-  crouchSpeed: 1.5
+  crouchSpeed: 3
   inairCrouchSpeed: 8
   slopeSlideSpeed: 18
   slopeSpeed: 8
@@ -1021,16 +1022,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: eb199323d1a12ce4c846db77269b6c6c, type: 3}
   - {fileID: 8300000, guid: 2452011a8eec97b40bbc440172f9c13f, type: 3}
   woodClips:
-  - {fileID: 8300000, guid: b2c7eef8448b6324e94b782e27474083, type: 3}
-  - {fileID: 8300000, guid: a02ff5f116f1a834da7d5ae9a3f8037f, type: 3}
-  - {fileID: 8300000, guid: d9433f059753feb45be99d87b3e5ef3f, type: 3}
-  - {fileID: 8300000, guid: 395fca6c5c5a2834b959912d0da01daa, type: 3}
+  - {fileID: 8300000, guid: 3c584587dd47c5a4aaf3a466fab1532b, type: 3}
+  - {fileID: 8300000, guid: daa95d2b024d656479385bcc90473699, type: 3}
+  - {fileID: 8300000, guid: c4a72dbf88c2d494682094ad8754c5cf, type: 3}
+  - {fileID: 8300000, guid: dcb6142fd560f2942bbdebd49d18a1d5, type: 3}
   grassClips:
   - {fileID: 8300000, guid: b576aa201a4dfcc4889d117fdfc10de0, type: 3}
   - {fileID: 8300000, guid: 37d00a2ca59a1dd4bbc4e6e00c5c62bb, type: 3}
   - {fileID: 8300000, guid: bee3e667d19a4f140a4c314a137f495d, type: 3}
-  slopeForce: 2000
-  slopeForceRayLength: 20
+  slopeForce: 100
+  slopeForceRayLength: 3
   interactionRayPoint: {x: 0.5, y: 0.5, z: 0}
   interactionDistance: 5
   interactionLayer:
@@ -1141,7 +1142,7 @@ AudioReverbZone:
   m_GameObject: {fileID: 7482973072534782211}
   m_Enabled: 1
   m_MinDistance: 0
-  m_MaxDistance: 15
+  m_MaxDistance: 10.082031
   m_ReverbPreset: 1
   m_Room: -1000
   m_RoomHF: -100

@@ -37,7 +37,7 @@ public class Outro : MonoBehaviour
         if (GameObject.Find("GameManager").GetComponent<GameManager>().endGame)
         {
             timer -= Time.deltaTime;
-            if (timer < initTimer)
+            if (timer < 5)
             {
                 tempColor.a += Time.deltaTime * fadeSpeed;
                 image.color = tempColor;
