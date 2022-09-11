@@ -15,6 +15,8 @@ public class MotorBike : MonoBehaviour
 
     [SerializeField] private float tiltAmount = 7f;
     [SerializeField] private float tiltSpeed = 7f;
+    [SerializeField] private AudioClip idle;
+    [SerializeField] private AudioClip run;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,35 +26,43 @@ public class MotorBike : MonoBehaviour
 
     void Start()
     {
-
+        audio.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
         if (Input.GetButton("Fire1") && GetComponent<InteractObject>().onMoto)
         {
             isActive = true;
+            
         }
         else 
         {
             isActive = false;
         }
 
+        if (Input.GetButtonDown("Fire1")) audio.clip = run;
+        if (Input.GetButtonUp("Fire1")) audio.clip = idle;
+
         if (!player.GetComponent<FirstPersonController>().pause)
         {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                audio.mute = false;
-                audio.Play();
+            if (!GetComponent<InteractObject>().inHands) audio.Stop();
+            else{
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    audio.Play();
+                }
+                if (Input.GetButtonUp("Fire1"))
+                {
+                    audio.Play();
+                }
             }
-            if (isActive == false) 
-            {
-                audio.mute = true;
-                audio.Stop();
-            }
+            
         }
+
+        
 
         if (player.GetComponent<FirstPersonController>().characterController.isGrounded) desiredSpeed = isActive ? new Vector3(player.transform.forward.x, 0, player.transform.forward.z) * power : Vector3.zero;
 

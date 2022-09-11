@@ -15,7 +15,10 @@ public class SubwaySound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        audio.mute = !GameObject.Find("GameManager").GetComponent<GameManager>().inSubway;
+        //audio.mute = !GameObject.Find("GameManager").GetComponent<GameManager>().inSubway;
+
+        if (GameObject.Find("GameManager").GetComponent<GameManager>().inSubway) audio.volume = Mathf.Lerp(audio.volume, GameObject.Find("AmbientSource").GetComponent<AudioSource>().volume, 1f * Time.deltaTime);
+        else if (!GameObject.Find("GameManager").GetComponent<GameManager>().inSubway) audio.volume = Mathf.Lerp(audio.volume, 0, 2f * Time.deltaTime);
 
         if (GameObject.Find("GameManager").GetComponent<GameManager>().inSubway)
         {

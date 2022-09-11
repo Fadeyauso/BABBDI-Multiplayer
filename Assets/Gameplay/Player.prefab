@@ -165,7 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1246247444}
   m_Layer: 10
-  m_Name: StickPos00
+  m_Name: StickPos01
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1570248699}
   m_Layer: 10
-  m_Name: StickPos01
+  m_Name: StickPos00
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

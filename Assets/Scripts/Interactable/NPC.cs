@@ -12,7 +12,7 @@ public class NPC : Interactable
 
     public override void OnFocus()
     {
-        Debug.Log("asccaca");
+        if (!GameObject.Find("Player").GetComponent<FirstPersonController>().dialogueActive) GameObject.Find("Player").GetComponent<FirstPersonController>().talkPopup.SetActive(true);
     }
 
     public override void OnInteract()
@@ -30,7 +30,7 @@ public class NPC : Interactable
 
     public override void OnLoseFocus()
     {
-        Debug.Log("aaaa");
+        GameObject.Find("Player").GetComponent<FirstPersonController>().talkPopup.SetActive(false);
 
     }
 }

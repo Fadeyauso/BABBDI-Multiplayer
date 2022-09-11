@@ -14,12 +14,15 @@ public class GameManager : MonoBehaviour, ISaveable
     [Header("UI")] 
     public GameObject pauseMenu;
     public GameObject confirmReturnHome;
+    public GameObject notavailable;
+    public GameObject returnoffice;
 
     [SerializeField] public static int secretsFound = 0;
     [HideInInspector] public bool pickup;
     [HideInInspector] public int item;
     [HideInInspector] public bool inActivatedLift;
     [HideInInspector] public bool secretPopup;
+    [HideInInspector] public bool noticketPopup;
     public int requestTrain = 0;
     [HideInInspector] public bool inSubway;
     [HideInInspector] public bool inClub;
@@ -83,6 +86,15 @@ public class GameManager : MonoBehaviour, ISaveable
             pauseMenu.SetActive(false);
             confirmReturnHome.SetActive(false);
         }
+
+        if (secondPart == 1) {
+            notavailable.SetActive(true);
+            returnoffice.SetActive(true);
+        }
+        else {
+            notavailable.SetActive(false);
+            returnoffice.SetActive(false);
+        }
     }
 
     public void AddSecret()
@@ -102,6 +114,11 @@ public class GameManager : MonoBehaviour, ISaveable
     public void ReturnHome()
     {
         GameObject.Find("Player").transform.position = GameObject.Find("LobbyPosition").transform.position;
+        lobbyTimer = 0.1f;
+    }
+    public void ReturnOffice()
+    {
+        GameObject.Find("Player").transform.position = GameObject.Find("OfficePosition").transform.position;
         lobbyTimer = 0.1f;
     }
 

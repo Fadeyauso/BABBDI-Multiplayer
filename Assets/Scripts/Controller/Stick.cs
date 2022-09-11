@@ -31,7 +31,7 @@ public class Stick : MonoBehaviour
         {
             SoundManager.Instance.PlaySound(impactClip);
             ContactPoint contact = collision.contacts[0];
-            player.GetComponent<FirstPersonController>().AddForce(contact.normal, impactPower * Mathf.Clamp(new Vector2(mouseX, mouseY).magnitude, 0, 5));
+            player.GetComponent<FirstPersonController>().AddForce(contact.normal, impactPower * Mathf.Clamp(new Vector2(mouseX, mouseY).magnitude, 0, 2));
             
         }
     }

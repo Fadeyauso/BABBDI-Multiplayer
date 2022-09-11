@@ -14,6 +14,7 @@ public class ClubSound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        audio.mute = !GameObject.Find("GameManager").GetComponent<GameManager>().inClub;
+        if (GameObject.Find("GameManager").GetComponent<GameManager>().inClub) audio.volume = Mathf.Lerp(audio.volume, GameObject.Find("AmbientSource").GetComponent<AudioSource>().volume, 1f * Time.deltaTime);
+        else if (!GameObject.Find("GameManager").GetComponent<GameManager>().inClub) audio.volume = Mathf.Lerp(audio.volume, 0, 3f * Time.deltaTime);
     }
 }

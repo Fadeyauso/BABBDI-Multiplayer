@@ -35,11 +35,12 @@ public class InteractObject : Interactable
         {
             if (!inHands) mat.SetFloat("_OutlineWidth", 0.015f);
         }
+        if (!inHands) GameObject.Find("Player").GetComponent<FirstPersonController>().grabPopup.SetActive(true);
     }
 
     public override void OnInteract()
     {
-        
+        GameObject.Find("Player").GetComponent<FirstPersonController>().grabPopup.SetActive(false);
 
         if (!inHands)
         {
@@ -86,6 +87,7 @@ public class InteractObject : Interactable
             if (!inHands) mat.SetFloat("_OutlineWidth", 0);
 
         }
+        GameObject.Find("Player").GetComponent<FirstPersonController>().grabPopup.SetActive(false);
 
     }
     private GameObject player;
@@ -105,7 +107,11 @@ public class InteractObject : Interactable
         timer -= Time.deltaTime;
 
         if (inHands) player.GetComponent<FirstPersonController>().inHands = true;
-        if (throwObject) player.GetComponent<FirstPersonController>().inHands = false;
+        if (throwObject) 
+        {
+            player.GetComponent<FirstPersonController>().inHands = false;
+            GameObject.Find("Player").GetComponent<FirstPersonController>().grabPopup.SetActive(false);
+        }
         
 
         if  (!player.GetComponent<FirstPersonController>().pause)
@@ -290,7 +296,7 @@ public class InteractObject : Interactable
                 {
                     collider.isTrigger = false;
                     transform.SetParent(null);
-                    rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
+                    rb.AddForce(GameObject.Find("Main Camera").transform.forward * 1f, ForceMode.Impulse);
                     //rb.constraints = 0;
                     //rb.constraints = RigidbodyConstraints.FreezeRotation;
                     rb.useGravity = true;

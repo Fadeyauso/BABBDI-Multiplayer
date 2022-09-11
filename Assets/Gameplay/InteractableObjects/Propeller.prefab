@@ -124,7 +124,7 @@ AudioSource:
   m_GameObject: {fileID: 2376502431350012022}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: e1d80d67558e0574996ce68cc421c46d, type: 2}
   m_audioClip: {fileID: 8300000, guid: b27cca718704a7b46a4153b9c2b58cd2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.429
@@ -323,12 +323,12 @@ GameObject:
   - component: {fileID: 3982678383776825754}
   - component: {fileID: 66018486856060479}
   - component: {fileID: 2814323427777379061}
-  - component: {fileID: 2245955158843674745}
   - component: {fileID: 3982678383776825753}
   - component: {fileID: 3982678383776825752}
   - component: {fileID: 3982678383776825755}
   - component: {fileID: 2726434965888799176}
   - component: {fileID: 9128256878204351193}
+  - component: {fileID: 488600665}
   m_Layer: 7
   m_Name: Propeller
   m_TagString: Untagged
@@ -406,20 +406,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2245955158843674745
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4327537369094118176}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6163849709693279254, guid: b1aa70b93559e7649bd2a0454ca9910c, type: 3}
 --- !u!114 &3982678383776825753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,8 +423,9 @@ MonoBehaviour:
   extended: 0
   rb: {fileID: 9128256878204351193}
   interactionClip: {fileID: 8300000, guid: f2d20b496dbdaee489acc4aa20487f96, type: 3}
-  collider: {fileID: 2245955158843674745}
+  collider: {fileID: 0}
   secret: {fileID: 0}
+  onMoto: 0
   amount: 0.02
   maxAmount: 0.06
   smoothAmount: 6
@@ -514,3 +501,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &488600665
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4327537369094118176}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14, y: 1.6, z: 0.13}
+  m_Center: {x: -0.0031236704, y: -0.69598186, z: -0.0031318497}

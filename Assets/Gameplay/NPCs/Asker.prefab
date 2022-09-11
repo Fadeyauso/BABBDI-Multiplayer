@@ -19,9 +19,9 @@ GameObject:
   - component: {fileID: 2753127302255240032}
   - component: {fileID: 3268166225627121977}
   - component: {fileID: 1711813855611353188}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Asker
-  m_TagString: Untagged
+  m_TagString: DontThrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -35,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 8247568275804078587}
   m_LocalRotation: {x: 0.0024559028, y: 0.70710254, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 166.752, y: 43.038, z: -5.31}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2334983, y: 1.0018439, z: 1.4884578}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,7 +56,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8247568275804078587}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

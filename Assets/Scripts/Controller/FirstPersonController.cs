@@ -212,6 +212,10 @@ public class FirstPersonController : MonoBehaviour
     public GameObject options;
     public GameObject confirmExit;
     public GameObject controls;
+    public GameObject talkPopup;
+    public GameObject grabPopup;
+    public GameObject noticketPopup;
+    public GameObject jukeboxPopup;
 
     [HideInInspector] public Camera playerCamera;
     [HideInInspector] public CharacterController characterController;
@@ -252,6 +256,7 @@ public class FirstPersonController : MonoBehaviour
 
     void Update()
     {
+        if (dialogueActive) talkPopup.SetActive(false);
         if (IsSliding) onFlatGround = false;
         else onFlatGround = true;
         //Pause Menu
@@ -349,9 +354,19 @@ public class FirstPersonController : MonoBehaviour
             else canMove = !dialogueActive;
         }
         if (climber == null) canMove = !dialogueActive;
-        
-        if (!pause && (GameObject.Find("Outro").GetComponent<Outro>().timer > -4f)) HandleMouseLook();
 
+        if (canInteract)
+            {
+                HandleInteractionCheck();
+                HandleInteractionInput();
+            }
+        
+        if (!pause && (GameObject.Find("Outro").GetComponent<Outro>().timer > -4f))
+        {
+            HandleCameraController();
+            HandleMouseLook();
+
+        } 
         CalculateMovementInput();
         HandleAddingForce();
 
@@ -369,16 +384,12 @@ public class FirstPersonController : MonoBehaviour
 
             if (useFootsteps && !motorBike.GetComponent<InteractObject>().onMoto) HandleFootsteps();
 
-            if (canInteract)
-            {
-                HandleInteractionCheck();
-                HandleInteractionInput();
-            }
+            
 
             //Adding Force
             
 
-            HandleCameraController();
+            
 
             CheckForVault();
 
@@ -738,7 +749,7 @@ public class FirstPersonController : MonoBehaviour
         if (IsSprinting) isZooming = false;
         else isZooming = Input.GetButton("Fire2");
 
-        var desiredFOV = IsSprinting && standing && verticalInputRaw == 1 ? runFOV : isZooming ? zoomFOV : defaultFOV;
+        var desiredFOV = dialogueActive ? 70 : IsSprinting && standing && verticalInputRaw == 1 ? runFOV : isZooming ? zoomFOV : defaultFOV;
 
         if (playerCamera.fieldOfView != desiredFOV)
         {
@@ -800,12 +811,30 @@ public class FirstPersonController : MonoBehaviour
             {
                 currentInteractable.OnLoseFocus();
                 currentInteractable = null;
+                currentObject = null;
+                noticketPopup.SetActive(false);
+                grabPopup.SetActive(false);
+                talkPopup.SetActive(false);
+                jukeboxPopup.SetActive(false);
             }       
         }
         else if (currentInteractable)
         {
             currentInteractable.OnLoseFocus();
             currentInteractable = null;
+            currentObject = null;
+            noticketPopup.SetActive(false);
+            grabPopup.SetActive(false);
+            talkPopup.SetActive(false);
+            jukeboxPopup.SetActive(false);
+        }
+
+        if (currentInteractable == null)
+        {
+            noticketPopup.SetActive(false);
+            grabPopup.SetActive(false);
+            talkPopup.SetActive(false);
+            jukeboxPopup.SetActive(false);
         }
 
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit2, interactionDistance * 2f))

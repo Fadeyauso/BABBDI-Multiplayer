@@ -184,6 +184,8 @@ MonoBehaviour:
   guidon: {fileID: 8118453985259307440}
   tiltAmount: 7
   tiltSpeed: 7
+  idle: {fileID: 8300000, guid: c6b95256a03cab34796ab834d0befff1, type: 3}
+  run: {fileID: 8300000, guid: a1ea3e00389c23543818b87e3e0faa24, type: 3}
 --- !u!1 &4868007707446919377
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,10 +230,10 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3eebd6a1e7f253a4b808fd79b56dfeb7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.429
+  m_Volume: 0.788
   m_Pitch: 1
   Loop: 1
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -239,7 +241,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 2
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0

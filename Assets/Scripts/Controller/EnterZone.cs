@@ -74,6 +74,7 @@ public class EnterZone : MonoBehaviour
         }
         if (collisionInfo.tag == "MusicZonePartTwo" && GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1 && collisionInfo.GetComponent<MusicZone>().timer < 0)
         {
+            Debug.Log("camarche");
             SoundManager.Instance.PlayMusic(collisionInfo.GetComponent<MusicZone>().music, 0);
             collisionInfo.GetComponent<MusicZone>().timer = collisionInfo.GetComponent<MusicZone>().countown;
         }

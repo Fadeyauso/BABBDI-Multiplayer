@@ -72,8 +72,10 @@ public class Club : MonoBehaviour
             else if (wall && (player.GetComponent<FirstPersonController>().frontRay || player.GetComponent<FirstPersonController>().clubRay))
                 player.GetComponent<FirstPersonController>().AddForce(new Vector3(-player.GetComponent<FirstPersonController>().playerCamera.transform.forward.x, 0, -player.GetComponent<FirstPersonController>().playerCamera.transform.forward.z), wallImpactForce);
 
-            else 
+            else if (!player.GetComponent<FirstPersonController>().backRay && !player.GetComponent<FirstPersonController>().rightRay)
                 player.GetComponent<FirstPersonController>().AddForce(-player.GetComponent<FirstPersonController>().playerCamera.transform.forward, groundImpactForce);
+            else
+                player.GetComponent<FirstPersonController>().AddForce(-player.GetComponent<FirstPersonController>().playerCamera.transform.forward, 0f);
         }
         
 

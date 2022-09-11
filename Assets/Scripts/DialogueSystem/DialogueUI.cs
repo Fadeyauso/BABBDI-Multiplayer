@@ -9,6 +9,7 @@ public class DialogueUI : MonoBehaviour
     public int NPCid;
     public bool speaking;
 
+    public AudioClip[] voiceClip;
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] private TMP_Text name_label;
@@ -27,6 +28,7 @@ public class DialogueUI : MonoBehaviour
         speaking = true;
         dialogueBox.SetActive(true);
         name_label.text = name;
+        SoundManager.Instance.PlaySound(voiceClip[Random.Range(0, voiceClip.Length - 1)]);
         StartCoroutine(StepThroughDialogue(dialogueObject));
     }
 
@@ -38,9 +40,10 @@ public class DialogueUI : MonoBehaviour
             yield return RunTypingEffect(dialogue);
 
             textLabel.text = dialogue;
+            
 
             yield return null;
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E));
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F));
         }
 
         CloseDialogueBox();
@@ -53,7 +56,7 @@ public class DialogueUI : MonoBehaviour
         while (typewriterEffect.IsRunning){
             yield return null;
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F))
             {
                 typewriterEffect.Stop();
             }

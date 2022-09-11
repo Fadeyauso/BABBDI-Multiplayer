@@ -16,7 +16,7 @@ public class RequestTrain : Interactable
 
      public override void OnFocus()
     {
-
+        GameObject.Find("Player").GetComponent<FirstPersonController>().noticketPopup.SetActive(true);
     }
 
     public override void OnInteract()
@@ -31,11 +31,15 @@ public class RequestTrain : Interactable
 
             
         }
+        else
+        {
+            GameManager.GetComponent<GameManager>().noticketPopup = true;
+        }
     }
 
     public override void OnLoseFocus()
     {
-
+        GameObject.Find("Player").GetComponent<FirstPersonController>().noticketPopup.SetActive(false);
     }
 
     // Update is called once per frame
