@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Arlend 1
   m_EditorClassIdentifier: 
   dialogue:
-  - Maybe the travel agents still sell tickets.
-  - The subway information center is at the end of the canal.
+  - 'leaving babbdi ? '
+  - maybe travel agents still sell tickets

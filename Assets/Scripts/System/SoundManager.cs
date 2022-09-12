@@ -23,7 +23,6 @@ public class SoundManager : MonoBehaviour
 
     void Update()
     {
-
     }
 
     public void PlaySound(AudioClip clip){
@@ -45,12 +44,6 @@ public class SoundManager : MonoBehaviour
         if (loop == 0) _musicSource.loop = false;
     }
 
-    public void PlayRealMusic(AudioClip clop, int loop){
-        _musicSource.clip = clop;
-        _musicSource.Play();
-        if (loop == 1) _musicSource.loop = true;
-        if (loop == 0) _musicSource.loop = false;
-    }
     public void StopAllMusic()
     {
 

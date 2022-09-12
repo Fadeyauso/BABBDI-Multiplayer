@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d385af2dbedaf2d46beca0850975afcf, type: 3}
-  m_Name: Arlend
+  m_Name: Gabriel 1
   m_EditorClassIdentifier: 
   dialogue:
-  - sweet sweet sunshine
+  - you can buy those at the end of the canal, in the information centre...

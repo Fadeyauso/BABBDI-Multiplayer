@@ -837,7 +837,8 @@ public class FirstPersonController : MonoBehaviour
             jukeboxPopup.SetActive(false);
         }
 
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit2, interactionDistance * 2f))
+        if (dialogueActive) canThrow = false;
+        else if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit2, interactionDistance * 2f))
         {
             
             if (hit2.collider.tag == "DontThrow")
