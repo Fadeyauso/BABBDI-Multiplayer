@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Aboubi 3
   m_EditorClassIdentifier: 
   dialogue:
-  - 'The travel agents of babbdi  aren''t human. '
+  - my doctor said to stay in that position
+  - helps recover from stomach issues

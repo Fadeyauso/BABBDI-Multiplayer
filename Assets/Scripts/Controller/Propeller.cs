@@ -26,44 +26,50 @@ public class Propeller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space) && GetComponent<InteractObject>().inHands && player.transform.position.y < 120)
+        if (!player.GetComponent<FirstPersonController>().pause)
         {
-            motorUp.transform.Rotate(0, 30, 0);
-            player.GetComponent<FirstPersonController>().moveDirection.y += flypower * Time.deltaTime;
-        }
-
-        motor.transform.Rotate(0, rotation * Time.deltaTime, 0);
-
-        if (Input.GetButton("Fire1") && GetComponent<InteractObject>().inHands && player.transform.position.y < 120)
-        {
-            isActive = true;
-            rotation = rotateSpeed;
-            turn = true;
-            player.GetComponent<FirstPersonController>().moveDirection.y += propellerMovement.y * Time.deltaTime;
-
-        }
-        else 
-        {
-            isActive = false;
-            if (turn) rotation -= 300f * Time.deltaTime;
-            if (rotation < 0) turn = false;
-        }
-
-        if (!player.GetComponent<FirstPersonController>().pause && player.transform.position.y < 120)
-        {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetKey(KeyCode.Space) && GetComponent<InteractObject>().inHands && player.transform.position.y < 120)
             {
-                audio.mute = false;
+                motorUp.transform.Rotate(0, 30, 0);
+                player.GetComponent<FirstPersonController>().moveDirection.y += flypower * Time.deltaTime;
             }
-            if (isActive == false) audio.mute = true;
-        }
 
-        Vector3 desiredSpeed = isActive ? player.GetComponent<FirstPersonController>().playerCamera.transform.forward * power : Vector3.zero;
+            motor.transform.Rotate(0, rotation * Time.deltaTime, 0);
 
-        if (propellerMovement != desiredSpeed)
-        {
-            GetSpeed(desiredSpeed);
+            if (Input.GetButton("Fire1") && GetComponent<InteractObject>().inHands && player.transform.position.y < 120)
+            {
+                isActive = true;
+                rotation = rotateSpeed;
+                turn = true;
+                player.GetComponent<FirstPersonController>().moveDirection.y += propellerMovement.y * Time.deltaTime;
+
+            }
+            else 
+            {
+                isActive = false;
+                if (turn) rotation -= 300f * Time.deltaTime;
+                if (rotation < 0) turn = false;
+            }
+
+            if (!player.GetComponent<FirstPersonController>().pause && player.transform.position.y < 120)
+            {
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    audio.mute = false;
+                }
+                if (isActive == false) audio.mute = true;
+            }
+            else if (isActive == false) audio.mute = true;
+
+            Vector3 desiredSpeed = isActive ? player.GetComponent<FirstPersonController>().playerCamera.transform.forward * power : Vector3.zero;
+
+            if (propellerMovement != desiredSpeed)
+            {
+                GetSpeed(desiredSpeed);
+            }
         }
+        else audio.mute = true;
+        
     }
 
     private void GetSpeed(Vector3 tempspeed)

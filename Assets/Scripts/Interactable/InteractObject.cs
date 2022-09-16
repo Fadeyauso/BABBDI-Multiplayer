@@ -58,13 +58,14 @@ public class InteractObject : Interactable
 
                 GameObject.Find("GameManager").GetComponent<GameManager>().pickup = true;
                 GameObject.Find("GameManager").GetComponent<GameManager>().item = GetComponent<ItemProperties>().id;
+                if (gameObject.tag == "guidon") Destroy(transform.parent.gameObject);
                 Destroy(gameObject);
             
             }
 
             if (GetComponent<ItemProperties>().id == 3)
             {
-                GameManager.secretsFound ++;
+                GameObject.Find("GameManager").GetComponent<GameManager>().secretsFound ++;
                 //Debug.Log(GameManager.secretsFound);
                 GameObject.Find("GameManager").GetComponent<GameManager>().secretPopup = true;
                 Destroy(this.gameObject);

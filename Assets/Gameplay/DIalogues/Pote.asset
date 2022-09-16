@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Pote
   m_EditorClassIdentifier: 
   dialogue:
-  - Bye. Maybe see you next time.
+  - maybe we see each other again
+  - bye

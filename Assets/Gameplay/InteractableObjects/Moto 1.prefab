@@ -182,6 +182,9 @@ MonoBehaviour:
   acceleration: 2
   isActive: 0
   guidon: {fileID: 8118453985259307440}
+  mouseLook: 0
+  timeToImpress: 3
+  impressTimer: 0
   tiltAmount: 7
   tiltSpeed: 7
   idle: {fileID: 8300000, guid: c6b95256a03cab34796ab834d0befff1, type: 3}
@@ -228,7 +231,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3eebd6a1e7f253a4b808fd79b56dfeb7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c6b95256a03cab34796ab834d0befff1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.788
   m_Pitch: 1
@@ -347,7 +350,7 @@ GameObject:
   - component: {fileID: 1083211064}
   m_Layer: 7
   m_Name: SM_MotoGuidon00
-  m_TagString: Untagged
+  m_TagString: guidon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

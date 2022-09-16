@@ -9,7 +9,7 @@ public class SystemActivator : Interactable
 
     public override void OnFocus()
     {
-
+        GameObject.Find("Player").GetComponent<FirstPersonController>().elevatorPopup.SetActive(true);
     }
 
     public override void OnInteract()
@@ -27,6 +27,6 @@ public class SystemActivator : Interactable
     public override void OnLoseFocus()
     {
 
-
+        GameObject.Find("Player").GetComponent<FirstPersonController>().elevatorPopup.SetActive(false);
     }
 }

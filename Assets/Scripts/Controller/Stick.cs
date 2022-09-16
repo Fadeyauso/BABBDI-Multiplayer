@@ -21,8 +21,6 @@ public class Stick : MonoBehaviour
     {
         mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
-
-        Debug.Log(new Vector2(mouseX, mouseY).magnitude);
     }
 
     void OnCollisionEnter(Collision collision)

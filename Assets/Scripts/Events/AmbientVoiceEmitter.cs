@@ -7,7 +7,7 @@ public class AmbientVoiceEmitter : MonoBehaviour
     private AudioSource audio;
     [SerializeField] private AudioClip sound;
     [SerializeField] private float playFrequency;
-    private float timer;
+    public float timer;
     public bool active;
 
     // Start is called before the first frame update

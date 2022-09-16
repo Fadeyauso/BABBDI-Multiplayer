@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f24a4aaa0761b45ba25e7e5108e2c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UID: 1837611961
+  UID: 402468593
   color: {r: 1, g: 0.7682512, b: 0.5424528, a: 1}
   intensity: 1
   shadowSpread: 0.05
@@ -175,7 +175,7 @@ AudioSource:
   m_GameObject: {fileID: 4257393487007161837}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 882960b8bf7c542458a9ab7bc6f5c63c, type: 2}
   m_audioClip: {fileID: 8300000, guid: cde04515f14b1ed40a61d72d89dfa614, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1

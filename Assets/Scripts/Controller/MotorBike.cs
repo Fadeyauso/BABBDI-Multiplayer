@@ -12,6 +12,10 @@ public class MotorBike : MonoBehaviour
     public bool isActive;
     public GameObject guidon;
     Vector3 desiredSpeed;
+    public float mouseLook;
+    public float timeToImpress = 3;
+    public float impressTimer;
+    
 
     [SerializeField] private float tiltAmount = 7f;
     [SerializeField] private float tiltSpeed = 7f;
@@ -60,6 +64,36 @@ public class MotorBike : MonoBehaviour
                 }
             }
             
+        }
+
+        if (!player.GetComponent<FirstPersonController>().characterController.isGrounded && GetComponent<InteractObject>().inHands)
+        {
+            mouseLook -= Mathf.Abs(Input.GetAxis("Mouse X") * GameObject.Find("Player").GetComponent<FirstPersonController>().lookSpeedX);
+
+            if (mouseLook > 360 || mouseLook < -360)
+            {
+                if (!GameObject.Find("GameManager").GetComponent<GameManager>().bikeAir) GameObject.Find("GameManager").GetComponent<GameManager>().Popup();
+                GameObject.Find("GameManager").GetComponent<GameManager>().bikeAir = true;
+                GameObject.Find("GameManager").GetComponent<GameManager>().bikeAirState = 1;
+                GameObject.Find("GameManager").GetComponent<GameManager>().lastAchievement = "Way of the biker";
+            }
+        }
+        else mouseLook = 0;
+
+        if (player.GetComponent<EnterZone>().inGirlZone && GetComponent<InteractObject>().inHands)
+        {
+            if (Input.GetButton("Fire1") && player.GetComponent<FirstPersonController>().characterController.velocity.magnitude > 1)
+            {
+                impressTimer += Time.deltaTime;
+                if (impressTimer > timeToImpress)
+                {
+                    if (!GameObject.Find("GameManager").GetComponent<GameManager>().impressGirl) GameObject.Find("GameManager").GetComponent<GameManager>().Popup();
+                    GameObject.Find("GameManager").GetComponent<GameManager>().impressGirl = true;
+                    GameObject.Find("GameManager").GetComponent<GameManager>().impressGirlState = 1;
+                    GameObject.Find("GameManager").GetComponent<GameManager>().lastAchievement = "Way of the seducer";
+                }
+            }
+            else impressTimer = 0;
         }
 
         

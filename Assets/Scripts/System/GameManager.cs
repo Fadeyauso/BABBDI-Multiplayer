@@ -16,13 +16,17 @@ public class GameManager : MonoBehaviour, ISaveable
     public GameObject confirmReturnHome;
     public GameObject notavailable;
     public GameObject returnoffice;
+    public GameObject speedrunLabel;
 
-    [SerializeField] public static int secretsFound = 0;
+    public int secretsFound = 0;
+    public int npcInteractedWith;
+    public int maxNpc;
     [HideInInspector] public bool pickup;
     [HideInInspector] public int item;
     [HideInInspector] public bool inActivatedLift;
     [HideInInspector] public bool secretPopup;
     [HideInInspector] public bool noticketPopup;
+    [HideInInspector] public bool savePopup;
     public int requestTrain = 0;
     [HideInInspector] public bool inSubway;
     [HideInInspector] public bool inClub;
@@ -38,6 +42,30 @@ public class GameManager : MonoBehaviour, ISaveable
     public bool wayClimber;
     public int wayClimberState;
     [SerializeField] private Toggle wayClimberToggle;
+    public bool trainDeath;
+    public int trainDeathState;
+    [SerializeField] private Toggle trainDeathToggle;
+    public bool allSecrets;
+    public int allSecretsState;
+    [SerializeField] private Toggle allSecretsToggle;
+    public bool interactEveryone;
+    public int interactEveryoneState;
+    [SerializeField] private Toggle interactEveryoneToggle;
+    public bool playDog;
+    public int playDogState;
+    [SerializeField] private Toggle playDogToggle;
+    public bool gameUnder;
+    public int gameUnderState;
+    [SerializeField] private Toggle gameUnderToggle;
+    public bool impressGirl;
+    public int impressGirlState;
+    [SerializeField] private Toggle impressGirlToggle;
+    public bool bikeAir;
+    public int bikeAirState;
+    [SerializeField] private Toggle bikeAirToggle;
+    public bool escapeBabbdi;
+    public int escapeBabbdiState;
+    [SerializeField] private Toggle escapeBabbdiToggle;
 
 
     [SerializeField] private AudioClip[] jingle = default;
@@ -60,7 +88,10 @@ public class GameManager : MonoBehaviour, ISaveable
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (GameObject.Find("Parameters") != null)
+        {
+            speedrunLabel.SetActive(GameObject.Find("Parameters").GetComponent<Parameters>().speedrun); 
+        }
     }
 
     public void ReturnToMenu()
@@ -79,6 +110,15 @@ public class GameManager : MonoBehaviour, ISaveable
         if (!endGame && !GameObject.Find("Player").GetComponent<FirstPersonController>().pause) gameTime += Time.deltaTime;
 
         wayClimberToggle.isOn = wayClimber;
+        allSecretsToggle.isOn = allSecrets;
+        interactEveryoneToggle.isOn = interactEveryone;
+        gameUnderToggle.isOn = gameUnder;
+        escapeBabbdiToggle.isOn = escapeBabbdi;
+        bikeAirToggle.isOn = bikeAir;
+        playDogToggle.isOn = playDog;
+        impressGirlToggle.isOn = impressGirl;
+        trainDeathToggle.isOn = trainDeath;
+
 
         lobbyTimer -= Time.deltaTime;
         if (lobbyTimer > 0)
@@ -95,11 +135,41 @@ public class GameManager : MonoBehaviour, ISaveable
             notavailable.SetActive(false);
             returnoffice.SetActive(false);
         }
+
+        if (npcInteractedWith == maxNpc)
+        {
+            if (!interactEveryone) Popup();
+            interactEveryone = true;
+            interactEveryoneState = 1;
+            lastAchievement = "Social Quest";
+        }
+
+        if (endGame)
+        {
+            if (gameTime < 240 && !gameUnder)
+            {
+                gameUnder = true;
+                gameUnderState = 1;
+                lastAchievement = "Way of the rusher";
+            }
+            if (!escapeBabbdi){
+                escapeBabbdi = true;
+                escapeBabbdiState = 1;
+                lastAchievement = "Melancholic departure";
+            }
+        }
     }
 
     public void AddSecret()
     {
         secretsFound ++;
+        if (secretsFound >= 24) 
+        {
+            if (!allSecrets) Popup();
+            allSecrets = true;
+            allSecretsState = 1;
+            lastAchievement = "Secrets Master";
+        }
     }
     private float lobbyTimer;
 
@@ -132,13 +202,54 @@ public class GameManager : MonoBehaviour, ISaveable
             parttwo = this.secondPart,
             endtrain = this.requestTrain,
             playTime = this.gameTime,
+            
+            playerPosX = GameObject.Find("Player").transform.position.x,
+            playerPosY = GameObject.Find("Player").transform.position.y,
+            playerPosZ = GameObject.Find("Player").transform.position.z,
+            playerRotY = GameObject.Find("Player").transform.eulerAngles.y,
+            camRotX = GameObject.Find("Player").GetComponent<FirstPersonController>().rotationX,
 
             //Achievements
             wayClimber = this.wayClimberState,
+            trainDeath = this.trainDeathState,
+            allSecrets = this.allSecretsState,
+            interactEveryone = this.interactEveryoneState,
+            playDog = this.playDogState,
+            gameUnder = this.gameUnderState,
+            impressGirl = this.impressGirlState,
+            bikeAir = this.bikeAirState,
+            escapeBabbdi = this.escapeBabbdiState,
 
             //Secrets
+            secretsFound = this.secretsFound,
             secret01 = this.secretState[0]
         };
+    }
+
+    public void ResetSave()
+    {
+        haveTicket = 0;
+        secondPart = 0;
+        requestTrain = 0;
+        gameTime = 0;
+        GameObject.Find("Player").transform.position = new Vector3(158.621f, 42.73f, -31.9f);
+        GameObject.Find("Player").transform.rotation = Quaternion.Euler(0,0,0);
+        GameObject.Find("Player").GetComponent<FirstPersonController>().rotationX = 0;
+        wayClimberState = 0;
+        trainDeathState = 0;
+        allSecretsState = 0;
+        interactEveryoneState = 0;
+        playDogState = 0;
+        gameUnderState = 0;
+        impressGirlState = 0;
+        bikeAirState = 0;
+        escapeBabbdiState = 0;
+
+        for (int i = 0; i < secretState.Length; i++)
+        {
+            secretState[i] = 0;
+        }
+        secretsFound = 0;
     }
 
     public void LoadState(object state)
@@ -150,11 +261,40 @@ public class GameManager : MonoBehaviour, ISaveable
         requestTrain = saveData.endtrain;
         gameTime = saveData.playTime;
 
+        GameObject.Find("Player").transform.position = new Vector3(saveData.playerPosX, saveData.playerPosY, saveData.playerPosZ);
+        GameObject.Find("Player").transform.rotation = Quaternion.Euler(0, saveData.playerRotY, 0);
+        GameObject.Find("Player").GetComponent<FirstPersonController>().rotationX = saveData.camRotX;
+
         //Achievements
         wayClimberState = saveData.wayClimber;
         if (wayClimberState == 1) wayClimber = true;
+
+        wayClimberState = saveData.trainDeath;
+        if (wayClimberState == 1) trainDeath = true;
+
+        allSecretsState = saveData.allSecrets;
+        if (allSecretsState == 1) allSecrets = true;
+
+        interactEveryoneState = saveData.interactEveryone;
+        if (interactEveryoneState == 1) interactEveryone = true;
+
+        playDogState = saveData.playDog;
+        if (playDogState == 1) playDog = true;
+
+        gameUnderState = saveData.gameUnder;
+        if (gameUnderState == 1) gameUnder = true;
+
+        impressGirlState = saveData.impressGirl;
+        if (impressGirlState == 1) impressGirl = true;
+
+        bikeAirState = saveData.bikeAir;
+        if (bikeAirState == 1) bikeAir = true;
+
+        escapeBabbdiState = saveData.escapeBabbdi;
+        if (escapeBabbdiState == 1) escapeBabbdi = true;
         
         //Secrets
+        secretsFound = saveData.secretsFound;
         this.secretState[0] = saveData.secret01;
     }
 
@@ -166,10 +306,25 @@ public class GameManager : MonoBehaviour, ISaveable
         public int endtrain;
         public float playTime;
 
+        public float playerPosX;
+        public float playerPosY;
+        public float playerPosZ;
+        public float playerRotY;
+        public float camRotX;
+
         //Achievements
         public int wayClimber;
+        public int trainDeath;
+        public int allSecrets;
+        public int interactEveryone;
+        public int playDog;
+        public int gameUnder;
+        public int impressGirl;
+        public int bikeAir;
+        public int escapeBabbdi;
 
         //Secrets
+        public int secretsFound;
         public int secret01;
 
     }

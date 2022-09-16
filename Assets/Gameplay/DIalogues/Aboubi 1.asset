@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Aboubi 1
   m_EditorClassIdentifier: 
   dialogue:
-  - The city's supply is stopped.
+  - you want to leave ?
+  - take the train

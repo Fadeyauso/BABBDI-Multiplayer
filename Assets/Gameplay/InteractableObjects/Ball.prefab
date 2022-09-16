@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9041970249428903561}
   - component: {fileID: 9041970249428903563}
   - component: {fileID: 2120459121}
+  - component: {fileID: 1802117462}
   m_Layer: 11
   m_Name: Ball
   m_TagString: Object/Wood
@@ -35,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &9041970249428903567
 MeshFilter:
@@ -65,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3bd639f50ae1a247823079047a8dc01, type: 2}
+  - {fileID: 2100000, guid: ca3af58b58bc7e9459434a42486f205e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,6 +107,16 @@ MonoBehaviour:
   interactionClip: {fileID: 8300000, guid: f2d20b496dbdaee489acc4aa20487f96, type: 3}
   collider: {fileID: 0}
   secret: {fileID: 0}
+  onMoto: 0
+  amount: 0.02
+  maxAmount: 0.06
+  smoothAmount: 6
+  rotationAmount: 4
+  maxRotationAmount: 5
+  smoothRotation: 12
+  rotationX: 1
+  rotationY: 1
+  rotationZ: 1
 --- !u!114 &9041970249428903561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,3 +161,15 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1802117462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9041970249428903564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf86611f381b9774eb8fcb32f76d68bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

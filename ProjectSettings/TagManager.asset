@@ -12,6 +12,15 @@ TagManager:
   - Achievement/wayClimber
   - Footsteps/Stone
   - Lift
+  - MusicZonePartOne
+  - Train
+  - MusicZonePartTwo
+  - KillZ
+  - Footsteps/Wood
+  - Subway/Out
+  - Subway/In
+  - Club/In
+  - Club/Out
   layers:
   - Default
   - TransparentFX

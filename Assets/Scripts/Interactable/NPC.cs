@@ -6,6 +6,7 @@ public class NPC : Interactable
 {
     public int npcId;
     public bool hasSecondPhase;
+    public bool interactedWith;
 
     public DialogueObject[] dialogue;
     public DialogueObject[] dialogue2;
@@ -33,6 +34,12 @@ public class NPC : Interactable
             GetComponent<DialogueUI>().ShowDialogue(dialogue[dialogueIndex]);
             if (dialogueIndex >= dialogue.Length-1) dialogueIndex = 0;
             else dialogueIndex ++;
+        }
+
+        if (!interactedWith)
+        {
+            interactedWith = true;
+            GameObject.Find("GameManager").GetComponent<GameManager>().npcInteractedWith ++;
         }
         
     }

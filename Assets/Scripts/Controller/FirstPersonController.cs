@@ -211,11 +211,15 @@ public class FirstPersonController : MonoBehaviour
     public GameObject library;
     public GameObject options;
     public GameObject confirmExit;
+    public GameObject confirmReset;
+    public GameObject confirmReturn;
     public GameObject controls;
     public GameObject talkPopup;
     public GameObject grabPopup;
     public GameObject noticketPopup;
     public GameObject jukeboxPopup;
+    public GameObject elevatorPopup;
+    public GameObject doorPopup;
 
     [HideInInspector] public Camera playerCamera;
     [HideInInspector] public CharacterController characterController;
@@ -250,6 +254,7 @@ public class FirstPersonController : MonoBehaviour
         initialRotation = playerCamera.transform.rotation;
     }
 
+
     void Start(){
         
     }
@@ -277,6 +282,8 @@ public class FirstPersonController : MonoBehaviour
             library.SetActive(false);
             options.SetActive(false);
             confirmExit.SetActive(false);
+            confirmReset.SetActive(false);
+            confirmReturn.SetActive(false);
             controls.SetActive(false);
             if (pause) 
             {
@@ -293,6 +300,8 @@ public class FirstPersonController : MonoBehaviour
             options.SetActive(false);
             library.SetActive(true);
             confirmExit.SetActive(false);
+            confirmReset.SetActive(false);
+            confirmReturn.SetActive(false);
             controls.SetActive(false);
             if (pause) 
             {
@@ -816,6 +825,8 @@ public class FirstPersonController : MonoBehaviour
                 grabPopup.SetActive(false);
                 talkPopup.SetActive(false);
                 jukeboxPopup.SetActive(false);
+                elevatorPopup.SetActive(false);
+                doorPopup.SetActive(false);
             }       
         }
         else if (currentInteractable)
@@ -827,6 +838,8 @@ public class FirstPersonController : MonoBehaviour
             grabPopup.SetActive(false);
             talkPopup.SetActive(false);
             jukeboxPopup.SetActive(false);
+            elevatorPopup.SetActive(false);
+            doorPopup.SetActive(false);
         }
 
         if (currentInteractable == null)
@@ -835,6 +848,8 @@ public class FirstPersonController : MonoBehaviour
             grabPopup.SetActive(false);
             talkPopup.SetActive(false);
             jukeboxPopup.SetActive(false);
+            elevatorPopup.SetActive(false);
+            doorPopup.SetActive(false);
         }
 
         if (dialogueActive) canThrow = false;
@@ -868,7 +883,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void ApplyFinalMovements()
     {
-        if (currentInputRaw.magnitude != 0 && OnSlope() && !Input.GetKey(jumpKey))
+        if ((currentInputRaw.magnitude != 0 || motorBike.GetComponent<InteractObject>().onMoto) && OnSlope() && !Input.GetKey(jumpKey))
         {
             if (Input.GetKeyDown(jumpKey))
             {

@@ -12,7 +12,10 @@ public class EnterZone : MonoBehaviour
 
     public AudioClip endGameClip;
     
-
+    void Start()
+    {
+        indoortimer = 4;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -60,7 +63,7 @@ public class EnterZone : MonoBehaviour
         }
         if (collisionInfo.tag == "Train")
         {
-            SoundManager.Instance.PlaySound(endGameClip);
+            SoundManager.Instance.PlayMusicShot(endGameClip);
             GameObject.Find("GameManager").GetComponent<GameManager>().endGame = true;
         }
         if (collisionInfo.tag == "KillZ")
@@ -69,23 +72,42 @@ public class EnterZone : MonoBehaviour
         }
         if (collisionInfo.tag == "MusicZone" && collisionInfo.GetComponent<MusicZone>().timer < 0)
         {
-            SoundManager.Instance.PlaySound(collisionInfo.GetComponent<MusicZone>().music);
+            SoundManager.Instance.PlayMusicShot(collisionInfo.GetComponent<MusicZone>().music);
             collisionInfo.GetComponent<MusicZone>().timer = collisionInfo.GetComponent<MusicZone>().countown;
         }
         if (collisionInfo.tag == "MusicZonePartTwo" && GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1 && collisionInfo.GetComponent<MusicZone>().timer < 0)
         {
-            SoundManager.Instance.PlaySound(collisionInfo.GetComponent<MusicZone>().music);
+            SoundManager.Instance.PlayMusicShot(collisionInfo.GetComponent<MusicZone>().music);
             collisionInfo.GetComponent<MusicZone>().timer = collisionInfo.GetComponent<MusicZone>().countown;
         }
         if (collisionInfo.tag == "MusicZonePartOne" && GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 0 && collisionInfo.GetComponent<MusicZone>().timer < 0)
         {
-            SoundManager.Instance.PlaySound(collisionInfo.GetComponent<MusicZone>().music);
+            SoundManager.Instance.PlayMusicShot(collisionInfo.GetComponent<MusicZone>().music);
             collisionInfo.GetComponent<MusicZone>().timer = collisionInfo.GetComponent<MusicZone>().countown;
+        }
+        if (collisionInfo.tag == "SavingZone")
+        {
+            GameObject.Find("GameManager").GetComponent<SaveLoadSystem>().Save();
+            GameObject.Find("GameManager").GetComponent<GameManager>().savePopup = true;
+        }
+        if (collisionInfo.tag == "TrainDeath")
+        {
+            if (!GameObject.Find("GameManager").GetComponent<GameManager>().trainDeath) GameObject.Find("GameManager").GetComponent<GameManager>().Popup();
+            GameObject.Find("GameManager").GetComponent<GameManager>().trainDeath = true;
+            GameObject.Find("GameManager").GetComponent<GameManager>().trainDeathState = 1;
+            GameObject.Find("GameManager").GetComponent<GameManager>().lastAchievement = "Flat face";
+            transform.position = GameObject.Find("SpawnPoint").transform.position;
+        }
+        if (collisionInfo.tag == "GirlZone")
+        {
+            inGirlZone = true;
         }
 
         
         
     }
+
+    public bool inGirlZone;
 
     void OnTriggerStay(Collider collisionInfo)
     {
@@ -104,6 +126,7 @@ public class EnterZone : MonoBehaviour
     {
         transform.parent = null;
         inLift = false; 
+        inGirlZone = false;
 
     }
 }

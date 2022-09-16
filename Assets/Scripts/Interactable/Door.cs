@@ -20,7 +20,7 @@ public class Door : Interactable
 
     public override void OnFocus()
     {
-
+        GameObject.Find("Player").GetComponent<FirstPersonController>().doorPopup.SetActive(true);
     }
 
     public override void OnInteract()
@@ -43,7 +43,7 @@ public class Door : Interactable
 
     public override void OnLoseFocus()
     {
-
+        GameObject.Find("Player").GetComponent<FirstPersonController>().doorPopup.SetActive(false);
     }
 
 

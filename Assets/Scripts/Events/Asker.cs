@@ -11,7 +11,7 @@ public class Asker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1) 
+        if (GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1 && GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket == 0) 
         {
             GetComponent<AmbientVoiceEmitter>().active = true;
             GetComponent<NPC>().dialogue[0] = secondDialogue;
