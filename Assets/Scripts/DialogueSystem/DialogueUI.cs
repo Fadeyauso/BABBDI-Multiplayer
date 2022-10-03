@@ -10,12 +10,18 @@ public class DialogueUI : MonoBehaviour
     public bool speaking;
 
     public AudioClip[] voiceClip;
-    [SerializeField] private GameObject dialogueBox;
-    [SerializeField] private TMP_Text textLabel;
-    [SerializeField] private TMP_Text name_label;
+    [SerializeField] public GameObject dialogueBox;
+    [SerializeField] public TMP_Text textLabel;
+    [SerializeField] public TMP_Text name_label;
     [SerializeField] public DialogueObject currentDialogue;
+    public GameObject continueDialogueFX;
 
     private TypewriterEffect typewriterEffect;
+
+    void Awake()
+    {
+        continueDialogueFX = GameObject.Find("continueDialogueFX");
+    }
 
     private void Start()
     {
@@ -27,6 +33,8 @@ public class DialogueUI : MonoBehaviour
     {
         speaking = true;
         dialogueBox.SetActive(true);
+        continueDialogueFX.SetActive(false);
+        if (GetComponent<Dragoyevic>() != null) GetComponent<Dragoyevic>().giveCompass = true;
         name_label.text = name;
         SoundManager.Instance.PlaySound(voiceClip[Random.Range(0, voiceClip.Length - 1)]);
         StartCoroutine(StepThroughDialogue(dialogueObject));
@@ -43,7 +51,10 @@ public class DialogueUI : MonoBehaviour
             
 
             yield return null;
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F));
+            continueDialogueFX.SetActive(true);
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1"));
+            continueDialogueFX.SetActive(false);
+            
         }
 
         CloseDialogueBox();
@@ -56,8 +67,9 @@ public class DialogueUI : MonoBehaviour
         while (typewriterEffect.IsRunning){
             yield return null;
 
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1"))
             {
+                continueDialogueFX.SetActive(true);
                 typewriterEffect.Stop();
             }
         }
@@ -69,5 +81,7 @@ public class DialogueUI : MonoBehaviour
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
         //player.GetComponent<CollectItems>().dialogueActive = false;
+        if ((GetComponent<NPC>().dialogue.Length-1 == 0 ? !GetComponent<NPC>().interactedWith : GetComponent<NPC>().dialogueIndex > 0) && (GetComponent<NPC>().hasSecondPhase ? GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 0 : 1==1) && GameObject.Find("GameManager").GetComponent<GameManager>().startTimer < -1) 
+                SoundManager.Instance.PlaySound(GetComponent<NPC>().exclamation.GetComponent<ExclamationPoint>().initClip);
     }
 }

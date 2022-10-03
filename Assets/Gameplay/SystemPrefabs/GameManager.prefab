@@ -50,11 +50,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
   confirmReturnHome: {fileID: 0}
+  notavailable: {fileID: 0}
+  returnoffice: {fileID: 0}
+  speedrunLabel: {fileID: 0}
+  ticketDisplay: {fileID: 0}
+  secretsFound: 0
+  npcInteractedWith: 0
+  maxNpc: 15
   pickup: 0
   item: 0
   inActivatedLift: 0
   secretPopup: 0
+  noticketPopup: 0
+  savePopup: 0
   requestTrain: 0
+  inSubway: 0
+  inClub: 0
   endGame: 0
   gameTime: 0
   secondPart: 0
@@ -63,6 +74,30 @@ MonoBehaviour:
   wayClimber: 0
   wayClimberState: 0
   wayClimberToggle: {fileID: 0}
+  trainDeath: 0
+  trainDeathState: 0
+  trainDeathToggle: {fileID: 0}
+  allSecrets: 0
+  allSecretsState: 0
+  allSecretsToggle: {fileID: 0}
+  interactEveryone: 0
+  interactEveryoneState: 0
+  interactEveryoneToggle: {fileID: 0}
+  playDog: 0
+  playDogState: 0
+  playDogToggle: {fileID: 0}
+  gameUnder: 0
+  gameUnderState: 0
+  gameUnderToggle: {fileID: 0}
+  impressGirl: 0
+  impressGirlState: 0
+  impressGirlToggle: {fileID: 0}
+  bikeAir: 0
+  bikeAirState: 0
+  bikeAirToggle: {fileID: 0}
+  escapeBabbdi: 0
+  escapeBabbdiState: 0
+  escapeBabbdiToggle: {fileID: 0}
   jingle:
   - {fileID: 8300000, guid: 9b4450cbc45e5184e82e58a297df557d, type: 3}
   - {fileID: 8300000, guid: fdaa57320b7787441b6b688260e24a01, type: 3}

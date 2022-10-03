@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 3438861045543323348}
   - component: {fileID: 1735735733001832817}
   - component: {fileID: 4607856668663233979}
-  - component: {fileID: 564961322651457335}
   - component: {fileID: 2896923537395855424}
   - component: {fileID: 2896923537395855425}
   - component: {fileID: 2896923537395855426}
   - component: {fileID: 2896923537395855427}
-  m_Layer: 7
+  - component: {fileID: 870049868}
+  m_Layer: 14
   m_Name: Moto 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,20 +90,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &564961322651457335
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2662358873661873262}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3404111853562540024, guid: 080ed1ca5f58d884c9df8f2659d99703, type: 3}
 --- !u!114 &2896923537395855424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,9 +105,15 @@ MonoBehaviour:
   inHands: 0
   throwObject: 0
   extended: 0
+  defaultMask:
+    serializedVersion: 2
+    m_Bits: 0
+  inHandsMask:
+    serializedVersion: 2
+    m_Bits: 65536
   rb: {fileID: 2896923537395855426}
   interactionClip: {fileID: 8300000, guid: f2d20b496dbdaee489acc4aa20487f96, type: 3}
-  collider: {fileID: 564961322651457335}
+  collider: {fileID: 0}
   secret: {fileID: 0}
   onMoto: 0
   amount: 0.02
@@ -189,6 +181,19 @@ MonoBehaviour:
   tiltSpeed: 7
   idle: {fileID: 8300000, guid: c6b95256a03cab34796ab834d0befff1, type: 3}
   run: {fileID: 8300000, guid: a1ea3e00389c23543818b87e3e0faa24, type: 3}
+--- !u!65 &870049868
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2662358873661873262}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.0422468, y: 1.5302379, z: 0.52937216}
+  m_Center: {x: 0.032486796, y: 0.7577425, z: 0.0011701875}
 --- !u!1 &4868007707446919377
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4868007707446919378}
   - component: {fileID: 4868007707446919379}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: SoundSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +353,7 @@ GameObject:
   - component: {fileID: 9000984209393394575}
   - component: {fileID: 5656303794737525110}
   - component: {fileID: 1083211064}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SM_MotoGuidon00
   m_TagString: guidon
   m_Icon: {fileID: 0}

@@ -37,7 +37,7 @@ public class SavePopup : MonoBehaviour
         }
         if (timer < 0) 
         {
-            if (c.a >= 0) c.a -= 0.01f;
+            if (c.a >= 0) c.a -= 1.5f * Time.deltaTime;
         }
     }
 }

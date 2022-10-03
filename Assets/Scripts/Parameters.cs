@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class Parameters : MonoBehaviour
 {
+    public static Parameters Instance;
     public bool speedrun;
     // Start is called before the first frame update
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame

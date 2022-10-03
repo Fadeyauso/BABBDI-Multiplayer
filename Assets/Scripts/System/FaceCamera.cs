@@ -13,6 +13,9 @@ public class FaceCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(GameObject.Find("Player").transform);
+        Vector3 lookAtPosition = GameObject.Find("Player").transform.position;
+        lookAtPosition.y = transform.position.y;
+        transform.LookAt(lookAtPosition);
+
     }
 }

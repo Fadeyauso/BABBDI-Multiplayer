@@ -6,6 +6,7 @@ using System;
 using UnityEngine.EventSystems;
 using Random=UnityEngine.Random;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour, ISaveable
 {
@@ -17,6 +18,34 @@ public class GameManager : MonoBehaviour, ISaveable
     public GameObject notavailable;
     public GameObject returnoffice;
     public GameObject speedrunLabel;
+    public GameObject ticketDisplay;
+    public GameObject qualitySettings;
+
+    [SerializeField] private GameObject dialogueBox;
+    [SerializeField] private TMP_Text textLabel;
+    [SerializeField] private TMP_Text name_label;
+
+    [Header("Save Object in hands")]
+    public int club;
+    public int climber;
+    public int propeller;
+    public int blower;
+    public int flashlight;
+    public int soap;
+    public int ball;
+    public int bigball;
+    public int stick;
+    public int grabber;
+    public int motorBike;
+    public int compass;
+
+    [Header("MAINLINE")]
+    public GameObject dragoStart;
+    public GameObject dragoEnd;
+    private bool instantiate = true;
+    public Transform secondPosition;
+    public GameObject continueDialogueFX;
+
 
     public int secretsFound = 0;
     public int npcInteractedWith;
@@ -34,6 +63,7 @@ public class GameManager : MonoBehaviour, ISaveable
     public float gameTime = 0;
     public int secondPart;
     public int haveTicket;
+    public float startTimer;
 
     //Achievements
     [Header("Achievements")]
@@ -66,6 +96,9 @@ public class GameManager : MonoBehaviour, ISaveable
     public bool escapeBabbdi;
     public int escapeBabbdiState;
     [SerializeField] private Toggle escapeBabbdiToggle;
+    public bool ticket;
+    public int ticketState;
+    [SerializeField] private Toggle ticketToggle;
 
 
     [SerializeField] private AudioClip[] jingle = default;
@@ -92,14 +125,20 @@ public class GameManager : MonoBehaviour, ISaveable
         {
             speedrunLabel.SetActive(GameObject.Find("Parameters").GetComponent<Parameters>().speedrun); 
         }
+        qualitySettings.GetComponent<SetQuality>().SetQualityLevelDropdown(3);
+
+        instantiate = true;
     }
 
     public void ReturnToMenu()
     {
-        secondPart = 0;
         haveTicket = 0;
+        secondPart = 0;
         requestTrain = 0;
         gameTime = 0;
+        GameObject.Find("Player").transform.position = new Vector3(158.621f, 42.73f, -31.9f);
+        GameObject.Find("Player").transform.rotation = Quaternion.Euler(0,0,0);
+        GameObject.Find("Player").GetComponent<FirstPersonController>().rotationX = 0;
         GetComponent<SaveLoadSystem>().Save();
         SceneManager.LoadScene("MainMenu");
     }
@@ -107,6 +146,9 @@ public class GameManager : MonoBehaviour, ISaveable
     // Update is called once per frame
     void Update() 
     {
+        if (haveTicket == 1) ticket = true;
+        else ticket = false;
+        startTimer -= Time.deltaTime;
         if (!endGame && !GameObject.Find("Player").GetComponent<FirstPersonController>().pause) gameTime += Time.deltaTime;
 
         wayClimberToggle.isOn = wayClimber;
@@ -118,6 +160,7 @@ public class GameManager : MonoBehaviour, ISaveable
         playDogToggle.isOn = playDog;
         impressGirlToggle.isOn = impressGirl;
         trainDeathToggle.isOn = trainDeath;
+        ticketToggle.isOn = ticket;
 
 
         lobbyTimer -= Time.deltaTime;
@@ -135,6 +178,12 @@ public class GameManager : MonoBehaviour, ISaveable
             notavailable.SetActive(false);
             returnoffice.SetActive(false);
         }
+
+        if (!GameObject.Find("Player").GetComponent<FirstPersonController>().pause && haveTicket == 1)
+        {
+            ticketDisplay.SetActive(true);
+        }
+        else ticketDisplay.SetActive(false);
 
         if (npcInteractedWith == maxNpc)
         {
@@ -157,6 +206,24 @@ public class GameManager : MonoBehaviour, ISaveable
                 escapeBabbdiState = 1;
                 lastAchievement = "Melancholic departure";
             }
+        }
+        if (secondPart == 1 && instantiate == true) Invoke("drago", 1);
+        
+    }
+    private void drago()
+    {
+
+        if (secondPart == 1 && instantiate == true)
+        {
+            instantiate = false;
+            Destroy(dragoStart);
+            var obj = Instantiate(dragoEnd, secondPosition.position, secondPosition.rotation);
+            obj.GetComponent<DialogueUI>().dialogueBox = dialogueBox;
+            obj.GetComponent<DialogueUI>().textLabel = textLabel;
+            obj.GetComponent<DialogueUI>().name_label = name_label;
+            obj.GetComponent<DialogueUI>().continueDialogueFX = continueDialogueFX;
+
+
         }
     }
 
@@ -219,10 +286,25 @@ public class GameManager : MonoBehaviour, ISaveable
             impressGirl = this.impressGirlState,
             bikeAir = this.bikeAirState,
             escapeBabbdi = this.escapeBabbdiState,
+            endticket = this.ticketState,
 
             //Secrets
             secretsFound = this.secretsFound,
-            secret01 = this.secretState[0]
+            secret01 = this.secretState[0],
+
+            //Object in hands
+            club = this.club,
+            climber = this.climber,
+            propeller = this.propeller,
+            blower = this.blower,
+            flashlight = this.flashlight,
+            soap = this.soap,
+            ball = this.ball,
+            bigball = this.bigball,
+            stick = this.stick,
+            grabber = this.grabber,
+            motorBike = this.motorBike,
+            compass = this.compass
         };
     }
 
@@ -244,12 +326,27 @@ public class GameManager : MonoBehaviour, ISaveable
         impressGirlState = 0;
         bikeAirState = 0;
         escapeBabbdiState = 0;
+        ticketState = 0;
 
         for (int i = 0; i < secretState.Length; i++)
         {
             secretState[i] = 0;
         }
         secretsFound = 0;
+
+        //Object in hands
+        club = 0;
+        climber = 0;
+        propeller = 0;
+        blower = 0;
+        flashlight = 0;
+        soap = 0;
+        ball = 0;
+        bigball = 0;
+        stick = 0;
+        grabber = 0;
+        motorBike = 0;
+        compass = 0;
     }
 
     public void LoadState(object state)
@@ -292,10 +389,28 @@ public class GameManager : MonoBehaviour, ISaveable
 
         escapeBabbdiState = saveData.escapeBabbdi;
         if (escapeBabbdiState == 1) escapeBabbdi = true;
+
+        ticketState = saveData.endticket;
+        if (ticketState == 1) ticket = true;
         
         //Secrets
         secretsFound = saveData.secretsFound;
         this.secretState[0] = saveData.secret01;
+
+        //Object in hands
+        club = saveData.club;
+            climber = saveData.climber;
+            propeller = saveData.propeller;
+            blower = saveData.blower;
+            flashlight = saveData.flashlight;
+            soap = saveData.soap;
+            ball = saveData.ball;
+            bigball = saveData.bigball;
+            stick = saveData.stick;
+            grabber = saveData.grabber;
+            motorBike = saveData.motorBike;
+            compass = saveData.compass;
+        
     }
 
     [Serializable]
@@ -322,10 +437,25 @@ public class GameManager : MonoBehaviour, ISaveable
         public int impressGirl;
         public int bikeAir;
         public int escapeBabbdi;
+        public int endticket;
 
         //Secrets
         public int secretsFound;
         public int secret01;
+
+        //Object in hands
+        public int club;
+        public int climber;
+        public int propeller;
+        public int blower;
+        public int flashlight;
+        public int soap;
+        public int ball;
+        public int bigball;
+        public int stick;
+        public int grabber;
+        public int motorBike;
+        public int compass;
 
     }
 }

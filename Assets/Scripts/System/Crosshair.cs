@@ -18,15 +18,15 @@ public class Crosshair : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((player.GetComponent<FirstPersonController>().currentInteractable != null && player.GetComponent<FirstPersonController>().interactionRay))
+        if ((player.GetComponent<FirstPersonController>().currentInteractable != null && player.GetComponent<FirstPersonController>().interactionSphere))
         {
             GetComponent<Image>().sprite = interactImg;
-            GetComponent<RectTransform>().sizeDelta = new Vector2(150, 150);
+            GetComponent<RectTransform>().sizeDelta = new Vector2(130, 130);
         }
         else
         {
             GetComponent<Image>().sprite = defaultImg;
-            GetComponent<RectTransform>().sizeDelta = new Vector2(70, 70);
+            GetComponent<RectTransform>().sizeDelta = new Vector2(51.2f, 51.2f);
         }
            
 

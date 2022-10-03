@@ -51,4 +51,5 @@ public class Door : Interactable
     {
         canClose = true;
     }
+
 }

@@ -29,7 +29,7 @@ public class NoTicketPopup : MonoBehaviour
         }
         if (timer < 0 && timer > -5) 
         {
-            if (c.a >= 0) c.a -= 0.01f;
+            if (c.a >= 0) c.a -= 1.5f * Time.deltaTime;
         }
     }
         

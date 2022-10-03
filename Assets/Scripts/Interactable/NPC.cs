@@ -7,11 +7,14 @@ public class NPC : Interactable
     public int npcId;
     public bool hasSecondPhase;
     public bool interactedWith;
+    [SerializeField] public GameObject exclamation;
 
     public DialogueObject[] dialogue;
     public DialogueObject[] dialogue2;
     public int dialogueIndex = 0;
     public int dialogueIndex2 = 0;
+    public int secondPhaseDialogues = 0;
+    public int dialogue2Number = 2;
 
     public override void OnFocus()
     {
@@ -28,6 +31,8 @@ public class NPC : Interactable
             GetComponent<DialogueUI>().ShowDialogue(dialogue2[dialogueIndex2]);
             if (dialogueIndex2 >= dialogue2.Length-1) dialogueIndex2 = 0;
             else dialogueIndex2 ++;
+
+            secondPhaseDialogues ++;
         }
         else if (GameObject.Find("Player").GetComponent<FirstPersonController>().dialogueActive == false) 
         {
@@ -41,6 +46,8 @@ public class NPC : Interactable
             interactedWith = true;
             GameObject.Find("GameManager").GetComponent<GameManager>().npcInteractedWith ++;
         }
+
+
         
     }
 
@@ -48,5 +55,21 @@ public class NPC : Interactable
     {
         GameObject.Find("Player").GetComponent<FirstPersonController>().talkPopup.SetActive(false);
 
+    }
+
+    void Start()
+    {
+        dialogue2Number = dialogue2.Length;
+    }
+
+    void Update()
+    {
+        if (exclamation != null)
+        {
+            if (!GameObject.Find("Player").GetComponent<FirstPersonController>().dialogueActive && (dialogue.Length-1 == 0 ? !interactedWith : dialogueIndex > 0) && (hasSecondPhase ? GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 0 : 1==1)) exclamation.SetActive(true);
+            else if (!GameObject.Find("Player").GetComponent<FirstPersonController>().dialogueActive && (GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1) && hasSecondPhase && secondPhaseDialogues < dialogue2Number) exclamation.SetActive(true);
+            else exclamation.SetActive(false);
+        }
+        
     }
 }

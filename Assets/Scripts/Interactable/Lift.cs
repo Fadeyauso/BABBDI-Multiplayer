@@ -23,6 +23,7 @@ public class Lift : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (isTriggered && transform.position.y < secondPoint.transform.position.y && topReach == false) 
         {  
             GameObject.Find("GameManager").GetComponent<GameManager>().inActivatedLift = true;

@@ -29,4 +29,6 @@ public class SystemActivator : Interactable
 
         GameObject.Find("Player").GetComponent<FirstPersonController>().elevatorPopup.SetActive(false);
     }
+
+
 }

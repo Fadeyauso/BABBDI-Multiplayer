@@ -8,6 +8,9 @@ public class InteractObject : Interactable
     public bool throwObject;
     public bool extended;
 
+    public LayerMask defaultMask;
+    public LayerMask inHandsMask;
+
     private Material[] materials;
 
     public Rigidbody rb;
@@ -45,7 +48,7 @@ public class InteractObject : Interactable
         if (!inHands)
         {
             SoundManager.Instance.PlaySound(interactionClip);
-            if (GetComponent<ItemProperties>().id == 0 || GetComponent<ItemProperties>().id == 1 || GetComponent<ItemProperties>().id == 2 || GetComponent<ItemProperties>().id == 4|| GetComponent<ItemProperties>().id == 5 || GetComponent<ItemProperties>().id == 6 || GetComponent<ItemProperties>().id == 7 || GetComponent<ItemProperties>().id == 8 || GetComponent<ItemProperties>().id == 9 || GetComponent<ItemProperties>().id == 10 || GetComponent<ItemProperties>().id == 11) 
+            if (GetComponent<ItemProperties>().id == 0 || GetComponent<ItemProperties>().id == 1 || GetComponent<ItemProperties>().id == 2 || GetComponent<ItemProperties>().id == 4|| GetComponent<ItemProperties>().id == 5 || GetComponent<ItemProperties>().id == 6 || GetComponent<ItemProperties>().id == 7 || GetComponent<ItemProperties>().id == 8 || GetComponent<ItemProperties>().id == 9 || GetComponent<ItemProperties>().id == 10 || GetComponent<ItemProperties>().id == 11|| GetComponent<ItemProperties>().id == 12) 
             {
             // if ()
                 transform.position = GameObject.Find("ObjectPos").transform.position;
@@ -74,6 +77,10 @@ public class InteractObject : Interactable
             if (GetComponent<ItemProperties>().id == 50)
             {
                 GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket = 1;
+                if (!GameObject.Find("GameManager").GetComponent<GameManager>().ticket) GameObject.Find("GameManager").GetComponent<GameManager>().Popup();
+                GameObject.Find("GameManager").GetComponent<GameManager>().ticket = true;
+                GameObject.Find("GameManager").GetComponent<GameManager>().ticketState = 1;
+                GameObject.Find("GameManager").GetComponent<GameManager>().lastAchievement = "Babbdi quest";
                 Destroy(this.gameObject);
             }
         }
@@ -83,11 +90,7 @@ public class InteractObject : Interactable
 
     public override void OnLoseFocus()
     {
-        foreach (Material mat in materials)
-        {
-            if (!inHands) mat.SetFloat("_OutlineWidth", 0);
-
-        }
+        
         GameObject.Find("Player").GetComponent<FirstPersonController>().grabPopup.SetActive(false);
 
     }
@@ -101,6 +104,8 @@ public class InteractObject : Interactable
         player = GameObject.Find("Player");
 
         materials = GetComponent<Renderer>().materials;
+
+        defaultMask = gameObject.layer;
     }
 
     public void Update()
@@ -108,6 +113,23 @@ public class InteractObject : Interactable
         timer -= Time.deltaTime;
 
         if (inHands) player.GetComponent<FirstPersonController>().inHands = true;
+
+        if (inHands && GetComponent<ItemProperties>().id != 11)
+        {
+            gameObject.layer = 16;
+        }
+        else gameObject.layer = 7;
+
+
+        if (player.GetComponent<FirstPersonController>().currentObject != gameObject)
+        {
+            foreach (Material mat in materials)
+            {
+                if (!inHands) mat.SetFloat("_OutlineWidth", 0);
+
+            }
+        }
+
         if (throwObject) 
         {
             player.GetComponent<FirstPersonController>().inHands = false;
@@ -123,6 +145,7 @@ public class InteractObject : Interactable
             {
                 if (inHands) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().ball = 1;
                     collider.isTrigger = true;
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
                     {
@@ -138,6 +161,7 @@ public class InteractObject : Interactable
                 }
                 else if (throwObject ) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().ball = 0;
                     collider.isTrigger = false;
                     transform.SetParent(null);
                     rb.isKinematic = false;
@@ -153,6 +177,7 @@ public class InteractObject : Interactable
             {
                 if (inHands) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().club = 1;
                     collider.isTrigger = true;
                     rb.useGravity = false;
                     rb.isKinematic = true;
@@ -179,6 +204,7 @@ public class InteractObject : Interactable
                 }
                 else if (throwObject) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().club = 0;
                     collider.isTrigger = false;
                     transform.SetParent(null);
                     rb.isKinematic = false;
@@ -197,6 +223,7 @@ public class InteractObject : Interactable
             {
                 if (inHands) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().climber = 1;
                     collider.isTrigger = true;
                     if (!extended && timer < 0)
                     {
@@ -210,13 +237,13 @@ public class InteractObject : Interactable
                     rb.isKinematic = true;
                     rb.velocity = new Vector3(0,0,0);
                     
-                    if (extended && GameObject.Find("Climber(Clone)").GetComponent<Climber>().trigger)
+                    if (extended && GetComponent<Climber>().trigger)
                     {
-                        transform.position = GameObject.Find("Climber(Clone)").GetComponent<Climber>().pickPos;
-                        transform.rotation = GameObject.Find("Climber(Clone)").GetComponent<Climber>().pickRot;
+                        transform.position = GetComponent<Climber>().pickPos;
+                        transform.rotation = GetComponent<Climber>().pickRot;
                         climber = false;
                     }
-                    else if (Input.GetButton("Fire1") && GameObject.Find("Climber(Clone)").GetComponent<Climber>().pick)
+                    else if (Input.GetButton("Fire1") && GetComponent<Climber>().pick)
                     {
                         transform.position = GameObject.Find("Pickaxe00").transform.position;
                         transform.rotation = GameObject.Find("Pickaxe00").transform.rotation;
@@ -232,6 +259,7 @@ public class InteractObject : Interactable
                 }
                 else if (throwObject) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().climber = 0;
                     collider.isTrigger = false;
                     transform.SetParent(null);
                     rb.isKinematic = false;
@@ -247,6 +275,7 @@ public class InteractObject : Interactable
             {
                 if (inHands) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().flashlight = 1;
                     collider.isTrigger = true;
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
@@ -264,6 +293,7 @@ public class InteractObject : Interactable
                 }
                 else if (throwObject) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().flashlight = 0;
                     collider.isTrigger = false;
                     transform.SetParent(null);
                     rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
@@ -278,6 +308,7 @@ public class InteractObject : Interactable
             {
                 if (inHands) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().propeller = 1;
                     collider.isTrigger = true;
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
@@ -295,6 +326,7 @@ public class InteractObject : Interactable
                 }
                 else if (throwObject) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().propeller = 0;
                     collider.isTrigger = false;
                     transform.SetParent(null);
                     rb.AddForce(GameObject.Find("Main Camera").transform.forward * 1f, ForceMode.Impulse);
@@ -309,6 +341,7 @@ public class InteractObject : Interactable
             {
                 if (inHands) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().blower = 1;
                     collider.isTrigger = true;
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
@@ -326,6 +359,7 @@ public class InteractObject : Interactable
                 }
                 else if (throwObject) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().blower = 0;
                     collider.isTrigger = false;
                     transform.SetParent(null);
                     rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
@@ -340,6 +374,7 @@ public class InteractObject : Interactable
             {
                 if (inHands) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().bigball = 1;
                     collider.isTrigger = true;
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
@@ -359,6 +394,7 @@ public class InteractObject : Interactable
                 }
                 else if (throwObject) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().bigball = 0;
                     collider.isTrigger = false;
                     GameObject.Find("Player").GetComponent<FirstPersonController>().bigball = false;
                     transform.SetParent(null);
@@ -417,6 +453,7 @@ public class InteractObject : Interactable
             {
                 if (inHands) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().grabber = 1;
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
                         throwObject = true;
@@ -432,6 +469,7 @@ public class InteractObject : Interactable
                 }
                 else if (throwObject) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().grabber = 0;
                     collider.isTrigger = false;
                     GameObject.Find("Player").GetComponent<FirstPersonController>().bigball = false;
                     transform.SetParent(null);
@@ -442,14 +480,62 @@ public class InteractObject : Interactable
                     throwObject = false;
                 }
             }
-            
+            if (GetComponent<ItemProperties>().id == 12)
+            {
+                if (inHands) 
+                {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().compass = 1;
+                    collider.isTrigger = false;
+                    rb.useGravity = false;
+                    //rb.isKinematic = true;
+                    rb.velocity = new Vector3(0,0,0);
+                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
+                        {
+                            throwObject = true;
+                            inHands = false;
+                        }
 
-        }
+                    if (Input.GetButton("Fire1") && player.GetComponent<FirstPersonController>().compassTimer < 0)
+                    {
+                        player.GetComponent<FirstPersonController>().initRotationX = player.GetComponent<FirstPersonController>().playerCamera.transform.rotation;
+                        player.GetComponent<FirstPersonController>().initRotationY = player.transform.eulerAngles.y;
+                    }
+
+                    if (Input.GetButton("Fire1"))
+                    {
+                        player.GetComponent<FirstPersonController>().compassLook = true;
+                    }
+                    else
+                    {
+                        player.GetComponent<FirstPersonController>().compassLook = false;
+                        rb.useGravity = false;
+                        stick = true;
+                        
+                        extended = false;
+                    }
+                    transform.position = GameObject.Find("CompassPos").transform.position;
+                    transform.rotation = GameObject.Find("CompassPos").transform.rotation;
+                }
+                else if (throwObject) 
+                {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().compass = 0;
+                    transform.SetParent(null);
+                    //rb.isKinematic = false;
+                    rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
+                    //rb.constraints = 0;
+                    //rb.constraints = RigidbodyConstraints.FreezeRotation;
+                    rb.useGravity = true;
+                    stick = false;
+                    
+                    throwObject = false;
+                }
+            }
 
             if (GetComponent<ItemProperties>().id == 11)
             {
                 if (inHands) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().motorBike = 1;
                     onMoto = true;
                     collider.isTrigger = true;
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
@@ -467,6 +553,7 @@ public class InteractObject : Interactable
                 }
                 else if (throwObject) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().motorBike = 0;
                     onMoto = false;
                     collider.isTrigger = false;
                     transform.SetParent(null);
@@ -476,6 +563,11 @@ public class InteractObject : Interactable
                     throwObject = false;
                 }
             }
+            
+
+        }
+
+            
 
         
 

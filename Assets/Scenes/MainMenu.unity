@@ -853,7 +853,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &385103245
 GameObject:
@@ -2151,7 +2151,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1590957558
 GameObject:
@@ -2695,6 +2695,11 @@ MonoBehaviour:
   glowTimer: 0
   glowSpeed: 0.05
   glowAmount: 20
+--- !u!4 &2136505405 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5536189375934282098, guid: 6c8d30dbdc17f584085c5a700b1553c3, type: 3}
+  m_PrefabInstance: {fileID: 5536189375609750863}
+  m_PrefabAsset: {fileID: 0}
 --- !u!222 &1331043225902629196
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2871,8 +2876,9 @@ RectTransform:
   - {fileID: 917606559}
   - {fileID: 1331043226946249306}
   - {fileID: 1371886991}
+  - {fileID: 2136505405}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4031,7 +4037,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1331043226248463238}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4041,16 +4047,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1331043226248463238}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OnClick
-        m_Mode: 1
+      - m_Target: {fileID: 1331043227119499719}
+        m_TargetAssemblyTypeName: ChangeSceneButton, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Scene_A
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1331043227119499717
@@ -4065,6 +4071,7 @@ GameObject:
   - component: {fileID: 1331043227119499713}
   - component: {fileID: 1331043227119499715}
   - component: {fileID: 1331043227119499718}
+  - component: {fileID: 1331043227119499719}
   m_Layer: 5
   m_Name: PlayGame
   m_TagString: Untagged
@@ -4101,6 +4108,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1331043227119499719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331043227119499717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa73d202240bd9409b30a2e0b76e06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &1331043227695415180
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4236,3 +4255,70 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &5536189375609750863
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 1331043225949061377}
+    m_Modifications:
+    - target: {fileID: 5536189375934282098, guid: 6c8d30dbdc17f584085c5a700b1553c3, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536189375934282098, guid: 6c8d30dbdc17f584085c5a700b1553c3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -152.72609
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536189375934282098, guid: 6c8d30dbdc17f584085c5a700b1553c3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 188.07802
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536189375934282098, guid: 6c8d30dbdc17f584085c5a700b1553c3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1237.7965
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536189375934282098, guid: 6c8d30dbdc17f584085c5a700b1553c3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536189375934282098, guid: 6c8d30dbdc17f584085c5a700b1553c3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536189375934282098, guid: 6c8d30dbdc17f584085c5a700b1553c3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536189375934282098, guid: 6c8d30dbdc17f584085c5a700b1553c3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536189375934282098, guid: 6c8d30dbdc17f584085c5a700b1553c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536189375934282098, guid: 6c8d30dbdc17f584085c5a700b1553c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536189375934282098, guid: 6c8d30dbdc17f584085c5a700b1553c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536189375934282099, guid: 6c8d30dbdc17f584085c5a700b1553c3, type: 3}
+      propertyPath: m_Name
+      value: LevelManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536189376175627255, guid: 6c8d30dbdc17f584085c5a700b1553c3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536189376399171465, guid: 6c8d30dbdc17f584085c5a700b1553c3, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.486
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6c8d30dbdc17f584085c5a700b1553c3, type: 3}

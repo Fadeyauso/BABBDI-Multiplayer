@@ -33,10 +33,10 @@ public class SecretPopup : MonoBehaviour
             timer = 3f;
             GameObject.Find("GameManager").GetComponent<GameManager>().secretPopup = false;
         }
-        if (timer < 0 && timer > -5) 
+        if (timer < 0) 
         {
-            if (c.a >= 0) c.a -= 0.01f;
-            if (c1.a >= 0) c1.a -= 0.01f;
+            if (c.a >= 0) c.a -= 2f * Time.deltaTime;
+            if (c1.a >= 0) c1.a -= 2f * Time.deltaTime;
         }
     }
 

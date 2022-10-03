@@ -421,6 +421,12 @@ MonoBehaviour:
   inHands: 0
   throwObject: 0
   extended: 0
+  defaultMask:
+    serializedVersion: 2
+    m_Bits: 0
+  inHandsMask:
+    serializedVersion: 2
+    m_Bits: 65536
   rb: {fileID: 9128256878204351193}
   interactionClip: {fileID: 8300000, guid: f2d20b496dbdaee489acc4aa20487f96, type: 3}
   collider: {fileID: 0}

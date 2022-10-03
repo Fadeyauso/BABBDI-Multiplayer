@@ -104,10 +104,26 @@ MonoBehaviour:
   inHands: 0
   throwObject: 0
   extended: 0
+  defaultMask:
+    serializedVersion: 2
+    m_Bits: 0
+  inHandsMask:
+    serializedVersion: 2
+    m_Bits: 65536
   rb: {fileID: 4780663158137708538}
   interactionClip: {fileID: 8300000, guid: f2d20b496dbdaee489acc4aa20487f96, type: 3}
   collider: {fileID: 0}
   secret: {fileID: 0}
+  onMoto: 0
+  amount: 0.02
+  maxAmount: 0.06
+  smoothAmount: 6
+  rotationAmount: 4
+  maxRotationAmount: 5
+  smoothRotation: 12
+  rotationX: 1
+  rotationY: 1
+  rotationZ: 1
 --- !u!114 &4780663158137708036
 MonoBehaviour:
   m_ObjectHideFlags: 0

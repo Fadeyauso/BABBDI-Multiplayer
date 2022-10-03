@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8214286779568413137}
   - component: {fileID: 5066789116710213236}
   - component: {fileID: 7040303324893225662}
-  - component: {fileID: 6454061772909086770}
   - component: {fileID: 2459910571327855771}
-  m_Layer: 0
+  - component: {fileID: 1711813854498029935}
+  m_Layer: 11
   m_Name: RequestTrain
   m_TagString: DontThrow
   m_Icon: {fileID: 0}
@@ -88,20 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6454061772909086770
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8841923838987764587}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4117060327053584465, guid: 26bcc9f44fac6ac4bacfbda479c57951, type: 3}
 --- !u!114 &2459910571327855771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,3 +102,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   train: {fileID: 8300000, guid: a08eabd66a6a15442886ab5271b5af69, type: 3}
   sound: {fileID: 8300000, guid: 7acff23bf1071e84babaa1dce0ab0cc5, type: 3}
+--- !u!65 &1711813854498029935
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841923838987764587}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8114166, y: 2.7983093, z: 2.0343018}
+  m_Center: {x: 0.03440857, y: 1.3991394, z: 0.34160233}
