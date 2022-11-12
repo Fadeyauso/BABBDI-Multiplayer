@@ -17,7 +17,7 @@ public class Club : MonoBehaviour
     private bool wall;
 
 
-    
+    private float slopForce;
     
     
 
@@ -32,7 +32,7 @@ public class Club : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        slopForce = player.GetComponent<FirstPersonController>().slopeForce;
     }
 
     // Update is called once per frame
@@ -44,6 +44,7 @@ public class Club : MonoBehaviour
             {
                 touch = true;
             }
+
 
             if (Input.GetButtonUp("Fire1")) touch = false;
 
@@ -74,13 +75,27 @@ public class Club : MonoBehaviour
 
             else if (!player.GetComponent<FirstPersonController>().backRay && !player.GetComponent<FirstPersonController>().rightRay && !player.GetComponent<FirstPersonController>().characterController.isGrounded)
                 player.GetComponent<FirstPersonController>().AddForce(-player.GetComponent<FirstPersonController>().playerCamera.transform.forward, groundImpactForce);
-            else if (player.GetComponent<FirstPersonController>().characterController.isGrounded && player.GetComponent<FirstPersonController>().downRay)
+            else if (player.GetComponent<FirstPersonController>().characterController.isGrounded && player.GetComponent<FirstPersonController>().downRay){
+                player.GetComponent<FirstPersonController>().slopeForce = 0;
+                player.GetComponent<FirstPersonController>().moveDirection.y = 0;
                 player.GetComponent<FirstPersonController>().AddForce(-player.GetComponent<FirstPersonController>().playerCamera.transform.forward, groundImpactForce);
-            else
+                
+
+            }
+                
+            else{
+                
                 player.GetComponent<FirstPersonController>().AddForce(-player.GetComponent<FirstPersonController>().playerCamera.transform.forward, 0f);
+            }
+                
         }
         
 
+    }
+
+    void OnTriggerExit()
+    {
+        player.GetComponent<FirstPersonController>().slopeForce = slopForce;
     }
 
 }

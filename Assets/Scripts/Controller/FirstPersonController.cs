@@ -52,7 +52,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float gravity = 30.0f;
     public AudioClip jumpClip;
     public AudioClip landClip;
-    private bool landing;
+    public bool landing;
     public float landTimer;
     public float airTime;
     private float aftervaultjumpTimer;
@@ -141,7 +141,7 @@ public class FirstPersonController : MonoBehaviour
     private bool onFlatGround;
 
     [Header("Slope Parameters")]
-    [SerializeField] private float slopeForce;
+    [SerializeField] public float slopeForce;
     [SerializeField] private float slopeForceRayLength;
 
     private bool OnSlope()
@@ -166,7 +166,7 @@ public class FirstPersonController : MonoBehaviour
 
     private bool prejump;
     private float prejumpCancelTimer;
-    private bool inJump;
+    public bool inJump;
 
     [Header("Interaction")]
     [SerializeField] private Vector3 interactionRayPoint = default;
@@ -448,7 +448,7 @@ public class FirstPersonController : MonoBehaviour
         jumpTimer -= Time.deltaTime;
         if (Input.GetKeyDown(jumpKey) && characterController.isGrounded) jumpTimer = 0.3f;
     }
-    private float jumpTimer = 0;
+    public float jumpTimer = 0;
 
     private void MovementBoost()
     {
@@ -983,7 +983,7 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
-    private bool jumpSlope = false;
+    public bool jumpSlope = false;
     private bool leaveSlope;
 
     private void ApplyFinalMovements()
