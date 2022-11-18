@@ -17064,3 +17064,7 @@ Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA9
 Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LM0_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LM0_final.hdr" 1024
 Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA10_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA10_final.hdr" 1024
 Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA4_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA4_final.hdr" 1024
+Done
+Done
+Done
+Done
