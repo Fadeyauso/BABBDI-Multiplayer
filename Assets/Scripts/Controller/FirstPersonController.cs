@@ -155,6 +155,15 @@ public class FirstPersonController : MonoBehaviour
         return false;
     }
 
+    private bool OnSlopeAir()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, slopeForceRayLength))
+            if (hit.normal != Vector3.up && Vector3.Angle(hit.normal, Vector3.up) < 65)
+                return true;
+        return false;
+    }
+
     private bool OnSteepSlope()
     { 
         RaycastHit hit;
@@ -413,7 +422,7 @@ public class FirstPersonController : MonoBehaviour
 
             
 
-            CheckForVault();
+            if (!OnSlopeAir()) CheckForVault();
 
 
 
@@ -915,6 +924,7 @@ public class FirstPersonController : MonoBehaviour
                     currentInteractable.OnFocus();
 
                 talkPopup.SetActive(false);
+                grabPopup.SetActive(false);
       
         }
         else if (Physics.SphereCast(playerCamera.transform.position, sphereRadius, playerCamera.transform.forward, out RaycastHit spherehit2, currentHitDistance,npcLayer) && !dialogueActive)
@@ -930,6 +940,7 @@ public class FirstPersonController : MonoBehaviour
 
                 grabPopup.SetActive(false);
                 doorPopup.SetActive(false);
+                jukeboxPopup.SetActive(false);
                 
         }
         else if (currentInteractable)

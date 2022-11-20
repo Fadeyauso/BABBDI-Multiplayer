@@ -69,6 +69,8 @@ public class Climber : MonoBehaviour
     void OnTriggerEnter(Collider collisionInfo)
     {
         touch = true;
+        pickPos = transform.position;
+                pickRot = transform.rotation;
         
     }
 
@@ -85,8 +87,8 @@ public class Climber : MonoBehaviour
             {
                 SoundManager.Instance.PlaySound(hit);
                 hitb = false;
-                pickPos = transform.position;
-                pickRot = transform.rotation;
+                pickPos = GameObject.Find("Pickaxe00").transform.position;
+                pickRot = GameObject.Find("Pickaxe00").transform.rotation;
             }
             
 

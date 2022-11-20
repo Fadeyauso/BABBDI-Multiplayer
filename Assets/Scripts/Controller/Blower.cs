@@ -49,6 +49,7 @@ public class Blower : MonoBehaviour
             else blowMovement = new Vector3(0,0,0);
             
         }
+        
         if (Input.GetButtonUp("Fire1") && GetComponent<InteractObject>().inHands)
         {
             

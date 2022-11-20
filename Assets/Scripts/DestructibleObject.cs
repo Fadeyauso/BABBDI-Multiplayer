@@ -43,7 +43,7 @@ public class DestructibleObject : MonoBehaviour
                 r.AddForce(player.GetComponent<FirstPersonController>().playerCamera.transform.forward * 60f, ForceMode.Impulse);
                 separate = true;
             }
-            else if (collisionInfo.gameObject.layer == 16 && Input.GetButton("Fire1"))
+            else if ((collisionInfo.gameObject.layer == 16 || collisionInfo.gameObject.layer == 7) && Input.GetButton("Fire1"))
             {
                 transform.parent.GetComponent<PlankParent>().destroyed = true;
                 transform.parent = null;
@@ -60,7 +60,7 @@ public class DestructibleObject : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.GetComponent<Rigidbody>() != null && collision.collider.gameObject.layer == 16)
+        if (collision.collider.GetComponent<Rigidbody>() != null && (collision.collider.gameObject.layer == 16 || collision.collider.gameObject.layer == 7))
         {
             transform.parent = null;
             gameObject.layer = 12;
