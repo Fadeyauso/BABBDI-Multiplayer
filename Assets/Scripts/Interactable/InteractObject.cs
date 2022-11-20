@@ -24,6 +24,7 @@ public class InteractObject : Interactable
     public GameObject secret;
 
     float timer = 0;
+    private float climbTimer = 0;
 
     private bool club;
     private bool climber;
@@ -218,7 +219,7 @@ public class InteractObject : Interactable
                 }
             }
             
-
+            climbTimer -= Time.deltaTime;
             if (GetComponent<ItemProperties>().id == 2)
             {
                 if (inHands) 
@@ -248,6 +249,7 @@ public class InteractObject : Interactable
                         transform.position = GameObject.Find("Pickaxe00").transform.position;
                         transform.rotation = GameObject.Find("Pickaxe00").transform.rotation;
                         extended = true;
+                        climbTimer = 0.01f;
                         climber = false;
                     }
                     else
