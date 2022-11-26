@@ -382,6 +382,7 @@ public class FirstPersonController : MonoBehaviour
             if (pauseMenu.activeSelf == true) canMove = false;
             else if (climber.GetComponent<Climber>().trigger) canMove = false;
             else if (GetComponent<EnterZone>().inLift && GameObject.Find("GameManager").GetComponent<GameManager>().inActivatedLift) canMove = false;
+            else if (GameObject.Find("GameManager").GetComponent<GameManager>().bridgeTimer > 0) canMove = false;
             else canMove = !dialogueActive;
         }
         if (climber == null) canMove = !dialogueActive;

@@ -931,7 +931,6 @@ GameObject:
   - component: {fileID: 7482973072534782210}
   - component: {fileID: 519846068298027556}
   - component: {fileID: 7482973072534782213}
-  - component: {fileID: 1802910641}
   - component: {fileID: 919582529}
   - component: {fileID: 919582528}
   m_Layer: 10
@@ -1060,6 +1059,7 @@ MonoBehaviour:
   gravity: 22
   jumpClip: {fileID: 8300000, guid: 58bdda711813ee84eb0833c82f25eac3, type: 3}
   landClip: {fileID: 8300000, guid: eb199323d1a12ce4c846db77269b6c6c, type: 3}
+  landing: 0
   landTimer: 0
   airTime: 0
   crouchingSpeed: 10
@@ -1103,6 +1103,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bee3e667d19a4f140a4c314a137f495d, type: 3}
   slopeForce: 100
   slopeForceRayLength: 3
+  inJump: 0
   interactionRayPoint: {x: 0.5, y: 0.5, z: 0}
   interactionDistance: 5
   sphereRadius: 0.5
@@ -1183,6 +1184,7 @@ MonoBehaviour:
   currentInputRaw: {x: 0, y: 0}
   rotationX: 0
   rotationZ: 0
+  jumpTimer: 0
   vault: 0
   addingForce: 0
   forceAdded: {x: 0, y: 0, z: 0}
@@ -1200,6 +1202,7 @@ MonoBehaviour:
   initRotationY: 0
   slideCountdown: 0
   currentHitObject: {fileID: 0}
+  jumpSlope: 0
 --- !u!114 &519846068298027556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1235,30 +1238,6 @@ CapsuleCollider:
   m_Height: 2.8707047
   m_Direction: 1
   m_Center: {x: 0.05664575, y: 1.0806475, z: 0.026705265}
---- !u!167 &1802910641
-AudioReverbZone:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7482973072534782211}
-  m_Enabled: 1
-  m_MinDistance: 0
-  m_MaxDistance: 10.082031
-  m_ReverbPreset: 1
-  m_Room: -1000
-  m_RoomHF: -100
-  m_DecayTime: 1.49
-  m_DecayHFRatio: 0.83
-  m_Reflections: -2602
-  m_ReflectionsDelay: 0.007
-  m_Reverb: 200
-  m_ReverbDelay: 0.011
-  m_HFReference: 5000
-  m_Diffusion: 100
-  m_Density: 100
-  m_LFReference: 250
-  m_RoomLF: 0
 --- !u!82 &919582529
 AudioSource:
   m_ObjectHideFlags: 0

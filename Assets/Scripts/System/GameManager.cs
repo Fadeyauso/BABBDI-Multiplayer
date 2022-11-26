@@ -25,6 +25,11 @@ public class GameManager : MonoBehaviour, ISaveable
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] private TMP_Text name_label;
 
+    [Header("Cutscene")] 
+    public Animator anim1;
+    public Animator anim2;
+    public GameObject bridgeCam;
+
     [Header("Save Object in hands")]
     public int club;
     public int climber;
@@ -143,9 +148,12 @@ public class GameManager : MonoBehaviour, ISaveable
         SceneManager.LoadScene("MainMenu");
     }
 
-    // Update is called once per frame
+    // Update is called once per frame#
+    public float bridgeTimer;
     void Update() 
     {
+        bridgeTimer -= Time.deltaTime;
+
         if (haveTicket == 1) ticket = true;
         else ticket = false;
         startTimer -= Time.deltaTime;
