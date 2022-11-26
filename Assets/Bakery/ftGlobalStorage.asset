@@ -88,7 +88,7 @@ MonoBehaviour:
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_Grass00.fbx
   - Assets/Characters/Meshes/SM_CoachTimmus00.fbx
   - "Assets/Characters/Meshes/SM_A_T\xE9o00.fbx"
-  modifiedAssetPaddingHash: aaf8cc2e363fd3d9ecc124912ca3ddde383fd3d9333fd3d9333fd3d9cfc3a693ecc124919d4dfff0363fd3d9363fd3d9da4608c8d74608c8ecc124914adc894b3e3fd3d93e3fd3d93f3fd3d942dd894b38c2a693ecc124910938ed04ecc12491ecc12491ecc12491ecc124915dc5d89023c5d890393fd3d91738ed04ecc124913e3fd3d9b4c2a693393fd3d9363fd3d980c5d890333fd3d9393fd3d9f83980330838ed04ecc12491377e93638109ecc0b25634b7c8d15080f166e2a81638ed04bd4608c8d05634b7d1318883c04dfff0f227c115323fd3d9f0c12491363fd3d93e3fd3d9fe4945be377e9363ecc1249197c6d890ecc12491ecc12491c25031eeecc12491363fd3d9af67e2a83e3fd3d94adc894becc12491ecc12491353fd3d9393fd3d9ecc12491ecc12491
+  modifiedAssetPaddingHash: aaf8cc2e363fd3d9ecc124912ca3ddde383fd3d9333fd3d9333fd3d9cfc3a693ecc124919d4dfff0363fd3d9363fd3d9da4608c8d74608c8ecc124914adc894b3e3fd3d93e3fd3d93f3fd3d942dd894b38c2a693ecc124910938ed04ecc12491ecc12491ecc12491ecc124915dc5d89023c5d890393fd3d91738ed04ecc124913e3fd3d9b4c2a693393fd3d9363fd3d980c5d890333fd3d9393fd3d9f83980330838ed04ecc12491377e93638109ecc0b25634b7c8d15080f166e2a81638ed04bd4608c8d05634b7d131888375f23a06f227c115323fd3d9f0c12491363fd3d93e3fd3d9fe4945be377e9363ecc1249197c6d890ecc12491ecc12491c25031eeecc12491363fd3d9af67e2a83e3fd3d94adc894becc12491ecc12491353fd3d9393fd3d9ecc12491ecc12491
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -673,7 +673,7 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Woodwork00
-    padding: 3a000000
+    padding: 3c000000
     unwrapper: 00000000
   - meshName:
     - SM_Scene_A_Rugs00
@@ -881,5 +881,5 @@ MonoBehaviour:
   renderSettingsRTPVSceneView: 0
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
-  modifiedMeshPaddingArray: 18000000
+  modifiedMeshPaddingArray: 00010000
   modifiedMeshUnwrapperArray: 00000000
