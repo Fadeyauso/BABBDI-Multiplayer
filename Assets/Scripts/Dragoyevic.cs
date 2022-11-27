@@ -8,9 +8,7 @@ public class Dragoyevic : MonoBehaviour
     public bool giveCompass;
     public bool compassAvailable;
     public bool activateBridge;
-    
 
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +43,9 @@ public class Dragoyevic : MonoBehaviour
     void ActivateBridge()
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().bridgeCam.SetActive(true);
+        GameObject.Find("GameManager").GetComponent<GameManager>().bridgeAudio.Play();
         GameObject.Find("GameManager").GetComponent<GameManager>().anim1.SetBool("Trig1", true);
         GameObject.Find("GameManager").GetComponent<GameManager>().anim2.SetBool("Trig1", true);
+
     }
 }

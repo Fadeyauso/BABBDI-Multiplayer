@@ -6,9 +6,9 @@ public class SetSFXVolume : MonoBehaviour
 {
     [SerializeField] private AudioSource audio;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        if (GetComponent<AudioSource>() != null) audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
