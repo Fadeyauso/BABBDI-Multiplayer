@@ -54,6 +54,29 @@ MonoBehaviour:
   returnoffice: {fileID: 0}
   speedrunLabel: {fileID: 0}
   ticketDisplay: {fileID: 0}
+  qualitySettings: {fileID: 0}
+  dialogueBox: {fileID: 0}
+  textLabel: {fileID: 0}
+  name_label: {fileID: 0}
+  anim1: {fileID: 0}
+  anim2: {fileID: 0}
+  bridgeCam: {fileID: 0}
+  club: 0
+  climber: 0
+  propeller: 0
+  blower: 0
+  flashlight: 0
+  soap: 0
+  ball: 0
+  bigball: 0
+  stick: 0
+  grabber: 0
+  motorBike: 0
+  compass: 0
+  dragoStart: {fileID: 0}
+  dragoEnd: {fileID: 4729652802178048832, guid: dc41c1d42befc3748b19b2d21b4a77b1, type: 3}
+  secondPosition: {fileID: 0}
+  continueDialogueFX: {fileID: 0}
   secretsFound: 0
   npcInteractedWith: 0
   maxNpc: 15
@@ -70,6 +93,7 @@ MonoBehaviour:
   gameTime: 0
   secondPart: 0
   haveTicket: 0
+  startTimer: 0
   lastAchievement: 
   wayClimber: 0
   wayClimberState: 0
@@ -98,6 +122,9 @@ MonoBehaviour:
   escapeBabbdi: 0
   escapeBabbdiState: 0
   escapeBabbdiToggle: {fileID: 0}
+  ticket: 0
+  ticketState: 0
+  ticketToggle: {fileID: 0}
   jingle:
   - {fileID: 8300000, guid: 9b4450cbc45e5184e82e58a297df557d, type: 3}
   - {fileID: 8300000, guid: fdaa57320b7787441b6b688260e24a01, type: 3}
@@ -109,6 +136,7 @@ MonoBehaviour:
   secrets:
   - {fileID: 0}
   secretState: 
+  bridgeTimer: 0
 --- !u!114 &5771581332040775588
 MonoBehaviour:
   m_ObjectHideFlags: 0

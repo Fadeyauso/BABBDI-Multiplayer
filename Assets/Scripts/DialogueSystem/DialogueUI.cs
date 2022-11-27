@@ -56,6 +56,11 @@ public class DialogueUI : MonoBehaviour
             continueDialogueFX.SetActive(false);
             
         }
+        if (GetComponent<Dragoyevic>() != null && activ == true && GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1) 
+        {
+            activ = false;
+            GetComponent<Dragoyevic>().activateBridge = true;
+        }
 
         CloseDialogueBox();
     }
@@ -75,6 +80,8 @@ public class DialogueUI : MonoBehaviour
         }
     }
 
+    private bool activ = true;
+
     private void CloseDialogueBox()
     {
         speaking = false;
@@ -83,5 +90,7 @@ public class DialogueUI : MonoBehaviour
         //player.GetComponent<CollectItems>().dialogueActive = false;
         if ((!GetComponent<NPC>().dialogueDone) && (GetComponent<NPC>().dialogue.Length-1 == 0 ? !GetComponent<NPC>().interactedWith : GetComponent<NPC>().dialogueIndex > 0) && (GetComponent<NPC>().hasSecondPhase ? GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 0 : 1==1) && GameObject.Find("GameManager").GetComponent<GameManager>().startTimer < -1) 
                 SoundManager.Instance.PlaySound(GetComponent<NPC>().exclamation.GetComponent<ExclamationPoint>().initClip);
+
+        
     }
 }

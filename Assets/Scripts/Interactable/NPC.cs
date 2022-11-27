@@ -52,7 +52,6 @@ public class NPC : Interactable
             GameObject.Find("GameManager").GetComponent<GameManager>().npcInteractedWith ++;
         }
 
-
         
     }
 

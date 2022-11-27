@@ -34,13 +34,12 @@ public class FacePlayer : MonoBehaviour
 
         if (distanceFromPlayer < maxDistance)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(facePlayerRot.eulerAngles.x, 
-                facePlayerRot.eulerAngles.y, facePlayerRot.eulerAngles.z), Time.deltaTime * damping);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(facePlayerRot.eulerAngles.x, facePlayerRot.eulerAngles.y, facePlayerRot.eulerAngles.z), Time.deltaTime * damping);
 
             LimitRot();
         }
         else
-            transform.rotation = transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(defaultRot.eulerAngles.x, defaultRot.eulerAngles.y, defaultRot.eulerAngles.z), Time.deltaTime * damping);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(defaultRot.eulerAngles.x, defaultRot.eulerAngles.y, defaultRot.eulerAngles.z), Time.deltaTime * damping);
 
     }
 

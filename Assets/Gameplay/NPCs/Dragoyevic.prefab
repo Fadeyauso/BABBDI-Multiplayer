@@ -296,6 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   giveCompass: 0
   compassAvailable: 0
+  activateBridge: 0
 --- !u!1 &7692246145725412527
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,6 +309,7 @@ GameObject:
   - component: {fileID: 6502723063564548270}
   - component: {fileID: 6057696460062473380}
   - component: {fileID: 2160443086601551315}
+  - component: {fileID: 1353770301}
   m_Layer: 0
   m_Name: SM_Amir00.016
   m_TagString: DontThrow
@@ -395,6 +397,28 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7504100102973654245, guid: 4abb5f96c3747514aa2e7cdc5df30dc6, type: 3}
+--- !u!114 &1353770301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7692246145725412527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df096a5a827e8ab4ea789bac40ea01cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceFromPlayer: 0
+  maxDistance: 7
+  damping: 25
+  minXRot: -20
+  maxXRot: 20
+  minYRot: 20
+  maxYRot: -20
+  defaultRot: {x: 0, y: 0, z: 0, w: 1}
+  facePlayerRot: {x: 0, y: 0, z: 0, w: 1}
+  rotation: {x: 0, y: 0, z: 0}
 --- !u!1 &8706076092004847476
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,8 +446,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8706076092004847476}
   m_LocalRotation: {x: -0.002462638, y: -0.6864488, z: 0.000015370664, w: 0.727174}
-  m_LocalPosition: {x: 0.04, y: 7.6, z: 0.66}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: -0, y: 11.22, z: -0.11}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5397786833137482234}
