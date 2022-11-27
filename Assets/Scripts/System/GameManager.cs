@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour, ISaveable
     public Animator anim1;
     public Animator anim2;
     public GameObject bridgeCam;
+    public AudioSource bridgeAudio;
 
     [Header("Save Object in hands")]
     public int club;
