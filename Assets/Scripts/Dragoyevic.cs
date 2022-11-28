@@ -34,16 +34,20 @@ public class Dragoyevic : MonoBehaviour
         }
         if (GameObject.Find("GameManager").GetComponent<GameManager>().bridgeTimer > 0) ActivateBridge();
 
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().bridgeTimer < 0) 
+        if (GameObject.Find("GameManager").GetComponent<GameManager>().bridgeTimer < 1 && GameObject.Find("GameManager").GetComponent<GameManager>().bridgeTimer > 0) 
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().bridgeCam.SetActive(false);
+            GameObject.Find("GameManager").GetComponent<GameManager>().userInterface.SetActive(true);
+            GameObject.Find("GameManager").GetComponent<GameManager>().userInterface1.SetActive(true);
         }
     }
 
     void ActivateBridge()
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().bridgeCam.SetActive(true);
-        GameObject.Find("GameManager").GetComponent<GameManager>().bridgeAudio.Play();
+        GameObject.Find("GameManager").GetComponent<GameManager>().userInterface.SetActive(false);
+        GameObject.Find("GameManager").GetComponent<GameManager>().userInterface1.SetActive(false);
+        
         GameObject.Find("GameManager").GetComponent<GameManager>().anim1.SetBool("Trig1", true);
         GameObject.Find("GameManager").GetComponent<GameManager>().anim2.SetBool("Trig1", true);
 

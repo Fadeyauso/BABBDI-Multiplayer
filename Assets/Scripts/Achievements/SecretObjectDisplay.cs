@@ -11,6 +11,8 @@ public class SecretObjectDisplay : MonoBehaviour
     public Material masked;
     public Material displayed;
 
+    public Vector3 rotation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,7 @@ public class SecretObjectDisplay : MonoBehaviour
 
         if (collected) 
         {
-            transform.Rotate(0,100 * Time.deltaTime,0);
+            transform.Rotate(rotation.x * Time.deltaTime, rotation.y * Time.deltaTime,rotation.z * Time.deltaTime);
             GetComponent<Renderer>().material = displayed;
         }
         else

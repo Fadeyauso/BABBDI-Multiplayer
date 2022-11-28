@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour, ISaveable
     public Animator anim1;
     public Animator anim2;
     public GameObject bridgeCam;
+    public GameObject userInterface;
+    public GameObject userInterface1;
     public AudioSource bridgeAudio;
 
     [Header("Save Object in hands")]
@@ -239,12 +241,12 @@ public class GameManager : MonoBehaviour, ISaveable
     public void AddSecret()
     {
         secretsFound ++;
-        if (secretsFound >= 24) 
+        if (secretsFound >= 21) 
         {
             if (!allSecrets) Popup();
             allSecrets = true;
             allSecretsState = 1;
-            lastAchievement = "Secrets Master";
+            lastAchievement = "Avid Collector";
         }
     }
     private float lobbyTimer;
@@ -299,7 +301,27 @@ public class GameManager : MonoBehaviour, ISaveable
 
             //Secrets
             secretsFound = this.secretsFound,
-            secret01 = this.secretState[0],
+            secret00  = this.secretState[0] ,
+            secret01  = this.secretState[1] ,
+            secret02  = this.secretState[2] ,
+            secret03  = this.secretState[3] ,
+            secret04  = this.secretState[4] ,
+            secret05  = this.secretState[5] ,
+            secret06  = this.secretState[6] ,
+            secret07  = this.secretState[7] ,
+            secret08  = this.secretState[8] ,
+            secret09  = this.secretState[9] ,
+            secret10 = this.secretState[10],
+            secret11 = this.secretState[11],
+            secret12 = this.secretState[12],
+            secret13 = this.secretState[13],
+            secret14 = this.secretState[14],
+            secret15 = this.secretState[15],
+            secret16 = this.secretState[16],
+            secret17 = this.secretState[17],
+            secret18 = this.secretState[18],
+            secret19 = this.secretState[19],
+            secret20 = this.secretState[20],
 
             //Object in hands
             club = this.club,
@@ -404,22 +426,42 @@ public class GameManager : MonoBehaviour, ISaveable
         
         //Secrets
         secretsFound = saveData.secretsFound;
-        this.secretState[0] = saveData.secret01;
+        this.secretState[0] = saveData.secret00 ;
+        this.secretState[1] = saveData.secret01 ;
+        this.secretState[2] = saveData.secret02 ;
+        this.secretState[3] = saveData.secret03 ;
+        this.secretState[4] = saveData.secret04 ;
+        this.secretState[5] = saveData.secret05 ;
+        this.secretState[6] = saveData.secret06 ;
+        this.secretState[7] = saveData.secret07 ;
+        this.secretState[8] = saveData.secret08 ;
+        this.secretState[9] = saveData.secret09 ;
+        this.secretState[10] = saveData.secret10;
+        this.secretState[11] = saveData.secret11;
+        this.secretState[12] = saveData.secret12;
+        this.secretState[13] = saveData.secret13;
+        this.secretState[14] = saveData.secret14;
+        this.secretState[15] = saveData.secret15;
+        this.secretState[16] = saveData.secret16;
+        this.secretState[17] = saveData.secret17;
+        this.secretState[18] = saveData.secret18;
+        this.secretState[19] = saveData.secret19;
+        this.secretState[20] = saveData.secret20;
 
         //Object in hands
         club = saveData.club;
-            climber = saveData.climber;
-            propeller = saveData.propeller;
-            blower = saveData.blower;
-            flashlight = saveData.flashlight;
-            soap = saveData.soap;
-            ball = saveData.ball;
-            bigball = saveData.bigball;
-            stick = saveData.stick;
-            grabber = saveData.grabber;
-            motorBike = saveData.motorBike;
-            compass = saveData.compass;
-        
+        climber = saveData.climber;
+        propeller = saveData.propeller;
+        blower = saveData.blower;
+        flashlight = saveData.flashlight;
+        soap = saveData.soap;
+        ball = saveData.ball;
+        bigball = saveData.bigball;
+        stick = saveData.stick;
+        grabber = saveData.grabber;
+        motorBike = saveData.motorBike;
+        compass = saveData.compass;
+    
     }
 
     [Serializable]
@@ -450,7 +492,27 @@ public class GameManager : MonoBehaviour, ISaveable
 
         //Secrets
         public int secretsFound;
+        public int secret00;
         public int secret01;
+        public int secret02;
+        public int secret03;
+        public int secret04;
+        public int secret05;
+        public int secret06;
+        public int secret07;
+        public int secret08;
+        public int secret09;
+        public int secret10;
+        public int secret11;
+        public int secret12;
+        public int secret13;
+        public int secret14;
+        public int secret15;
+        public int secret16;
+        public int secret17;
+        public int secret18;
+        public int secret19;
+        public int secret20;
 
         //Object in hands
         public int club;

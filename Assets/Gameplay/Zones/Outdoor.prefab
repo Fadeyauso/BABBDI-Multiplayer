@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 162412465867507922}
   - component: {fileID: 3758244066763392459}
   - component: {fileID: 1758582985418903662}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Outdoor
   m_TagString: Door/Outdoor
   m_Icon: {fileID: 0}

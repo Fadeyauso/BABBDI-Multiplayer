@@ -60,6 +60,7 @@ public class DialogueUI : MonoBehaviour
         {
             activ = false;
             GetComponent<Dragoyevic>().activateBridge = true;
+            GameObject.Find("GameManager").GetComponent<GameManager>().bridgeAudio.Play();
         }
 
         CloseDialogueBox();

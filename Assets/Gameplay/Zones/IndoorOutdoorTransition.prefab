@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5647061090886871398}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: IndoorOutdoorTransition
   m_TagString: Untagged
   m_Icon: {fileID: 0}

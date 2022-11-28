@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6673037244365832457}
   - component: {fileID: 6673037244365832462}
   - component: {fileID: 6673037244365832459}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: EventZone
-  m_TagString: Untagged
+  m_TagString: Zone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,5 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oneTimeEvent: 1
-  audioSource: {fileID: 0}
-  anim: {fileID: 0}
+  audioSource:
+  - {fileID: 0}
+  anim:
+  - {fileID: 0}

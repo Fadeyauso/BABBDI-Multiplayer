@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2134129291969464611}
   - component: {fileID: 2134129291969464608}
   - component: {fileID: 2134129291969464609}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: SAVINGZONEBureaux
   m_TagString: SavingZone
   m_Icon: {fileID: 0}

@@ -15,6 +15,6 @@ public class Library : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "You collected " + GameObject.Find("GameManager").GetComponent<GameManager>().secretsFound + "/24 secret objects.";
+        text.text = "You collected " + GameObject.Find("GameManager").GetComponent<GameManager>().secretsFound + "/21 secret objects.";
     }
 }
