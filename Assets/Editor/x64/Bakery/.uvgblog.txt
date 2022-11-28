@@ -19967,3 +19967,708 @@ Done
 Done
 Done
 Done
+2022-11-28
+Rendering UV GBuffer for Scene_AA_LMA9 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA18 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA17 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA16 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA15 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA14 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA13 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA12 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA11 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA10 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA20 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA8 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA7 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA6 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA5 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA4 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA3 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA2 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA1 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LM0 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for Scene_AA_LMA19 51
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for probes 256
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Done
+Done
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA10.lz4" 2 0 9 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA9.lz4" 2 0 0 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA1.lz4" 2 0 18 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA6.lz4" 2 0 13 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA15.lz4" 2 0 4 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA19.lz4" 2 0 20 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA13.lz4" 2 0 6 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA11.lz4" 2 0 8 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA12.lz4" 2 0 7 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA16.lz4" 2 0 3 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA20.lz4" 2 0 10 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA18.lz4" 2 0 1 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA2.lz4" 2 0 17 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA7.lz4" 2 0 12 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA8.lz4" 2 0 11 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA3.lz4" 2 0 16 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA14.lz4" 2 0 5 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA5.lz4" 2 0 14 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA17.lz4" 2 0 2 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LM0.lz4" 2 0 19 0
+Running ftraceRTX fixpos12 "C:\Users\Leonard\AppData\Local\Temp\frender" "uvpos_Scene_AA_LMA4.lz4" 2 0 15 0
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_31199968_21" 1924 0 21 lights0.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908286902_21" 1924 0 21 lights1.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_248661108_21" 1924 0 21 lights2.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1114187398_21" 1924 0 21 lights3.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2136289570_21" 1924 0 21 lights4.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_940849281_21" 1924 0 21 lights5.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-643823470_21" 1924 0 21 lights6.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_854360328_21" 1924 0 21 lights7.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-103365967_21" 1924 0 21 lights8.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-311959831_21" 1924 0 21 lights9.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1388048887_21" 1924 0 21 lights10.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1250018717_21" 1924 0 21 lights11.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2089038923_21" 1924 0 21 lights12.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-609681369_21" 1924 0 21 lights13.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1365962011_21" 1924 0 21 lights14.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-221176537_21" 1924 0 21 lights15.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-524266577_21" 1924 0 21 lights16.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_571861116_21" 1924 0 21 lights17.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2093523789_21" 1924 0 21 lights18.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_294035834_21" 1924 0 21 lights19.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_737565106_21" 1924 0 21 lights20.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1924801567_21" 1924 0 21 lights21.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_2098639741_21" 1924 0 21 lights22.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-797026607_21" 1924 0 21 lights23.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_559261843_21" 1924 0 21 lights24.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908225465_21" 1924 0 21 lights25.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1685738347_21" 1924 0 21 lights26.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1762321041_21" 1924 0 21 lights27.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1225270544_21" 1924 0 21 lights28.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-16423055_21" 1924 0 21 lights29.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-340158577_21" 1924 0 21 lights30.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1207239264_21" 1924 0 21 lights31.bin
+Running ftraceRTX arealightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1376435192_21" 1924 0 21 lights32.bin
+Running ftraceRTX batchpointlightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_21_0_127" 1924 0 21 batchpointlight_21_0_127.bin
+Running ftraceRTX batchpointlightprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_21_128_129" 1924 0 21 batchpointlight_21_128_129.bin
+Running ftraceRTX skyprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_21" 1924 0 21 sky0.bin
+Running ftraceRTX sunprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_21" 1924 0 21 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "probes" 4 0 21 comp_21.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_31199968_9" 4 0 9 lights0.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908286902_9" 4 0 9 lights1.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_248661108_9" 4 0 9 lights2.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1114187398_9" 4 0 9 lights3.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2136289570_9" 4 0 9 lights4.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_940849281_9" 4 0 9 lights5.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-643823470_9" 4 0 9 lights6.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_854360328_9" 4 0 9 lights7.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-103365967_9" 4 0 9 lights8.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-311959831_9" 4 0 9 lights9.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1388048887_9" 4 0 9 lights10.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1250018717_9" 4 0 9 lights11.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2089038923_9" 4 0 9 lights12.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-609681369_9" 4 0 9 lights13.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1365962011_9" 4 0 9 lights14.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-221176537_9" 4 0 9 lights15.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-524266577_9" 4 0 9 lights16.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_571861116_9" 4 0 9 lights17.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2093523789_9" 4 0 9 lights18.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_294035834_9" 4 0 9 lights19.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_737565106_9" 4 0 9 lights20.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1924801567_9" 4 0 9 lights21.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_2098639741_9" 4 0 9 lights22.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-797026607_9" 4 0 9 lights23.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_559261843_9" 4 0 9 lights24.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908225465_9" 4 0 9 lights25.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1685738347_9" 4 0 9 lights26.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1762321041_9" 4 0 9 lights27.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1225270544_9" 4 0 9 lights28.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-16423055_9" 4 0 9 lights29.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-340158577_9" 4 0 9 lights30.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1207239264_9" 4 0 9 lights31.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1376435192_9" 4 0 9 lights32.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_9_0_127" 4 0 9 batchpointlight_9_0_127.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_9_128_129" 4 0 9 batchpointlight_9_128_129.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_9" 4 0 9 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_9" 4 0 9 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA10" 4 0 9 comp_9.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_31199968_0" 4 0 0 lights0.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908286902_0" 4 0 0 lights1.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_248661108_0" 4 0 0 lights2.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1114187398_0" 4 0 0 lights3.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2136289570_0" 4 0 0 lights4.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_940849281_0" 4 0 0 lights5.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-643823470_0" 4 0 0 lights6.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_854360328_0" 4 0 0 lights7.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-103365967_0" 4 0 0 lights8.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-311959831_0" 4 0 0 lights9.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1388048887_0" 4 0 0 lights10.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1250018717_0" 4 0 0 lights11.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2089038923_0" 4 0 0 lights12.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-609681369_0" 4 0 0 lights13.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1365962011_0" 4 0 0 lights14.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-221176537_0" 4 0 0 lights15.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-524266577_0" 4 0 0 lights16.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_571861116_0" 4 0 0 lights17.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2093523789_0" 4 0 0 lights18.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_294035834_0" 4 0 0 lights19.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_737565106_0" 4 0 0 lights20.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1924801567_0" 4 0 0 lights21.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_2098639741_0" 4 0 0 lights22.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-797026607_0" 4 0 0 lights23.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_559261843_0" 4 0 0 lights24.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908225465_0" 4 0 0 lights25.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1685738347_0" 4 0 0 lights26.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1762321041_0" 4 0 0 lights27.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1225270544_0" 4 0 0 lights28.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-16423055_0" 4 0 0 lights29.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-340158577_0" 4 0 0 lights30.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1207239264_0" 4 0 0 lights31.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1376435192_0" 4 0 0 lights32.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_0_0_128" 4 0 0 batchpointlight_0_0_128.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_0_129_129" 4 0 0 batchpointlight_0_129_129.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_0" 4 0 0 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_0" 4 0 0 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA9" 4 0 0 comp_0.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_18" 4 0 18 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_18" 4 0 18 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA1" 4 0 18 comp_18.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_13" 4 0 13 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_13" 4 0 13 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA6" 4 0 13 comp_13.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_4_0_129" 4 0 4 batchpointlight_4_0_129.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_4" 4 0 4 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_4" 4 0 4 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA15" 4 0 4 comp_4.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_31199968_20" 4 0 20 lights0.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908286902_20" 4 0 20 lights1.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_248661108_20" 4 0 20 lights2.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1114187398_20" 4 0 20 lights3.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2136289570_20" 4 0 20 lights4.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_940849281_20" 4 0 20 lights5.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-643823470_20" 4 0 20 lights6.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_854360328_20" 4 0 20 lights7.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-103365967_20" 4 0 20 lights8.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-311959831_20" 4 0 20 lights9.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1388048887_20" 4 0 20 lights10.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1250018717_20" 4 0 20 lights11.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2089038923_20" 4 0 20 lights12.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-609681369_20" 4 0 20 lights13.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1365962011_20" 4 0 20 lights14.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-221176537_20" 4 0 20 lights15.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-524266577_20" 4 0 20 lights16.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_571861116_20" 4 0 20 lights17.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2093523789_20" 4 0 20 lights18.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_294035834_20" 4 0 20 lights19.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_737565106_20" 4 0 20 lights20.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1924801567_20" 4 0 20 lights21.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_2098639741_20" 4 0 20 lights22.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-797026607_20" 4 0 20 lights23.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_559261843_20" 4 0 20 lights24.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908225465_20" 4 0 20 lights25.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1685738347_20" 4 0 20 lights26.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1762321041_20" 4 0 20 lights27.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1225270544_20" 4 0 20 lights28.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-16423055_20" 4 0 20 lights29.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-340158577_20" 4 0 20 lights30.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1207239264_20" 4 0 20 lights31.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1376435192_20" 4 0 20 lights32.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_20_0_127" 4 0 20 batchpointlight_20_0_127.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_20_128_129" 4 0 20 batchpointlight_20_128_129.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_20" 4 0 20 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_20" 4 0 20 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA19" 4 0 20 comp_20.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_6_0_129" 4 0 6 batchpointlight_6_0_129.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_6" 4 0 6 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_6" 4 0 6 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA13" 4 0 6 comp_6.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_31199968_8" 4 0 8 lights0.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908286902_8" 4 0 8 lights1.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_248661108_8" 4 0 8 lights2.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1114187398_8" 4 0 8 lights3.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2136289570_8" 4 0 8 lights4.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_940849281_8" 4 0 8 lights5.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-643823470_8" 4 0 8 lights6.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_854360328_8" 4 0 8 lights7.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-103365967_8" 4 0 8 lights8.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-311959831_8" 4 0 8 lights9.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1388048887_8" 4 0 8 lights10.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1250018717_8" 4 0 8 lights11.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2089038923_8" 4 0 8 lights12.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-609681369_8" 4 0 8 lights13.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1365962011_8" 4 0 8 lights14.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-221176537_8" 4 0 8 lights15.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-524266577_8" 4 0 8 lights16.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_571861116_8" 4 0 8 lights17.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2093523789_8" 4 0 8 lights18.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_294035834_8" 4 0 8 lights19.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_737565106_8" 4 0 8 lights20.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1924801567_8" 4 0 8 lights21.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_2098639741_8" 4 0 8 lights22.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-797026607_8" 4 0 8 lights23.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908225465_8" 4 0 8 lights25.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1685738347_8" 4 0 8 lights26.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1762321041_8" 4 0 8 lights27.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1225270544_8" 4 0 8 lights28.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-16423055_8" 4 0 8 lights29.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-340158577_8" 4 0 8 lights30.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1207239264_8" 4 0 8 lights31.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1376435192_8" 4 0 8 lights32.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_8_0_128" 4 0 8 batchpointlight_8_0_128.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_8_129_129" 4 0 8 batchpointlight_8_129_129.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_8" 4 0 8 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_8" 4 0 8 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA11" 4 0 8 comp_8.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_31199968_7" 4 0 7 lights0.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908286902_7" 4 0 7 lights1.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_248661108_7" 4 0 7 lights2.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1114187398_7" 4 0 7 lights3.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2136289570_7" 4 0 7 lights4.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_940849281_7" 4 0 7 lights5.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-643823470_7" 4 0 7 lights6.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_854360328_7" 4 0 7 lights7.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-103365967_7" 4 0 7 lights8.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-311959831_7" 4 0 7 lights9.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1388048887_7" 4 0 7 lights10.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1250018717_7" 4 0 7 lights11.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2089038923_7" 4 0 7 lights12.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-609681369_7" 4 0 7 lights13.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1365962011_7" 4 0 7 lights14.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-221176537_7" 4 0 7 lights15.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-524266577_7" 4 0 7 lights16.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_571861116_7" 4 0 7 lights17.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2093523789_7" 4 0 7 lights18.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_294035834_7" 4 0 7 lights19.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_737565106_7" 4 0 7 lights20.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1924801567_7" 4 0 7 lights21.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_2098639741_7" 4 0 7 lights22.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-797026607_7" 4 0 7 lights23.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_559261843_7" 4 0 7 lights24.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908225465_7" 4 0 7 lights25.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1685738347_7" 4 0 7 lights26.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1762321041_7" 4 0 7 lights27.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1225270544_7" 4 0 7 lights28.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-16423055_7" 4 0 7 lights29.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-340158577_7" 4 0 7 lights30.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1207239264_7" 4 0 7 lights31.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1376435192_7" 4 0 7 lights32.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_7_0_127" 4 0 7 batchpointlight_7_0_127.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_7_128_129" 4 0 7 batchpointlight_7_128_129.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_7" 4 0 7 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_7" 4 0 7 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA12" 4 0 7 comp_7.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_31199968_3" 4 0 3 lights0.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908286902_3" 4 0 3 lights1.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_248661108_3" 4 0 3 lights2.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1114187398_3" 4 0 3 lights3.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2136289570_3" 4 0 3 lights4.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_940849281_3" 4 0 3 lights5.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-643823470_3" 4 0 3 lights6.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_854360328_3" 4 0 3 lights7.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-103365967_3" 4 0 3 lights8.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-311959831_3" 4 0 3 lights9.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1388048887_3" 4 0 3 lights10.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1250018717_3" 4 0 3 lights11.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2089038923_3" 4 0 3 lights12.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-609681369_3" 4 0 3 lights13.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1365962011_3" 4 0 3 lights14.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-221176537_3" 4 0 3 lights15.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-524266577_3" 4 0 3 lights16.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_571861116_3" 4 0 3 lights17.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2093523789_3" 4 0 3 lights18.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_294035834_3" 4 0 3 lights19.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_737565106_3" 4 0 3 lights20.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1924801567_3" 4 0 3 lights21.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_2098639741_3" 4 0 3 lights22.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-797026607_3" 4 0 3 lights23.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908225465_3" 4 0 3 lights25.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1685738347_3" 4 0 3 lights26.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1762321041_3" 4 0 3 lights27.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1225270544_3" 4 0 3 lights28.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-16423055_3" 4 0 3 lights29.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-340158577_3" 4 0 3 lights30.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1207239264_3" 4 0 3 lights31.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1376435192_3" 4 0 3 lights32.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_3_0_127" 4 0 3 batchpointlight_3_0_127.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_3_128_129" 4 0 3 batchpointlight_3_128_129.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_3" 4 0 3 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_3" 4 0 3 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA16" 4 0 3 comp_3.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_31199968_10" 4 0 10 lights0.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908286902_10" 4 0 10 lights1.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_248661108_10" 4 0 10 lights2.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1114187398_10" 4 0 10 lights3.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2136289570_10" 4 0 10 lights4.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_940849281_10" 4 0 10 lights5.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-643823470_10" 4 0 10 lights6.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_854360328_10" 4 0 10 lights7.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-103365967_10" 4 0 10 lights8.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-311959831_10" 4 0 10 lights9.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1388048887_10" 4 0 10 lights10.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1250018717_10" 4 0 10 lights11.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2089038923_10" 4 0 10 lights12.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-609681369_10" 4 0 10 lights13.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1365962011_10" 4 0 10 lights14.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-221176537_10" 4 0 10 lights15.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-524266577_10" 4 0 10 lights16.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_571861116_10" 4 0 10 lights17.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2093523789_10" 4 0 10 lights18.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_294035834_10" 4 0 10 lights19.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_737565106_10" 4 0 10 lights20.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1924801567_10" 4 0 10 lights21.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_2098639741_10" 4 0 10 lights22.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-797026607_10" 4 0 10 lights23.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908225465_10" 4 0 10 lights25.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1685738347_10" 4 0 10 lights26.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1762321041_10" 4 0 10 lights27.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1225270544_10" 4 0 10 lights28.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-16423055_10" 4 0 10 lights29.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-340158577_10" 4 0 10 lights30.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1207239264_10" 4 0 10 lights31.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1376435192_10" 4 0 10 lights32.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_10_0_129" 4 0 10 batchpointlight_10_0_129.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_10" 4 0 10 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_10" 4 0 10 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA20" 4 0 10 comp_10.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_1" 4 0 1 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_1" 4 0 1 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA18" 4 0 1 comp_1.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_17" 4 0 17 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_17" 4 0 17 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA2" 4 0 17 comp_17.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_12" 4 0 12 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_12" 4 0 12 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA7" 4 0 12 comp_12.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_11" 4 0 11 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_11" 4 0 11 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA8" 4 0 11 comp_11.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_16" 4 0 16 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_16" 4 0 16 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA3" 4 0 16 comp_16.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_5" 4 0 5 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_5" 4 0 5 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA14" 4 0 5 comp_5.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_14" 4 0 14 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_14" 4 0 14 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA5" 4 0 14 comp_14.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_2" 4 0 2 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_2" 4 0 2 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA17" 4 0 2 comp_2.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_31199968_19" 4 0 19 lights0.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908286902_19" 4 0 19 lights1.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_248661108_19" 4 0 19 lights2.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1114187398_19" 4 0 19 lights3.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2136289570_19" 4 0 19 lights4.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_940849281_19" 4 0 19 lights5.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-643823470_19" 4 0 19 lights6.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_854360328_19" 4 0 19 lights7.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-103365967_19" 4 0 19 lights8.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-311959831_19" 4 0 19 lights9.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1388048887_19" 4 0 19 lights10.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1250018717_19" 4 0 19 lights11.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2089038923_19" 4 0 19 lights12.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-609681369_19" 4 0 19 lights13.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1365962011_19" 4 0 19 lights14.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-221176537_19" 4 0 19 lights15.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-524266577_19" 4 0 19 lights16.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_571861116_19" 4 0 19 lights17.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-2093523789_19" 4 0 19 lights18.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_294035834_19" 4 0 19 lights19.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_737565106_19" 4 0 19 lights20.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1924801567_19" 4 0 19 lights21.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_2098639741_19" 4 0 19 lights22.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-797026607_19" 4 0 19 lights23.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_559261843_19" 4 0 19 lights24.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-908225465_19" 4 0 19 lights25.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1685738347_19" 4 0 19 lights26.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1762321041_19" 4 0 19 lights27.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1225270544_19" 4 0 19 lights28.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-16423055_19" 4 0 19 lights29.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-340158577_19" 4 0 19 lights30.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1207239264_19" 4 0 19 lights31.bin
+Running ftraceRTX arealight "C:\Users\Leonard\AppData\Local\Temp\frender" "light_1376435192_19" 4 0 19 lights32.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_19_0_127" 4 0 19 batchpointlight_19_0_127.bin
+Running ftraceRTX batchpointlight "C:\Users\Leonard\AppData\Local\Temp\frender" "PointBatch_19_128_129" 4 0 19 batchpointlight_19_128_129.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_19" 4 0 19 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_19" 4 0 19 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LM0" 4 0 19 comp_19.bin
+Running ftraceRTX sky "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-543544922_15" 4 0 15 sky0.bin
+Running ftraceRTX sun "C:\Users\Leonard\AppData\Local\Temp\frender" "light_-1926700613_15" 4 0 15 direct0.bin
+Running ftraceRTX addmul "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA4" 4 0 15 comp_15.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA10_diffuse" 4 16 9 "gi_Scene_AA_LMA100.bin" "Scene_AA_LMA10_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA9_diffuse" 4 16 0 "gi_Scene_AA_LMA90.bin" "Scene_AA_LMA9_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA1_diffuse" 4 16 18 "gi_Scene_AA_LMA10.bin" "Scene_AA_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA6_diffuse" 4 16 13 "gi_Scene_AA_LMA60.bin" "Scene_AA_LMA6_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA15_diffuse" 4 16 4 "gi_Scene_AA_LMA150.bin" "Scene_AA_LMA15_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA19_diffuse" 4 16 20 "gi_Scene_AA_LMA190.bin" "Scene_AA_LMA19_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA13_diffuse" 4 16 6 "gi_Scene_AA_LMA130.bin" "Scene_AA_LMA13_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA11_diffuse" 4 16 8 "gi_Scene_AA_LMA110.bin" "Scene_AA_LMA11_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA12_diffuse" 4 16 7 "gi_Scene_AA_LMA120.bin" "Scene_AA_LMA12_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA16_diffuse" 4 16 3 "gi_Scene_AA_LMA160.bin" "Scene_AA_LMA16_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA20_diffuse" 4 16 10 "gi_Scene_AA_LMA200.bin" "Scene_AA_LMA20_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA18_diffuse" 4 16 1 "gi_Scene_AA_LMA180.bin" "Scene_AA_LMA18_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA2_diffuse" 4 16 17 "gi_Scene_AA_LMA20.bin" "Scene_AA_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA7_diffuse" 4 16 12 "gi_Scene_AA_LMA70.bin" "Scene_AA_LMA7_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA8_diffuse" 4 16 11 "gi_Scene_AA_LMA80.bin" "Scene_AA_LMA8_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA3_diffuse" 4 16 16 "gi_Scene_AA_LMA30.bin" "Scene_AA_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA14_diffuse" 4 16 5 "gi_Scene_AA_LMA140.bin" "Scene_AA_LMA14_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA5_diffuse" 4 16 14 "gi_Scene_AA_LMA50.bin" "Scene_AA_LMA5_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA17_diffuse" 4 16 2 "gi_Scene_AA_LMA170.bin" "Scene_AA_LMA17_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LM0_diffuse" 4 16 19 "gi_Scene_AA_LM00.bin" "Scene_AA_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA4_diffuse" 4 16 15 "gi_Scene_AA_LMA40.bin" "Scene_AA_LMA4_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA10_diffuse" 4 16 9 "gi_Scene_AA_LMA101.bin" "Scene_AA_LMA10_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA9_diffuse" 4 16 0 "gi_Scene_AA_LMA91.bin" "Scene_AA_LMA9_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA1_diffuse" 4 16 18 "gi_Scene_AA_LMA11.bin" "Scene_AA_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA6_diffuse" 4 16 13 "gi_Scene_AA_LMA61.bin" "Scene_AA_LMA6_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA15_diffuse" 4 16 4 "gi_Scene_AA_LMA151.bin" "Scene_AA_LMA15_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA19_diffuse" 4 16 20 "gi_Scene_AA_LMA191.bin" "Scene_AA_LMA19_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA13_diffuse" 4 16 6 "gi_Scene_AA_LMA131.bin" "Scene_AA_LMA13_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA11_diffuse" 4 16 8 "gi_Scene_AA_LMA111.bin" "Scene_AA_LMA11_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA12_diffuse" 4 16 7 "gi_Scene_AA_LMA121.bin" "Scene_AA_LMA12_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA16_diffuse" 4 16 3 "gi_Scene_AA_LMA161.bin" "Scene_AA_LMA16_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA20_diffuse" 4 16 10 "gi_Scene_AA_LMA201.bin" "Scene_AA_LMA20_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA18_diffuse" 4 16 1 "gi_Scene_AA_LMA181.bin" "Scene_AA_LMA18_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA2_diffuse" 4 16 17 "gi_Scene_AA_LMA21.bin" "Scene_AA_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA7_diffuse" 4 16 12 "gi_Scene_AA_LMA71.bin" "Scene_AA_LMA7_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA8_diffuse" 4 16 11 "gi_Scene_AA_LMA81.bin" "Scene_AA_LMA8_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA3_diffuse" 4 16 16 "gi_Scene_AA_LMA31.bin" "Scene_AA_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA14_diffuse" 4 16 5 "gi_Scene_AA_LMA141.bin" "Scene_AA_LMA14_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA5_diffuse" 4 16 14 "gi_Scene_AA_LMA51.bin" "Scene_AA_LMA5_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA17_diffuse" 4 16 2 "gi_Scene_AA_LMA171.bin" "Scene_AA_LMA17_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LM0_diffuse" 4 16 19 "gi_Scene_AA_LM01.bin" "Scene_AA_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA4_diffuse" 4 16 15 "gi_Scene_AA_LMA41.bin" "Scene_AA_LMA4_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA10_diffuse" 4 16 9 "gi_Scene_AA_LMA102.bin" "Scene_AA_LMA10_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA9_diffuse" 4 16 0 "gi_Scene_AA_LMA92.bin" "Scene_AA_LMA9_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA1_diffuse" 4 16 18 "gi_Scene_AA_LMA12.bin" "Scene_AA_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA6_diffuse" 4 16 13 "gi_Scene_AA_LMA62.bin" "Scene_AA_LMA6_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA15_diffuse" 4 16 4 "gi_Scene_AA_LMA152.bin" "Scene_AA_LMA15_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA19_diffuse" 4 16 20 "gi_Scene_AA_LMA192.bin" "Scene_AA_LMA19_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA13_diffuse" 4 16 6 "gi_Scene_AA_LMA132.bin" "Scene_AA_LMA13_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA11_diffuse" 4 16 8 "gi_Scene_AA_LMA112.bin" "Scene_AA_LMA11_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA12_diffuse" 4 16 7 "gi_Scene_AA_LMA122.bin" "Scene_AA_LMA12_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA16_diffuse" 4 16 3 "gi_Scene_AA_LMA162.bin" "Scene_AA_LMA16_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA20_diffuse" 4 16 10 "gi_Scene_AA_LMA202.bin" "Scene_AA_LMA20_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA18_diffuse" 4 16 1 "gi_Scene_AA_LMA182.bin" "Scene_AA_LMA18_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA2_diffuse" 4 16 17 "gi_Scene_AA_LMA22.bin" "Scene_AA_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA7_diffuse" 4 16 12 "gi_Scene_AA_LMA72.bin" "Scene_AA_LMA7_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA8_diffuse" 4 16 11 "gi_Scene_AA_LMA82.bin" "Scene_AA_LMA8_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA3_diffuse" 4 16 16 "gi_Scene_AA_LMA32.bin" "Scene_AA_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA14_diffuse" 4 16 5 "gi_Scene_AA_LMA142.bin" "Scene_AA_LMA14_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA5_diffuse" 4 16 14 "gi_Scene_AA_LMA52.bin" "Scene_AA_LMA5_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA17_diffuse" 4 16 2 "gi_Scene_AA_LMA172.bin" "Scene_AA_LMA17_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LM0_diffuse" 4 16 19 "gi_Scene_AA_LM02.bin" "Scene_AA_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA4_diffuse" 4 16 15 "gi_Scene_AA_LMA42.bin" "Scene_AA_LMA4_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA10_diffuse" 4 16 9 "gi_Scene_AA_LMA103.bin" "Scene_AA_LMA10_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA9_diffuse" 4 16 0 "gi_Scene_AA_LMA93.bin" "Scene_AA_LMA9_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA1_diffuse" 4 16 18 "gi_Scene_AA_LMA13.bin" "Scene_AA_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA6_diffuse" 4 16 13 "gi_Scene_AA_LMA63.bin" "Scene_AA_LMA6_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA15_diffuse" 4 16 4 "gi_Scene_AA_LMA153.bin" "Scene_AA_LMA15_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA19_diffuse" 4 16 20 "gi_Scene_AA_LMA193.bin" "Scene_AA_LMA19_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA13_diffuse" 4 16 6 "gi_Scene_AA_LMA133.bin" "Scene_AA_LMA13_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA11_diffuse" 4 16 8 "gi_Scene_AA_LMA113.bin" "Scene_AA_LMA11_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA12_diffuse" 4 16 7 "gi_Scene_AA_LMA123.bin" "Scene_AA_LMA12_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA16_diffuse" 4 16 3 "gi_Scene_AA_LMA163.bin" "Scene_AA_LMA16_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA20_diffuse" 4 16 10 "gi_Scene_AA_LMA203.bin" "Scene_AA_LMA20_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA18_diffuse" 4 16 1 "gi_Scene_AA_LMA183.bin" "Scene_AA_LMA18_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA2_diffuse" 4 16 17 "gi_Scene_AA_LMA23.bin" "Scene_AA_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA7_diffuse" 4 16 12 "gi_Scene_AA_LMA73.bin" "Scene_AA_LMA7_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA8_diffuse" 4 16 11 "gi_Scene_AA_LMA83.bin" "Scene_AA_LMA8_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA3_diffuse" 4 16 16 "gi_Scene_AA_LMA33.bin" "Scene_AA_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA14_diffuse" 4 16 5 "gi_Scene_AA_LMA143.bin" "Scene_AA_LMA14_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA5_diffuse" 4 16 14 "gi_Scene_AA_LMA53.bin" "Scene_AA_LMA5_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA17_diffuse" 4 16 2 "gi_Scene_AA_LMA173.bin" "Scene_AA_LMA17_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LM0_diffuse" 4 16 19 "gi_Scene_AA_LM03.bin" "Scene_AA_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA4_diffuse" 4 16 15 "gi_Scene_AA_LMA43.bin" "Scene_AA_LMA4_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgiprobesh "C:\Users\Leonard\AppData\Local\Temp\frender" "probes_final" 1924 16 21 "gi_probes4.bin" "probes_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA10_final" 4 16 9 "gi_Scene_AA_LMA104.bin" "Scene_AA_LMA10_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA9_final" 4 16 0 "gi_Scene_AA_LMA94.bin" "Scene_AA_LMA9_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA1_final" 4 16 18 "gi_Scene_AA_LMA14.bin" "Scene_AA_LMA1_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA6_final" 4 16 13 "gi_Scene_AA_LMA64.bin" "Scene_AA_LMA6_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA15_final" 4 16 4 "gi_Scene_AA_LMA154.bin" "Scene_AA_LMA15_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA19_final" 4 16 20 "gi_Scene_AA_LMA194.bin" "Scene_AA_LMA19_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA13_final" 4 16 6 "gi_Scene_AA_LMA134.bin" "Scene_AA_LMA13_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA11_final" 4 16 8 "gi_Scene_AA_LMA114.bin" "Scene_AA_LMA11_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA12_final" 4 16 7 "gi_Scene_AA_LMA124.bin" "Scene_AA_LMA12_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA16_final" 4 16 3 "gi_Scene_AA_LMA164.bin" "Scene_AA_LMA16_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA20_final" 4 16 10 "gi_Scene_AA_LMA204.bin" "Scene_AA_LMA20_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA18_final" 4 16 1 "gi_Scene_AA_LMA184.bin" "Scene_AA_LMA18_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA2_final" 4 16 17 "gi_Scene_AA_LMA24.bin" "Scene_AA_LMA2_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA7_final" 4 16 12 "gi_Scene_AA_LMA74.bin" "Scene_AA_LMA7_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA8_final" 4 16 11 "gi_Scene_AA_LMA84.bin" "Scene_AA_LMA8_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA3_final" 4 16 16 "gi_Scene_AA_LMA34.bin" "Scene_AA_LMA3_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA14_final" 4 16 5 "gi_Scene_AA_LMA144.bin" "Scene_AA_LMA14_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA5_final" 4 16 14 "gi_Scene_AA_LMA54.bin" "Scene_AA_LMA5_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA17_final" 4 16 2 "gi_Scene_AA_LMA174.bin" "Scene_AA_LMA17_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LM0_final" 4 16 19 "gi_Scene_AA_LM04.bin" "Scene_AA_LM0_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Leonard\AppData\Local\Temp\frender" "Scene_AA_LMA4_final" 4 16 15 "gi_Scene_AA_LMA44.bin" "Scene_AA_LMA4_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX addsh "C:\Users\Leonard\AppData\Local\Temp\frender" "probes_final_" 4 0 21 shcomp_21.bin
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA10_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA10_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "9" "Scene_AA_LMA10_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA9_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA9_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "0" "Scene_AA_LMA9_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA1_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA1_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "18" "Scene_AA_LMA1_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA6_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA6_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "13" "Scene_AA_LMA6_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA15_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA15_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "4" "Scene_AA_LMA15_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA19_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA19_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "20" "Scene_AA_LMA19_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA13_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA13_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "6" "Scene_AA_LMA13_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA11_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA11_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "8" "Scene_AA_LMA11_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA12_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA12_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "7" "Scene_AA_LMA12_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA16_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA16_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "3" "Scene_AA_LMA16_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA20_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA20_final_HDR.lz4" 2048 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "10" "Scene_AA_LMA20_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA18_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA18_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "1" "Scene_AA_LMA18_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA2_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA2_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "17" "Scene_AA_LMA2_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA7_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA7_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "12" "Scene_AA_LMA7_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA8_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA8_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "11" "Scene_AA_LMA8_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA3_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA3_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "16" "Scene_AA_LMA3_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA14_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA14_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "5" "Scene_AA_LMA14_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA5_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA5_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "14" "Scene_AA_LMA5_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA17_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA17_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "2" "Scene_AA_LMA17_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LM0_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LM0_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "19" "Scene_AA_LM0_final_HDR.lz4"
+Running denoiserOIDN c "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA4_final_HDR.lz4" "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA4_final_HDR.lz4" 4096 1
+Running seamfixer "C:\Users\Leonard\AppData\Local\Temp\frender" "15" "Scene_AA_LMA4_final_HDR.lz4"
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA10_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA10_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA9_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA9_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA1_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA1_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA6_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA6_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA15_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA15_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA19_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA19_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA13_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA13_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA11_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA11_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA12_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA12_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA16_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA16_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA20_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA20_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA18_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA18_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA2_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA2_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA7_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA7_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA8_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA8_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA3_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA3_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA14_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA14_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA5_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA5_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA17_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA17_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LM0_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LM0_final.hdr" 1024
+Running halffloat2hdr "C:\Users\Leonard\AppData\Local\Temp\frender/Scene_AA_LMA4_final_HDR.lz4" "C:/Unity/Git_BABDII/BABDII/Assets/BakeryLightmaps/Scene_AA_LMA4_final.hdr" 1024
+Done
+Done
+Done
+Done
