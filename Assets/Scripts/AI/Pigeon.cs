@@ -67,7 +67,7 @@ public class Pigeon : MonoBehaviour
             
         }
 
-        if (flyTimer < 0 && flyTimer > -0.1f)
+        if (flyTimer < 0 && Vector3.Distance(initPos, player.transform.position) > 20)
         {
             fly = false;
             transform.position = initPos;

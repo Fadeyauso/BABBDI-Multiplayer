@@ -345,7 +345,7 @@ public class GameManager : MonoBehaviour, ISaveable
         secondPart = 0;
         requestTrain = 0;
         gameTime = 0;
-        GameObject.Find("Player").transform.position = new Vector3(158.621f, 42.73f, -31.9f);
+        GameObject.Find("Player").transform.position = new Vector3(160.193f, 42.1766f, -38.49f);
         GameObject.Find("Player").transform.rotation = Quaternion.Euler(0,0,0);
         GameObject.Find("Player").GetComponent<FirstPersonController>().rotationX = 0;
         wayClimberState = 0;
