@@ -22,7 +22,7 @@ public class Dragoyevic : MonoBehaviour
     {
         
 
-        if (giveCompass && GetComponent<NPC>().dialogueIndex2 == 0 && compassAvailable)
+        if (giveCompass && GetComponent<NPC>().dialogueIndex2 == 0 && compassAvailable && GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1)
         {
             giveCompass = false;
             compassAvailable = false;
