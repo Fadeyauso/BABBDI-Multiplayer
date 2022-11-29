@@ -6,6 +6,9 @@ public class SystemActivator : Interactable
 {
     public GameObject objectToActivate;
     public AudioClip activateClip;
+    [SerializeField] private bool upCall;
+    [SerializeField] private bool downCall;
+
 
     public override void OnFocus()
     {
@@ -16,7 +19,17 @@ public class SystemActivator : Interactable
     {
         if (objectToActivate != null)
         {
-            if (objectToActivate.GetComponent<Lift>() != null && objectToActivate.GetComponent<Lift>().isTriggered == false) 
+            if (objectToActivate.GetComponent<Lift>() != null && objectToActivate.GetComponent<Lift>().isTriggered == false && upCall && !objectToActivate.GetComponent<Lift>().topReach) 
+            {
+                objectToActivate.GetComponent<Lift>().isTriggered = true;
+                SoundManager.Instance.PlaySound(activateClip);
+            }
+            else if (objectToActivate.GetComponent<Lift>() != null && objectToActivate.GetComponent<Lift>().isTriggered == false && downCall && objectToActivate.GetComponent<Lift>().topReach) 
+            {
+                objectToActivate.GetComponent<Lift>().isTriggered = true;
+                SoundManager.Instance.PlaySound(activateClip);
+            }
+            if (objectToActivate.GetComponent<Lift>() != null && objectToActivate.GetComponent<Lift>().isTriggered == false && !upCall && !downCall) 
             {
                 objectToActivate.GetComponent<Lift>().isTriggered = true;
                 SoundManager.Instance.PlaySound(activateClip);

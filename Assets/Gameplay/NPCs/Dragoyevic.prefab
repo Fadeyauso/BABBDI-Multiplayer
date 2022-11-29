@@ -273,11 +273,9 @@ MonoBehaviour:
   exclamation: {fileID: 8706076092004847476}
   dialogue:
   - {fileID: 11400000, guid: b566eb6fc1ff95e49b9ccc7178981894, type: 2}
-  - {fileID: 11400000, guid: 32b656e49aeb1124caac51af7b788b02, type: 2}
   - {fileID: 11400000, guid: 1599793dc9d87de418c9165a89597da1, type: 2}
   dialogue2:
   - {fileID: 11400000, guid: 50d4bf24134511449976bb375a648e7f, type: 2}
-  - {fileID: 11400000, guid: b39e8a1fd28001e41a742739ea3834f0, type: 2}
   dialogueIndex: 0
   dialogueIndex2: 0
   secondPhaseDialogues: 0
@@ -416,6 +414,9 @@ MonoBehaviour:
   maxXRot: 20
   minYRot: 20
   maxYRot: -20
+  intervals: 0
+  negativeInterval: {x: 0, y: 0}
+  positiveInterval: {x: 0, y: 0}
   defaultRot: {x: 0, y: 0, z: 0, w: 1}
   facePlayerRot: {x: 0, y: 0, z: 0, w: 1}
   rotation: {x: 0, y: 0, z: 0}

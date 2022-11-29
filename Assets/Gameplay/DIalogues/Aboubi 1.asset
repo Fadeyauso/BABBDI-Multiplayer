@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - you want to leave ?
-  - take the train
+  - take the train, the station isn't far

@@ -49,7 +49,7 @@ public class InteractObject : Interactable
         if (!inHands)
         {
             SoundManager.Instance.PlaySound(interactionClip);
-            if (GetComponent<ItemProperties>().id == 0 || GetComponent<ItemProperties>().id == 1 || GetComponent<ItemProperties>().id == 2 || GetComponent<ItemProperties>().id == 4|| GetComponent<ItemProperties>().id == 5 || GetComponent<ItemProperties>().id == 6 || GetComponent<ItemProperties>().id == 7 || GetComponent<ItemProperties>().id == 8 || GetComponent<ItemProperties>().id == 9 || GetComponent<ItemProperties>().id == 10 || GetComponent<ItemProperties>().id == 11|| GetComponent<ItemProperties>().id == 12) 
+            if (GetComponent<ItemProperties>().id == 0 || GetComponent<ItemProperties>().id == 1 || GetComponent<ItemProperties>().id == 2 || GetComponent<ItemProperties>().id == 4|| GetComponent<ItemProperties>().id == 5 || GetComponent<ItemProperties>().id == 6 || GetComponent<ItemProperties>().id == 7 || GetComponent<ItemProperties>().id == 8 || GetComponent<ItemProperties>().id == 9 || GetComponent<ItemProperties>().id == 10 || GetComponent<ItemProperties>().id == 11|| (GetComponent<ItemProperties>().id == 12 && GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket == 1)) 
             {
             // if ()
                 transform.position = GameObject.Find("ObjectPos").transform.position;
@@ -491,19 +491,19 @@ public class InteractObject : Interactable
                     rb.useGravity = false;
                     //rb.isKinematic = true;
                     rb.velocity = new Vector3(0,0,0);
-                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
+                    if (((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) && GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket == 1) 
                         {
                             throwObject = true;
                             inHands = false;
                         }
 
-                    if (Input.GetButton("Fire1") && player.GetComponent<FirstPersonController>().compassTimer < 0)
+                    if (Input.GetButton("Fire2") && player.GetComponent<FirstPersonController>().compassTimer < 0)
                     {
                         player.GetComponent<FirstPersonController>().initRotationX = player.GetComponent<FirstPersonController>().playerCamera.transform.rotation;
                         player.GetComponent<FirstPersonController>().initRotationY = player.transform.eulerAngles.y;
                     }
 
-                    if (Input.GetButton("Fire1"))
+                    if (Input.GetButton("Fire2"))
                     {
                         player.GetComponent<FirstPersonController>().compassLook = true;
                     }
@@ -518,7 +518,7 @@ public class InteractObject : Interactable
                     transform.position = GameObject.Find("CompassPos").transform.position;
                     transform.rotation = GameObject.Find("CompassPos").transform.rotation;
                 }
-                else if (throwObject) 
+                else if (throwObject && GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket == 1) 
                 {
                     GameObject.Find("GameManager").GetComponent<GameManager>().compass = 0;
                     transform.SetParent(null);

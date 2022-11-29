@@ -9,6 +9,8 @@ public class Dragoyevic : MonoBehaviour
     public bool compassAvailable;
     public bool activateBridge;
 
+    private bool compassGive;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,7 @@ public class Dragoyevic : MonoBehaviour
     {
         
 
-        if (giveCompass && GetComponent<NPC>().dialogueIndex2 == 1)
+        if (giveCompass && GetComponent<NPC>().dialogueIndex2 == 0 && compassAvailable)
         {
             giveCompass = false;
             compassAvailable = false;

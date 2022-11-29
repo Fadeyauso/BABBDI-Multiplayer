@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Dragoyevic
   m_EditorClassIdentifier: 
   dialogue:
-  - my neighboor's wife is about to die...
-  - he wants to bring her to the city...
-  - with the train.
+  - his wife is sick
+  - he needs to reach the city
+  - by train

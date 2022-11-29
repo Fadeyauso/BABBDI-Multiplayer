@@ -958,7 +958,7 @@ Transform:
   - {fileID: 1227882264276423631}
   - {fileID: 477892629}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &7482973072534782209
 CharacterController:
@@ -1092,15 +1092,49 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2ac89b3f49ac9a245a444af4050d949d, type: 3}
   - {fileID: 8300000, guid: eb199323d1a12ce4c846db77269b6c6c, type: 3}
   - {fileID: 8300000, guid: 2452011a8eec97b40bbc440172f9c13f, type: 3}
-  woodClips:
-  - {fileID: 8300000, guid: 3c584587dd47c5a4aaf3a466fab1532b, type: 3}
-  - {fileID: 8300000, guid: daa95d2b024d656479385bcc90473699, type: 3}
-  - {fileID: 8300000, guid: c4a72dbf88c2d494682094ad8754c5cf, type: 3}
-  - {fileID: 8300000, guid: dcb6142fd560f2942bbdebd49d18a1d5, type: 3}
+  concreteClips:
+  - {fileID: 8300000, guid: 89b4c8e02ea3a5a4d9e0dd67c3887f5e, type: 3}
+  - {fileID: 8300000, guid: 34c6299b47e4462478bb67c1f9b19fd1, type: 3}
+  - {fileID: 8300000, guid: 59f38aa6feb3c564f971fb701fc0aff2, type: 3}
+  - {fileID: 8300000, guid: 5d930ea5e8818c44c8a3ef6085a793d9, type: 3}
+  - {fileID: 8300000, guid: 66e65609f50c4564292a312844bb57ed, type: 3}
+  metalClips:
+  - {fileID: 8300000, guid: 4751f82d73c47c745b67c22f23cde833, type: 3}
+  - {fileID: 8300000, guid: 64ed56e00c7d11a47befef7bcfe8ab75, type: 3}
+  - {fileID: 8300000, guid: fa9da360b8c62e4428f9ca7cd455cf1b, type: 3}
+  - {fileID: 8300000, guid: b1e323e451d8220469eba5089d89f535, type: 3}
+  tauleClips:
+  - {fileID: 8300000, guid: a0a0efa2ddf64034dac588ec6afe1cae, type: 3}
+  - {fileID: 8300000, guid: 92db10f959a0d7941a381754a3d3eec5, type: 3}
+  - {fileID: 8300000, guid: 12607bcd3d7939d43bb455ab021c998d, type: 3}
+  - {fileID: 8300000, guid: db31408176327774eb47d92af6759c13, type: 3}
   grassClips:
   - {fileID: 8300000, guid: b576aa201a4dfcc4889d117fdfc10de0, type: 3}
   - {fileID: 8300000, guid: 37d00a2ca59a1dd4bbc4e6e00c5c62bb, type: 3}
   - {fileID: 8300000, guid: bee3e667d19a4f140a4c314a137f495d, type: 3}
+  dirtClips:
+  - {fileID: 8300000, guid: 674d9a74ce7f18046a673b437967d2e6, type: 3}
+  - {fileID: 8300000, guid: f293aeb261ccf0e4da7c4057f44cb1f5, type: 3}
+  - {fileID: 8300000, guid: 33ce493517240314093c9b64d9d4c8c5, type: 3}
+  - {fileID: 8300000, guid: 25c9e7107eb90a245b7ea38b21093096, type: 3}
+  sandClips:
+  - {fileID: 8300000, guid: 606bb5640da758e43a8c6e096c2741ad, type: 3}
+  - {fileID: 8300000, guid: d6d691d55c1e62d4ea5097b7caae4eb0, type: 3}
+  - {fileID: 8300000, guid: 25926f9464b529f41a3f8cfe4240b5db, type: 3}
+  - {fileID: 8300000, guid: 144ff8fc2a572784aba04c5e10d0e3ab, type: 3}
+  waterClips:
+  - {fileID: 8300000, guid: 02a23f3e2ad40d64fb00d8ee9ae4506d, type: 3}
+  - {fileID: 8300000, guid: 9f10c21325756804c96289e112d81db8, type: 3}
+  - {fileID: 8300000, guid: 83bdee30bfdfd784797c4a83453e387b, type: 3}
+  - {fileID: 8300000, guid: de35031039aa53e47b76896b69706a83, type: 3}
+  - {fileID: 8300000, guid: 3c584587dd47c5a4aaf3a466fab1532b, type: 3}
+  - {fileID: 8300000, guid: daa95d2b024d656479385bcc90473699, type: 3}
+  - {fileID: 8300000, guid: c4a72dbf88c2d494682094ad8754c5cf, type: 3}
+  woodClips:
+  - {fileID: 8300000, guid: b2c7eef8448b6324e94b782e27474083, type: 3}
+  - {fileID: 8300000, guid: a02ff5f116f1a834da7d5ae9a3f8037f, type: 3}
+  - {fileID: 8300000, guid: d9433f059753feb45be99d87b3e5ef3f, type: 3}
+  - {fileID: 8300000, guid: 395fca6c5c5a2834b959912d0da01daa, type: 3}
   slopeForce: 100
   slopeForceRayLength: 3
   inJump: 0

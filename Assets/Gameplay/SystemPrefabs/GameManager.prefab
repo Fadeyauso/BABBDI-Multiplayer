@@ -61,6 +61,9 @@ MonoBehaviour:
   anim1: {fileID: 0}
   anim2: {fileID: 0}
   bridgeCam: {fileID: 0}
+  userInterface: {fileID: 0}
+  userInterface1: {fileID: 0}
+  bridgeAudio: {fileID: 0}
   club: 0
   climber: 0
   propeller: 0
@@ -79,7 +82,7 @@ MonoBehaviour:
   continueDialogueFX: {fileID: 0}
   secretsFound: 0
   npcInteractedWith: 0
-  maxNpc: 15
+  maxNpc: 18
   pickup: 0
   item: 0
   inActivatedLift: 0
@@ -134,6 +137,26 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d3dc7deeae285e644a7d657272a4428f, type: 3}
   popup: 0
   secrets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   secretState: 
   bridgeTimer: 0

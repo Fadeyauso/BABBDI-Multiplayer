@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Ivano 1
   m_EditorClassIdentifier: 
   dialogue:
-  - you can take my club on the mattress
-  - it's useless for me
-  - just grab it and click facing walls or ground to eject yourself
+  - take my club
+  - just grab it and hit surfaces with it

@@ -13,10 +13,7 @@ MonoBehaviour:
   m_Name: Dragoyevic 3
   m_EditorClassIdentifier: 
   dialogue:
-  - seems like they don't sell tickets anymore.
-  - but my neighboor still has tickets
-  - and her wife died.
-  - 'tickets are no use for him anymore. '
-  - maybe he can give them to you if you want to leave babbdi.
-  - take this compass. its a corpse sensor.
-  - it will help you find my neighboor's building faster.
+  - they don't sell tickets anymore
+  - remember that sick woman
+  - she died, maybe you can have her ticket
+  - take this device and right click to find her corpse

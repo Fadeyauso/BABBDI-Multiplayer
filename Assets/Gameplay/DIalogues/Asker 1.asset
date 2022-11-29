@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Asker 1
   m_EditorClassIdentifier: 
   dialogue:
-  - 'She''s gone.
+  - 'she''s gone
 
 '
-  - No need for this anymore. Take it.
+  - no need for this anymore, take it

@@ -98,8 +98,14 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float sprintStepMultiplier = 0.6f;
     [SerializeField] private AudioSource playerSource = default;
     [SerializeField] private AudioClip[] stoneClips = default;
-    [SerializeField] private AudioClip[] woodClips = default;
+    [SerializeField] private AudioClip[] concreteClips = default;
+    [SerializeField] private AudioClip[] metalClips = default;
+    [SerializeField] private AudioClip[] tauleClips = default;
     [SerializeField] private AudioClip[] grassClips = default;
+    [SerializeField] private AudioClip[] dirtClips = default;
+    [SerializeField] private AudioClip[] sandClips = default;
+    [SerializeField] private AudioClip[] waterClips = default;
+    [SerializeField] private AudioClip[] woodClips = default;
     private float footstepTimer = 0;
     private float GetCurrentOffset => isCrouching ? baseStepSpeed * crouchStepMultiplier : IsSprinting ? baseStepSpeed * sprintStepMultiplier : baseStepSpeed;
 
@@ -150,7 +156,7 @@ public class FirstPersonController : MonoBehaviour
         
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, slopeForceRayLength))
-            if (hit.normal != Vector3.up && Vector3.Angle(hit.normal, Vector3.up) > 15)
+            if (hit.normal != Vector3.up && Vector3.Angle(hit.normal, Vector3.up) > 4)
                 return true;
         return false;
     }
@@ -352,7 +358,7 @@ public class FirstPersonController : MonoBehaviour
         interactionRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit interact, interactionDistance));
         //interactionSphere = (Physics.SphereCast(playerCamera.transform.position, sphereRadius, playerCamera.transform.forward, out RaycastHit sphereHit, currentHitDistance));
         upRay = (Physics.Raycast(playerCamera.transform.position, transform.up, out RaycastHit so, 1f));
-        downRay = (Physics.Raycast(transform.position, -transform.up, out RaycastHit down, 0.6f));
+        downRay = (Physics.Raycast(transform.position, -transform.up, out RaycastHit down, 1.2f));
         crouchUpRay = (Physics.Raycast(transform.position + transform.up/5, transform.up, out RaycastHit sk, 1.99f));
 
         clubRay = (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit st, 4f));
@@ -423,7 +429,7 @@ public class FirstPersonController : MonoBehaviour
 
             
 
-            if (!OnSlopeAir()) CheckForVault();
+            CheckForVault();
 
 
 
@@ -488,11 +494,11 @@ public class FirstPersonController : MonoBehaviour
 
     private void CheckForVault()
     {
-        if (!shortfrontRay && !characterController.isGrounded && !downRay && vaulRayDown && !vaulRayUp && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.W)))
+        if (!shortfrontRay && !characterController.isGrounded && !downRay && vaulRayDown && !vaulRayUp && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z)))
         {
             vault = true;
             moveDirection.y = 5f;
-            aftervaultjumpTimer = 0.3f;
+            aftervaultjumpTimer = 0.5f;
         }
         else if (aftervaultjumpTimer > 0 && downRay && !characterController.isGrounded)
         {
@@ -816,7 +822,7 @@ public class FirstPersonController : MonoBehaviour
 
         var desiredFOV = dialogueActive ? 70 : IsSprinting && standing && verticalInputRaw == 1 ? runFOV : isZooming ? zoomFOV : defaultFOV;
 
-        if (playerCamera.fieldOfView != desiredFOV)
+        if (playerCamera.fieldOfView != desiredFOV && !compassLook && compassTimer < 0)
         {
             Zoom(desiredFOV);
         }
@@ -1061,14 +1067,32 @@ public class FirstPersonController : MonoBehaviour
             {
                 switch(hit.collider.tag)
                 {
+                    case "Footsteps/Metal":
+                        SoundManager.Instance.PlaySound(metalClips[Random.Range(0, metalClips.Length - 1)]);
+                        break;
+                    case "Footsteps/Taule":
+                        SoundManager.Instance.PlaySound(tauleClips[Random.Range(0, tauleClips.Length - 1)]);
+                        break;
                     case "Footsteps/Wood":
                         SoundManager.Instance.PlaySound(woodClips[Random.Range(0, woodClips.Length - 1)]);
+                        break;
+                    case "Footsteps/Concrete":
+                        SoundManager.Instance.PlaySound(concreteClips[Random.Range(0, concreteClips.Length - 1)]);
                         break;
                     case "Footsteps/Stone":
                         SoundManager.Instance.PlaySound(stoneClips[Random.Range(0, stoneClips.Length - 1)]);
                         break;
                     case "Footsteps/Grass":
                         SoundManager.Instance.PlaySound(grassClips[Random.Range(0, grassClips.Length - 1)]);
+                        break;
+                    case "Footsteps/Dirt":
+                        SoundManager.Instance.PlaySound(dirtClips[Random.Range(0, dirtClips.Length - 1)]);
+                        break;
+                    case "Footsteps/Sand":
+                        SoundManager.Instance.PlaySound(sandClips[Random.Range(0, sandClips.Length - 1)]);
+                        break;
+                    case "Footsteps/Water":
+                        SoundManager.Instance.PlaySound(waterClips[Random.Range(0, waterClips.Length - 1)]);
                         break;
                     default:
                         SoundManager.Instance.PlaySound(stoneClips[Random.Range(0, stoneClips.Length - 1)]);
