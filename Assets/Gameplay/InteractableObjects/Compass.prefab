@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1751994052887972633}
   - component: {fileID: 1751994052887972635}
   - component: {fileID: 1751994052887972625}
+  - component: {fileID: 2555521659523034163}
   m_Layer: 11
   m_Name: Compass
   m_TagString: Object/Wood
@@ -30,12 +31,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751994052887972636}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -355.1, y: 88.7, z: 139.8}
-  m_LocalScale: {x: 0.6, y: 0.14553, z: 0.6}
+  m_LocalPosition: {x: -354.951, y: 88.7, z: 139.8}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &1751994052887972639
 MeshFilter:
@@ -162,8 +163,21 @@ MeshCollider:
   m_GameObject: {fileID: 1751994052887972636}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &2555521659523034163
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751994052887972636}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3089751, y: 0.17106628, z: 0.5599601}
+  m_Center: {x: -0.0018712506, y: 0.024932861, z: 0.07047212}
