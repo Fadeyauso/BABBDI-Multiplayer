@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1751994052887972634}
   - component: {fileID: 1751994052887972633}
   - component: {fileID: 1751994052887972635}
-  - component: {fileID: 1751994052887972625}
   - component: {fileID: 2555521659523034163}
   m_Layer: 11
   m_Name: Compass
@@ -154,20 +153,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!64 &1751994052887972625
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1751994052887972636}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &2555521659523034163
 BoxCollider:
   m_ObjectHideFlags: 0

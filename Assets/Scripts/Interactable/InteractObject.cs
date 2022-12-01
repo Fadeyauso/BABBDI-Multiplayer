@@ -487,9 +487,9 @@ public class InteractObject : Interactable
                 if (inHands) 
                 {
                     GameObject.Find("GameManager").GetComponent<GameManager>().compass = 1;
-                    collider.isTrigger = false;
+                    collider.isTrigger = true;
                     rb.useGravity = false;
-                    //rb.isKinematic = true;
+                    rb.isKinematic = true;
                     rb.velocity = new Vector3(0,0,0);
                     if (((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) && GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket == 1) 
                         {
@@ -522,7 +522,8 @@ public class InteractObject : Interactable
                 {
                     GameObject.Find("GameManager").GetComponent<GameManager>().compass = 0;
                     transform.SetParent(null);
-                    //rb.isKinematic = false;
+                    rb.isKinematic = false;
+                    collider.isTrigger = false;
                     rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
                     //rb.constraints = 0;
                     //rb.constraints = RigidbodyConstraints.FreezeRotation;

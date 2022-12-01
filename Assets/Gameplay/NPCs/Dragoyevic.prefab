@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Dragojevic
-  NPCid: 0
+  NPCid: 98
   speaking: 0
   voiceClip:
   - {fileID: 8300000, guid: 7a1841e9c262d1d49930f581bb54fdaf, type: 3}
@@ -295,6 +295,7 @@ MonoBehaviour:
   giveCompass: 0
   compassAvailable: 0
   activateBridge: 0
+  compassOK: 0
 --- !u!1 &7692246145725412527
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,10 +416,12 @@ MonoBehaviour:
   minYRot: 20
   maxYRot: -20
   intervals: 0
+  weirdNegative: 0
   negativeInterval: {x: 0, y: 0}
   positiveInterval: {x: 0, y: 0}
   defaultRot: {x: 0, y: 0, z: 0, w: 1}
   facePlayerRot: {x: 0, y: 0, z: 0, w: 1}
+  debug: {x: 0, y: 0, z: 0, w: 0}
   rotation: {x: 0, y: 0, z: 0}
 --- !u!1 &8706076092004847476
 GameObject:

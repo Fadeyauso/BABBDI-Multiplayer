@@ -34,7 +34,7 @@ public class DialogueUI : MonoBehaviour
         speaking = true;
         dialogueBox.SetActive(true);
         continueDialogueFX.SetActive(false);
-        if (NPCid == 98 && GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1) GetComponent<Dragoyevic>().giveCompass = true;
+        if (NPCid == 98 && GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1) GetComponent<Dragoyevic>().compassOK = true;
         if (GetComponent<Dragoyevic>() != null) GetComponent<Dragoyevic>().giveCompass = true;
         name_label.text = name;
         SoundManager.Instance.PlaySound(voiceClip[Random.Range(0, voiceClip.Length - 1)]);

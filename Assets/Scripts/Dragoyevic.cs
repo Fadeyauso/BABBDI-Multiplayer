@@ -8,6 +8,7 @@ public class Dragoyevic : MonoBehaviour
     public bool giveCompass;
     public bool compassAvailable;
     public bool activateBridge;
+    public bool compassOK;
 
     private bool compassGive;
 
@@ -22,7 +23,7 @@ public class Dragoyevic : MonoBehaviour
     {
         
 
-        if (giveCompass && GetComponent<NPC>().dialogueIndex2 == 0 && compassAvailable && GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1)
+        if (giveCompass && GetComponent<NPC>().dialogueIndex2 == 0 && compassAvailable && compassOK)
         {
             giveCompass = false;
             compassAvailable = false;
