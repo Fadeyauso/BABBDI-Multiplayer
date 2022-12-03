@@ -5,11 +5,11 @@ using UnityEngine;
 public class FirstPersonController : MonoBehaviour
 {
     public bool canMove { get; private set; } = true;
-    private bool IsSprinting => canSprint && Input.GetKey(sprintKey) && currentInputRaw != new Vector2(0,0) && !motorBike.GetComponent<MotorBike>().isActive;
-    private bool ShouldJump => Input.GetKeyDown(jumpKey) && characterController.isGrounded;
-    private bool ShouldCrouch => (Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftAlt)) && characterController.isGrounded && !motorBike.GetComponent<MotorBike>().isActive;
-    private bool ShouldCrouchInAir => (Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftAlt)) && !characterController.isGrounded && !OnSlope();
-    private bool FlatSlide => (Input.GetKeyDown(crouchKey) || Input.GetKeyDown(KeyCode.C) || Input.GetKey(KeyCode.LeftAlt)) && characterController.isGrounded && currentInputRaw != Vector2.zero;
+    private bool IsSprinting => canSprint && (Input.GetKey(sprintKey) ||Input.GetKey(sprintKey1)) && currentInputRaw != new Vector2(0,0) && !motorBike.GetComponent<MotorBike>().isActive;
+    private bool ShouldJump => (Input.GetKeyDown(jumpKey) ||Input.GetKeyDown(jumpKey1)) && characterController.isGrounded;
+    private bool ShouldCrouch => (Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C) ||Input.GetKey(crouchKey1) || Input.GetKey(KeyCode.LeftAlt)) && characterController.isGrounded && !motorBike.GetComponent<MotorBike>().isActive;
+    private bool ShouldCrouchInAir => (Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C)||Input.GetKey(crouchKey1) || Input.GetKey(KeyCode.LeftAlt)) && !characterController.isGrounded && !OnSlope();
+    private bool FlatSlide => (Input.GetKeyDown(crouchKey) || Input.GetKeyDown(KeyCode.C) ||Input.GetKey(crouchKey1)|| Input.GetKey(KeyCode.LeftAlt)) && characterController.isGrounded && currentInputRaw != Vector2.zero;
     private bool InAirCrouch;   
     public bool preslide;
 
@@ -27,6 +27,10 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
     [SerializeField] private KeyCode crouchKey = KeyCode.LeftControl;
     [SerializeField] private KeyCode interactKey = KeyCode.E;
+    [SerializeField] private KeyCode sprintKey1 = KeyCode.LeftShift;
+    [SerializeField] private KeyCode jumpKey1 = KeyCode.Space;
+    [SerializeField] private KeyCode crouchKey1 = KeyCode.LeftControl;
+    [SerializeField] private KeyCode interactKey1 = KeyCode.E;
 
     [Header("Movement Parameters")]
     [SerializeField] private float walkSpeed = 3.0f;
@@ -995,7 +999,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void HandleInteractionInput()
     {
-        if ((Input.GetKeyDown(interactKey) || Input.GetKeyDown(KeyCode.F)) && currentInteractable != null && interactionSphere && !dialogueActive)
+        if ((Input.GetKeyDown(interactKey) || Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(interactKey1)) && currentInteractable != null && interactionSphere && !dialogueActive)
         {
             currentInteractable.OnInteract();
         }
