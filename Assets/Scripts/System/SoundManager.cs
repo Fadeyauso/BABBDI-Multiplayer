@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
-    [SerializeField] private AudioSource _musicSource, _effectsSource, _ambientSource, _musicShotSource, _indoorSource, _outdoorSource;
+    [SerializeField] public AudioSource _musicSource, _effectsSource, _ambientSource, _musicShotSource, _indoorSource, _outdoorSource;
     [SerializeField] private float blendSpeed;
     private bool outdoor = true;
     private bool indoor = false;

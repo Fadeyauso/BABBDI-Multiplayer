@@ -70,7 +70,7 @@ public class NPC : Interactable
     {
         if (exclamation != null)
         {
-            if (!GameObject.Find("Player").GetComponent<FirstPersonController>().dialogueActive && (dialogue.Length-1 == 0 ? !interactedWith : dialogueIndex > 0) && (hasSecondPhase ? GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 0 : 1==1) && !dialogueDone) exclamation.SetActive(true);
+            if (!GameObject.Find("Player").GetComponent<FirstPersonController>().dialogueActive && !GetComponent<DialogueUI>().speaking && (dialogue.Length-1 == 0 ? !interactedWith : dialogueIndex > 0) && (hasSecondPhase ? GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 0 : 1==1) && !dialogueDone) exclamation.SetActive(true);
             else if (!GameObject.Find("Player").GetComponent<FirstPersonController>().dialogueActive && (GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1) && hasSecondPhase && secondPhaseDialogues < dialogue2Number) exclamation.SetActive(true);
             else exclamation.SetActive(false);
         }

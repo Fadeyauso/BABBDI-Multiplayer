@@ -156,7 +156,6 @@ public class GameManager : MonoBehaviour, ISaveable
     public float bridgeTimer;
     void Update() 
     {
-        Debug.Log(Input.GetJoystickNames()[0]);
         if (Input.GetJoystickNames()[0] != "") gamepad = true;
         else gamepad = false;
         bridgeTimer -= Time.deltaTime;

@@ -306,7 +306,7 @@ public class FirstPersonController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && !GameObject.Find("GameManager").GetComponent<GameManager>().endGame)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start")) && !GameObject.Find("GameManager").GetComponent<GameManager>().endGame)
         {
             pauseMenu.SetActive(!pauseMenu.activeSelf);
             firstInterface.SetActive(true);
@@ -324,7 +324,7 @@ public class FirstPersonController : MonoBehaviour
             }
             
         }
-        if (Input.GetKeyDown(KeyCode.Tab) && !GameObject.Find("GameManager").GetComponent<GameManager>().endGame)
+        if ((Input.GetKeyDown(KeyCode.Tab) || Input.GetButtonDown("Select")) && !GameObject.Find("GameManager").GetComponent<GameManager>().endGame)
         {
             pauseMenu.SetActive(!pauseMenu.activeSelf);
             firstInterface.SetActive(false);
@@ -670,8 +670,7 @@ public class FirstPersonController : MonoBehaviour
         }
         else if (club != null && inHands)
         {
-            if (blower.GetComponent<Blower>().isActive && characterController.isGrounded) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) * 1.7f + forceAdded + motorBike.GetComponent<MotorBike>().motorMovement;
-            else if (blower.GetComponent<Blower>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + blower.GetComponent<Blower>().blowMovement + forceAdded + motorBike.GetComponent<MotorBike>().motorMovement;
+            if (blower.GetComponent<Blower>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + blower.GetComponent<Blower>().blowMovement + forceAdded + motorBike.GetComponent<MotorBike>().motorMovement;
             else if (!propeller.GetComponent<Propeller>().isActive) moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + forceAdded + forceAdded + propeller.GetComponent<Propeller>().propellerMovement + motorBike.GetComponent<MotorBike>().motorMovement;
             else moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y) + forceAdded + propeller.GetComponent<Propeller>().propellerMovement + motorBike.GetComponent<MotorBike>().motorMovement;
         }
@@ -726,7 +725,6 @@ public class FirstPersonController : MonoBehaviour
             }
 
 
-            
             if (standing && playerCamera.transform.localPosition.y != defaultYPos && landTimer < 0 ) //&& currentInputRaw == Vector2.zero)
             {
                 playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, characterController.center + new Vector3(0, characterController.height / 2, 0) + offset, 5f * Time.deltaTime);
@@ -799,12 +797,13 @@ public class FirstPersonController : MonoBehaviour
         else 
         {
             isCrouching = ShouldCrouch;
-            if (IsSprinting) InAirCrouch = ShouldCrouchInAir;
+            if ((Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C) || Input.GetButton("Slide")  || Input.GetKey(KeyCode.LeftAlt)) && !characterController.isGrounded && !OnSlope()) InAirCrouch = true;
+            else InAirCrouch = false;
         }
 
         if (isCrouching) crouchTimer = 0.35f;
 
-        if ((FlatSlide || (preslide && characterController.isGrounded)) && tempslideCountdown < 0 && verticalInputRaw > 0) 
+        if ((FlatSlide || (preslide && characterController.isGrounded)) && tempslideCountdown < 0 && verticalInputRaw > 0 && ((Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftAlt) || Input.GetButton("Slide") ))) 
         {
             preslide = false;
             AddHorizontalForce(transform.forward / 12, IsSprinting ? sprintSlideImpulsion : slideImpulsion);
@@ -1037,7 +1036,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void ApplyFinalMovements()
     {
-        if ((currentInputRaw.magnitude != 0 || motorBike.GetComponent<InteractObject>().onMoto) && OnSlope() && (!Input.GetKey(jumpKey) && !Input.GetButton("Jump")))
+        if ((currentInputRaw.magnitude != 0 || motorBike.GetComponent<InteractObject>().onMoto) && OnSlope() && (GameObject.Find("GameManager").GetComponent<GameManager>().gamepad ? !Input.GetButton("Jump") : !Input.GetKey(jumpKey)))
         {
             if (Input.GetKeyDown(jumpKey)  || Input.GetButtonDown("Jump"))
             {

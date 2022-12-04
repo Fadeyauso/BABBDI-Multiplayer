@@ -7,6 +7,10 @@ public class MasterVolume : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
     // Start is called before the first frame update
+    void Awake()
+    {
+        _slider.value = AudioListener.volume;
+    }
     void Start()
     {
         SoundManager.Instance.ChangeMasterVolume(_slider.value);
