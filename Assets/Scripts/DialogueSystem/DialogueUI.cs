@@ -53,7 +53,7 @@ public class DialogueUI : MonoBehaviour
 
             yield return null;
             continueDialogueFX.SetActive(true);
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1"));
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1") || Input.GetButtonDown("Interact"));
             continueDialogueFX.SetActive(false);
             
         }
@@ -74,7 +74,7 @@ public class DialogueUI : MonoBehaviour
         while (typewriterEffect.IsRunning){
             yield return null;
 
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1"))
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1") || Input.GetButtonDown("Interact"))
             {
                 continueDialogueFX.SetActive(true);
                 typewriterEffect.Stop();

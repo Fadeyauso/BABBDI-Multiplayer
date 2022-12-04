@@ -28,12 +28,12 @@ public class Blower : MonoBehaviour
         canfly = Physics.Raycast(player.transform.position, Vector3.down, out RaycastHit flyHit, 15f);
         timer -= Time.deltaTime;
 
-        if (Input.GetButtonDown("Fire1") && GetComponent<InteractObject>().inHands)
+        if ((Input.GetButtonDown("Fire1") || Input.GetAxis("LeftClick") > 0.1f) && GetComponent<InteractObject>().inHands)
         {
             SoundManager.Instance.PlayContinuousSound(motorClip);
         }
 
-        if (Input.GetButton("Fire1") && GetComponent<InteractObject>().inHands)
+        if ((Input.GetButton("Fire1") || Input.GetAxis("LeftClick") > 0.1f) && GetComponent<InteractObject>().inHands)
         {
             timer = 0.05f;
             isActive = true;
@@ -50,7 +50,7 @@ public class Blower : MonoBehaviour
             
         }
         
-        if (Input.GetButtonUp("Fire1") && GetComponent<InteractObject>().inHands)
+        if ((Input.GetButton("Fire1") || Input.GetAxis("LeftClick") > 0.1f) && GetComponent<InteractObject>().inHands)
         {
             
             SoundManager.Instance.StopSound();
