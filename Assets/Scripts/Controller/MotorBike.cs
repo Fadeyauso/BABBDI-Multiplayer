@@ -37,7 +37,7 @@ public class MotorBike : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetButton("Fire1") && GetComponent<InteractObject>().onMoto)
+        if ((Input.GetButton("Fire1") || Input.GetAxis("LeftClick") > 0.1f) && GetComponent<InteractObject>().onMoto)
         {
             isActive = true;
             
@@ -68,7 +68,10 @@ public class MotorBike : MonoBehaviour
 
         if (!player.GetComponent<FirstPersonController>().characterController.isGrounded && GetComponent<InteractObject>().inHands)
         {
-            mouseLook -= Input.GetAxis("Mouse X") * GameObject.Find("Player").GetComponent<FirstPersonController>().lookSpeedX;
+            if (GameObject.Find("GameManager").GetComponent<GameManager>().gamepad)
+                mouseLook -= Input.GetAxis("CameraHorizontal") * GameObject.Find("Player").GetComponent<FirstPersonController>().lookSpeedX;
+            else
+                mouseLook -= Input.GetAxis("Mouse X") * GameObject.Find("Player").GetComponent<FirstPersonController>().lookSpeedX;
 
             if (mouseLook > 360 || mouseLook < -360)
             {
@@ -82,7 +85,7 @@ public class MotorBike : MonoBehaviour
 
         if (player.GetComponent<EnterZone>().inGirlZone && GetComponent<InteractObject>().inHands)
         {
-            if (Input.GetButton("Fire1") && player.GetComponent<FirstPersonController>().characterController.velocity.magnitude > 1)
+            if ((Input.GetButton("Fire1") || Input.GetAxis("LeftClick") > 0.1f) && player.GetComponent<FirstPersonController>().characterController.velocity.magnitude > 1)
             {
                 impressTimer += Time.deltaTime;
                 if (impressTimer > timeToImpress)

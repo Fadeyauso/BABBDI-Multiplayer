@@ -19,13 +19,21 @@ public class Stick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouseX = Input.GetAxis("Mouse X");
+        if (GameObject.Find("GameManager").GetComponent<GameManager>().gamepad)
+        {
+mouseX = Input.GetAxis("CameraHorizontal");
+        mouseY = Input.GetAxis("CameraVertical");
+        }
+        else{
+mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
+        }
+        
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (GetComponent<InteractObject>().inHands && Input.GetButton("Fire1"))
+        if (GetComponent<InteractObject>().inHands && (Input.GetButton("Fire1") || Input.GetAxis("LeftClick") > 0.1f))
         {
             SoundManager.Instance.PlaySound(impactClip);
             ContactPoint contact = collision.contacts[0];

@@ -11,6 +11,8 @@ public class Blower : MonoBehaviour
     private bool canfly;
 
     private float timer = 0;
+    [SerializeField] private float battery;
+    [SerializeField] private float batteryMax = 2;
 
     public AudioClip motorClip;
     public AudioClip endClip;
@@ -25,19 +27,21 @@ public class Blower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        canfly = Physics.Raycast(player.transform.position, Vector3.down, out RaycastHit flyHit, 15f);
         timer -= Time.deltaTime;
 
-        if (Input.GetButtonDown("Fire1") && GetComponent<InteractObject>().inHands)
+        if (player.GetComponent<FirstPersonController>().characterController.isGrounded) battery = batteryMax;
+
+        if ((Input.GetButtonDown("Fire1")) && GetComponent<InteractObject>().inHands && battery > 0)
         {
             SoundManager.Instance.PlayContinuousSound(motorClip);
         }
 
-        if (Input.GetButton("Fire1") && GetComponent<InteractObject>().inHands)
+        if ((Input.GetButton("Fire1")) && GetComponent<InteractObject>().inHands)
         {
             timer = 0.05f;
             isActive = true;
-            if (canfly)
+            battery -= Time.deltaTime;
+            if (battery > 0)
             {
                 if (Physics.Raycast(player.transform.position, player.GetComponent<FirstPersonController>().playerCamera.transform.forward, out RaycastHit slopeHit, 3f))
                 {
@@ -50,13 +54,19 @@ public class Blower : MonoBehaviour
             
         }
         
-        if (Input.GetButtonUp("Fire1") && GetComponent<InteractObject>().inHands)
+        if ((Input.GetButtonUp("Fire1")) && GetComponent<InteractObject>().inHands)
         {
             
             SoundManager.Instance.StopSound();
             SoundManager.Instance.PlaySound(endClip);
         }
-        else if (GetComponent<InteractObject>().inHands)
+
+        if (GetComponent<InteractObject>().inHands && (!Input.GetButton("Fire1")))
+        {
+            blowMovement = new Vector3(0,0,0);
+            isActive = false;
+        }
+        else if (!GetComponent<InteractObject>().inHands)
         {
             blowMovement = new Vector3(0,0,0);
             isActive = false;

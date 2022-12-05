@@ -11,6 +11,7 @@ using TMPro;
 public class GameManager : MonoBehaviour, ISaveable
 {
     public static GameManager Instance;
+    public bool gamepad;
 
     [Header("UI")] 
     public GameObject pauseMenu;
@@ -155,6 +156,8 @@ public class GameManager : MonoBehaviour, ISaveable
     public float bridgeTimer;
     void Update() 
     {
+        if (Input.GetJoystickNames()[0] != "") gamepad = true;
+        else gamepad = false;
         bridgeTimer -= Time.deltaTime;
 
         if (haveTicket == 1) ticket = true;

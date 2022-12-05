@@ -122,10 +122,10 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorDeep: {r: 0.22067462, g: 0.26038885, b: 0.2735849, a: 0}
     - _ColorShallow: {r: 0.42691714, g: 0.4339623, b: 0.38688147, a: 0}
-    - _DeepColor: {r: 0.13992292, g: 0.1509434, b: 0.1002492, a: 0}
+    - _DeepColor: {r: 0.8683746, g: 1, b: 0.56037736, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _ShalowColor: {r: 0, g: 0, b: 0, a: 0}
+    - _ShalowColor: {r: 0.67947465, g: 0.7830189, b: 0.6751691, a: 0}
     - _Tiling: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _Tiling_Normal1: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _Tiling_Normal2: {r: 0.02, g: 0.02, b: 0, a: 0}

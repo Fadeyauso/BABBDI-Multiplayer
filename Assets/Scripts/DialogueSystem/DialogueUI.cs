@@ -34,6 +34,7 @@ public class DialogueUI : MonoBehaviour
         speaking = true;
         dialogueBox.SetActive(true);
         continueDialogueFX.SetActive(false);
+        if (NPCid == 98 && GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1) GetComponent<Dragoyevic>().compassOK = true;
         if (GetComponent<Dragoyevic>() != null) GetComponent<Dragoyevic>().giveCompass = true;
         name_label.text = name;
         SoundManager.Instance.PlaySound(voiceClip[Random.Range(0, voiceClip.Length - 1)]);
@@ -52,7 +53,7 @@ public class DialogueUI : MonoBehaviour
 
             yield return null;
             continueDialogueFX.SetActive(true);
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1"));
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1") || Input.GetButtonDown("Interact"));
             continueDialogueFX.SetActive(false);
             
         }
@@ -73,7 +74,7 @@ public class DialogueUI : MonoBehaviour
         while (typewriterEffect.IsRunning){
             yield return null;
 
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1"))
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1") || Input.GetButtonDown("Interact"))
             {
                 continueDialogueFX.SetActive(true);
                 typewriterEffect.Stop();

@@ -183,7 +183,7 @@ public class InteractObject : Interactable
                     rb.useGravity = false;
                     rb.isKinematic = true;
                     rb.velocity = new Vector3(0,0,0);
-                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
+                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
                         {
                             throwObject = true;
                             inHands = false;
@@ -228,7 +228,7 @@ public class InteractObject : Interactable
                     collider.isTrigger = true;
                     if (!extended && timer < 0)
                     {
-                        if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow && GetComponent<Climber>().trigger == false && !player.GetComponent<EnterZone>().inLift) 
+                        if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && GetComponent<Climber>().trigger == false && !player.GetComponent<EnterZone>().inLift) 
                         {
                             throwObject = true;
                             inHands = false;
@@ -244,7 +244,7 @@ public class InteractObject : Interactable
                         transform.rotation = GetComponent<Climber>().pickRot;
                         climber = false;
                     }
-                    else if (Input.GetButton("Fire1") && GetComponent<Climber>().pick)
+                    else if ((Input.GetButton("Fire1")) && GetComponent<Climber>().pick)
                     {
                         transform.position = GameObject.Find("Pickaxe00").transform.position;
                         transform.rotation = GameObject.Find("Pickaxe00").transform.rotation;
@@ -279,7 +279,7 @@ public class InteractObject : Interactable
                 {
                     GameObject.Find("GameManager").GetComponent<GameManager>().flashlight = 1;
                     collider.isTrigger = true;
-                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
+                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
                         throwObject = true;
                         inHands = false;
@@ -312,7 +312,7 @@ public class InteractObject : Interactable
                 {
                     GameObject.Find("GameManager").GetComponent<GameManager>().propeller = 1;
                     collider.isTrigger = true;
-                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
+                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
                         throwObject = true;
                         inHands = false;
@@ -345,7 +345,7 @@ public class InteractObject : Interactable
                 {
                     GameObject.Find("GameManager").GetComponent<GameManager>().blower = 1;
                     collider.isTrigger = true;
-                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
+                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
                         throwObject = true;
                         inHands = false;
@@ -378,7 +378,7 @@ public class InteractObject : Interactable
                 {
                     GameObject.Find("GameManager").GetComponent<GameManager>().bigball = 1;
                     collider.isTrigger = true;
-                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
+                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
                         throwObject = true;
                         inHands = false;
@@ -416,13 +416,13 @@ public class InteractObject : Interactable
                     rb.useGravity = false;
                     //rb.isKinematic = true;
                     rb.velocity = new Vector3(0,0,0);
-                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
+                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
                         {
                             throwObject = true;
                             inHands = false;
                         }
 
-                    if (Input.GetButton("Fire1"))
+                    if (Input.GetButton("Fire1") || Input.GetAxis("LeftClick") > 0.1f)
                     {
                         rb.useGravity = false;
                         transform.position = GameObject.Find("StickPos00").transform.position;
@@ -456,7 +456,7 @@ public class InteractObject : Interactable
                 if (inHands) 
                 {
                     GameObject.Find("GameManager").GetComponent<GameManager>().grabber = 1;
-                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
+                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
                         throwObject = true;
                         inHands = false;
@@ -487,11 +487,11 @@ public class InteractObject : Interactable
                 if (inHands) 
                 {
                     GameObject.Find("GameManager").GetComponent<GameManager>().compass = 1;
-                    collider.isTrigger = false;
+                    collider.isTrigger = true;
                     rb.useGravity = false;
-                    //rb.isKinematic = true;
+                    rb.isKinematic = true;
                     rb.velocity = new Vector3(0,0,0);
-                    if (((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) && GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket == 1) 
+                    if (((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) && GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket == 1) 
                         {
                             throwObject = true;
                             inHands = false;
@@ -522,7 +522,8 @@ public class InteractObject : Interactable
                 {
                     GameObject.Find("GameManager").GetComponent<GameManager>().compass = 0;
                     transform.SetParent(null);
-                    //rb.isKinematic = false;
+                    rb.isKinematic = false;
+                    collider.isTrigger = false;
                     rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
                     //rb.constraints = 0;
                     //rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -540,7 +541,7 @@ public class InteractObject : Interactable
                     GameObject.Find("GameManager").GetComponent<GameManager>().motorBike = 1;
                     onMoto = true;
                     collider.isTrigger = true;
-                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
+                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
                         throwObject = true;
                         inHands = false;
@@ -617,6 +618,20 @@ public class InteractObject : Interactable
 
     public void WeaponSway(Vector3 initialPosition)
     {
+        if (GameObject.Find("GameManager").GetComponent<GameManager>().gamepad)
+        {
+        InputX = -Input.GetAxis("CameraHorizontal");
+        InputY = -Input.GetAxis("CameraVertical");
+
+        float moveX = Mathf.Clamp(InputX * amount, -maxAmount, maxAmount);
+        float moveY = Mathf.Clamp(InputY * amount, -maxAmount, maxAmount);
+        
+        Vector3 finalPosition = new Vector3(moveX, moveY, 0);
+
+        transform.position = Vector3.Lerp(rb.position, initialPosition, Time.deltaTime * smoothAmount);
+        rb.position = Vector3.Lerp(rb.position, initialPosition, Time.deltaTime * smoothAmount);
+        }
+        else{
         InputX = -Input.GetAxis("Mouse X");
         InputY = -Input.GetAxis("Mouse Y");
 
@@ -627,16 +642,30 @@ public class InteractObject : Interactable
 
         transform.position = Vector3.Lerp(rb.position, initialPosition, Time.deltaTime * smoothAmount);
         rb.position = Vector3.Lerp(rb.position, initialPosition, Time.deltaTime * smoothAmount);
+        }
+
     }
 
     public void TiltSway(Quaternion initialRotation)
     {
+        if (GameObject.Find("GameManager").GetComponent<GameManager>().gamepad)
+        {
+        float tiltY = Mathf.Clamp(-Input.GetAxis("CameraHorizontal") * rotationAmount, -maxRotationAmount, maxRotationAmount);
+        float tiltX = Mathf.Clamp(-Input.GetAxis("CameraVertical") * rotationAmount, -maxRotationAmount, maxRotationAmount);
+
+        Quaternion finalRotation = Quaternion.Euler(new Vector3(rotationX ? tiltX : 0f, rotationY ? tiltY : 0f, rotationZ ? tiltY : 0f));
+
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, finalRotation * initialRotation, Time.deltaTime * smoothRotation);
+        }
+        else{
         float tiltY = Mathf.Clamp(-Input.GetAxis("Mouse X") * rotationAmount, -maxRotationAmount, maxRotationAmount);
         float tiltX = Mathf.Clamp(-Input.GetAxis("Mouse Y") * rotationAmount, -maxRotationAmount, maxRotationAmount);
 
         Quaternion finalRotation = Quaternion.Euler(new Vector3(rotationX ? tiltX : 0f, rotationY ? tiltY : 0f, rotationZ ? tiltY : 0f));
 
         transform.localRotation = Quaternion.Slerp(transform.localRotation, finalRotation * initialRotation, Time.deltaTime * smoothRotation);
+        }
+
     }
 
     public void TiltSwayGlobal(Quaternion initialRotation)

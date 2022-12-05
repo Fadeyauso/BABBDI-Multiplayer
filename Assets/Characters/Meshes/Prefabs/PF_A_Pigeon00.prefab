@@ -36,7 +36,7 @@ Transform:
   - {fileID: 5356462668460582704}
   - {fileID: 5356462668288805428}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9077605381577427140
 MeshFilter:
@@ -196,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: b09946b5e4d4248419845592dc7fbdec, type: 3}
       propertyPath: m_LightProbeUsage
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: b09946b5e4d4248419845592dc7fbdec, type: 3}
       propertyPath: m_ReflectionProbeUsage
@@ -276,7 +276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: b09946b5e4d4248419845592dc7fbdec, type: 3}
       propertyPath: m_LightProbeUsage
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: b09946b5e4d4248419845592dc7fbdec, type: 3}
       propertyPath: m_ReflectionProbeUsage
