@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 
 public class FirstPersonController : MonoBehaviour
 {
@@ -290,6 +292,9 @@ public class FirstPersonController : MonoBehaviour
         
     }
 
+    [SerializeField] private GameObject startButton;
+    [SerializeField] private GameObject selectButton;
+
     void Update()
     {
         if (dialogueActive) talkPopup.SetActive(false);
@@ -322,6 +327,13 @@ public class FirstPersonController : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
+
+            if (GameObject.Find("GameManager").GetComponent<GameManager>().gamepad)
+            {
+                var eventSystem = EventSystem.current;
+                eventSystem.SetSelectedGameObject(startButton, new BaseEventData(eventSystem));
+            }
+            
             
         }
         if ((Input.GetKeyDown(KeyCode.Tab) || Input.GetButtonDown("Select")) && !GameObject.Find("GameManager").GetComponent<GameManager>().endGame)
@@ -339,6 +351,12 @@ public class FirstPersonController : MonoBehaviour
                 
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+            }
+
+            if (GameObject.Find("GameManager").GetComponent<GameManager>().gamepad)
+            {
+                var eventSystem = EventSystem.current;
+                eventSystem.SetSelectedGameObject(selectButton, new BaseEventData(eventSystem));
             }
             
         }

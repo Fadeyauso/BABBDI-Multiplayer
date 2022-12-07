@@ -264,8 +264,12 @@ public class GameManager : MonoBehaviour, ISaveable
 
     public void ReturnHome()
     {
-        GameObject.Find("Player").transform.position = GameObject.Find("LobbyPosition").transform.position;
-        lobbyTimer = 0.1f;
+        if (secondPart == 0)
+        {
+            GameObject.Find("Player").transform.position = GameObject.Find("LobbyPosition").transform.position;
+            lobbyTimer = 0.1f;
+        }
+        
     }
     public void ReturnOffice()
     {

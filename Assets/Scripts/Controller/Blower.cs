@@ -54,7 +54,7 @@ public class Blower : MonoBehaviour
             
         }
         
-        if ((Input.GetButtonUp("Fire1")) && GetComponent<InteractObject>().inHands)
+        if (((Input.GetButtonUp("Fire1")) && GetComponent<InteractObject>().inHands) && battery > 0 || (battery < 0 && battery > -0.01f))
         {
             
             SoundManager.Instance.StopSound();

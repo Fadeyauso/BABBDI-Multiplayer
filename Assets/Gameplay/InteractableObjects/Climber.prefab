@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchForce: 8
+  climberForce: 1.5
   hold: {fileID: 0}
   hit: {fileID: 8300000, guid: ae3479eddfc98ad47a62a2a3eaa49939, type: 3}
   pickPos: {x: 0, y: 0, z: 0}
