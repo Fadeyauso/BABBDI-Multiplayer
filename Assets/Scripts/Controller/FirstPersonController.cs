@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class FirstPersonController : MonoBehaviour
 {
     public bool canMove { get; private set; } = true;
-    private bool IsSprinting => canSprint && (Input.GetKey(sprintKey) ||Input.GetAxis("Sprint") > 0.1f) && currentInputRaw != new Vector2(0,0) && !motorBike.GetComponent<MotorBike>().isActive;
+    private bool IsSprinting => canSprint && (Input.GetKey(sprintKey) ||Input.GetAxis("Sprint") > 0.2f) && currentInputRaw != new Vector2(0,0) && !motorBike.GetComponent<MotorBike>().isActive;
     private bool ShouldJump => (Input.GetKeyDown(jumpKey) || Input.GetButtonDown("Jump")) && characterController.isGrounded;
     private bool ShouldCrouch => (Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C)  || Input.GetButton("Slide") || Input.GetKey(KeyCode.LeftAlt)) && characterController.isGrounded && !motorBike.GetComponent<MotorBike>().isActive;
     private bool ShouldCrouchInAir => (Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C) || Input.GetButton("Slide")  || Input.GetKey(KeyCode.LeftAlt)) && !characterController.isGrounded && !OnSlope();
@@ -629,10 +629,10 @@ public class FirstPersonController : MonoBehaviour
         if (GameObject.Find("GameManager").GetComponent<GameManager>().gamepad)
         {
 
-            verticalInputRaw = Input.GetAxisRaw("Vertical");
-            horizontalInputRaw = Input.GetAxisRaw("Horizontal");
-            verticalInput = Input.GetAxis("Vertical");
-            horizontalInput = Input.GetAxis("Horizontal");
+            verticalInputRaw = (Input.GetAxisRaw("verticalArrows") != 0 ? Input.GetAxisRaw("verticalArrows") : Input.GetAxisRaw("Vertical"));
+            horizontalInputRaw = (Input.GetAxisRaw("horizontalArrows") != 0 ? Input.GetAxisRaw("horizontalArrows") : Input.GetAxisRaw("Horizontal"));
+            verticalInput = (Input.GetAxis("verticalArrows") != 0 ? Input.GetAxis("verticalArrows") : Input.GetAxis("Vertical"));
+            horizontalInput = (Input.GetAxis("horizontalArrows") != 0 ? Input.GetAxis("horizontalArrows") : Input.GetAxis("Horizontal"));
         }
         else {
             if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q))) horizontalInput = 0;

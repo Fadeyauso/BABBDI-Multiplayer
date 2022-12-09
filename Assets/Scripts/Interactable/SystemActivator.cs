@@ -23,16 +23,19 @@ public class SystemActivator : Interactable
             {
                 objectToActivate.GetComponent<Lift>().isTriggered = true;
                 SoundManager.Instance.PlaySound(activateClip);
+                //f (objectToActivate.GetComponent<AudioSource>() != null) objectToActivate.GetComponent<AudioSource>().mute = false;
             }
             else if (objectToActivate.GetComponent<Lift>() != null && objectToActivate.GetComponent<Lift>().isTriggered == false && downCall && objectToActivate.GetComponent<Lift>().topReach) 
             {
                 objectToActivate.GetComponent<Lift>().isTriggered = true;
                 SoundManager.Instance.PlaySound(activateClip);
+                //if (objectToActivate.GetComponent<AudioSource>() != null) objectToActivate.GetComponent<AudioSource>().mute = false;
             }
             if (objectToActivate.GetComponent<Lift>() != null && objectToActivate.GetComponent<Lift>().isTriggered == false && !upCall && !downCall) 
             {
                 objectToActivate.GetComponent<Lift>().isTriggered = true;
                 SoundManager.Instance.PlaySound(activateClip);
+                //if (objectToActivate.GetComponent<AudioSource>() != null) objectToActivate.GetComponent<AudioSource>().mute = false;
             }
         }
     }

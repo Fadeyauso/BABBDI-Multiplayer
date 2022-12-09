@@ -54,14 +54,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946661711}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.557, z: 0.81}
+  m_LocalRotation: {x: -0.24014333, y: 0, z: 0, w: 0.97073746}
+  m_LocalPosition: {x: -0.54, y: -0.62, z: 0.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7482973070762915167}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -27.79, y: 0, z: 0}
 --- !u!1 &952962483
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,14 +178,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122962887}
-  m_LocalRotation: {x: 0.51869863, y: 0, z: 0, w: 0.85495716}
-  m_LocalPosition: {x: 0.38, y: -0.21, z: 0.52}
+  m_LocalRotation: {x: -0.056779914, y: 0, z: 0, w: 0.99838674}
+  m_LocalPosition: {x: 0.35, y: -0.16, z: 0.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7482973070762915167}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 62.49, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -6.51, y: 0, z: 0}
 --- !u!1 &1175882408
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,7 +958,7 @@ Transform:
   - {fileID: 1227882264276423631}
   - {fileID: 477892629}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &7482973072534782209
 CharacterController:
@@ -1113,9 +1113,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 12607bcd3d7939d43bb455ab021c998d, type: 3}
   - {fileID: 8300000, guid: db31408176327774eb47d92af6759c13, type: 3}
   grassClips:
-  - {fileID: 8300000, guid: b576aa201a4dfcc4889d117fdfc10de0, type: 3}
-  - {fileID: 8300000, guid: 37d00a2ca59a1dd4bbc4e6e00c5c62bb, type: 3}
-  - {fileID: 8300000, guid: bee3e667d19a4f140a4c314a137f495d, type: 3}
+  - {fileID: 8300000, guid: 6f3d8148ddde62548811b92f34ea4d72, type: 3}
+  - {fileID: 8300000, guid: a0889b110d282594e84d6547dd912567, type: 3}
+  - {fileID: 8300000, guid: 7f84c44071ae5b64c9111c73801836c1, type: 3}
+  - {fileID: 8300000, guid: e54511dc7528ef74c95507462762f7ed, type: 3}
+  - {fileID: 8300000, guid: 68e4528e691fdd44aa2a443794b5c39d, type: 3}
   dirtClips:
   - {fileID: 8300000, guid: 674d9a74ce7f18046a673b437967d2e6, type: 3}
   - {fileID: 8300000, guid: f293aeb261ccf0e4da7c4057f44cb1f5, type: 3}
@@ -1140,7 +1142,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d9433f059753feb45be99d87b3e5ef3f, type: 3}
   - {fileID: 8300000, guid: 395fca6c5c5a2834b959912d0da01daa, type: 3}
   slopeForce: 100
-  slopeForceRayLength: 3
+  slopeForceRayLength: 1.8
   inJump: 0
   interactionRayPoint: {x: 0.5, y: 0.5, z: 0}
   interactionDistance: 5
@@ -1216,12 +1218,14 @@ MonoBehaviour:
   jukeboxPopup: {fileID: 0}
   elevatorPopup: {fileID: 0}
   doorPopup: {fileID: 0}
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 7482973070762915160}
   characterController: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   currentInputRaw: {x: 0, y: 0}
   rotationX: 0
   rotationZ: 0
+  startButton: {fileID: 0}
+  selectButton: {fileID: 0}
   jumpTimer: 0
   vault: 0
   addingForce: 0

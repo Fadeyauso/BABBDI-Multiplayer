@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b05947a7510c745a1bd04f58964025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamepad: 0
   pauseMenu: {fileID: 0}
   confirmReturnHome: {fileID: 0}
   notavailable: {fileID: 0}
@@ -82,7 +83,7 @@ MonoBehaviour:
   continueDialogueFX: {fileID: 0}
   secretsFound: 0
   npcInteractedWith: 0
-  maxNpc: 18
+  maxNpc: 17
   pickup: 0
   item: 0
   inActivatedLift: 0

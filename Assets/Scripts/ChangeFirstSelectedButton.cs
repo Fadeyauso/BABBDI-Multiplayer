@@ -20,7 +20,11 @@ public class ChangeFirstSelectedButton : MonoBehaviour
 
     public void ChangeButton(GameObject button)
     {
-        var eventSystem = EventSystem.current;
-        eventSystem.SetSelectedGameObject(button, new BaseEventData(eventSystem));
+        if (Input.GetJoystickNames()[0] != "")
+        {
+            var eventSystem = EventSystem.current;
+            eventSystem.SetSelectedGameObject(button, new BaseEventData(eventSystem));
+        }
+
     }
 }

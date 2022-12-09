@@ -29,13 +29,17 @@ public class Lift : MonoBehaviour
             GameObject.Find("GameManager").GetComponent<GameManager>().inActivatedLift = true;
             transform.Translate(Vector3.up * speed * Time.deltaTime);
             stop = true;
+            
         }
         else if (isTriggered && transform.position.y > firstPoint.transform.position.y && topReach == true) 
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().inActivatedLift = true;
             transform.Translate(Vector3.down * speed * Time.deltaTime);
             stop = true;
+
         }
+
+            
 
         if (isTriggered && transform.position.y > secondPoint.transform.position.y && stop == true || isTriggered && transform.position.y < firstPoint.transform.position.y && stop == true) 
         {
@@ -43,6 +47,8 @@ public class Lift : MonoBehaviour
             topReach = !topReach;
             isTriggered = false;
             stop = false;
+            //if (GetComponent<AudioSource>() != null) GetComponent<AudioSource>().mute = true;
+            
         }
     }
 }
