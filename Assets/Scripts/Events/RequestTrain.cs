@@ -27,6 +27,7 @@ public class RequestTrain : Interactable
             GameManager.GetComponent<GameManager>().requestTrain = 1;
             SoundManager.Instance.PlaySound(sound);
             SoundManager.Instance.PlaySound(train);
+            GetComponent<AudioSource>().Play();
 
 
             

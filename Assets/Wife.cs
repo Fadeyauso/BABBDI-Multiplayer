@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Wife : MonoBehaviour
 {
+    [SerializeField] private GameObject corpseParticles;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,9 @@ public class Wife : MonoBehaviour
         if (GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1)
         {
             gameObject.layer = 0;
+            corpseParticles.SetActive(true);
         }
+        else    
+            corpseParticles.SetActive(false);
     }
 }

@@ -8,6 +8,7 @@ public class Propeller : MonoBehaviour
     public GameObject motorUp;
     private GameObject player;
     [SerializeField] private AudioSource audio;
+    [SerializeField] private AudioSource audio1;
     public Vector3 propellerMovement;
     public float power = 2f;
     public float acceleration = 10f;
@@ -32,7 +33,10 @@ public class Propeller : MonoBehaviour
             {
                 motorUp.transform.Rotate(1000 * Time.deltaTime, 0, 0);
                 player.GetComponent<FirstPersonController>().moveDirection.y += flypower * Time.deltaTime;
+                audio1.mute = false;
             }
+            else
+                audio1.mute = true;
 
             motor.transform.Rotate(0, rotation * Time.deltaTime, 0);
 

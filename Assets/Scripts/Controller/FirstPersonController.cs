@@ -321,6 +321,9 @@ public class FirstPersonController : MonoBehaviour
             confirmReset.SetActive(false);
             confirmReturn.SetActive(false);
             controls.SetActive(false);
+
+            if (GameObject.Find("Canvas") != null) GameObject.Find("Canvas").GetComponent<MenuInput>().OnPress();
+
             if (pause) 
             {
                 
@@ -1089,9 +1092,9 @@ public class FirstPersonController : MonoBehaviour
 
         if (upRay && !characterController.isGrounded) AddVerticalForce(new Vector3(0, -1, 0), 2f);
 
-        if (WillSlideOnSlopes && CrouchSliding && GetComponent<Slope>().surfaceAngle >= 12 && (!Input.GetKey(jumpKey) || !Input.GetButton("Jump")))
+        if (WillSlideOnSlopes && CrouchSliding && GetComponent<Slope>().surfaceAngle >= 12 && (!Input.GetKey(jumpKey) && !Input.GetButton("Jump")))
         {
-            moveDirection += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * (GetComponent<Slope>().surfaceAngle < 20 ? slopeSlideSpeed * 4 : slopeSlideSpeed) * hitPointNormal.magnitude;
+            moveDirection += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * (slopeSlideSpeed) * hitPointNormal.magnitude;
         }
         else if (WillSlideOnSlopes && IsSliding)
         {
