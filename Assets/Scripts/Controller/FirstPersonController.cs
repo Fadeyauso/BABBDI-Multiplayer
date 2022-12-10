@@ -516,7 +516,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void CheckForVault()
     {
-        if (!shortfrontRay && !characterController.isGrounded && !downRay && vaulRayDown && !vaulRayUp && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z)))
+        if (!shortfrontRay && !characterController.isGrounded && !downRay && vaulRayDown && !vaulRayUp && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z) || Input.GetAxis("Vertical") > 0.15f))
         {
             vault = true;
             moveDirection.y = 5f;

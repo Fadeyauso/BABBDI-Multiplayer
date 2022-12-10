@@ -148,7 +148,7 @@ public class InteractObject : Interactable
                 {
                     GameObject.Find("GameManager").GetComponent<GameManager>().ball = 1;
                     collider.isTrigger = true;
-                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
+                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1") || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
                     {
                         throwObject = true;
                         inHands = false;

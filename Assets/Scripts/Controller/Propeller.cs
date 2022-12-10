@@ -28,7 +28,7 @@ public class Propeller : MonoBehaviour
     {
         if (!player.GetComponent<FirstPersonController>().pause)
         {
-            if (Input.GetKey(KeyCode.Space) && GetComponent<InteractObject>().inHands && player.transform.position.y < 120)
+            if ((Input.GetKey(KeyCode.Space) || Input.GetButton("Jump")) && GetComponent<InteractObject>().inHands && player.transform.position.y < 120)
             {
                 motorUp.transform.Rotate(1000 * Time.deltaTime, 0, 0);
                 player.GetComponent<FirstPersonController>().moveDirection.y += flypower * Time.deltaTime;
