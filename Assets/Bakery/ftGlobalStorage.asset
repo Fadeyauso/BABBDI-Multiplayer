@@ -94,7 +94,9 @@ MonoBehaviour:
   - Assets/Environment/Unique/Scene_A/SM_Fil00.fbx
   - Assets/Characters/Meshes/SM_Albin00.fbx
   - Assets/Environment/Unique/Scene_A/SM_Scene_A_MEtal001.fbx
-  modifiedAssetPaddingHash: aaf8cc2e363fd3d9ecc12491ecc12491333fd3d9353fd3d9353fd3d9b35634b7ecc12491a768e2a8393fd3d9363fd3d9ecc12491ecc12491ecc12491bb09ecc014f33a06797e9363af67e2a8f437ed04717f9363ecc12491ecc12491ecc12491ecc12491ecc12491ecc124919c09ecc05bc2a693383fd3d9ecc12491ecc12491de09ecc095c2a693383fd3d9363fd3d9d7c2a693353fd3d9383fd3d9377e9363ecc12491ecc1249123c5d890cedb894bc2d15080d35634b778c6d890ecc1249113a3dddeecc1249128a3ddde2bf43a06ba5634b7353fd3d9f0c12491363fd3d9de09ecc0fe4945bebe398033ecc12491bd4608c8ecc12491ecc1249108dc894becc12491363fd3d980c5d890de09ecc08c67e2a8ecc12491ecc124913f3fd3d9393fd3d9ecc12491ecc1249127dc894becc12491b94608c8ecc12491fe4945be97c6d890
+  - Assets/Environment/Unique/Scene_A/SM_Scene_A_furniture00.fbx
+  - Assets/Environment/Unique/Scene_A/SM_VernerPanton00.fbx
+  modifiedAssetPaddingHash: aaf8cc2e363fd3d9ecc12491ecc1249180c5d8903c4efff03c4efff0ecc12491ecc12491ecc12491343fd3d9333fd3d9ecc12491ecc12491ecc12491abdb894b9c09ecc095c2a6933ec5d890ecc12491ecc12491ecc12491ecc12491ecc12491ecc12491ecc12491ecc12491344ffff0c4d150803e3fd3d9ecc12491ecc12491a35031eeba4608c83e3fd3d9393fd3d95bc2a6933c4efff0af67e2a8f627c115ecc12491ecc12491b35634b709b309ceecc12491ecc12491ecc12491ecc12491ecc12491ecc12491ecc124912ba3dddeecc12491f1f23a06f0c12491333fd3d9a35031eefe4945beae5634b7ecc12491ecc12491ecc12491ecc12491fe27c115ecc12491323fd3d923c5d89008dc894be1c4d890ecc12491ecc12491567e93633f3fd3d9ecc12491ecc1249119c2a693ecc12491ecc12491ecc12491fe4945be9150cf35ecc12491ecc12491
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -797,7 +799,15 @@ MonoBehaviour:
     unwrapper: 0000000000000000
   - meshName:
     - SM_Scene_A_MEtal001
-    padding: 19000000
+    padding: 13000000
+    unwrapper: 00000000
+  - meshName:
+    - SM_Scene_A_furniture00
+    padding: 22000000
+    unwrapper: 00000000
+  - meshName:
+    - SM_VernerPanton00
+    padding: a2000000
     unwrapper: 00000000
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
@@ -912,5 +922,5 @@ MonoBehaviour:
   renderSettingsRTPVSceneView: 0
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
-  modifiedMeshPaddingArray: 34000000
+  modifiedMeshPaddingArray: 93000000
   modifiedMeshUnwrapperArray: 00000000
