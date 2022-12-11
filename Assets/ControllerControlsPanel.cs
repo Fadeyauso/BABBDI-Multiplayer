@@ -14,8 +14,10 @@ public class ControllerControlsPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetJoystickNames()[0] != "") panel.SetActive(true);
-        else
-            panel.SetActive(false);
+        if (Input.GetJoystickNames().Length != 0){
+            if (Input.GetJoystickNames()[0] != "") panel.SetActive(true);
+            else
+                panel.SetActive(false);
+        }
     }
 }
