@@ -29,6 +29,7 @@ public class Ball : MonoBehaviour
             GameObject.Find("GameManager").GetComponent<GameManager>().playDog = true;
             GameObject.Find("GameManager").GetComponent<GameManager>().playDogState = 1;
             GameObject.Find("GameManager").GetComponent<GameManager>().lastAchievement = "Doggo friendly";
+            SteamIntegration.Instance.UnlockAchivement("DoggoFriendly");
         }
 
         if (GetComponent<Rigidbody>().velocity.magnitude > 2) ballSound.PlayOneShot(ball);

@@ -215,11 +215,13 @@ public class GameManager : MonoBehaviour, ISaveable
                 gameUnder = true;
                 gameUnderState = 1;
                 lastAchievement = "Way of the rusher";
+                SteamIntegration.Instance.UnlockAchivement("WayOfTheRusher");
             }
             if (!escapeBabbdi){
                 escapeBabbdi = true;
                 escapeBabbdiState = 1;
                 lastAchievement = "Melancholic departure";
+                SteamIntegration.Instance.UnlockAchivement("MelancholicDeparture");
             }
         }
         if (secondPart == 1 && instantiate == true) Invoke("drago", 1);
@@ -250,7 +252,8 @@ public class GameManager : MonoBehaviour, ISaveable
             if (!allSecrets) Popup();
             allSecrets = true;
             allSecretsState = 1;
-            lastAchievement = "Avid Collector";
+            lastAchievement = "Secrets master";
+            SteamIntegration.Instance.UnlockAchivement("SecretsMaster");
         }
     }
     private float lobbyTimer;
