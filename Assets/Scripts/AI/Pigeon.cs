@@ -10,6 +10,7 @@ public class Pigeon : MonoBehaviour
     [SerializeField] private float flySpeed = 2;
     [SerializeField] private float verticalMovement = 1;
     [SerializeField] private float flyTimer;
+    [SerializeField] private bool randomRot = true;
     [SerializeField] private Animator anim;
     private float walkTimer;
 
@@ -30,7 +31,7 @@ public class Pigeon : MonoBehaviour
     }
     void Start()
     {
-        transform.rotation = Quaternion.Euler(0, Random.Range(0, 360),0);
+        if (randomRot) transform.rotation = Quaternion.Euler(0, Random.Range(0, 360),0);
         initPos = transform.position;
     }
 
