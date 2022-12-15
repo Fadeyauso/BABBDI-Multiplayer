@@ -206,18 +206,21 @@ public class GameManager : MonoBehaviour, ISaveable
             interactEveryone = true;
             interactEveryoneState = 1;
             lastAchievement = "Social Quest";
+            SteamIntegration.Instance.UnlockAchivement("SocialQuest");
         }
 
         if (endGame)
         {
             if (gameTime < 240 && !gameUnder)
             {
+                Popup();
                 gameUnder = true;
                 gameUnderState = 1;
                 lastAchievement = "Way of the rusher";
                 SteamIntegration.Instance.UnlockAchivement("WayOfTheRusher");
             }
             if (!escapeBabbdi){
+                Popup();
                 escapeBabbdi = true;
                 escapeBabbdiState = 1;
                 lastAchievement = "Melancholic departure";
@@ -259,11 +262,17 @@ public class GameManager : MonoBehaviour, ISaveable
     private float lobbyTimer;
 
    
-
+    [ContextMenu("Popup")]
     public void Popup() 
     {
-        popup = true;
-        SoundManager.Instance.PlaySound(jingle[Random.Range(0, jingle.Length - 1)]);
+        if (!endGame)
+        {
+            popup = true;
+            SoundManager.Instance.PlaySound(jingle[Random.Range(0, jingle.Length - 1)]);
+        }
+        else{
+            Debug.Log("qlqlq");
+        }
     }
 
     public void ReturnHome()

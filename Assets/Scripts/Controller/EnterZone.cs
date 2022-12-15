@@ -60,6 +60,7 @@ public class EnterZone : MonoBehaviour
             GameObject.Find("GameManager").GetComponent<GameManager>().wayClimber = true;
             GameObject.Find("GameManager").GetComponent<GameManager>().wayClimberState = 1;
             GameObject.Find("GameManager").GetComponent<GameManager>().lastAchievement = "Way of the climber";
+            SteamIntegration.Instance.UnlockAchivement("WayOfTheClimber");
         }
         if (collisionInfo.tag == "Train")
         {
@@ -90,12 +91,18 @@ public class EnterZone : MonoBehaviour
             GameObject.Find("GameManager").GetComponent<SaveLoadSystem>().Save();
             GameObject.Find("GameManager").GetComponent<GameManager>().savePopup = true;
         }
-        if (collisionInfo.tag == "TrainDeath")
+        if (collisionInfo.tag == "TrainDeath" && !GameObject.Find("GameManager").GetComponent<GameManager>().endGame)
         {
             if (!GameObject.Find("GameManager").GetComponent<GameManager>().trainDeath) GameObject.Find("GameManager").GetComponent<GameManager>().Popup();
             GameObject.Find("GameManager").GetComponent<GameManager>().trainDeath = true;
             GameObject.Find("GameManager").GetComponent<GameManager>().trainDeathState = 1;
             GameObject.Find("GameManager").GetComponent<GameManager>().lastAchievement = "Flat face";
+            SteamIntegration.Instance.UnlockAchivement("FlatFace");
+            transform.position = GameObject.Find("SpawnPoint").transform.position;
+        }
+        if (collisionInfo.tag == "TrainDeath")
+        {
+            GameObject.Find("DeathAnim").GetComponent<DeathAnim>().Trigger();
             transform.position = GameObject.Find("SpawnPoint").transform.position;
         }
         if (collisionInfo.tag == "GirlZone")

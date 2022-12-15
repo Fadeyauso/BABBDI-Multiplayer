@@ -167,6 +167,17 @@ public class FirstPersonController : MonoBehaviour
         return false;
     }
 
+    private bool OnCeilingSlope()
+    {
+        if (characterController.isGrounded) return false;
+        
+        RaycastHit hit;
+        if (Physics.Raycast(playerCamera.transform.position, Vector3.up, out hit, 1f))
+            if (hit.normal != Vector3.up && Vector3.Angle(hit.normal, Vector3.up) > 10)
+                return true;
+        return false;
+    }
+
     private bool OnSlopeAir()
     {
         RaycastHit hit;
@@ -1091,6 +1102,11 @@ public class FirstPersonController : MonoBehaviour
             
 
         if (upRay && !characterController.isGrounded) AddVerticalForce(new Vector3(0, -1, 0), 2f);
+        if (OnCeilingSlope()){
+            Debug.Log("caca");
+            AddVerticalForce(new Vector3(0, -1, 0), IsSprinting ? -8f : -5f);
+            moveDirection.y = IsSprinting ? -8f : -5f;
+        }
 
         if (WillSlideOnSlopes && CrouchSliding && GetComponent<Slope>().surfaceAngle >= 12 && (!Input.GetKey(jumpKey) && !Input.GetButton("Jump")))
         {
