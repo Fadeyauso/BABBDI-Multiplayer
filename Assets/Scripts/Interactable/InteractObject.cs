@@ -160,6 +160,7 @@ public class InteractObject : Interactable
                     rb.velocity = new Vector3(0,0,0);
                     tinyobject = true;
                     WeaponSway(GameObject.Find("ObjectPos").transform.position);
+                    
                 }
                 else if (throwObject ) 
                 {
@@ -201,6 +202,7 @@ public class InteractObject : Interactable
                     {
                         club = true;
                         WeaponSway(GameObject.Find("ObjectPos2").transform.position);
+                        //TiltSway(GameObject.Find("ObjectPos2").transform.localRotation);
                         extended = false;
                     }
                 }
@@ -564,6 +566,49 @@ public class InteractObject : Interactable
                     //rb.constraints = 0;
                     //rb.constraints = RigidbodyConstraints.FreezeRotation;
                     rb.useGravity = true;
+                    throwObject = false;
+                }
+            }
+
+            if (GetComponent<ItemProperties>().id == 13)
+            {
+                if (inHands) 
+                {
+                    collider.isTrigger = false;
+                    rb.useGravity = false;
+                    //rb.isKinematic = true;
+                    rb.velocity = new Vector3(0,0,0);
+                    if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
+                        {
+                            throwObject = true;
+                            inHands = false;
+                        }
+
+                    if (Input.GetButton("Fire1"))
+                    {
+                        rb.useGravity = false;
+                        transform.position = GameObject.Find("TrumpetPos00").transform.position;
+                        extended = true;
+                        stick = false;
+                    }
+                    else
+                    {
+                        rb.useGravity = false;
+                        stick = true;
+                        transform.position = GameObject.Find("TrumpetPos01").transform.position;
+                        extended = false;
+                    }
+                }
+                else if (throwObject) 
+                {
+                    transform.SetParent(null);
+                    //rb.isKinematic = false;
+                    rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
+                    //rb.constraints = 0;
+                    //rb.constraints = RigidbodyConstraints.FreezeRotation;
+                    rb.useGravity = true;
+                    stick = false;
+                    
                     throwObject = false;
                 }
             }

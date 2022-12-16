@@ -1112,10 +1112,6 @@ public class FirstPersonController : MonoBehaviour
         {
             moveDirection += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * (slopeSlideSpeed) * hitPointNormal.magnitude;
         }
-        else if (WillSlideOnSlopes && IsSliding)
-        {
-            moveDirection += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * slopeSpeed;
-        }
         
 
         characterController.Move(moveDirection * Time.deltaTime * currentWeight);
