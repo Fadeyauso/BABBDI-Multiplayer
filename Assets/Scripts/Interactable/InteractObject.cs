@@ -31,6 +31,7 @@ public class InteractObject : Interactable
     private bool tinyobject;
     private bool stick;
     private bool moto;
+    private bool trumpet;
 
 
     public override void OnFocus()
@@ -49,7 +50,7 @@ public class InteractObject : Interactable
         if (!inHands)
         {
             SoundManager.Instance.PlaySound(interactionClip);
-            if (GetComponent<ItemProperties>().id == 0 || GetComponent<ItemProperties>().id == 1 || GetComponent<ItemProperties>().id == 2 || GetComponent<ItemProperties>().id == 4|| GetComponent<ItemProperties>().id == 5 || GetComponent<ItemProperties>().id == 6 || GetComponent<ItemProperties>().id == 7 || GetComponent<ItemProperties>().id == 8 || GetComponent<ItemProperties>().id == 9 || GetComponent<ItemProperties>().id == 10 || GetComponent<ItemProperties>().id == 11|| (GetComponent<ItemProperties>().id == 12 && GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket == 1)) 
+            if (GetComponent<ItemProperties>().id == 0 || GetComponent<ItemProperties>().id == 1 || GetComponent<ItemProperties>().id == 2 || GetComponent<ItemProperties>().id == 4|| GetComponent<ItemProperties>().id == 5 || GetComponent<ItemProperties>().id == 6 || GetComponent<ItemProperties>().id == 7 || GetComponent<ItemProperties>().id == 8 || GetComponent<ItemProperties>().id == 9 || GetComponent<ItemProperties>().id == 10 || GetComponent<ItemProperties>().id == 11 || GetComponent<ItemProperties>().id == 13 || (GetComponent<ItemProperties>().id == 12 && GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket == 1)) 
             {
             // if ()
                 transform.position = GameObject.Find("ObjectPos").transform.position;
@@ -239,7 +240,6 @@ public class InteractObject : Interactable
                     }
                     rb.useGravity = false;
                     rb.isKinematic = true;
-                    rb.velocity = new Vector3(0,0,0);
                     
                     if (extended && GetComponent<Climber>().trigger)
                     {
@@ -574,10 +574,13 @@ public class InteractObject : Interactable
             {
                 if (inHands) 
                 {
-                    collider.isTrigger = false;
+                    GameObject.Find("GameManager").GetComponent<GameManager>().trumpet = 1;
+                    trumpet = true;
+                    collider.isTrigger = true;
                     rb.useGravity = false;
-                    //rb.isKinematic = true;
-                    rb.velocity = new Vector3(0,0,0);
+                    rb.isKinematic = true;
+                    
+                    //rb.velocity = new Vector3(0,0,0);
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
                         {
                             throwObject = true;
@@ -587,29 +590,36 @@ public class InteractObject : Interactable
                     if (Input.GetButton("Fire1"))
                     {
                         rb.useGravity = false;
-                        transform.position = GameObject.Find("TrumpetPos00").transform.position;
+                        WeaponSway(GameObject.Find("TrumpetPos00").transform.position);
                         extended = true;
-                        stick = false;
                     }
                     else
                     {
                         rb.useGravity = false;
-                        stick = true;
-                        transform.position = GameObject.Find("TrumpetPos01").transform.position;
+                        WeaponSway(GameObject.Find("TrumpetPos01").transform.position);
                         extended = false;
                     }
                 }
                 else if (throwObject) 
                 {
+                    GameObject.Find("GameManager").GetComponent<GameManager>().trumpet = 0;
                     transform.SetParent(null);
-                    //rb.isKinematic = false;
+                    rb.isKinematic = false;
                     rb.AddForce(GameObject.Find("Main Camera").transform.forward * 10f, ForceMode.Impulse);
                     //rb.constraints = 0;
                     //rb.constraints = RigidbodyConstraints.FreezeRotation;
                     rb.useGravity = true;
-                    stick = false;
-                    
+                    trumpet = false;
+                    collider.isTrigger = false;
                     throwObject = false;
+                }
+            }
+
+            if (inHands)
+            {
+                if (GameObject.Find("Player").GetComponent<FirstPersonController>().landTimer > 0)
+                {
+                    //rb.velocity = Vector3.zero;
                 }
             }
             
@@ -631,6 +641,7 @@ public class InteractObject : Interactable
         {
             if (tinyobject && (GetComponent<ItemProperties>().id == 0 || tinyobject && GetComponent<ItemProperties>().id == 7)) TiltSway(GameObject.Find("ObjectPos").transform.localRotation);
             if (GetComponent<ItemProperties>().id == 1 && club) TiltSway(GameObject.Find("ObjectPos2").transform.localRotation);
+            if (GetComponent<ItemProperties>().id == 13 && trumpet) TiltSway(GameObject.Find("TrumpetPos00").transform.localRotation);
             if (GetComponent<ItemProperties>().id == 2 && climber) TiltSway(GameObject.Find("Pickaxe01").transform.localRotation);
             if (GetComponent<ItemProperties>().id == 9 && stick) TiltSway(GameObject.Find("StickPos01").transform.localRotation);
             if (GetComponent<ItemProperties>().id == 9 && !stick) TiltSway(GameObject.Find("StickPos00").transform.localRotation);

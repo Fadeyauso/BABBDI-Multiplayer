@@ -16,6 +16,7 @@ public class PickupItem : MonoBehaviour
     public GameObject grabber;
     public GameObject motorBike;
     public GameObject compass;
+    public GameObject trumpet;
     // Start is called before the first frame update
     void Start()
     {
@@ -83,7 +84,12 @@ public class PickupItem : MonoBehaviour
             }
             if (GameObject.Find("GameManager").GetComponent<GameManager>().compass == 1) 
             {
-                GameObject obj = Instantiate(compass, GameObject.Find("CompassPos").transform.position, Quaternion.identity, GameObject.Find("Player").transform);
+                GameObject obj = Instantiate(compass, GameObject.Find("CompassPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
+                obj.GetComponent<InteractObject>().inHands = true;
+            }
+            if (GameObject.Find("GameManager").GetComponent<GameManager>().trumpet == 1) 
+            {
+                GameObject obj = Instantiate(trumpet, GameObject.Find("TrumpetPos00").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
                 obj.GetComponent<InteractObject>().inHands = true;
             }
     }
@@ -91,7 +97,7 @@ public class PickupItem : MonoBehaviour
     public void GetCompass()
     {
 
-        GameObject obj = Instantiate(compass, GameObject.Find("CompassPos").transform.position, Quaternion.identity, GameObject.Find("Player").transform);
+        GameObject obj = Instantiate(compass, GameObject.Find("CompassPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
         obj.GetComponent<InteractObject>().inHands = true;
 
     }
@@ -165,7 +171,12 @@ public class PickupItem : MonoBehaviour
             }
             if (GameObject.Find("GameManager").GetComponent<GameManager>().item == 12) 
             {
-                GameObject obj = Instantiate(compass, GameObject.Find("CompassPos").transform.position, Quaternion.identity, GameObject.Find("Player").transform);
+                GameObject obj = Instantiate(compass, GameObject.Find("CompassPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
+                obj.GetComponent<InteractObject>().inHands = true;
+            }
+            if (GameObject.Find("GameManager").GetComponent<GameManager>().item == 13) 
+            {
+                GameObject obj = Instantiate(trumpet, GameObject.Find("TrumpetPos00").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
                 obj.GetComponent<InteractObject>().inHands = true;
             }
             

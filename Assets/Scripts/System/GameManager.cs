@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour, ISaveable
     public int grabber;
     public int motorBike;
     public int compass;
+    public int trumpet;
 
     [Header("MAINLINE")]
     public GameObject dragoStart;
@@ -355,7 +356,8 @@ public class GameManager : MonoBehaviour, ISaveable
             stick = this.stick,
             grabber = this.grabber,
             motorBike = this.motorBike,
-            compass = this.compass
+            compass = this.compass,
+            trumpet = this.trumpet
         };
     }
 
@@ -398,6 +400,7 @@ public class GameManager : MonoBehaviour, ISaveable
         grabber = 0;
         motorBike = 0;
         compass = 0;
+        trumpet = 0;
     }
 
     public void LoadState(object state)
@@ -481,6 +484,7 @@ public class GameManager : MonoBehaviour, ISaveable
         grabber = saveData.grabber;
         motorBike = saveData.motorBike;
         compass = saveData.compass;
+        trumpet = saveData.trumpet;
     
     }
 
@@ -547,6 +551,7 @@ public class GameManager : MonoBehaviour, ISaveable
         public int grabber;
         public int motorBike;
         public int compass;
+        public int trumpet;
 
     }
 }
