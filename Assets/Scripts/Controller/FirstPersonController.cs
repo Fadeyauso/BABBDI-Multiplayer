@@ -253,6 +253,7 @@ public class FirstPersonController : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject firstInterface;
     public GameObject library;
+    public GameObject map;
     public GameObject options;
     public GameObject confirmExit;
     public GameObject confirmReset;
@@ -332,6 +333,7 @@ public class FirstPersonController : MonoBehaviour
             confirmReset.SetActive(false);
             confirmReturn.SetActive(false);
             controls.SetActive(false);
+            map.SetActive(false);
 
             if (GameObject.Find("Canvas") != null) GameObject.Find("Canvas").GetComponent<MenuInput>().OnPress();
 
@@ -360,6 +362,7 @@ public class FirstPersonController : MonoBehaviour
             confirmReset.SetActive(false);
             confirmReturn.SetActive(false);
             controls.SetActive(false);
+            map.SetActive(false);
             if (pause) 
             {
                 
@@ -371,6 +374,25 @@ public class FirstPersonController : MonoBehaviour
             {
                 var eventSystem = EventSystem.current;
                 eventSystem.SetSelectedGameObject(selectButton, new BaseEventData(eventSystem));
+            }
+            
+        }
+        if (Input.GetKeyDown(KeyCode.M) && !GameObject.Find("GameManager").GetComponent<GameManager>().endGame && GameObject.Find("GameManager").GetComponent<GameManager>().haveMap == 1)
+        {
+            pauseMenu.SetActive(!pauseMenu.activeSelf);
+            map.SetActive(true);
+            firstInterface.SetActive(false);
+            options.SetActive(false);
+            library.SetActive(false);
+            confirmExit.SetActive(false);
+            confirmReset.SetActive(false);
+            confirmReturn.SetActive(false);
+            controls.SetActive(false);
+            if (pause) 
+            {
+                
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
             
         }

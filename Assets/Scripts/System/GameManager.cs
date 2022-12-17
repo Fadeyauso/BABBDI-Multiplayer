@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour, ISaveable
     public GameObject returnoffice;
     public GameObject speedrunLabel;
     public GameObject ticketDisplay;
+    public GameObject mapObjectDisplay;
+    public GameObject mapButtonDisplay;
     public GameObject qualitySettings;
 
     [SerializeField] private GameObject dialogueBox;
@@ -64,6 +66,7 @@ public class GameManager : MonoBehaviour, ISaveable
     [HideInInspector] public int item;
     [HideInInspector] public bool inActivatedLift;
     [HideInInspector] public bool secretPopup;
+    [HideInInspector] public bool mapPopup;
     [HideInInspector] public bool noticketPopup;
     [HideInInspector] public bool savePopup;
     public int requestTrain = 0;
@@ -73,6 +76,7 @@ public class GameManager : MonoBehaviour, ISaveable
     public float gameTime = 0;
     public int secondPart;
     public int haveTicket;
+    public int haveMap;
     public float startTimer;
 
     //Achievements
@@ -138,6 +142,8 @@ public class GameManager : MonoBehaviour, ISaveable
         qualitySettings.GetComponent<SetQuality>().SetQualityLevelDropdown(3);
 
         instantiate = true;
+
+        if (haveMap == 1) mapObjectDisplay.SetActive(false);
     }
 
     public void ReturnToMenu()
@@ -229,6 +235,10 @@ public class GameManager : MonoBehaviour, ISaveable
             }
         }
         if (secondPart == 1 && instantiate == true) Invoke("drago", 1);
+
+        
+        if (haveMap == 0) mapButtonDisplay.SetActive(false);
+        else mapButtonDisplay.SetActive(true);
         
     }
     private void drago()
@@ -298,6 +308,7 @@ public class GameManager : MonoBehaviour, ISaveable
         return new SaveData()
         {
             ticket = this.haveTicket,
+            map = this.haveMap,
             parttwo = this.secondPart,
             endtrain = this.requestTrain,
             playTime = this.gameTime,
@@ -364,6 +375,7 @@ public class GameManager : MonoBehaviour, ISaveable
     public void ResetSave()
     {
         haveTicket = 0;
+        haveMap = 0;
         secondPart = 0;
         requestTrain = 0;
         gameTime = 0;
@@ -408,6 +420,7 @@ public class GameManager : MonoBehaviour, ISaveable
         var saveData = (SaveData)state;
 
         haveTicket = saveData.ticket;
+        haveMap = saveData.map;
         secondPart = saveData.parttwo;
         requestTrain = saveData.endtrain;
         gameTime = saveData.playTime;
@@ -492,6 +505,7 @@ public class GameManager : MonoBehaviour, ISaveable
     private struct SaveData
     {
         public int ticket;
+        public int map;
         public int parttwo;
         public int endtrain;
         public float playTime;

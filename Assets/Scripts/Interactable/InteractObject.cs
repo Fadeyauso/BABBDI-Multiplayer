@@ -86,6 +86,12 @@ public class InteractObject : Interactable
                 SteamIntegration.Instance.UnlockAchivement("BabbdiQuest");
                 Destroy(this.gameObject);
             }
+            if (GetComponent<ItemProperties>().id == 14)
+            {
+                GameObject.Find("GameManager").GetComponent<GameManager>().haveMap = 1;
+                GameObject.Find("GameManager").GetComponent<GameManager>().mapPopup = true;
+                Destroy(this.gameObject);
+            }
         }
         
         

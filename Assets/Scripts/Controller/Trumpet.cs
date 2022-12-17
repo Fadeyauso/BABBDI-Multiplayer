@@ -15,7 +15,7 @@ public class Trumpet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<InteractObject>().inHands)
+        if (GetComponent<InteractObject>().inHands && !GameObject.Find("Player").GetComponent<FirstPersonController>().pause)
         
         {
             if (Input.GetButtonDown("Fire1"))

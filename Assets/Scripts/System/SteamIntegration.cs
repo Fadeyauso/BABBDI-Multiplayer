@@ -5,6 +5,7 @@ using UnityEngine;
 public class SteamIntegration : MonoBehaviour
 {
     public static SteamIntegration Instance;
+    private bool connected;
 
     void Awake(){
         if (Instance == null){
@@ -24,6 +25,7 @@ public class SteamIntegration : MonoBehaviour
 
             Steamworks.SteamClient.Init(2240530);
             PrintYourName();
+            connected = true;
         }
         catch (System.Exception e)
         {
@@ -47,9 +49,13 @@ public class SteamIntegration : MonoBehaviour
     [ContextMenu("UnlockAchievement")]
     public void UnlockAchivement(string id)
     {
-        var ach = new Steamworks.Data.Achievement(id);
-        if (ach.State == false) ach.Trigger();
-        Debug.Log("AchievementUnlocked : " + id);
+        if (connected)
+        {
+            var ach = new Steamworks.Data.Achievement(id);
+            if (ach.State == false) ach.Trigger();
+            Debug.Log("AchievementUnlocked : " + id);
+        }
+
     }
 
     [ContextMenu("ClearAchievementStatus")]

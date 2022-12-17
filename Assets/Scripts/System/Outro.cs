@@ -34,7 +34,7 @@ public class Outro : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().endGame)
+        if (GameObject.Find("GameManager").GetComponent<GameManager>().endGame && timer > -4f)
         {
             timer -= Time.deltaTime;
             if (timer < 5)

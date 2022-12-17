@@ -100,7 +100,7 @@ public class EnterZone : MonoBehaviour
             SteamIntegration.Instance.UnlockAchivement("FlatFace");
             transform.position = GameObject.Find("SpawnPoint").transform.position;
         }
-        if (collisionInfo.tag == "TrainDeath")
+        if (collisionInfo.tag == "TrainDeath" && !GameObject.Find("GameManager").GetComponent<GameManager>().endGame)
         {
             GameObject.Find("DeathAnim").GetComponent<DeathAnim>().Trigger();
             transform.position = GameObject.Find("SpawnPoint").transform.position;
