@@ -6,6 +6,7 @@ public class Wife : MonoBehaviour
 {
     [SerializeField] private GameObject corpseParticles;
     [SerializeField] private GameObject corpseParticles2;
+    [SerializeField] private AudioSource flies;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +21,12 @@ public class Wife : MonoBehaviour
             gameObject.layer = 0;
             if (corpseParticles != null) corpseParticles.SetActive(true);
             if (corpseParticles2 != null) corpseParticles2.SetActive(true);
+            flies.mute = false;
         }
         else    {
             if (corpseParticles != null) corpseParticles.SetActive(false);
             if (corpseParticles2 != null) corpseParticles2.SetActive(false);
+            flies.mute = true;
         }
             
     }

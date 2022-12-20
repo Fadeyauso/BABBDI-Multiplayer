@@ -7,12 +7,12 @@ using UnityEngine.EventSystems;
 public class FirstPersonController : MonoBehaviour
 {
     public bool canMove { get; private set; } = true;
-    private bool IsSprinting => canSprint && (Input.GetKey(sprintKey) ||Input.GetAxis("Sprint") > 0.2f) && currentInputRaw != new Vector2(0,0) && !motorBike.GetComponent<MotorBike>().isActive;
+    public bool IsSprinting => canSprint && (Input.GetKey(sprintKey) ||Input.GetAxis("Sprint") > 0.2f) && currentInputRaw != new Vector2(0,0) && !motorBike.GetComponent<MotorBike>().isActive;
     private bool ShouldJump => (Input.GetKeyDown(jumpKey) || Input.GetButtonDown("Jump")) && characterController.isGrounded;
-    private bool ShouldCrouch => (Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C)  || Input.GetButton("Slide") || Input.GetKey(KeyCode.LeftAlt)) && characterController.isGrounded && !motorBike.GetComponent<MotorBike>().isActive;
+    public bool ShouldCrouch => (Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C)  || Input.GetButton("Slide") || Input.GetKey(KeyCode.LeftAlt)) && characterController.isGrounded && !motorBike.GetComponent<MotorBike>().isActive;
     private bool ShouldCrouchInAir => (Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C) || Input.GetButton("Slide")  || Input.GetKey(KeyCode.LeftAlt)) && !characterController.isGrounded && !OnSlope();
     private bool FlatSlide => (Input.GetKeyDown(crouchKey) || Input.GetKeyDown(KeyCode.C) || Input.GetButtonDown("Slide") || Input.GetKeyDown(KeyCode.LeftAlt)) && characterController.isGrounded && currentInputRaw != Vector2.zero;
-    private bool InAirCrouch;   
+    public bool InAirCrouch;   
     public bool preslide;
 
     [Header("Functional Options")]
@@ -67,24 +67,24 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float crouchingSpeed = 0.3f;
     [SerializeField] private float standHeight = 2f;
     [SerializeField] private float crouchHeight = 1f;
-    private bool isCrouching;
+    public bool isCrouching;
     private float crouchTimer = 0;
     private float headbobEndTimer = 0;
     public bool standing;
 
     [Header("Headbob Parameters")]
-    [SerializeField] private float walkBobSpeed = 14f;
-    [SerializeField] private float walkBobAmount = 0.05f;
-    [SerializeField] private float sprintBobSpeed = 18f;
-    [SerializeField] private float sprintBobAmount = 0.11f;
-    [SerializeField] private float crouchBobSpeed = 8f;
-    [SerializeField] private float crouchBobAmount = 0.025f;
-    [SerializeField] private float fallBobSpeed = 8f;
-    [SerializeField] private float fallBobUpSpeed = 2f;
-    [SerializeField] private float fallBobAmount = 0.025f;
+    [SerializeField] public float walkBobSpeed = 14f;
+    [SerializeField] public float walkBobAmount = 0.05f;
+    [SerializeField] public float sprintBobSpeed = 18f;
+    [SerializeField] public float sprintBobAmount = 0.11f;
+    [SerializeField] public float crouchBobSpeed = 8f;
+    [SerializeField] public float crouchBobAmount = 0.025f;
+    [SerializeField] public float fallBobSpeed = 8f;
+    [SerializeField] public float fallBobUpSpeed = 2f;
+    [SerializeField] public float fallBobAmount = 0.025f;
     private float defaultYPos = 0;
-    private float timer;
-    private float fallTimer;
+    public float timer;
+    public float fallTimer;
 
     [Header("Camera Controller")]
     [SerializeField] private float zoomSpeed = 5f;
@@ -504,7 +504,44 @@ public class FirstPersonController : MonoBehaviour
                 {
                     landTimer = 0.2f;
                     landing = false;
-                    if (!prejump) SoundManager.Instance.PlaySound(landClip);
+                    if (!prejump) {
+                        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 3f))
+                        {
+                            switch(hit.collider.tag)
+                            {
+                                case "Footsteps/Metal":
+                                    SoundManager.Instance.PlaySound(metalClips[Random.Range(0, metalClips.Length - 1)]);
+                                    break;
+                                case "Footsteps/Taule":
+                                    SoundManager.Instance.PlaySound(tauleClips[Random.Range(0, tauleClips.Length - 1)]);
+                                    break;
+                                case "Footsteps/Wood":
+                                    SoundManager.Instance.PlaySound(woodClips[Random.Range(0, woodClips.Length - 1)]);
+                                    break;
+                                case "Footsteps/Concrete":
+                                    SoundManager.Instance.PlaySound(concreteClips[Random.Range(0, concreteClips.Length - 1)]);
+                                    break;
+                                case "Footsteps/Stone":
+                                    SoundManager.Instance.PlaySound(stoneClips[Random.Range(0, stoneClips.Length - 1)]);
+                                    break;
+                                case "Footsteps/Grass":
+                                    SoundManager.Instance.PlaySound(grassClips[Random.Range(0, grassClips.Length - 1)]);
+                                    break;
+                                case "Footsteps/Dirt":
+                                    SoundManager.Instance.PlaySound(dirtClips[Random.Range(0, dirtClips.Length - 1)]);
+                                    break;
+                                case "Footsteps/Sand":
+                                    SoundManager.Instance.PlaySound(sandClips[Random.Range(0, sandClips.Length - 1)]);
+                                    break;
+                                case "Footsteps/Water":
+                                    SoundManager.Instance.PlaySound(waterClips[Random.Range(0, waterClips.Length - 1)]);
+                                    break;
+                                default:
+                                    SoundManager.Instance.PlaySound(stoneClips[Random.Range(0, stoneClips.Length - 1)]);
+                                    break;
+                            }
+                        }
+                    }
                     if (slideTimer > 0 && (!Input.GetKey(crouchKey) && !Input.GetKey(KeyCode.C) && !Input.GetKey(KeyCode.LeftAlt) && !Input.GetButton("Slide"))) forceFactor = 0;
                 }
                 
@@ -835,7 +872,7 @@ public class FirstPersonController : MonoBehaviour
     private float slideTimer;
     private float tempslideCountdown;
     public float slideCountdown = 1;
-    private float keyUpTimer;
+    public float keyUpTimer;
 
     private void HandleCrouch()
     {
@@ -1133,6 +1170,7 @@ public class FirstPersonController : MonoBehaviour
         if (WillSlideOnSlopes && CrouchSliding && GetComponent<Slope>().surfaceAngle >= 12 && (!Input.GetKey(jumpKey) && !Input.GetButton("Jump")))
         {
             moveDirection += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * (slopeSlideSpeed) * hitPointNormal.magnitude;
+            moveDirection.y -= 800 * Time.deltaTime;
         }
         
 

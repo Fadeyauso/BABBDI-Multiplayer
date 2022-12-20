@@ -33,7 +33,7 @@ public class Blower : MonoBehaviour
 
         if ((Input.GetButtonDown("Fire1")) && GetComponent<InteractObject>().inHands && battery > 0)
         {
-            SoundManager.Instance.PlayContinuousSound(motorClip);
+            if (!GameObject.Find("Player").GetComponent<FirstPersonController>().pause) SoundManager.Instance.PlayContinuousSound(motorClip);
         }
 
         if ((Input.GetButton("Fire1")) && GetComponent<InteractObject>().inHands)
@@ -54,11 +54,11 @@ public class Blower : MonoBehaviour
             
         }
         
-        if (((Input.GetButtonUp("Fire1")) && GetComponent<InteractObject>().inHands) && battery > 0 || (battery < 0 && battery > -0.01f))
+        if (((Input.GetButtonUp("Fire1")) && GetComponent<InteractObject>().inHands) && battery > 0 || (battery < 0 && battery > -0.03f))
         {
             
             SoundManager.Instance.StopSound();
-            SoundManager.Instance.PlaySound(endClip);
+            if (!GameObject.Find("Player").GetComponent<FirstPersonController>().pause) SoundManager.Instance.PlaySound(endClip);
         }
 
         if (GetComponent<InteractObject>().inHands && (!Input.GetButton("Fire1")))

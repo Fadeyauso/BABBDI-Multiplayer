@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Jukebox : Interactable
 {
+    [SerializeField] private AudioClip clip;
+
     public override void OnFocus()
     {
         GameObject.Find("Player").GetComponent<FirstPersonController>().jukeboxPopup.SetActive(true);
@@ -11,6 +13,7 @@ public class Jukebox : Interactable
 
     public override void OnInteract()
     {
+        SoundManager.Instance.PlaySound(clip);
         GetComponent<AudioSource>().mute = !GetComponent<AudioSource>().mute;
     }
 

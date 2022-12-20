@@ -11,6 +11,7 @@ public class Pigeon : MonoBehaviour
     [SerializeField] private float verticalMovement = 1;
     [SerializeField] private float flyTimer;
     [SerializeField] private bool randomRot = true;
+    [SerializeField] private bool animate = true;
     [SerializeField] private Animator anim;
     private float walkTimer;
 
@@ -23,6 +24,10 @@ public class Pigeon : MonoBehaviour
 
     private GameObject player;
 
+    [SerializeField] private float jumpTimer = 3;
+    private float value;
+
+
     [SerializeField] private AudioClip flyClip;
     // Start is called before the first frame update
     void Awake()
@@ -31,6 +36,8 @@ public class Pigeon : MonoBehaviour
     }
     void Start()
     {
+        jumpTimer = Random.Range(1,2f);
+
         if (randomRot) transform.rotation = Quaternion.Euler(0, Random.Range(0, 360),0);
         initPos = transform.position;
     }
@@ -67,6 +74,23 @@ public class Pigeon : MonoBehaviour
             //if (transform.position == initPos) fly = false;
             
         }
+        else if (animate)
+        {
+            jumpTimer -= Time.deltaTime;
+
+            if (jumpTimer < 0.1f && jumpTimer > 0) {
+                value = Random.Range(-1, 1);
+                jumpTimer = 0;
+            }
+
+            if (jumpTimer < 0) {
+                transform.Rotate(0, value > 0 ? 290 * Time.deltaTime : -290 * Time.deltaTime, 0);
+
+                if (jumpTimer > -0.2f) transform.position += new Vector3(0, 2 * Time.deltaTime, 0);
+                else if (jumpTimer > -0.35f) transform.position -= new Vector3(0, 2 * Time.deltaTime, 0);
+                else jumpTimer = Random.Range(2, 8f);
+            }
+        }
 
         if (flyTimer < 0 && Vector3.Distance(initPos, player.transform.position) > 20)
         {
@@ -82,5 +106,20 @@ public class Pigeon : MonoBehaviour
 
 
         
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.collider.gameObject.layer == 7 || col.collider.gameObject.layer == 11)
+        {
+            if (!fly)
+            {
+                SoundManager.Instance.PlaySound(flyClip);
+                flyDir = -(GameObject.Find("Player").transform.position - transform.position).normalized;
+                transform.rotation = Quaternion.LookRotation(flyDir);
+                fly = true;
+                flyTimer = flyTime;
+            }
+        }
     }
 }

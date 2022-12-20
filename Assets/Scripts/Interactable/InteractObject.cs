@@ -191,7 +191,6 @@ public class InteractObject : Interactable
                     collider.isTrigger = true;
                     rb.useGravity = false;
                     rb.isKinematic = true;
-                    rb.velocity = new Vector3(0,0,0);
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
                         {
                             throwObject = true;
@@ -208,7 +207,7 @@ public class InteractObject : Interactable
                     else
                     {
                         club = true;
-                        WeaponSway(GameObject.Find("ObjectPos2").transform.position);
+                        ItemMovement(GameObject.Find("ObjectPos2").transform.position, GameObject.Find("ObjectPos2").transform);
                         //TiltSway(GameObject.Find("ObjectPos2").transform.localRotation);
                         extended = false;
                     }
@@ -264,7 +263,7 @@ public class InteractObject : Interactable
                     else
                     {
                         climber = true;
-                        WeaponSway(GameObject.Find("Pickaxe01").transform.position);
+                        ItemMovement(GameObject.Find("Pickaxe01").transform.position, GameObject.Find("Pickaxe01").transform);
                         extended = false;
                     }
                 }
@@ -295,7 +294,8 @@ public class InteractObject : Interactable
                     }
                     
                     rb.useGravity = false;
-                    rb.velocity = new Vector3(0,0,0);
+                    rb.isKinematic = true;
+                    //rb.velocity = new Vector3(0,0,0);
                     
 
                     transform.rotation = GameObject.Find("LightPos").transform.rotation;
@@ -304,6 +304,7 @@ public class InteractObject : Interactable
                 }
                 else if (throwObject) 
                 {
+                    rb.isKinematic = false;
                     GameObject.Find("GameManager").GetComponent<GameManager>().flashlight = 0;
                     collider.isTrigger = false;
                     transform.SetParent(null);
@@ -692,7 +693,7 @@ public class InteractObject : Interactable
         Vector3 finalPosition = new Vector3(moveX, moveY, 0);
 
         transform.position = Vector3.Lerp(rb.position, initialPosition, Time.deltaTime * smoothAmount);
-        rb.position = Vector3.Lerp(rb.position, initialPosition, Time.deltaTime * smoothAmount);
+        rb.position = Vector3.Lerp(rb.position, initialPosition, Time.fixedDeltaTime * smoothAmount);
         }
         else{
         InputX = -Input.GetAxis("Mouse X");
@@ -704,9 +705,24 @@ public class InteractObject : Interactable
         Vector3 finalPosition = new Vector3(moveX, moveY, 0);
 
         transform.position = Vector3.Lerp(rb.position, initialPosition, Time.deltaTime * smoothAmount);
-        rb.position = Vector3.Lerp(rb.position, initialPosition, Time.deltaTime * smoothAmount);
+        rb.position = Vector3.Lerp(rb.position, initialPosition, Time.fixedDeltaTime * smoothAmount);
         }
 
+    }
+    
+    private float movTimer;
+
+    public void ItemMovement(Vector3 initialPosition, Transform pos)
+    {
+        movTimer -= Time.deltaTime;
+        
+        var defaultYPos = initialPosition.y;
+        if (player.GetComponent<FirstPersonController>().currentInputRaw != Vector2.zero) {
+            transform.position = new Vector3(initialPosition.x, defaultYPos + Mathf.Sin(player.GetComponent<FirstPersonController>().timer) * (player.GetComponent<FirstPersonController>().isCrouching ? player.GetComponent<FirstPersonController>().crouchBobAmount : player.GetComponent<FirstPersonController>().IsSprinting ? player.GetComponent<FirstPersonController>().sprintBobAmount/3 : player.GetComponent<FirstPersonController>().walkBobAmount/2), initialPosition.z);
+        }
+        else {
+            transform.position = initialPosition;
+        }
     }
 
     public void TiltSway(Quaternion initialRotation)

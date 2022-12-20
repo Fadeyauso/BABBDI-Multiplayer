@@ -55,6 +55,8 @@ MonoBehaviour:
   returnoffice: {fileID: 0}
   speedrunLabel: {fileID: 0}
   ticketDisplay: {fileID: 0}
+  mapObjectDisplay: {fileID: 0}
+  mapButtonDisplay: {fileID: 0}
   qualitySettings: {fileID: 0}
   dialogueBox: {fileID: 0}
   textLabel: {fileID: 0}
@@ -77,17 +79,19 @@ MonoBehaviour:
   grabber: 0
   motorBike: 0
   compass: 0
+  trumpet: 0
   dragoStart: {fileID: 0}
   dragoEnd: {fileID: 4729652802178048832, guid: dc41c1d42befc3748b19b2d21b4a77b1, type: 3}
   secondPosition: {fileID: 0}
   continueDialogueFX: {fileID: 0}
   secretsFound: 0
   npcInteractedWith: 0
-  maxNpc: 17
+  maxNpc: 20
   pickup: 0
   item: 0
   inActivatedLift: 0
   secretPopup: 0
+  mapPopup: 0
   noticketPopup: 0
   savePopup: 0
   requestTrain: 0
@@ -97,6 +101,7 @@ MonoBehaviour:
   gameTime: 0
   secondPart: 0
   haveTicket: 0
+  haveMap: 0
   startTimer: 0
   lastAchievement: 
   wayClimber: 0

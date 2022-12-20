@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Ivano 1
   m_EditorClassIdentifier: 
   dialogue:
-  - take my club
+  - 'take my club
+
+'
   - just grab it and hit surfaces with it

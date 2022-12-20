@@ -8,6 +8,8 @@ public class EnterZone : MonoBehaviour
     private float indoortimer;
     private float outdoortimer;
 
+    [SerializeField] private AudioClip hitTrainClip;
+
     [HideInInspector] public bool inLift;
 
     public AudioClip endGameClip;
@@ -102,6 +104,7 @@ public class EnterZone : MonoBehaviour
         }
         if (collisionInfo.tag == "TrainDeath" && !GameObject.Find("GameManager").GetComponent<GameManager>().endGame)
         {
+            SoundManager.Instance.PlaySound(hitTrainClip);
             GameObject.Find("DeathAnim").GetComponent<DeathAnim>().Trigger();
             transform.position = GameObject.Find("SpawnPoint").transform.position;
         }

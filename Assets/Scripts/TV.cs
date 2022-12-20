@@ -8,8 +8,9 @@ public class TV : Interactable
     [SerializeField] private Material off;
     [SerializeField] private GameObject tv;
     [SerializeField] private AudioClip tvClip;
+    [SerializeField] private int matIndex = 3;
     private Material[] mats;
-    private bool turnedOn = true;
+    public bool turnedOn = true;
 
     private void Awake()
     {
@@ -28,8 +29,8 @@ public class TV : Interactable
         
         turnedOn = !turnedOn;
 
-        if (turnedOn) mats[3] = on;
-        else if (!turnedOn) mats[3] = off;
+        if (turnedOn) mats[matIndex] = on;
+        else if (!turnedOn) mats[matIndex] = off;
 
         tv.GetComponent<Renderer>().materials = mats;
     }
