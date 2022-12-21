@@ -124,6 +124,37 @@ Transform:
   m_Father: {fileID: 7482973070762915167}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1063940873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1063940874}
+  m_Layer: 10
+  m_Name: SecretFinderPos
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1063940874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063940873}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.014, z: 1.7400031}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7482973070762915167}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1092824474
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,6 +769,7 @@ Transform:
   - {fileID: 946661712}
   - {fileID: 1218420608}
   - {fileID: 2034262882}
+  - {fileID: 1063940874}
   m_Father: {fileID: 7482973072534782208}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -997,6 +1029,7 @@ GameObject:
   - component: {fileID: 7482973072534782213}
   - component: {fileID: 919582529}
   - component: {fileID: 919582528}
+  - component: {fileID: 722545942}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1054,6 +1087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b39984101f9571b4ea726d618b43945a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitTrainClip: {fileID: 8300000, guid: 0f31eccd2b822dc4caf18148f1e36fac, type: 3}
   inLift: 0
   endGameClip: {fileID: 8300000, guid: 8cf56058243e0a640b35a7927bd9c38f, type: 3}
   inGirlZone: 0
@@ -1082,6 +1116,7 @@ MonoBehaviour:
   motorBike: {fileID: 2662358873661873262, guid: a71fc38d59de2f840825517c6c8dbc45, type: 3}
   compass: {fileID: 1751994052887972636, guid: 56bf9c724a3a00247b6c068ee2cdcb58, type: 3}
   trumpet: {fileID: 4454581915306619782, guid: 51ed6138bb0d9624d8be1285bc488a50, type: 3}
+  secretfinder: {fileID: 2922454784235052099, guid: 304c6ceb7de61aa4385a3db6b2760431, type: 3}
 --- !u!114 &7482973072534782210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,6 +1129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcff912bef3a6c746a2967055de0a096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InAirCrouch: 0
   preslide: 0
   canSprint: 1
   canJump: 1
@@ -1134,6 +1170,7 @@ MonoBehaviour:
   crouchingSpeed: 10
   standHeight: 2
   crouchHeight: 1
+  isCrouching: 0
   standing: 0
   walkBobSpeed: 14
   walkBobAmount: 0.05
@@ -1144,6 +1181,8 @@ MonoBehaviour:
   fallBobSpeed: -12
   fallBobUpSpeed: -0.02
   fallBobAmount: 0.3
+  timer: 0
+  fallTimer: 0
   zoomSpeed: 2.5
   zoomFOV: 30
   runFOV: 85
@@ -1152,6 +1191,7 @@ MonoBehaviour:
   compassLookSpeed: 12
   targetObject: {fileID: 0}
   compassLook: 0
+  secretLook: 0
   baseStepSpeed: 0.5
   crouchStepMultiplier: 1.5
   sprintStepMultiplier: 0.6
@@ -1272,6 +1312,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   firstInterface: {fileID: 0}
   library: {fileID: 0}
+  map: {fileID: 0}
   options: {fileID: 0}
   confirmExit: {fileID: 0}
   confirmReset: {fileID: 0}
@@ -1305,9 +1346,11 @@ MonoBehaviour:
   maxRotationAmount: 26
   smoothRotation: 1
   compassTimer: 0
+  secretTimer: 0
   initRotationX: {x: 0, y: 0, z: 0, w: 0}
   initRotationY: 0
   slideCountdown: 0
+  keyUpTimer: 0
   currentHitObject: {fileID: 0}
   jumpSlope: 0
 --- !u!114 &519846068298027556
@@ -1454,6 +1497,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audio: {fileID: 919582529}
+--- !u!114 &722545942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7482973072534782211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d99a7ceba5ce941bb12c0b17e2cda1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secrets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  target: {fileID: 0}
 --- !u!1 &7482973072813218181
 GameObject:
   m_ObjectHideFlags: 0

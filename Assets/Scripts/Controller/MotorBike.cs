@@ -66,6 +66,11 @@ public class MotorBike : MonoBehaviour
             
         }
 
+        if (player.GetComponent<FirstPersonController>().pause)
+        {
+            audio.Stop();
+        }
+
         if (!player.GetComponent<FirstPersonController>().characterController.isGrounded && GetComponent<InteractObject>().inHands)
         {
             if (GameObject.Find("GameManager").GetComponent<GameManager>().gamepad)

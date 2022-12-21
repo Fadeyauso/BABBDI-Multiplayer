@@ -55,7 +55,7 @@ public class Pigeon : MonoBehaviour
 
         
 
-        if (distanceFromPlayer < maxDistance)
+        if (distanceFromPlayer < (GameObject.Find("GameManager").GetComponent<GameManager>().trumpet == 1 && Input.GetButton("Fire1") ? maxDistance * 3f : maxDistance))
         {
             if (!fly)
             {

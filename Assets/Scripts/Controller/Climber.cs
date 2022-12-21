@@ -46,14 +46,14 @@ public class Climber : MonoBehaviour
             player.GetComponent<FirstPersonController>().moveDirection.y = player.GetComponent<FirstPersonController>().jumpForce * climberForce * (mousey > 1 ? mousey : 1);
         }
 
-        if (!Input.GetButton("Fire1"))
+        if (!Input.GetButton("Fire1") && !player.GetComponent<FirstPersonController>().pause)
         {
             trigger = false;
 
             
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !player.GetComponent<FirstPersonController>().pause)
         {
             timer = 0f;
             hitb = true;

@@ -31,12 +31,12 @@ public class Blower : MonoBehaviour
 
         if (player.GetComponent<FirstPersonController>().characterController.isGrounded) battery = batteryMax;
 
-        if ((Input.GetButtonDown("Fire1")) && GetComponent<InteractObject>().inHands && battery > 0)
+        if ((Input.GetButtonDown("Fire1")) && GetComponent<InteractObject>().inHands && battery > 0 && !player.GetComponent<FirstPersonController>().pause)
         {
             if (!GameObject.Find("Player").GetComponent<FirstPersonController>().pause) SoundManager.Instance.PlayContinuousSound(motorClip);
         }
 
-        if ((Input.GetButton("Fire1")) && GetComponent<InteractObject>().inHands)
+        if ((Input.GetButton("Fire1")) && GetComponent<InteractObject>().inHands && !player.GetComponent<FirstPersonController>().pause)
         {
             timer = 0.05f;
             isActive = true;
@@ -54,7 +54,7 @@ public class Blower : MonoBehaviour
             
         }
         
-        if (((Input.GetButtonUp("Fire1")) && GetComponent<InteractObject>().inHands) && battery > 0 || (battery < 0 && battery > -0.03f))
+        if (((Input.GetButtonUp("Fire1")) && GetComponent<InteractObject>().inHands) && battery > 0 || (battery < 0 && battery > -0.1f))
         {
             
             SoundManager.Instance.StopSound();
@@ -71,6 +71,8 @@ public class Blower : MonoBehaviour
             blowMovement = new Vector3(0,0,0);
             isActive = false;
         }
+
+    
 
 
 

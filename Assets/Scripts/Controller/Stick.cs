@@ -33,12 +33,14 @@ mouseX = Input.GetAxis("Mouse X");
 
     void OnCollisionEnter(Collision collision)
     {
-        if (GetComponent<InteractObject>().inHands && (Input.GetButton("Fire1") || Input.GetAxis("LeftClick") > 0.1f))
-        {
-            SoundManager.Instance.PlaySound(impactClip);
-            ContactPoint contact = collision.contacts[0];
-            player.GetComponent<FirstPersonController>().AddForce(contact.normal, impactPower * Mathf.Clamp(new Vector2(mouseX, mouseY).magnitude, 0, 2));
-            
+        if (collision.collider.tag != "Player"){
+            if (GetComponent<InteractObject>().inHands && (Input.GetButton("Fire1") || Input.GetAxis("LeftClick") > 0.1f))
+            {
+                SoundManager.Instance.PlaySound(impactClip);
+                ContactPoint contact = collision.contacts[0];
+                player.GetComponent<FirstPersonController>().AddAccumulatedForce(contact.normal, impactPower * Mathf.Clamp(new Vector2(mouseX, mouseY).magnitude, 0, 2));
+                
+            }
         }
     }
 }

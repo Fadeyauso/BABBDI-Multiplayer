@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class FirstPersonController : MonoBehaviour
 {
     public bool canMove { get; private set; } = true;
-    public bool IsSprinting => canSprint && (Input.GetKey(sprintKey) ||Input.GetAxis("Sprint") > 0.2f) && currentInputRaw != new Vector2(0,0) && !motorBike.GetComponent<MotorBike>().isActive;
+    public bool IsSprinting => canSprint && (Input.GetKey(sprintKey) ||Input.GetAxis("Sprint") > 0.4f) && currentInputRaw != new Vector2(0,0) && !motorBike.GetComponent<MotorBike>().isActive;
     private bool ShouldJump => (Input.GetKeyDown(jumpKey) || Input.GetButtonDown("Jump")) && characterController.isGrounded;
     public bool ShouldCrouch => (Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C)  || Input.GetButton("Slide") || Input.GetKey(KeyCode.LeftAlt)) && characterController.isGrounded && !motorBike.GetComponent<MotorBike>().isActive;
     private bool ShouldCrouchInAir => (Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C) || Input.GetButton("Slide")  || Input.GetKey(KeyCode.LeftAlt)) && !characterController.isGrounded && !OnSlope();
@@ -95,6 +95,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float compassLookSpeed = 12f;
     [SerializeField] private GameObject targetObject;
     public bool compassLook;
+    public bool secretLook;
     private bool isZooming;
     private float defaultFOV;
 
@@ -776,16 +777,30 @@ public class FirstPersonController : MonoBehaviour
     public float smoothRotation = 12f;
 
     public float compassTimer;
+    public float secretTimer;
     public Quaternion initRotationX;
     public float initRotationY;
 
     private void HandleMouseLook()
     {
         compassTimer -= Time.deltaTime;
+        secretTimer -= Time.deltaTime;
 
         var targetRotation = Quaternion.LookRotation(targetObject.transform.position - playerCamera.transform.position);
+        var secretTargetRotation = Quaternion.LookRotation((GetComponent<SecretFinder>().target != null ? GetComponent<SecretFinder>().target.transform.position - playerCamera.transform.position : GameObject.Find("ObjectPos").transform.position - playerCamera.transform.position));
 
-        if (compassLook) {
+        if (secretLook) {
+            playerCamera.transform.rotation = Quaternion.Slerp(playerCamera.transform.rotation, Quaternion.Euler(secretTargetRotation.eulerAngles.x, transform.eulerAngles.y, 0), compassLookSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z), Quaternion.Euler(0, secretTargetRotation.eulerAngles.y, 0), compassLookSpeed * 0.8f * Time.deltaTime);
+            secretTimer = 0.2f;
+        }
+        else if(secretTimer >= 0)
+        {
+            playerCamera.transform.rotation = Quaternion.Slerp(playerCamera.transform.rotation, Quaternion.Euler(initRotationX.eulerAngles.x, transform.eulerAngles.y, 0), compassLookSpeed * 1.5f * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, initRotationY, 0), compassLookSpeed * Time.deltaTime);
+            rotationZ = Mathf.Lerp(transform.localRotation.z, 0, Time.deltaTime * smoothRotation);
+        }
+        else if (compassLook) {
             playerCamera.transform.rotation = Quaternion.Slerp(playerCamera.transform.rotation, Quaternion.Euler(targetRotation.eulerAngles.x, transform.eulerAngles.y, 0), compassLookSpeed * Time.deltaTime);
             transform.rotation = Quaternion.Slerp(Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z), Quaternion.Euler(0, targetRotation.eulerAngles.y, 0), compassLookSpeed * 0.8f * Time.deltaTime);
             compassTimer = 0.2f;
@@ -943,7 +958,7 @@ public class FirstPersonController : MonoBehaviour
 
         var desiredFOV = dialogueActive ? 70 : IsSprinting && standing && verticalInputRaw == 1 ? runFOV : isZooming ? zoomFOV : defaultFOV;
 
-        if (playerCamera.fieldOfView != desiredFOV && !compassLook && compassTimer < 0)
+        if (playerCamera.fieldOfView != desiredFOV && !compassLook && compassTimer < 0 && !secretLook && secretTimer < 0)
         {
             Zoom(desiredFOV);
         }

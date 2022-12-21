@@ -38,7 +38,7 @@ public class Club : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<InteractObject>().inHands)
+        if (GetComponent<InteractObject>().inHands && !player.GetComponent<FirstPersonController>().pause)
         {
             if (Input.GetButtonDown("Fire1"))
             {

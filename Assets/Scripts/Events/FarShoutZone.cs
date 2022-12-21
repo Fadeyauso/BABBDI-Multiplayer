@@ -27,6 +27,15 @@ public class FarShoutZone : MonoBehaviour
             shoutRight.Play();
 
         }
+
+        if (timer > resetTime-30) {
+            shoutLeft.loop = true;
+            shoutRight.loop = true;
+        }
+        else {
+            shoutLeft.loop = false;
+            shoutRight.loop = false;
+        }
     }
 
     void OnTriggerEnter(Collider collision)

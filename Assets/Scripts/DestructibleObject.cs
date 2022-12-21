@@ -7,7 +7,7 @@ public class DestructibleObject : MonoBehaviour
     private Rigidbody r;
     private GameObject player;
     private bool separate;
-
+    
     void Awake()
     {
         player = GameObject.Find("Player");
@@ -16,7 +16,7 @@ public class DestructibleObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -36,6 +36,8 @@ public class DestructibleObject : MonoBehaviour
         {
             if (transform.parent.GetComponent<PlankParent>().destroyed)
             {
+                var caca = Random.Range(0, 10);
+                if (caca < 4) SoundManager.Instance.PlaySound(GameObject.Find("GameManager").GetComponent<GameManager>().destroy);
                 transform.parent.GetComponent<PlankParent>().destroyed = true;
                 transform.parent = null;
                 gameObject.layer = 12;

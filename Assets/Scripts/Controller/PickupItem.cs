@@ -17,6 +17,7 @@ public class PickupItem : MonoBehaviour
     public GameObject motorBike;
     public GameObject compass;
     public GameObject trumpet;
+    public GameObject secretfinder;
     // Start is called before the first frame update
     void Start()
     {
@@ -90,6 +91,11 @@ public class PickupItem : MonoBehaviour
             if (GameObject.Find("GameManager").GetComponent<GameManager>().trumpet == 1) 
             {
                 GameObject obj = Instantiate(trumpet, GameObject.Find("TrumpetPos00").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
+                obj.GetComponent<InteractObject>().inHands = true;
+            }
+            if (GameObject.Find("GameManager").GetComponent<GameManager>().secretfinder == 1) 
+            {
+                GameObject obj = Instantiate(secretfinder, GameObject.Find("SecretFinderPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
                 obj.GetComponent<InteractObject>().inHands = true;
             }
     }
@@ -177,6 +183,11 @@ public class PickupItem : MonoBehaviour
             if (GameObject.Find("GameManager").GetComponent<GameManager>().item == 13) 
             {
                 GameObject obj = Instantiate(trumpet, GameObject.Find("TrumpetPos00").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
+                obj.GetComponent<InteractObject>().inHands = true;
+            }
+            if (GameObject.Find("GameManager").GetComponent<GameManager>().item == 16) 
+            {
+                GameObject obj = Instantiate(secretfinder, GameObject.Find("SecretFinderPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
                 obj.GetComponent<InteractObject>().inHands = true;
             }
             

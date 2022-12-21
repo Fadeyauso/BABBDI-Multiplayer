@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour, ISaveable
 {
     public static GameManager Instance;
     public bool gamepad;
+    public AudioClip destroy;
 
     [Header("UI")] 
     public GameObject pauseMenu;
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour, ISaveable
     public int motorBike;
     public int compass;
     public int trumpet;
+    public int secretfinder;
 
     [Header("MAINLINE")]
     public GameObject dragoStart;
@@ -163,6 +165,15 @@ public class GameManager : MonoBehaviour, ISaveable
     public float bridgeTimer;
     void Update() 
     {
+        if (secretsFound >= 21) 
+        {
+            if (!allSecrets) Popup();
+            allSecrets = true;
+            allSecretsState = 1;
+            lastAchievement = "Secrets master";
+            SteamIntegration.Instance.UnlockAchivement("SecretsMaster");
+        }
+
         if (Input.GetJoystickNames().Length != 0)
             if (Input.GetJoystickNames()[0] != "") gamepad = true;
         else gamepad = false;
@@ -261,14 +272,6 @@ public class GameManager : MonoBehaviour, ISaveable
     public void AddSecret()
     {
         secretsFound ++;
-        if (secretsFound >= 21) 
-        {
-            if (!allSecrets) Popup();
-            allSecrets = true;
-            allSecretsState = 1;
-            lastAchievement = "Secrets master";
-            SteamIntegration.Instance.UnlockAchivement("SecretsMaster");
-        }
     }
     private float lobbyTimer;
 
@@ -368,7 +371,8 @@ public class GameManager : MonoBehaviour, ISaveable
             grabber = this.grabber,
             motorBike = this.motorBike,
             compass = this.compass,
-            trumpet = this.trumpet
+            trumpet = this.trumpet,
+            secretfinder = this.secretfinder
         };
     }
 
@@ -413,6 +417,7 @@ public class GameManager : MonoBehaviour, ISaveable
         motorBike = 0;
         compass = 0;
         trumpet = 0;
+        secretfinder = 0;
     }
 
     public void LoadState(object state)
@@ -498,6 +503,7 @@ public class GameManager : MonoBehaviour, ISaveable
         motorBike = saveData.motorBike;
         compass = saveData.compass;
         trumpet = saveData.trumpet;
+        secretfinder = saveData.secretfinder;
     
     }
 
@@ -566,6 +572,7 @@ public class GameManager : MonoBehaviour, ISaveable
         public int motorBike;
         public int compass;
         public int trumpet;
+        public int secretfinder;
 
     }
 }
