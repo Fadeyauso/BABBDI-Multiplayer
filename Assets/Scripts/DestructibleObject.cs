@@ -37,7 +37,7 @@ public class DestructibleObject : MonoBehaviour
             if (transform.parent.GetComponent<PlankParent>().destroyed)
             {
                 var caca = Random.Range(0, 10);
-                if (caca < 4) SoundManager.Instance.PlaySound(GameObject.Find("GameManager").GetComponent<GameManager>().destroy);
+                if (caca < 2.5f) SoundManager.Instance.PlaySound(GameObject.Find("GameManager").GetComponent<GameManager>().destroy);
                 transform.parent.GetComponent<PlankParent>().destroyed = true;
                 transform.parent = null;
                 gameObject.layer = 12;

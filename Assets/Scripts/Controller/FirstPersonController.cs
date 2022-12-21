@@ -24,6 +24,23 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private bool useFootsteps = true;
     [SerializeField] private bool canInteract = true;
 
+    [Header("Fall")]
+    [SerializeField] private AudioClip bigImpact = default;
+    [SerializeField] private AudioClip smallImpact = default;
+    [SerializeField] private AudioClip stoneFall = default;
+    [SerializeField] private AudioClip concreteFall = default;
+    [SerializeField] private AudioClip metalFall = default;
+    [SerializeField] private AudioClip tauleFall = default;
+    [SerializeField] private AudioClip grassFall = default;
+    [SerializeField] private AudioClip dirtFall = default;
+    [SerializeField] private AudioClip sandFall = default;
+    [SerializeField] private AudioClip waterFall = default;
+    [SerializeField] private AudioClip woodFall = default;
+    [SerializeField] private AudioSource fallAudio;
+    [SerializeField] private GameObject screenshake;
+    private float fallTime;
+    [SerializeField] private float maxFallTime = 2f;
+
     [Header("Controls")]
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
@@ -429,12 +446,21 @@ public class FirstPersonController : MonoBehaviour
         {
             landing = true;
             airTime -= Time.deltaTime;
+
+
+            if (characterController.velocity.y > 0) fallTime = Mathf.Lerp(fallTime, 0, 6 * Time.deltaTime);
+            else if (characterController.velocity.y < 0 && airTime < -0.6f && !pause) fallTime += Time.deltaTime;
         }
         else 
         {
             InAirCrouch = false;
             airTime = 0.3f;
+            fallTime = Mathf.Lerp(fallTime, 0, 6 * Time.deltaTime);
         }
+
+        //Handle Fall anim and sound
+        fallAudio.volume = Mathf.Lerp(0, 1, fallTime / maxFallTime);
+
         landTimer -= Time.deltaTime;
         headbobEndTimer -= Time.deltaTime;
         aftervaultjumpTimer -= Time.deltaTime;
@@ -505,40 +531,52 @@ public class FirstPersonController : MonoBehaviour
                 {
                     landTimer = 0.2f;
                     landing = false;
-                    if (!prejump) {
+                    if (fallTime > 1.5f) {
+                        SoundManager.Instance.PlaySound(bigImpact);
+                        screenshake.GetComponent<Screenshake>().duration = screenshake.GetComponent<Screenshake>().bigFallDuration;
+                        screenshake.GetComponent<Screenshake>().strengthCurve = screenshake.GetComponent<Screenshake>().bigCurve;
+                        screenshake.GetComponent<Screenshake>().start = true;
+                    }
+                    else if (fallTime > 0.8f) {
+                        SoundManager.Instance.PlaySound(smallImpact);
+                        screenshake.GetComponent<Screenshake>().duration = screenshake.GetComponent<Screenshake>().smallFallDuration;
+                        screenshake.GetComponent<Screenshake>().strengthCurve = screenshake.GetComponent<Screenshake>().smallCurve;
+                        screenshake.GetComponent<Screenshake>().start = true;
+                    }
+                    else {
                         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 3f))
                         {
                             switch(hit.collider.tag)
                             {
                                 case "Footsteps/Metal":
-                                    SoundManager.Instance.PlaySound(metalClips[Random.Range(0, metalClips.Length - 1)]);
+                                    SoundManager.Instance.PlaySound(metalFall);
                                     break;
                                 case "Footsteps/Taule":
                                     SoundManager.Instance.PlaySound(tauleClips[Random.Range(0, tauleClips.Length - 1)]);
                                     break;
                                 case "Footsteps/Wood":
-                                    SoundManager.Instance.PlaySound(woodClips[Random.Range(0, woodClips.Length - 1)]);
+                                    SoundManager.Instance.PlaySound(woodFall);
                                     break;
                                 case "Footsteps/Concrete":
-                                    SoundManager.Instance.PlaySound(concreteClips[Random.Range(0, concreteClips.Length - 1)]);
+                                    SoundManager.Instance.PlaySound(concreteFall);
                                     break;
                                 case "Footsteps/Stone":
-                                    SoundManager.Instance.PlaySound(stoneClips[Random.Range(0, stoneClips.Length - 1)]);
+                                    SoundManager.Instance.PlaySound(stoneFall);
                                     break;
                                 case "Footsteps/Grass":
-                                    SoundManager.Instance.PlaySound(grassClips[Random.Range(0, grassClips.Length - 1)]);
+                                    SoundManager.Instance.PlaySound(grassFall);
                                     break;
                                 case "Footsteps/Dirt":
-                                    SoundManager.Instance.PlaySound(dirtClips[Random.Range(0, dirtClips.Length - 1)]);
+                                    SoundManager.Instance.PlaySound(dirtFall);
                                     break;
                                 case "Footsteps/Sand":
-                                    SoundManager.Instance.PlaySound(sandClips[Random.Range(0, sandClips.Length - 1)]);
+                                    SoundManager.Instance.PlaySound(sandFall);
                                     break;
                                 case "Footsteps/Water":
-                                    SoundManager.Instance.PlaySound(waterClips[Random.Range(0, waterClips.Length - 1)]);
+                                    SoundManager.Instance.PlaySound(waterFall);
                                     break;
                                 default:
-                                    SoundManager.Instance.PlaySound(stoneClips[Random.Range(0, stoneClips.Length - 1)]);
+                                    SoundManager.Instance.PlaySound(stoneFall);
                                     break;
                             }
                         }
@@ -982,16 +1020,16 @@ public class FirstPersonController : MonoBehaviour
         if (!characterController.isGrounded && (landTimer > -0.06f || keyUpTimer > 0))
         {
             fallTimer = 0;
-            playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, characterController.center + new Vector3(0, characterController.height / 2, 0) + offset, 8f * Time.deltaTime);
+            //playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, characterController.center + new Vector3(0, characterController.height / 2, 0) + offset, 8f * Time.deltaTime);
         }
-        else if ((currentInputRaw != Vector2.zero ? landTimer > -0.06f : landTimer > 0) && !ShouldCrouch && !InAirCrouch && keyUpTimer < 0)
+        else if (landTimer > 0 && !ShouldCrouch && !InAirCrouch && keyUpTimer < 0)
         {
             
             if (fallTimer < 0.5f) fallTimer += Time.deltaTime * fallBobSpeed;
-            else fallTimer += Time.deltaTime * (currentInputRaw != Vector2.zero ? fallBobUpSpeed / 4 : fallBobUpSpeed);
+            else fallTimer += Time.deltaTime * (currentInputRaw != Vector2.zero ? fallBobUpSpeed / 2 : fallBobUpSpeed);
             playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(fallTimer) * fallBobAmount * 2, playerCamera.transform.localPosition.z);
         }
-        else if (currentInputRaw != new Vector2(0,0) && landTimer < -0.25f && characterController.isGrounded)
+        else if (currentInputRaw != new Vector2(0,0) && landTimer < -0.40f && characterController.isGrounded)
         {
             timer += Time.deltaTime * (isCrouching ? crouchBobSpeed : IsSprinting ? sprintBobSpeed : walkBobSpeed);
             playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(timer) * (isCrouching ? crouchBobAmount : IsSprinting ? sprintBobAmount : walkBobAmount), playerCamera.transform.localPosition.z);

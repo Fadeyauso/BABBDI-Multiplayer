@@ -72,7 +72,10 @@ public class Propeller : MonoBehaviour
                 GetSpeed(desiredSpeed);
             }
         }
-        else audio.mute = true;
+        else {
+            audio.mute = true;
+            audio1.mute = true;
+        }
         
     }
 
