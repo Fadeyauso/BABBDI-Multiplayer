@@ -1020,13 +1020,13 @@ public class FirstPersonController : MonoBehaviour
         if (!characterController.isGrounded && (landTimer > -0.06f || keyUpTimer > 0))
         {
             fallTimer = 0;
-            //playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, characterController.center + new Vector3(0, characterController.height / 2, 0) + offset, 8f * Time.deltaTime);
+            playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, characterController.center + new Vector3(0, characterController.height / 2, 0) + offset, 8f * Time.deltaTime);
         }
         else if (landTimer > 0 && !ShouldCrouch && !InAirCrouch && keyUpTimer < 0)
         {
             
-            if (fallTimer < 0.5f) fallTimer += Time.deltaTime * fallBobSpeed;
-            else fallTimer += Time.deltaTime * (currentInputRaw != Vector2.zero ? fallBobUpSpeed / 2 : fallBobUpSpeed);
+            if (currentInputRaw != Vector2.zero ? fallTimer < 0.3f : fallTimer < 0.5f) fallTimer += Time.deltaTime * fallBobSpeed;
+            else fallTimer += Time.deltaTime * (currentInputRaw != Vector2.zero ? fallBobUpSpeed : fallBobUpSpeed);
             playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(fallTimer) * fallBobAmount * 2, playerCamera.transform.localPosition.z);
         }
         else if (currentInputRaw != new Vector2(0,0) && landTimer < -0.40f && characterController.isGrounded)

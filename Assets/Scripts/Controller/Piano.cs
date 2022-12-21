@@ -8,6 +8,15 @@ public class Piano : Interactable
     private float mouseY;
     private float timer;
     private bool active;
+
+    private Vector3 initPos;
+    private Vector3 pressPos;
+    void Awake()
+    {
+        initPos = transform.position;
+        pressPos = new Vector3(initPos.x, initPos.y-0.05f, initPos.z);
+    }
+
     [SerializeField] private AudioClip pianoSound;
     public override void OnFocus()
     {
@@ -22,6 +31,7 @@ public class Piano : Interactable
     public override void OnLoseFocus()
     {
         active = false;
+        transform.position = Vector3.Lerp(transform.position, initPos, 12f * Time.deltaTime);
     }
 
     // Update is called once per frame
@@ -40,16 +50,21 @@ public class Piano : Interactable
 
         if (GameObject.Find("Player").GetComponent<FirstPersonController>().currentObject == this.gameObject && active)
         {
+            if (Input.GetButton("Fire1")) transform.position = Vector3.Lerp(transform.position, pressPos, 12f * Time.deltaTime);
+            else transform.position = Vector3.Lerp(transform.position, initPos, 12f * Time.deltaTime);
+
             var magnitude = new Vector2(mouseX, mouseY).magnitude;
             if (Input.GetButton("Fire1") && magnitude > 0.3f && timer < 0)
             {
                 timer = 0.2f;
                 SoundManager.Instance.PlaySound(pianoSound);
+                
             }
             else if (Input.GetButtonDown("Fire1"))
             {
                 SoundManager.Instance.PlaySound(pianoSound);
             }
         }
+        if (GameObject.Find("Player").GetComponent<FirstPersonController>().currentObject != this.gameObject) transform.position = Vector3.Lerp(transform.position, initPos, 12f * Time.deltaTime);
     }
 }
