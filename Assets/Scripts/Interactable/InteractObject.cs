@@ -191,7 +191,7 @@ public class InteractObject : Interactable
                     collider.isTrigger = true;
                     rb.useGravity = false;
                     rb.isKinematic = true;
-                    rb.position = GameObject.Find("ObjectPos2").transform.position;
+                    
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
                         {
                             throwObject = true;
@@ -202,6 +202,7 @@ public class InteractObject : Interactable
                     {
                         transform.position = GameObject.Find("ObjectPos3").transform.position;
                         transform.rotation = GameObject.Find("ObjectPos3").transform.rotation;
+                        //rb.position = GameObject.Find("ObjectPos3").transform.position;
                         extended = true;
                         club = false;
                     }
@@ -209,6 +210,7 @@ public class InteractObject : Interactable
                     {
                         club = true;
                         ItemMovement(GameObject.Find("ObjectPos2").transform.position, GameObject.Find("ObjectPos2").transform);
+                        //rb.position = GameObject.Find("ObjectPos2").transform.position;
                         //TiltSway(GameObject.Find("ObjectPos2").transform.localRotation);
                         extended = false;
                     }
@@ -236,7 +238,7 @@ public class InteractObject : Interactable
                 {
                     GameObject.Find("GameManager").GetComponent<GameManager>().climber = 1;
                     collider.isTrigger = true;
-                    rb.position = GameObject.Find("Pickaxe00").transform.position;
+                    
                     if (!extended && timer < 0)
                     {
                         if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && GetComponent<Climber>().trigger == false && !player.GetComponent<EnterZone>().inLift) 
@@ -258,6 +260,7 @@ public class InteractObject : Interactable
                     {
                         transform.position = GameObject.Find("Pickaxe00").transform.position;
                         transform.rotation = GameObject.Find("Pickaxe00").transform.rotation;
+                        //rb.position = GameObject.Find("Pickaxe00").transform.position;
                         extended = true;
                         climbTimer = 0.01f;
                         climber = false;
@@ -266,6 +269,7 @@ public class InteractObject : Interactable
                     {
                         climber = true;
                         ItemMovement(GameObject.Find("Pickaxe01").transform.position, GameObject.Find("Pickaxe01").transform);
+                        //rb.position = GameObject.Find("Pickaxe01").transform.position;
                         extended = false;
                     }
                 }
