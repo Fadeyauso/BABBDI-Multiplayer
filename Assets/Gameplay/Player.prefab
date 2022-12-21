@@ -147,14 +147,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063940873}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.014, z: 1.7400031}
+  m_LocalRotation: {x: -0.5199665, y: 0, z: 0, w: 0.8541867}
+  m_LocalPosition: {x: 0.18, y: -0.15, z: 0.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7482973070762915167}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -62.66, y: 0, z: 0}
 --- !u!1 &1092824474
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +320,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1508109787}
   - component: {fileID: 1508109789}
-  - component: {fileID: 1508109788}
   m_Layer: 10
   m_Name: FallSound
   m_TagString: Untagged
@@ -439,19 +438,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1508109788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508109786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8e4bbebcd3782840899af7ca769f268, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audio: {fileID: 0}
 --- !u!1 &1570248698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,7 +1184,7 @@ Transform:
   - {fileID: 1508109787}
   - {fileID: 7870606880746872205}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &7482973072534782209
 CharacterController:
@@ -1281,7 +1267,7 @@ MonoBehaviour:
   WillSlideOnSlopes: 1
   useFootsteps: 1
   canInteract: 1
-  bigImpact: {fileID: 8300000, guid: 164bcf06014dde94384e74f7e1ef3118, type: 3}
+  bigImpact: {fileID: 8300000, guid: de72ba87325467d4ea649b65a2fc453f, type: 3}
   smallImpact: {fileID: 8300000, guid: 11ed9f04b39e95a42af6608f564719c1, type: 3}
   stoneFall: {fileID: 8300000, guid: 80fa41dccc60ee241b214e7dac9cfd9e, type: 3}
   concreteFall: {fileID: 8300000, guid: 34c6299b47e4462478bb67c1f9b19fd1, type: 3}

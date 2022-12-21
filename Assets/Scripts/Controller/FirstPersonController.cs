@@ -546,6 +546,7 @@ public class FirstPersonController : MonoBehaviour
                     else {
                         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 3f))
                         {
+                            //fallTimer = 0;
                             switch(hit.collider.tag)
                             {
                                 case "Footsteps/Metal":
@@ -1024,17 +1025,18 @@ public class FirstPersonController : MonoBehaviour
         }
         else if (landTimer > 0 && !ShouldCrouch && !InAirCrouch && keyUpTimer < 0)
         {
-            
+            Debug.Log( Mathf.Sin(fallTimer));
             if (currentInputRaw != Vector2.zero ? fallTimer < 0.3f : fallTimer < 0.5f) fallTimer += Time.deltaTime * fallBobSpeed;
-            else fallTimer += Time.deltaTime * (currentInputRaw != Vector2.zero ? fallBobUpSpeed : fallBobUpSpeed);
+            else fallTimer += Time.deltaTime * fallBobUpSpeed;
             playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(fallTimer) * fallBobAmount * 2, playerCamera.transform.localPosition.z);
         }
-        else if (currentInputRaw != new Vector2(0,0) && landTimer < -0.40f && characterController.isGrounded)
+        else if (currentInputRaw != new Vector2(0,0) && landTimer < -0.4f && characterController.isGrounded)
         {
             timer += Time.deltaTime * (isCrouching ? crouchBobSpeed : IsSprinting ? sprintBobSpeed : walkBobSpeed);
             playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(timer) * (isCrouching ? crouchBobAmount : IsSprinting ? sprintBobAmount : walkBobAmount), playerCamera.transform.localPosition.z);
         }
         else fallTimer = 0;
+
         
     }
 
