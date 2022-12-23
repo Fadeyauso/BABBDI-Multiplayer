@@ -507,7 +507,7 @@ public class InteractObject : Interactable
                     rb.useGravity = false;
                     rb.isKinematic = true;
                     //rb.velocity = new Vector3(0,0,0);
-                    if (((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) && GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket == 1) 
+                    if (((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) && GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 0) 
                         {
                             throwObject = true;
                             inHands = false;

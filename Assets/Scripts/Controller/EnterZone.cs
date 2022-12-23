@@ -66,6 +66,15 @@ public class EnterZone : MonoBehaviour
         }
         if (collisionInfo.tag == "Train")
         {
+            if (GameObject.Find("GameManager").GetComponent<GameManager>().gameTime < 240 && !GameObject.Find("GameManager").GetComponent<GameManager>().gameUnder)
+            {
+                GameObject.Find("GameManager").GetComponent<GameManager>().Popup();
+                GameObject.Find("GameManager").GetComponent<GameManager>().gameUnder = true;
+                GameObject.Find("GameManager").GetComponent<GameManager>().gameUnderState = 1;
+                GameObject.Find("GameManager").GetComponent<GameManager>().lastAchievement = "Way of the rusher";
+                Debug.Log("warusher");
+                SteamIntegration.Instance.UnlockAchivement("WayOfTheRusher");
+            }
             SoundManager.Instance.PlayMusicShot(endGameClip);
             GameObject.Find("GameManager").GetComponent<GameManager>().endGame = true;
         }
