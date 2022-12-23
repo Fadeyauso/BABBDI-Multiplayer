@@ -16,7 +16,9 @@ public class EnterZone : MonoBehaviour
     
     void Start()
     {
-        indoortimer = 4;
+        //SoundManager.Instance._outdoorSource.Play();
+            outdoortimer = 4;
+            indoortimer = 0;
     }
     // Update is called once per frame
     void Update()
@@ -25,18 +27,22 @@ public class EnterZone : MonoBehaviour
         outdoortimer -= Time.deltaTime;
 
         if(indoortimer > 0) SoundManager.Instance.IndoorBlend();
+        //if (indoortimer > 3) SoundManager.Instance._indoorSource.Stop();
         if(outdoortimer > 0) SoundManager.Instance.OutdoorBlend();
+        //if (outdoortimer > 3) SoundManager.Instance._outdoorSource.Stop();
     }
 
     void OnTriggerEnter(Collider collisionInfo)
     {
         if (collisionInfo.tag == "Door/Indoor")
         {
+            //SoundManager.Instance._indoorSource.Play();
             indoortimer = 4;
             outdoortimer = 0;
         }
         if (collisionInfo.tag == "Door/Outdoor")
         {
+            //SoundManager.Instance._outdoorSource.Play();
             outdoortimer = 4;
             indoortimer = 0;
         }
@@ -138,6 +144,10 @@ public class EnterZone : MonoBehaviour
         if (collisionInfo.tag == "Train")
         {
             transform.parent = collisionInfo.transform;
+        }
+        if (collisionInfo.tag == "GirlZone")
+        {
+            inGirlZone = true;
         }
     }
 

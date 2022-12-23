@@ -32,8 +32,20 @@ public class Ball : MonoBehaviour
             SteamIntegration.Instance.UnlockAchivement("DoggoFriendly");
         }
 
+        
+
         if (GetComponent<Rigidbody>().velocity.magnitude > 2) ballSound.PlayOneShot(ball);
         timer = 0.8f;
+    }
+
+    void OnTriggerEnter(Collider col)
+
+    {
+        if ((col.gameObject.layer == 16))
+        {
+            GetComponent<Rigidbody>().AddForce(GameObject.Find("Player").GetComponent<FirstPersonController>().playerCamera.transform.forward * 4, ForceMode.Impulse);
+            
+        }
     }
 
 

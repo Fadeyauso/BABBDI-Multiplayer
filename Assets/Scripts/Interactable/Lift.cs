@@ -24,14 +24,14 @@ public class Lift : MonoBehaviour
     void Update()
     {
         
-        if (isTriggered && transform.position.y < secondPoint.transform.position.y && topReach == false) 
+        if (isTriggered && topReach == false) 
         {  
             GameObject.Find("GameManager").GetComponent<GameManager>().inActivatedLift = true;
             transform.Translate(Vector3.up * speed * Time.deltaTime);
             stop = true;
             
         }
-        else if (isTriggered && transform.position.y > firstPoint.transform.position.y && topReach == true) 
+        else if (isTriggered && topReach == true) 
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().inActivatedLift = true;
             transform.Translate(Vector3.down * speed * Time.deltaTime);

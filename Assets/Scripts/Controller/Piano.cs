@@ -50,17 +50,17 @@ public class Piano : Interactable
 
         if (GameObject.Find("Player").GetComponent<FirstPersonController>().currentObject == this.gameObject && active)
         {
-            if (Input.GetButton("Fire1")) transform.position = Vector3.Lerp(transform.position, pressPos, 12f * Time.deltaTime);
+            if (Input.GetButton("Fire1") || Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.F)) transform.position = Vector3.Lerp(transform.position, pressPos, 12f * Time.deltaTime);
             else transform.position = Vector3.Lerp(transform.position, initPos, 12f * Time.deltaTime);
 
             var magnitude = new Vector2(mouseX, mouseY).magnitude;
-            if (Input.GetButton("Fire1") && magnitude > 0.3f && timer < 0)
+            if ((Input.GetButton("Fire1") || Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.F)) && magnitude > 0.3f && timer < 0)
             {
                 timer = 0.2f;
                 SoundManager.Instance.PlaySound(pianoSound);
                 
             }
-            else if (Input.GetButtonDown("Fire1"))
+            else if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F))
             {
                 SoundManager.Instance.PlaySound(pianoSound);
             }
