@@ -229,20 +229,11 @@ public class GameManager : MonoBehaviour, ISaveable
 
         if (endGame)
         {
-            if (gameTime < 240 && !gameUnder)
-            {
-                Popup();
-                gameUnder = true;
-                gameUnderState = 1;
-                lastAchievement = "Way of the rusher";
-                SteamIntegration.Instance.UnlockAchivement("WayOfTheRusher");
-            }
             if (!escapeBabbdi){
-                Popup();
                 escapeBabbdi = true;
                 escapeBabbdiState = 1;
-                lastAchievement = "Melancholic departure";
                 SteamIntegration.Instance.UnlockAchivement("MelancholicDeparture");
+                Debug.Log("melcahnocl");
             }
         }
         if (secondPart == 1 && instantiate == true) Invoke("drago", 1);

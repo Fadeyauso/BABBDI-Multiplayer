@@ -739,36 +739,36 @@ public class FirstPersonController : MonoBehaviour
 
     private void CalculateMovementInput()
     {
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().gamepad)
-        {
+        //keyboard input
+        if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q))) horizontalInput = 0;
+        else if (Input.GetKey(KeyCode.D)) horizontalInput = Mathf.Lerp(horizontalInput, 1, 15f * Time.deltaTime);
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q)) horizontalInput = Mathf.Lerp(horizontalInput, -1, 15f * Time.deltaTime);
+        else if (Input.GetAxis("horizontalArrows") != 0) horizontalInput = Input.GetAxis("horizontalArrows");
+        else if (Input.GetAxis("Horizontal") != 0) horizontalInput = Input.GetAxis("Horizontal");
+        else horizontalInput = Mathf.Lerp(horizontalInput, 0, 15f * Time.deltaTime);
 
-            verticalInputRaw = (Input.GetAxisRaw("verticalArrows") != 0 ? Input.GetAxisRaw("verticalArrows") : Input.GetAxisRaw("Vertical"));
-            horizontalInputRaw = (Input.GetAxisRaw("horizontalArrows") != 0 ? Input.GetAxisRaw("horizontalArrows") : Input.GetAxisRaw("Horizontal"));
-            verticalInput = (Input.GetAxis("verticalArrows") != 0 ? Input.GetAxis("verticalArrows") : Input.GetAxis("Vertical"));
-            horizontalInput = (Input.GetAxis("horizontalArrows") != 0 ? Input.GetAxis("horizontalArrows") : Input.GetAxis("Horizontal"));
-        }
-        else {
-            if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q))) horizontalInput = 0;
-            else if (Input.GetKey(KeyCode.D)) horizontalInput = Mathf.Lerp(horizontalInput, 1, 15f * Time.deltaTime);
-            else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q)) horizontalInput = Mathf.Lerp(horizontalInput, -1, 15f * Time.deltaTime);
-            else horizontalInput = Mathf.Lerp(horizontalInput, 0, 15f * Time.deltaTime);
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z)) && Input.GetKey(KeyCode.S)) verticalInput = verticalInput = 0;
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z)) verticalInput = Mathf.Lerp(verticalInput, 1, 15f * Time.deltaTime);
+        else if (Input.GetKey(KeyCode.S)) verticalInput = Mathf.Lerp(verticalInput, -1, 15f * Time.deltaTime);
+        else if (Input.GetAxis("verticalArrows") != 0) verticalInput = Input.GetAxis("verticalArrows");
+        else if (Input.GetAxis("Vertical") != 0) verticalInput = Input.GetAxis("Vertical");
+        else verticalInput = Mathf.Lerp(verticalInput, 0, 10f * Time.deltaTime);
 
-            if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z)) && Input.GetKey(KeyCode.S)) verticalInput = verticalInput = 0;
-            else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z)) verticalInput = Mathf.Lerp(verticalInput, 1, 15f * Time.deltaTime);
-            else if (Input.GetKey(KeyCode.S)) verticalInput = Mathf.Lerp(verticalInput, -1, 15f * Time.deltaTime);
-            else verticalInput = Mathf.Lerp(verticalInput, 0, 10f * Time.deltaTime);
+        if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q))) horizontalInputRaw = 0;
+        else if (Input.GetKey(KeyCode.D)) horizontalInputRaw = 1;
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q)) horizontalInputRaw = -1;
+        else if (Input.GetAxisRaw("horizontalArrows") != 0) horizontalInputRaw = Input.GetAxisRaw("horizontalArrows");
+        else if (Input.GetAxisRaw("Horizontal") != 0) horizontalInputRaw = Input.GetAxisRaw("Horizontal");
+        else horizontalInputRaw = 0;
 
-            if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q))) horizontalInputRaw = 0;
-            else if (Input.GetKey(KeyCode.D)) horizontalInputRaw = 1;
-            else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q)) horizontalInputRaw = -1;
-            else horizontalInputRaw = 0;
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z)) && Input.GetKey(KeyCode.S)) verticalInputRaw = 0;
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z)) verticalInputRaw = 1;
+        else if (Input.GetKey(KeyCode.S)) verticalInputRaw = -1;
+        else if (Input.GetAxisRaw("verticalArrows") != 0) verticalInputRaw = Input.GetAxisRaw("verticalArrows");
+        else if (Input.GetAxisRaw("Vertical") != 0) verticalInputRaw = Input.GetAxisRaw("Vertical");
+        else verticalInputRaw = 0;
 
-            if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z)) && Input.GetKey(KeyCode.S)) verticalInputRaw = 0;
-            else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z)) verticalInputRaw = 1;
-            else if (Input.GetKey(KeyCode.S)) verticalInputRaw = -1;
-            else verticalInputRaw = 0;
-
-        }
+        
 
 
         if (motorBike.GetComponent<InteractObject>().onMoto) 
@@ -852,23 +852,16 @@ public class FirstPersonController : MonoBehaviour
         }
         else
         {
-            if (GameObject.Find("GameManager").GetComponent<GameManager>().gamepad)
-            {
-                rotationX -= Input.GetAxis("CameraHorizontal") * lookSpeedY;
-                rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
-                playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, rotationZ);
+            //Controller look
+            rotationX -= Input.GetAxis("CameraHorizontal") *2 * lookSpeedY;
+            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("CameraVertical") *2 * lookSpeedX, 0);
 
-                transform.rotation *= Quaternion.Euler(0, Input.GetAxis("CameraVertical") * lookSpeedX, 0);
-            }
-            else 
-            {
-                rotationX -= Input.GetAxis("Mouse Y") * lookSpeedY;
-                rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
-                playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, rotationZ);
+            //Keyboard look
+            rotationX -= Input.GetAxis("Mouse Y") * lookSpeedY;
+            rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
+            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, rotationZ);
 
-                transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
-            }
-
+            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
 
             if (standing && playerCamera.transform.localPosition.y != defaultYPos && landTimer < 0 ) //&& currentInputRaw == Vector2.zero)
             {
@@ -1025,7 +1018,6 @@ public class FirstPersonController : MonoBehaviour
         }
         else if (landTimer > 0 && !ShouldCrouch && !InAirCrouch && keyUpTimer < 0)
         {
-            Debug.Log( Mathf.Sin(fallTimer));
             if (currentInputRaw != Vector2.zero ? fallTimer < 0.3f : fallTimer < 0.5f) fallTimer += Time.deltaTime * fallBobSpeed;
             else fallTimer += Time.deltaTime * fallBobUpSpeed;
             playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(fallTimer) * fallBobAmount * 2, playerCamera.transform.localPosition.z);
