@@ -853,8 +853,8 @@ public class FirstPersonController : MonoBehaviour
         else
         {
             //Controller look
-            rotationX -= Input.GetAxis("CameraHorizontal") *2 * lookSpeedY;
-            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("CameraVertical") *2 * lookSpeedX, 0);
+            rotationX -= Input.GetAxis("CameraHorizontal") * lookSpeedY;
+            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("CameraVertical") * lookSpeedX, 0);
 
             //Keyboard look
             rotationX -= Input.GetAxis("Mouse Y") * lookSpeedY;

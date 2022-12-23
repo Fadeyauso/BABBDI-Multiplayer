@@ -91,7 +91,7 @@ public class MotorBike : MonoBehaviour
 
         if (player.GetComponent<EnterZone>().inGirlZone && GetComponent<InteractObject>().inHands)
         {
-            if ((Input.GetButton("Fire1") || Input.GetAxis("LeftClick") > 0.1f) && player.GetComponent<FirstPersonController>().characterController.velocity.magnitude > 1)
+            if (player.GetComponent<FirstPersonController>().characterController.velocity.magnitude > 1)
             {
                 impressTimer += Time.deltaTime;
                 if (impressTimer > timeToImpress)
