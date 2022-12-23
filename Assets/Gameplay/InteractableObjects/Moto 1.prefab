@@ -351,7 +351,6 @@ GameObject:
   - component: {fileID: 7069487011167817883}
   - component: {fileID: 1850519973966077641}
   - component: {fileID: 9000984209393394575}
-  - component: {fileID: 5656303794737525110}
   - component: {fileID: 1083211064}
   m_Layer: 0
   m_Name: SM_MotoGuidon00
@@ -428,20 +427,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5656303794737525110
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8118453985259307440}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6584713960496002374, guid: 080ed1ca5f58d884c9df8f2659d99703, type: 3}
 --- !u!114 &1083211064
 MonoBehaviour:
   m_ObjectHideFlags: 0

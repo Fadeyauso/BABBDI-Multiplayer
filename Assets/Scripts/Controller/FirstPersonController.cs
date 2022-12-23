@@ -110,11 +110,14 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float tiltAmount = 7f;
     [SerializeField] private float tiltSpeed = 7f;
     [SerializeField] private float compassLookSpeed = 12f;
+    [SerializeField] private float smoothCamSpeed = 2f;
     [SerializeField] private GameObject targetObject;
     public bool compassLook;
     public bool secretLook;
     private bool isZooming;
     private float defaultFOV;
+    public bool camController = true;
+    public bool smoothCam = false;
 
     [Header("Footsteps Parameters")]
     [SerializeField] private float baseStepSpeed = 0.5f;
@@ -852,16 +855,32 @@ public class FirstPersonController : MonoBehaviour
         }
         else
         {
-            //Controller look
-            rotationX -= Input.GetAxis("CameraHorizontal") * lookSpeedY;
-            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("CameraVertical") * lookSpeedX, 0);
+            /*if (smoothCam)
+            {
+                //Controller look
+                rotationX = Mathf.Lerp(rotationX, rotationX - Input.GetAxis("CameraHorizontal") * lookSpeedY, smoothCamSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation*Quaternion.Euler(0, Input.GetAxis("CameraVertical") * lookSpeedX, 0), smoothCamSpeed * Time.deltaTime);
 
-            //Keyboard look
-            rotationX -= Input.GetAxis("Mouse Y") * lookSpeedY;
-            rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
-            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, rotationZ);
+                //Keyboard look
+                rotationX -= Mathf.Lerp(rotationX, rotationX - Input.GetAxis("Mouse Y") * lookSpeedY, smoothCamSpeed * Time.deltaTime);
+                rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
+                playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, rotationZ);
 
-            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
+                transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation*Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0), smoothCamSpeed * Time.deltaTime);
+            }
+            else {*/
+                //Controller look
+                rotationX -= Input.GetAxis("CameraHorizontal") * lookSpeedY;
+                transform.rotation *= Quaternion.Euler(0, Input.GetAxis("CameraVertical") * lookSpeedX, 0);
+
+                //Keyboard look
+                rotationX -= Input.GetAxis("Mouse Y") * lookSpeedY;
+                rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
+                playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, rotationZ);
+
+                transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
+            
+            
 
             if (standing && playerCamera.transform.localPosition.y != defaultYPos && landTimer < 0 ) //&& currentInputRaw == Vector2.zero)
             {
@@ -1000,7 +1019,7 @@ public class FirstPersonController : MonoBehaviour
 
         //Camera Tilt
         var desiredTilt = InAirCrouch && !characterController.isGrounded ? 0 : IsSprinting && standing && horizontalInputRaw == 1 ? -tiltAmount : IsSprinting && standing && horizontalInputRaw == -1 ? tiltAmount : 0;
-        SideTilt(desiredTilt);
+        if (camController) SideTilt(desiredTilt);
 
         if (rotationZ != desiredTilt)
         {
@@ -1022,7 +1041,7 @@ public class FirstPersonController : MonoBehaviour
             else fallTimer += Time.deltaTime * fallBobUpSpeed;
             playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(fallTimer) * fallBobAmount * 2, playerCamera.transform.localPosition.z);
         }
-        else if (currentInputRaw != new Vector2(0,0) && landTimer < -0.4f && characterController.isGrounded)
+        else if (currentInputRaw != new Vector2(0,0) && landTimer < -0.4f && characterController.isGrounded && camController)
         {
             timer += Time.deltaTime * (isCrouching ? crouchBobSpeed : IsSprinting ? sprintBobSpeed : walkBobSpeed);
             playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos + Mathf.Sin(timer) * (isCrouching ? crouchBobAmount : IsSprinting ? sprintBobAmount : walkBobAmount), playerCamera.transform.localPosition.z);
@@ -1036,7 +1055,6 @@ public class FirstPersonController : MonoBehaviour
 
     private void HandleInteractionCheck()
     {
-
         if (Physics.SphereCast(playerCamera.transform.position, sphereRadius, playerCamera.transform.forward, out RaycastHit cacouHit, maxSphereDistance, nomotoLayer) && motorBike.GetComponent<InteractObject>().onMoto)
         {
             currentHitObject = cacouHit.transform.gameObject;
@@ -1057,8 +1075,68 @@ public class FirstPersonController : MonoBehaviour
             currentHitObject = null;
         }
 
-        
-        if (Physics.SphereCast(playerCamera.transform.position, sphereRadius, playerCamera.transform.forward, out RaycastHit spherehit0, currentHitDistance,motoLayer) && !motorBike.GetComponent<InteractObject>().onMoto && !dialogueActive)
+        if (Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit frontCast0, interactionDistance, motoLayer) && !motorBike.GetComponent<InteractObject>().onMoto && !dialogueActive)
+        {
+            interactionSphere = true;
+
+                frontCast0.collider.TryGetComponent(out currentInteractable);
+
+                currentObject = frontCast0.collider.gameObject;
+
+                if (currentInteractable)
+                    currentInteractable.OnFocus();
+
+     
+        }
+        else if (Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit frontCast1, interactionDistance, interactionLayer) && !dialogueActive)
+        {
+            interactionSphere = true;
+
+                frontCast1.collider.TryGetComponent(out currentInteractable);
+
+                currentObject = frontCast1.collider.gameObject;
+
+                if (currentInteractable)
+                    currentInteractable.OnFocus();
+
+                talkPopup.SetActive(false);
+                jukeboxPopup.SetActive(false);
+                doorPopup.SetActive(false);
+            
+        }
+        else if (Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit frontCast2, interactionDistance, doorLayer) && !dialogueActive)
+        {
+            interactionSphere = true;
+
+                frontCast2.collider.TryGetComponent(out currentInteractable);
+
+                currentObject = frontCast2.collider.gameObject;
+
+                if (currentInteractable)
+                    currentInteractable.OnFocus();
+
+                talkPopup.SetActive(false);
+                grabPopup.SetActive(false);
+      
+        }
+        else if (Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit frontCast3, interactionDistance, npcLayer) && !dialogueActive)
+        {
+            interactionSphere = true;
+
+                frontCast3.collider.TryGetComponent(out currentInteractable);
+
+                currentObject = frontCast3.collider.gameObject;
+
+                if (currentInteractable)
+                    currentInteractable.OnFocus();
+
+                grabPopup.SetActive(false);
+                doorPopup.SetActive(false);
+                jukeboxPopup.SetActive(false);
+                
+        }
+        //Spherecast
+        else if (Physics.SphereCast(playerCamera.transform.position, sphereRadius, playerCamera.transform.forward, out RaycastHit spherehit0, currentHitDistance,motoLayer) && !motorBike.GetComponent<InteractObject>().onMoto && !dialogueActive)
         {
             interactionSphere = true;
 

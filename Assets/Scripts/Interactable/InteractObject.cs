@@ -70,7 +70,7 @@ public class InteractObject : Interactable
 
             if (GetComponent<ItemProperties>().id == 3)
             {
-                GameObject.Find("GameManager").GetComponent<GameManager>().secretsFound ++;
+                GameObject.Find("GameManager").GetComponent<GameManager>().AddSecret();
                 //Debug.Log(GameManager.secretsFound);
                 GameObject.Find("GameManager").GetComponent<GameManager>().secretPopup = true;
                 Destroy(this.gameObject);
@@ -507,7 +507,7 @@ public class InteractObject : Interactable
                     rb.useGravity = false;
                     rb.isKinematic = true;
                     //rb.velocity = new Vector3(0,0,0);
-                    if (((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) && GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 0) 
+                    if (((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) && (GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 0 || GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket == 1)) 
                         {
                             throwObject = true;
                             inHands = false;
@@ -534,7 +534,7 @@ public class InteractObject : Interactable
                     transform.position = GameObject.Find("CompassPos").transform.position;
                     transform.rotation = GameObject.Find("CompassPos").transform.rotation;
                 }
-                else if (throwObject && GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket == 1) 
+                else if (throwObject) 
                 {
                     player.GetComponent<FirstPersonController>().compassLook = false;
                     GameObject.Find("GameManager").GetComponent<GameManager>().compass = 0;

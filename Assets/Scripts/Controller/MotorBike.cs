@@ -91,11 +91,12 @@ public class MotorBike : MonoBehaviour
 
         if (player.GetComponent<EnterZone>().inGirlZone && GetComponent<InteractObject>().inHands)
         {
-            if (player.GetComponent<FirstPersonController>().characterController.velocity.magnitude > 1)
+            if (motorMovement.magnitude > (new Vector3(player.transform.forward.x, 0, player.transform.forward.z) * power).magnitude / 4)
             {
                 impressTimer += Time.deltaTime;
                 if (impressTimer > timeToImpress)
                 {
+                    impressTimer = -100;
                     if (!GameObject.Find("GameManager").GetComponent<GameManager>().impressGirl) GameObject.Find("GameManager").GetComponent<GameManager>().Popup();
                     GameObject.Find("GameManager").GetComponent<GameManager>().impressGirl = true;
                     GameObject.Find("GameManager").GetComponent<GameManager>().impressGirlState = 1;
