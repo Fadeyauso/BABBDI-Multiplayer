@@ -143,6 +143,14 @@ public class GameManager : MonoBehaviour, ISaveable
         }
         qualitySettings.GetComponent<SetQuality>().SetQualityLevelDropdown(3);
 
+        /*for (int i = 0; i < secrets.Length; i++)
+        {
+            bool state;
+            if (secretState[i] == 1) state = true;
+            else state = false;
+            secrets[i].SetActive(state);
+        }*/
+
         instantiate = true;
 
         if (haveMap == 1) mapObjectDisplay.SetActive(false);
@@ -327,16 +335,16 @@ public class GameManager : MonoBehaviour, ISaveable
 
             //Secrets
             secretsFound = this.secretsFound,
-            secret00  = this.secretState[0] ,
-            secret01  = this.secretState[1] ,
-            secret02  = this.secretState[2] ,
-            secret03  = this.secretState[3] ,
-            secret04  = this.secretState[4] ,
-            secret05  = this.secretState[5] ,
-            secret06  = this.secretState[6] ,
-            secret07  = this.secretState[7] ,
-            secret08  = this.secretState[8] ,
-            secret09  = this.secretState[9] ,
+            secret00  = this.secretState[0],
+            secret01  = this.secretState[1],
+            secret02  = this.secretState[2],
+            secret03  = this.secretState[3],
+            secret04  = this.secretState[4],
+            secret05  = this.secretState[5],
+            secret06  = this.secretState[6],
+            secret07  = this.secretState[7],
+            secret08  = this.secretState[8],
+            secret09  = this.secretState[9],
             secret10 = this.secretState[10],
             secret11 = this.secretState[11],
             secret12 = this.secretState[12],
