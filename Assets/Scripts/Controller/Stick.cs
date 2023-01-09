@@ -19,15 +19,10 @@ public class Stick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().gamepad)
-        {
-mouseX = Input.GetAxis("CameraHorizontal");
-        mouseY = Input.GetAxis("CameraVertical");
-        }
-        else{
-mouseX = Input.GetAxis("Mouse X");
+
+        mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
-        }
+        
         
     }
 

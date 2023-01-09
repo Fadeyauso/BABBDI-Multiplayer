@@ -17,16 +17,20 @@ public class DialogueUI : MonoBehaviour
     public GameObject continueDialogueFX;
 
     private TypewriterEffect typewriterEffect;
+    private GameManager gameManager;
+
 
     void Awake()
     {
         continueDialogueFX = GameObject.Find("continueDialogueFX");
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void Start()
     {
         typewriterEffect = GetComponent<TypewriterEffect>();
         CloseDialogueBox();
+        
     }
 
     public void ShowDialogue(DialogueObject dialogueObject)
@@ -34,7 +38,7 @@ public class DialogueUI : MonoBehaviour
         speaking = true;
         dialogueBox.SetActive(true);
         continueDialogueFX.SetActive(false);
-        if (NPCid == 98 && GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1) GetComponent<Dragoyevic>().compassOK = true;
+        if (NPCid == 98 && gameManager.secondPart == 1) GetComponent<Dragoyevic>().compassOK = true;
         if (GetComponent<Dragoyevic>() != null) GetComponent<Dragoyevic>().giveCompass = true;
         name_label.text = name;
         SoundManager.Instance.PlaySound(voiceClip[Random.Range(0, voiceClip.Length - 1)]);
@@ -57,11 +61,11 @@ public class DialogueUI : MonoBehaviour
             continueDialogueFX.SetActive(false);
             
         }
-        if (GetComponent<Dragoyevic>() != null && activ == true && GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1) 
+        if (GetComponent<Dragoyevic>() != null && activ == true && gameManager.secondPart == 1) 
         {
             activ = false;
             GetComponent<Dragoyevic>().activateBridge = true;
-            GameObject.Find("GameManager").GetComponent<GameManager>().bridgeAudio.Play();
+            gameManager.bridgeAudio.Play();
         }
 
         CloseDialogueBox();
@@ -90,8 +94,8 @@ public class DialogueUI : MonoBehaviour
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
         //player.GetComponent<CollectItems>().dialogueActive = false;
-        if ((!GetComponent<NPC>().dialogueDone) && (GetComponent<NPC>().dialogue.Length-1 == 0 ? !GetComponent<NPC>().interactedWith : GetComponent<NPC>().dialogueIndex > 0) && (GetComponent<NPC>().hasSecondPhase ? GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 0 : 1==1) && GameObject.Find("GameManager").GetComponent<GameManager>().startTimer < -1) 
-                SoundManager.Instance.PlaySound(GetComponent<NPC>().exclamation.GetComponent<ExclamationPoint>().initClip);
+        if ((!GetComponent<NPC>().dialogueDone) && (GetComponent<NPC>().dialogue.Length-1 == 0 ? !GetComponent<NPC>().interactedWith : GetComponent<NPC>().dialogueIndex > 0) && (GetComponent<NPC>().hasSecondPhase ? gameManager.secondPart == 0 : 1==1) && gameManager.startTimer < -1) 
+            Debug.Log("caca");
 
         
     }

@@ -13,11 +13,11 @@ public class Lift : MonoBehaviour
 
     public bool topReach = false;
 
-
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -26,14 +26,14 @@ public class Lift : MonoBehaviour
         
         if (isTriggered && topReach == false) 
         {  
-            GameObject.Find("GameManager").GetComponent<GameManager>().inActivatedLift = true;
+            gameManager.inActivatedLift = true;
             transform.Translate(Vector3.up * speed * Time.deltaTime);
             stop = true;
             
         }
         else if (isTriggered && topReach == true) 
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().inActivatedLift = true;
+            gameManager.inActivatedLift = true;
             transform.Translate(Vector3.down * speed * Time.deltaTime);
             stop = true;
 
@@ -43,7 +43,7 @@ public class Lift : MonoBehaviour
 
         if (isTriggered && transform.position.y > secondPoint.transform.position.y && stop == true || isTriggered && transform.position.y < firstPoint.transform.position.y && stop == true) 
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().inActivatedLift = false;
+            gameManager.inActivatedLift = false;
             topReach = !topReach;
             isTriggered = false;
             stop = false;

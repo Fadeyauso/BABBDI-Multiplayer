@@ -8,11 +8,12 @@ public class Ball : MonoBehaviour
     [SerializeField] private AudioSource ballSound; 
 
     private float timer;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -25,10 +26,10 @@ public class Ball : MonoBehaviour
     {  
         if (collision.collider.tag == "Dog")
         {
-            if (!GameObject.Find("GameManager").GetComponent<GameManager>().playDog) GameObject.Find("GameManager").GetComponent<GameManager>().Popup();
-            GameObject.Find("GameManager").GetComponent<GameManager>().playDog = true;
-            GameObject.Find("GameManager").GetComponent<GameManager>().playDogState = 1;
-            GameObject.Find("GameManager").GetComponent<GameManager>().lastAchievement = "Doggo friendly";
+            if (!gameManager.playDog) gameManager.Popup();
+            gameManager.playDog = true;
+            gameManager.playDogState = 1;
+            gameManager.lastAchievement = "Doggo friendly";
             SteamIntegration.Instance.UnlockAchivement("DoggoFriendly");
         }
 

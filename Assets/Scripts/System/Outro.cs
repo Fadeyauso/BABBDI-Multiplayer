@@ -17,6 +17,7 @@ public class Outro : MonoBehaviour
 
     public float timer = 3;
     float initTimer;
+    private GameManager gameManager;
 
 
     // Start is called before the first frame update
@@ -29,6 +30,7 @@ public class Outro : MonoBehaviour
     {
         tempColor = image.color;
         initTimer = timer;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame

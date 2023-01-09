@@ -73,9 +73,9 @@ public class MotorBike : MonoBehaviour
 
         if (!player.GetComponent<FirstPersonController>().characterController.isGrounded && GetComponent<InteractObject>().inHands)
         {
-            if (GameObject.Find("GameManager").GetComponent<GameManager>().gamepad)
+
                 mouseLook -= Input.GetAxis("CameraHorizontal") * GameObject.Find("Player").GetComponent<FirstPersonController>().lookSpeedX;
-            else
+
                 mouseLook -= Input.GetAxis("Mouse X") * GameObject.Find("Player").GetComponent<FirstPersonController>().lookSpeedX;
 
             if (mouseLook > 360 || mouseLook < -360)

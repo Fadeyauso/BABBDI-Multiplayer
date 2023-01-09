@@ -13,10 +13,11 @@ public class AchievementPopup : MonoBehaviour
     private float timer = 0f;
     private Vector3 buttonVelocity = Vector3.zero;
 
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -24,10 +25,10 @@ public class AchievementPopup : MonoBehaviour
     {
         timer -= Time.deltaTime;
 
-        textLabel.text = GameObject.Find("GameManager").GetComponent<GameManager>().lastAchievement;
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().popup)
+        textLabel.text = gameManager.lastAchievement;
+        if (gameManager.popup)
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().popup = false;
+            gameManager.popup = false;
             timer = 10f;
             
         }

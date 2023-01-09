@@ -10,6 +10,12 @@ public class MapPopup : MonoBehaviour
     [SerializeField] private TMP_Text textLabel1;
     private Color c;
     private Color c1;
+    private GameManager gameManager;
+    // Start is called before the first frame update
+    void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,12 +32,12 @@ public class MapPopup : MonoBehaviour
         textLabel1.color = c1;
 
         timer -= Time.deltaTime;
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().mapPopup == true)
+        if (gameManager.mapPopup == true)
         {
             c.a = 1f;
             c1.a = 1f;
             timer = 3f;
-            GameObject.Find("GameManager").GetComponent<GameManager>().mapPopup = false;
+            gameManager.mapPopup = false;
         }
         if (timer < 0) 
         {

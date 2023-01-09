@@ -30,7 +30,8 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["SM_Scene_A_Furniture01.004"],"padding":[139],"unwrapper":[0]}'
     clipAnimations: []
     isReadable: 0
   meshes:

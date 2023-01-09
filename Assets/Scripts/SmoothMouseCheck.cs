@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class SmoothMouseCheck : MonoBehaviour
 {
+    private FirstPersonController player;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player").GetComponent<FirstPersonController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        GameObject.Find("Player").GetComponent<FirstPersonController>().smoothCam = GetComponent<Toggle>().isOn;
+        player.smoothCam = GetComponent<Toggle>().isOn;
     }
 }

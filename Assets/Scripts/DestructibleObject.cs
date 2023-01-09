@@ -37,7 +37,7 @@ public class DestructibleObject : MonoBehaviour
             if (transform.parent.GetComponent<PlankParent>().destroyed)
             {
                 var caca = Random.Range(0, 10);
-                if (caca < 2.5f) SoundManager.Instance.PlaySound(GameObject.Find("GameManager").GetComponent<GameManager>().destroy);
+                if (caca < 1f) SoundManager.Instance.PlaySound(GameObject.Find("GameManager").GetComponent<GameManager>().destroy);
                 transform.parent.GetComponent<PlankParent>().destroyed = true;
                 transform.parent = null;
                 gameObject.layer = 12;
@@ -54,7 +54,21 @@ public class DestructibleObject : MonoBehaviour
                 r.AddForce(player.GetComponent<FirstPersonController>().playerCamera.transform.forward * 60f, ForceMode.Impulse);
                 separate = true;
             }
+            else if (collisionInfo.tag == "Player")
+            {
+                if (collisionInfo.GetComponent<FirstPersonController>().slideTimer > 0 && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftAlt) || Input.GetButton("Slide")))
+                {
+                    transform.parent.GetComponent<PlankParent>().destroyed = true;
+                    transform.parent = null;
+                    gameObject.layer = 12;
+                    r.constraints = 0;
+                    r.AddForce(player.GetComponent<FirstPersonController>().playerCamera.transform.forward * 60f, ForceMode.Impulse);
+                    separate = true;
+                }
+            }
         }
+
+        
         
 
         

@@ -6,10 +6,11 @@ public class PlankParent : MonoBehaviour
 {
     public bool destroyed;
     public bool playSound = true;
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -17,7 +18,7 @@ public class PlankParent : MonoBehaviour
     {
         if (playSound && destroyed)
         {
-            SoundManager.Instance.PlaySound(GameObject.Find("GameManager").GetComponent<GameManager>().destroy);
+            SoundManager.Instance.PlaySound(gameManager.destroy);
             playSound = false;
         }
     }

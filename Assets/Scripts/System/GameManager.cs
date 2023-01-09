@@ -134,6 +134,8 @@ public class GameManager : MonoBehaviour, ISaveable
         
     }
 
+    private FirstPersonController player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -142,6 +144,16 @@ public class GameManager : MonoBehaviour, ISaveable
             speedrunLabel.SetActive(GameObject.Find("Parameters").GetComponent<Parameters>().speedrun); 
         }
         qualitySettings.GetComponent<SetQuality>().SetQualityLevelDropdown(3);
+
+        player = GameObject.Find("Player").GetComponent<FirstPersonController>();
+
+        /*for (int i = 0; i < secrets.Length; i++)
+        {
+            bool state;
+            if (secretState[i] == 1) state = true;
+            else state = false;
+            secrets[i].SetActive(state);
+        }*/
 
         instantiate = true;
 
@@ -156,7 +168,7 @@ public class GameManager : MonoBehaviour, ISaveable
         gameTime = 0;
         GameObject.Find("Player").transform.position = new Vector3(158.621f, 42.73f, -31.9f);
         GameObject.Find("Player").transform.rotation = Quaternion.Euler(0,0,0);
-        GameObject.Find("Player").GetComponent<FirstPersonController>().rotationX = 0;
+        player.rotationX = 0;
         GetComponent<SaveLoadSystem>().Save();
         SceneManager.LoadScene("MainMenu");
     }
@@ -182,7 +194,7 @@ public class GameManager : MonoBehaviour, ISaveable
         if (haveTicket == 1) ticket = true;
         else ticket = false;
         startTimer -= Time.deltaTime;
-        if (!endGame && !GameObject.Find("Player").GetComponent<FirstPersonController>().pause) gameTime += Time.deltaTime;
+        if (!endGame && !player.pause) gameTime += Time.deltaTime;
 
         wayClimberToggle.isOn = wayClimber;
         allSecretsToggle.isOn = allSecrets;
@@ -212,7 +224,7 @@ public class GameManager : MonoBehaviour, ISaveable
             returnoffice.SetActive(false);
         }
 
-        if (!GameObject.Find("Player").GetComponent<FirstPersonController>().pause && haveTicket == 1)
+        if (!player.pause && haveTicket == 1)
         {
             ticketDisplay.SetActive(true);
         }
@@ -327,16 +339,16 @@ public class GameManager : MonoBehaviour, ISaveable
 
             //Secrets
             secretsFound = this.secretsFound,
-            secret00  = this.secretState[0] ,
-            secret01  = this.secretState[1] ,
-            secret02  = this.secretState[2] ,
-            secret03  = this.secretState[3] ,
-            secret04  = this.secretState[4] ,
-            secret05  = this.secretState[5] ,
-            secret06  = this.secretState[6] ,
-            secret07  = this.secretState[7] ,
-            secret08  = this.secretState[8] ,
-            secret09  = this.secretState[9] ,
+            secret00  = this.secretState[0],
+            secret01  = this.secretState[1],
+            secret02  = this.secretState[2],
+            secret03  = this.secretState[3],
+            secret04  = this.secretState[4],
+            secret05  = this.secretState[5],
+            secret06  = this.secretState[6],
+            secret07  = this.secretState[7],
+            secret08  = this.secretState[8],
+            secret09  = this.secretState[9],
             secret10 = this.secretState[10],
             secret11 = this.secretState[11],
             secret12 = this.secretState[12],

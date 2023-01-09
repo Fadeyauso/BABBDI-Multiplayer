@@ -13,6 +13,7 @@ public class Pigeon : MonoBehaviour
     [SerializeField] private bool randomRot = true;
     [SerializeField] private bool animate = true;
     [SerializeField] private Animator anim;
+    private GameManager gameManager;
     private float walkTimer;
 
     private bool fly;
@@ -36,6 +37,7 @@ public class Pigeon : MonoBehaviour
     }
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         jumpTimer = Random.Range(1,2f);
 
         if (randomRot) transform.rotation = Quaternion.Euler(0, Random.Range(0, 360),0);
@@ -55,7 +57,7 @@ public class Pigeon : MonoBehaviour
 
         
 
-        if (distanceFromPlayer < (GameObject.Find("GameManager").GetComponent<GameManager>().trumpet == 1 && Input.GetButton("Fire1") ? maxDistance * 3f : maxDistance))
+        if (distanceFromPlayer < (gameManager.trumpet == 1 && Input.GetButton("Fire1") ? maxDistance * 3f : maxDistance))
         {
             if (!fly)
             {

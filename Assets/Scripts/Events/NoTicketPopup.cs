@@ -14,6 +14,12 @@ public class NoTicketPopup : MonoBehaviour
         c = textLabel.color;
         c.a = 0;
     }
+    private GameManager gameManager;
+    // Start is called before the first frame update
+    void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -21,11 +27,11 @@ public class NoTicketPopup : MonoBehaviour
         textLabel.color = c;
 
         timer -= Time.deltaTime;
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().noticketPopup == true)
+        if (gameManager.noticketPopup == true)
         {
             c.a = 1f;
             timer = 3f;
-            GameObject.Find("GameManager").GetComponent<GameManager>().noticketPopup = false;
+            gameManager.noticketPopup = false;
         }
         if (timer < 0 && timer > -5) 
         {

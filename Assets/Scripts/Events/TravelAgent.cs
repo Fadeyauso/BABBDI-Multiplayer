@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class TravelAgent : MonoBehaviour
 {
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<DialogueUI>().speaking) GameObject.Find("GameManager").GetComponent<GameManager>().secondPart = 1;
+        if (GetComponent<DialogueUI>().speaking) gameManager.secondPart = 1;
     }
 }

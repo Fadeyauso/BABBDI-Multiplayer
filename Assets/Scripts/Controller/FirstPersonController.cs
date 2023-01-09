@@ -112,6 +112,10 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float compassLookSpeed = 12f;
     [SerializeField] private float smoothCamSpeed = 2f;
     [SerializeField] private GameObject targetObject;
+    public bool invertX;
+    public bool invertY;
+    private int invertXFactor;
+    private int invertYFactor;
     public bool compassLook;
     public bool secretLook;
     private bool isZooming;
@@ -224,6 +228,7 @@ public class FirstPersonController : MonoBehaviour
     [Header("Interaction")]
     [SerializeField] private Vector3 interactionRayPoint = default;
     [SerializeField] private float interactionDistance = default;
+    [SerializeField] private float maxInteractionDistance = default;
     [SerializeField] private float sphereRadius = default;
     [SerializeField] private float maxSphereDistance = default;
     [SerializeField] private float currentHitDistance = default;
@@ -322,7 +327,11 @@ public class FirstPersonController : MonoBehaviour
 
 
     void Start(){
+        if (GameObject.Find("SavingOptions").GetComponent<SavingOptions>().mouseInvertedX == 1) invertX = true;
+        else invertX = false;
         
+        if (GameObject.Find("SavingOptions").GetComponent<SavingOptions>().mouseInvertedY == 1) invertY = true;
+        else invertY = false;
     }
 
     [SerializeField] private GameObject startButton;
@@ -333,6 +342,7 @@ public class FirstPersonController : MonoBehaviour
         if (dialogueActive) talkPopup.SetActive(false);
         if (IsSliding) onFlatGround = false;
         else onFlatGround = true;
+        
         //Pause Menu
         if (pause == true || (GameObject.Find("Outro").GetComponent<Outro>().timer < -4f))
         {
@@ -828,6 +838,11 @@ public class FirstPersonController : MonoBehaviour
         compassTimer -= Time.deltaTime;
         secretTimer -= Time.deltaTime;
 
+        if (invertX) invertXFactor = -1;
+        else invertXFactor = 1;
+        if (invertY) invertYFactor = -1;
+        else invertYFactor = 1;
+
         var targetRotation = Quaternion.LookRotation(targetObject.transform.position - playerCamera.transform.position);
         var secretTargetRotation = Quaternion.LookRotation((GetComponent<SecretFinder>().target != null ? GetComponent<SecretFinder>().target.transform.position - playerCamera.transform.position : GameObject.Find("ObjectPos").transform.position - playerCamera.transform.position));
 
@@ -870,15 +885,15 @@ public class FirstPersonController : MonoBehaviour
             }
             else {*/
                 //Controller look
-                rotationX -= Input.GetAxis("CameraHorizontal") * lookSpeedY;
-                transform.rotation *= Quaternion.Euler(0, Input.GetAxis("CameraVertical") * lookSpeedX, 0);
+                rotationX -= Input.GetAxis("CameraHorizontal") * lookSpeedY * invertYFactor;
+                transform.rotation *= Quaternion.Euler(0, Input.GetAxis("CameraVertical") * lookSpeedX * invertXFactor, 0);
 
                 //Keyboard look
-                rotationX -= Input.GetAxis("Mouse Y") * lookSpeedY;
+                rotationX -= Input.GetAxis("Mouse Y") * lookSpeedY * invertYFactor;
                 rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
                 playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, rotationZ);
 
-                transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
+                transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX * invertXFactor, 0);
             
             
 
@@ -935,7 +950,7 @@ public class FirstPersonController : MonoBehaviour
 
     }
     
-    private float slideTimer;
+    public float slideTimer;
     private float tempslideCountdown;
     public float slideCountdown = 1;
     public float keyUpTimer;
@@ -954,7 +969,7 @@ public class FirstPersonController : MonoBehaviour
         else 
         {
             isCrouching = ShouldCrouch;
-            if ((Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C) || Input.GetButton("Slide")  || Input.GetKey(KeyCode.LeftAlt)) && !characterController.isGrounded && !OnSlope()) InAirCrouch = true;
+            if ((Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C) || Input.GetButton("Slide") || Input.GetKey(KeyCode.LeftAlt)) && !characterController.isGrounded && !OnSlope()) InAirCrouch = true;
             else InAirCrouch = false;
         }
 
@@ -966,7 +981,6 @@ public class FirstPersonController : MonoBehaviour
             AddHorizontalForce(transform.forward / 12, IsSprinting ? sprintSlideImpulsion : slideImpulsion);
             deceleration = IsSprinting ? 2f : 3f;
             slideTimer = 3f;
-            Debug.Log("cacaca");
             tempslideCountdown = slideCountdown;
             playerSource.Play();
         }
@@ -980,7 +994,6 @@ public class FirstPersonController : MonoBehaviour
             playerSource.Stop();
             slideTimer = 0.1f;
             forceFactor = 0;
-            Debug.Log("caca");
         }
 
         if (((Input.GetKeyUp(crouchKey) || Input.GetKeyUp(KeyCode.C) || Input.GetKeyUp(KeyCode.LeftAlt) || Input.GetButtonUp("Slide") ) && !characterController.isGrounded)) keyUpTimer = 0.5f;
@@ -1055,6 +1068,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void HandleInteractionCheck()
     {
+        //Spherecast size
         if (Physics.SphereCast(playerCamera.transform.position, sphereRadius, playerCamera.transform.forward, out RaycastHit cacouHit, maxSphereDistance, nomotoLayer) && motorBike.GetComponent<InteractObject>().onMoto)
         {
             currentHitObject = cacouHit.transform.gameObject;
@@ -1075,6 +1089,17 @@ public class FirstPersonController : MonoBehaviour
             currentHitObject = null;
         }
 
+        //Raycastsize
+        if (Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit cast, maxInteractionDistance))
+        {
+            if (cast.transform.gameObject.layer == 7) currentHitObject = cast.transform.gameObject;
+            interactionDistance = cast.distance;
+        }
+        else{
+            interactionDistance = maxInteractionDistance;
+        }
+
+        //Raycast
         if (Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit frontCast0, interactionDistance, motoLayer) && !motorBike.GetComponent<InteractObject>().onMoto && !dialogueActive)
         {
             interactionSphere = true;
@@ -1222,6 +1247,17 @@ public class FirstPersonController : MonoBehaviour
         }
 
         if (dialogueActive) canThrow = false;
+        else if (Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit dontThrowCast, interactionDistance, allinteractLayer))
+        {
+            
+            if (dontThrowCast.collider.tag == "DontThrow")
+            {
+                Debug.Log("dontthrow");
+                canThrow = false;
+            }
+            else if ((isCrouching && headRay) || throwRay) canThrow = false;
+            else canThrow = true;
+        }
         else if (Physics.SphereCast(playerCamera.transform.position, sphereRadius, playerCamera.transform.forward, out RaycastHit hit2, currentHitDistance, allinteractLayer))
         {
             
@@ -1380,6 +1416,7 @@ public class FirstPersonController : MonoBehaviour
         Gizmos.color = Color.red;
         Debug.DrawLine(playerCamera.transform.position, playerCamera.transform.position + playerCamera.transform.forward * currentHitDistance);
         Gizmos.DrawWireSphere(playerCamera.transform.position + playerCamera.transform.forward * currentHitDistance, sphereRadius);
+        Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward * interactionDistance, Color.green);
     }
     
     

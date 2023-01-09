@@ -4,27 +4,29 @@ using UnityEngine;
 
 public class RequestTrain : Interactable
 {
-    private GameObject GameManager;
     private Material[] materials;
     public AudioClip train;
     public AudioClip sound;
     // Start is called before the first frame update
+
+    private GameManager gameManager;
+    // Start is called before the first frame update
     void Start()
     {
-        GameManager = GameObject.Find("GameManager");
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-     public override void OnFocus()
+    public override void OnFocus()
     {
         GameObject.Find("Player").GetComponent<FirstPersonController>().noticketPopup.SetActive(true);
     }
 
     public override void OnInteract()
     {
-        if (GameManager.GetComponent<GameManager>().haveTicket == 1)
+        if (gameManager.haveTicket == 1)
         {
-            GameManager.GetComponent<GameManager>().haveTicket = 0;
-            GameManager.GetComponent<GameManager>().requestTrain = 1;
+            gameManager.haveTicket = 0;
+            gameManager.requestTrain = 1;
             SoundManager.Instance.PlaySound(sound);
             SoundManager.Instance.PlaySound(train);
             GetComponent<AudioSource>().Play();
@@ -34,7 +36,7 @@ public class RequestTrain : Interactable
         }
         else
         {
-            GameManager.GetComponent<GameManager>().noticketPopup = true;
+            gameManager.noticketPopup = true;
         }
     }
 

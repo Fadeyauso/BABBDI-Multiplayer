@@ -12,6 +12,12 @@ public class SavePopup : MonoBehaviour
     public float glowSpeed;
     public float glowAmount;
     private Color c;
+    private GameManager gameManager;
+    // Start is called before the first frame update
+    void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
     // Start is called before the first frame update
     void Awake()
     {
@@ -28,12 +34,12 @@ public class SavePopup : MonoBehaviour
 
         timer -= Time.deltaTime;
         this.tmp.fontMaterial.SetFloat(ShaderUtilities.ID_LightAngle, 3f + Mathf.Sin(glowTimer) * glowAmount);
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().savePopup == true)
+        if (gameManager.savePopup == true)
         {
             glowTimer = 0;
             c.a = 1f;
             timer = 3f;
-            GameObject.Find("GameManager").GetComponent<GameManager>().savePopup = false;
+            gameManager.savePopup = false;
         }
         if (timer < 0) 
         {

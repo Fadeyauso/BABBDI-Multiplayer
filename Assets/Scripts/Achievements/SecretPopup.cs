@@ -18,6 +18,12 @@ public class SecretPopup : MonoBehaviour
         c.a = 0;
         c1.a = 0;
     }
+    private GameManager gameManager;
+    // Start is called before the first frame update
+    void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -26,12 +32,12 @@ public class SecretPopup : MonoBehaviour
         textLabel1.color = c1;
 
         timer -= Time.deltaTime;
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().secretPopup == true)
+        if (gameManager.secretPopup == true)
         {
             c.a = 1f;
             c1.a = 1f;
             timer = 3f;
-            GameObject.Find("GameManager").GetComponent<GameManager>().secretPopup = false;
+            gameManager.secretPopup = false;
         }
         if (timer < 0) 
         {

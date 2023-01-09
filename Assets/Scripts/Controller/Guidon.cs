@@ -31,21 +31,14 @@ public class Guidon : MonoBehaviour
 
     public void TiltSway(Quaternion initialRotation)
     {
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().gamepad)
-        {
-            float tiltY = Mathf.Clamp(-Input.GetAxis("CameraHorizontal") * rotationAmount, -maxRotationAmount, maxRotationAmount);
-        float tiltX = Mathf.Clamp(-Input.GetAxis("CameraVertical") * rotationAmount, -maxRotationAmount, maxRotationAmount);
-                Quaternion finalRotation = Quaternion.Euler(new Vector3(rotationX ? tiltX : 0f, rotationY ? tiltY : 0f, rotationZ ? tiltY : 0f));
 
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, finalRotation * initialRotation, Time.deltaTime * smoothRotation);
-        }
-        else{
+
             float tiltY = Mathf.Clamp(-Input.GetAxis("Mouse X") * rotationAmount, -maxRotationAmount, maxRotationAmount);
         float tiltX = Mathf.Clamp(-Input.GetAxis("Mouse Y") * rotationAmount, -maxRotationAmount, maxRotationAmount);
                 Quaternion finalRotation = Quaternion.Euler(new Vector3(rotationX ? tiltX : 0f, rotationY ? tiltY : 0f, rotationZ ? tiltY : 0f));
 
         transform.localRotation = Quaternion.Slerp(transform.localRotation, finalRotation * initialRotation, Time.deltaTime * smoothRotation);
-        }
+        
 
 
     }

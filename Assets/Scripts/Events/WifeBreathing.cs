@@ -10,10 +10,16 @@ public class WifeBreathing : MonoBehaviour
     {
         audio = GetComponent<AudioSource>();
     }
+    private GameManager gameManager;
+    // Start is called before the first frame update
+    void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1) audio.mute = true;
+        if (gameManager.secondPart == 1) audio.mute = true;
     }
 }

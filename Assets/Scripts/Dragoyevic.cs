@@ -11,11 +11,15 @@ public class Dragoyevic : MonoBehaviour
     public bool compassOK;
 
     private bool compassGive;
-
+    private GameManager gameManager;
+    private PickupItem player;
+    // Start is called before the first frame update
     // Start is called before the first frame update
     void Start()
     {
         compassAvailable = true;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        player = GameObject.Find("Player").GetComponent<PickupItem>();
     }
 
     // Update is called once per frame
@@ -28,31 +32,31 @@ public class Dragoyevic : MonoBehaviour
             giveCompass = false;
             compassAvailable = false;
             Debug.Log("cacou");
-            GameObject.Find("Player").GetComponent<PickupItem>().GetCompass();
+            player.GetCompass();
         }
 
         if (activateBridge) {
-            GameObject.Find("GameManager").GetComponent<GameManager>().bridgeTimer = 5;
+            gameManager.bridgeTimer = 5;
             activateBridge = false;
         }
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().bridgeTimer > 0) ActivateBridge();
+        if (gameManager.bridgeTimer > 0) ActivateBridge();
 
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().bridgeTimer < 1 && GameObject.Find("GameManager").GetComponent<GameManager>().bridgeTimer > 0) 
+        if (gameManager.bridgeTimer < 1 && gameManager.bridgeTimer > 0) 
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().bridgeCam.SetActive(false);
-            GameObject.Find("GameManager").GetComponent<GameManager>().userInterface.SetActive(true);
-            GameObject.Find("GameManager").GetComponent<GameManager>().userInterface1.SetActive(true);
+            gameManager.bridgeCam.SetActive(false);
+            gameManager.userInterface.SetActive(true);
+            gameManager.userInterface1.SetActive(true);
         }
     }
 
     void ActivateBridge()
     {
-        GameObject.Find("GameManager").GetComponent<GameManager>().bridgeCam.SetActive(true);
-        GameObject.Find("GameManager").GetComponent<GameManager>().userInterface.SetActive(false);
-        GameObject.Find("GameManager").GetComponent<GameManager>().userInterface1.SetActive(false);
-        
-        GameObject.Find("GameManager").GetComponent<GameManager>().anim1.SetBool("Trig1", true);
-        GameObject.Find("GameManager").GetComponent<GameManager>().anim2.SetBool("Trig1", true);
+        gameManager.bridgeCam.SetActive(true);
+        gameManager.userInterface.SetActive(false);
+        gameManager.userInterface1.SetActive(false);
+    
+        gameManager.anim1.SetBool("Trig1", true);
+        gameManager.anim2.SetBool("Trig1", true);
 
     }
 }

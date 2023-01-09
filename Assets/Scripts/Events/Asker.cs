@@ -6,18 +6,23 @@ public class Asker : MonoBehaviour
 {
     [SerializeField] public DialogueObject secondDialogue;
     [SerializeField] private GameObject ticket;
-
+    private GameManager gameManager;
+    // Start is called before the first frame update
+    void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1 && GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket == 0) 
+        if (gameManager.secondPart == 1 && gameManager.haveTicket == 0) 
         {
             GetComponent<AmbientVoiceEmitter>().active = true;
             GetComponent<NPC>().dialogue[0] = secondDialogue;
         }
         else GetComponent<AmbientVoiceEmitter>().active = false;
 
-        if (GetComponent<NPC>().dialogue[0] == secondDialogue && GetComponent<DialogueUI>().speaking && ticket != null && GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket == 0 && !GameObject.Find("GameManager").GetComponent<GameManager>().endGame) ticket.SetActive(true);
+        if (GetComponent<NPC>().dialogue[0] == secondDialogue && GetComponent<DialogueUI>().speaking && ticket != null && gameManager.haveTicket == 0 && !gameManager.endGame) ticket.SetActive(true);
     }
 }

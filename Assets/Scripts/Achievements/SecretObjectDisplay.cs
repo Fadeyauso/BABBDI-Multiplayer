@@ -13,16 +13,17 @@ public class SecretObjectDisplay : MonoBehaviour
 
     public Vector3 rotation;
 
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().secretState[secretId] == 1) collected = true;
+        if (gameManager.secretState[secretId] == 1) collected = true;
         else collected = false;
 
         if (collected) 

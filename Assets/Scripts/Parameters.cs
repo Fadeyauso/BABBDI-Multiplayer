@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Parameters : MonoBehaviour
 {
     public static Parameters Instance;
     public bool speedrun;
+    private SavingOptions save;
     // Start is called before the first frame update
     void Awake()
     {
@@ -17,16 +19,22 @@ public class Parameters : MonoBehaviour
         else {
             Destroy(gameObject);
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        save = GameObject.Find("SavingOptions").GetComponent<SavingOptions>();
         
     }
 
-    public void ValueChange()
+    // Update is called once per frame
+    void Start()
     {
-        speedrun = !speedrun;
+        if (save.speedrun == 1) speedrun = true;
+        else speedrun = false;
+    }
+
+    public void ValueChange(Toggle toggle)
+    {
+        speedrun = toggle.isOn;
+        if (speedrun) save.speedrun = 1;
+        else save.speedrun = 0;
     }
 }

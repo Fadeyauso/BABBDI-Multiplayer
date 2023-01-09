@@ -320,6 +320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1508109787}
   - component: {fileID: 1508109789}
+  - component: {fileID: 222256929}
   m_Layer: 10
   m_Name: FallSound
   m_TagString: Untagged
@@ -438,6 +439,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &222256929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508109786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e4bbebcd3782840899af7ca769f268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio: {fileID: 0}
 --- !u!1 &1570248698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,7 +1281,7 @@ MonoBehaviour:
   WillSlideOnSlopes: 1
   useFootsteps: 1
   canInteract: 1
-  bigImpact: {fileID: 8300000, guid: de72ba87325467d4ea649b65a2fc453f, type: 3}
+  bigImpact: {fileID: 8300000, guid: 11ed9f04b39e95a42af6608f564719c1, type: 3}
   smallImpact: {fileID: 8300000, guid: 11ed9f04b39e95a42af6608f564719c1, type: 3}
   stoneFall: {fileID: 8300000, guid: 80fa41dccc60ee241b214e7dac9cfd9e, type: 3}
   concreteFall: {fileID: 8300000, guid: 34c6299b47e4462478bb67c1f9b19fd1, type: 3}
@@ -1332,9 +1346,12 @@ MonoBehaviour:
   tiltAmount: 4
   tiltSpeed: 5
   compassLookSpeed: 12
+  smoothCamSpeed: 2
   targetObject: {fileID: 0}
   compassLook: 0
   secretLook: 0
+  camController: 1
+  smoothCam: 0
   baseStepSpeed: 0.5
   crouchStepMultiplier: 1.5
   sprintStepMultiplier: 0.6

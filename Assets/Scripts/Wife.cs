@@ -7,16 +7,17 @@ public class Wife : MonoBehaviour
     [SerializeField] private GameObject corpseParticles;
     [SerializeField] private GameObject corpseParticles2;
     [SerializeField] private AudioSource flies;
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 1)
+        if (gameManager.secondPart == 1)
         {
             gameObject.layer = 0;
             if (corpseParticles != null) corpseParticles.SetActive(true);

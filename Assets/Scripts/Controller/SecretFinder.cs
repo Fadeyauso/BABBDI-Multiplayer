@@ -20,10 +20,11 @@ public class SecretFinder : MonoBehaviour
         if (secrets[index] != null)
         {
             if (secrets[index].activeSelf) target = secrets[index].transform;
-            else index = Random.Range(0, secrets.Length-1);
+            else index = Random.Range(0, secrets.Length);
+            Debug.Log(index);
         }
         else 
-            index = Random.Range(0, secrets.Length-1);
+            index = Random.Range(0, secrets.Length);
 
         
         

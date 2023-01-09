@@ -31,6 +31,11 @@ public class MainMenu : MonoBehaviour
         audio.PlayOneShot(click);
     }
 
+    private void Start()
+    {
+        GameObject.Find("SavingOptions").GetComponent<SaveLoadSystem>().Load();
+    }
+
     
 
 }

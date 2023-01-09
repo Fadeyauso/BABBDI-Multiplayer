@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class FaceCamera : MonoBehaviour
 {
+    private FirstPersonController player;
+
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player").GetComponent<FirstPersonController>();
         
     }
 
