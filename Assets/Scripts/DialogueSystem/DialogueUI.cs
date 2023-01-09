@@ -95,8 +95,7 @@ public class DialogueUI : MonoBehaviour
         textLabel.text = string.Empty;
         //player.GetComponent<CollectItems>().dialogueActive = false;
         if ((!GetComponent<NPC>().dialogueDone) && (GetComponent<NPC>().dialogue.Length-1 == 0 ? !GetComponent<NPC>().interactedWith : GetComponent<NPC>().dialogueIndex > 0) && (GetComponent<NPC>().hasSecondPhase ? gameManager.secondPart == 0 : 1==1) && gameManager.startTimer < -1) 
-            Debug.Log("caca");
-
+            SoundManager.Instance.PlaySound(GetComponent<NPC>().exclamation.GetComponent<ExclamationPoint>().initClip);
         
     }
 }

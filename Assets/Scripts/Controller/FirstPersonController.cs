@@ -1252,7 +1252,6 @@ public class FirstPersonController : MonoBehaviour
             
             if (dontThrowCast.collider.tag == "DontThrow")
             {
-                Debug.Log("dontthrow");
                 canThrow = false;
             }
             else if ((isCrouching && headRay) || throwRay) canThrow = false;
@@ -1323,7 +1322,6 @@ public class FirstPersonController : MonoBehaviour
 
         if (upRay && !characterController.isGrounded) AddVerticalForce(new Vector3(0, -1, 0), 2f);
         if (OnCeilingSlope()){
-            Debug.Log("caca");
             AddVerticalForce(new Vector3(0, -1, 0), IsSprinting ? -8f : -5f);
             moveDirection.y = IsSprinting ? -8f : -5f;
         }
