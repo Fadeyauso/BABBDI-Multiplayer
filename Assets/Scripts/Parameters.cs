@@ -7,7 +7,7 @@ public class Parameters : MonoBehaviour
 {
     public static Parameters Instance;
     public bool speedrun;
-    private SavingOptions save;
+    public SavingOptions save;
     // Start is called before the first frame update
     void Awake()
     {

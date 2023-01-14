@@ -303,6 +303,7 @@ public class FirstPersonController : MonoBehaviour
     public float rotationZ = 0;
 
     public static FirstPersonController instance;
+    [SerializeField] private GameManager gameManager;
 
     void Awake()
     {
@@ -321,9 +322,12 @@ public class FirstPersonController : MonoBehaviour
         blower = GameObject.Find("Blower");
         grabber = GameObject.Find("Grabber");
         motorBike = GameObject.Find("Moto");
+        if (GameObject.Find("GameManager") != null) gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         initialRotation = playerCamera.transform.rotation;
     }
+
+    
 
 
     void Start(){
@@ -354,7 +358,7 @@ public class FirstPersonController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start")) && !GameObject.Find("GameManager").GetComponent<GameManager>().endGame)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start")) && !gameManager.endGame)
         {
             pauseMenu.SetActive(!pauseMenu.activeSelf);
             firstInterface.SetActive(true);
@@ -375,7 +379,7 @@ public class FirstPersonController : MonoBehaviour
                 Cursor.visible = false;
             }
 
-            if (GameObject.Find("GameManager").GetComponent<GameManager>().gamepad)
+            if (gameManager.gamepad)
             {
                 var eventSystem = EventSystem.current;
                 eventSystem.SetSelectedGameObject(startButton, new BaseEventData(eventSystem));
@@ -479,14 +483,15 @@ public class FirstPersonController : MonoBehaviour
         aftervaultjumpTimer -= Time.deltaTime;
         prejumpCancelTimer -= Time.deltaTime;
         
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().endGame) canMove = false;
+        if (gameManager.gameTime < 0) canMove = false;
+        else if (gameManager.endGame) canMove = false;
         else if (climber != null) 
         {
 
             if (pauseMenu.activeSelf == true) canMove = false;
             else if (climber.GetComponent<Climber>().trigger) canMove = false;
-            else if (GetComponent<EnterZone>().inLift && GameObject.Find("GameManager").GetComponent<GameManager>().inActivatedLift) canMove = false;
-            else if (GameObject.Find("GameManager").GetComponent<GameManager>().bridgeTimer > 0) canMove = false;
+            else if (GetComponent<EnterZone>().inLift && gameManager.inActivatedLift) canMove = false;
+            else if (gameManager.bridgeTimer > 0) canMove = false;
             else canMove = !dialogueActive;
         }
         if (climber == null) canMove = !dialogueActive;

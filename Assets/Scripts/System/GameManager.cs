@@ -80,6 +80,8 @@ public class GameManager : MonoBehaviour, ISaveable
     public int haveTicket;
     public int haveMap;
     public float startTimer;
+    public GameObject resetRun;
+    private SavingOptions saveSpeedrun;
 
     //Achievements
     [Header("Achievements")]
@@ -128,10 +130,11 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         
         secretState = new int[secrets.Length];
-        if (Instance != null) Instance = this;
+        if (Instance == null) Instance = this;
 
         GetComponent<SaveLoadSystem>().Load();
         
+        if (GameObject.Find("Parameters") != null) saveSpeedrun = GameObject.Find("Parameters").GetComponent<Parameters>().save;
     }
 
     private FirstPersonController player;
@@ -166,7 +169,7 @@ public class GameManager : MonoBehaviour, ISaveable
         secondPart = 0;
         requestTrain = 0;
         gameTime = 0;
-        GameObject.Find("Player").transform.position = new Vector3(158.621f, 42.73f, -31.9f);
+        GameObject.Find("Player").transform.position = new Vector3(160.193f, 42.1766f, -38.49f);
         GameObject.Find("Player").transform.rotation = Quaternion.Euler(0,0,0);
         player.rotationX = 0;
         GetComponent<SaveLoadSystem>().Save();
@@ -177,6 +180,7 @@ public class GameManager : MonoBehaviour, ISaveable
     public float bridgeTimer;
     void Update() 
     {
+        if (gameTime < 0) GameObject.Find("Player").transform.position = new Vector3(160.193f, 42.1766f, -38.49f);
         if (secretsFound >= 21) 
         {
             if (!allSecrets) Popup();
@@ -185,6 +189,9 @@ public class GameManager : MonoBehaviour, ISaveable
             lastAchievement = "Secrets master";
             SteamIntegration.Instance.UnlockAchivement("SecretsMaster");
         }
+
+        if (saveSpeedrun.speedrun == 1) resetRun.SetActive(true);
+        else resetRun.SetActive(false);
 
         if (Input.GetJoystickNames().Length != 0)
             if (Input.GetJoystickNames()[0] != "") gamepad = true;
@@ -305,6 +312,11 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         GameObject.Find("Player").transform.position = GameObject.Find("OfficePosition").transform.position;
         lobbyTimer = 0.1f;
+    }
+
+    public void ResetRun() 
+    {
+        gameTime = -1;
     }
 
     //Saving Process
