@@ -190,8 +190,8 @@ public class GameManager : MonoBehaviour, ISaveable
             SteamIntegration.Instance.UnlockAchivement("SecretsMaster");
         }
 
-        if (saveSpeedrun.speedrun == 1) resetRun.SetActive(true);
-        else resetRun.SetActive(false);
+        /*if (saveSpeedrun.speedrun == 1) resetRun.SetActive(true);
+        else resetRun.SetActive(false);*/
 
         if (Input.GetJoystickNames().Length != 0)
             if (Input.GetJoystickNames()[0] != "") gamepad = true;
