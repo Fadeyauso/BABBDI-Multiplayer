@@ -36,6 +36,11 @@ public class MainMenu : MonoBehaviour
         GameObject.Find("SavingOptions").GetComponent<SaveLoadSystem>().Load();
     }
 
+    public void MultiplayerClicked()
+    {
+
+    }
+
     
 
 }

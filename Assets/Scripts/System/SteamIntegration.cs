@@ -23,7 +23,7 @@ public class SteamIntegration : MonoBehaviour
         try
         {
 
-            Steamworks.SteamClient.Init(2240530);
+            //Steamworks.SteamClient.Init(2240530);
             PrintYourName();
             connected = true;
         }
@@ -42,7 +42,7 @@ public class SteamIntegration : MonoBehaviour
     [ContextMenu("IsThisAchievementUnlocked")]
     public void IsThisAchievementUnlocked(string id)
     {
-        var ach = new Steamworks.Data.Achievement(id);
+        //var ach = new Steamworks.Data.Achievement(id);
 
     }
 
@@ -51,8 +51,8 @@ public class SteamIntegration : MonoBehaviour
     {
         if (connected)
         {
-            var ach = new Steamworks.Data.Achievement(id);
-            if (ach.State == false) ach.Trigger();
+            //var ach = new Steamworks.Data.Achievement(id);
+            //if (ach.State == false) ach.Trigger();
             Debug.Log("AchievementUnlocked : " + id);
         }
 
@@ -61,8 +61,8 @@ public class SteamIntegration : MonoBehaviour
     [ContextMenu("ClearAchievementStatus")]
     public void ClearAchievementStatus(string id)
     {
-        var ach = new Steamworks.Data.Achievement(id);
-        ach.Clear();
+        //var ach = new Steamworks.Data.Achievement(id);
+        //ach.Clear();
     }
 
 
