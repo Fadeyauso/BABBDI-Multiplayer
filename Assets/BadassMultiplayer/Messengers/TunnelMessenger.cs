@@ -30,26 +30,34 @@ public class TunnelMessenger : IKNetworkMessenger
                 if (available > 0)
                 {
 
-                    var bfr = new byte[available];
-                    TCP.Client.Receive(bfr);
-                    var stream = new MemoryStream(bfr);
-                    var reader = new BinaryReader(stream);
-                    var typeName = reader.ReadString();
-                    var type = Type.GetType(typeName);
-                    var message = Activator.CreateInstance(type) as KNetworkMessage;
-                    if (message is KNetworkObjectMessage objMsg)
+                    try
                     {
-                        objMsg.objectId = new KNetworkId(reader.ReadUInt64());
-                        message.Deserialize(reader);
-                        Dispatcher.RunOnMainThread(() => objectMsgCallback(objMsg));
+                        var bfr = new byte[available];
+                        TCP.Client.Receive(bfr);
+                        var stream = new MemoryStream(bfr);
+                        var reader = new BinaryReader(stream);
+                        var typeName = reader.ReadString();
+                        var type = Type.GetType(typeName);
+                        var message = Activator.CreateInstance(type) as KNetworkMessage;
+                        if (message is KNetworkObjectMessage objMsg)
+                        {
+                            objMsg.objectId = new KNetworkId(reader.ReadUInt64());
+                            message.Deserialize(reader);
+                            Dispatcher.RunOnMainThread(() => objectMsgCallback(objMsg));
 
 
+                        }
+                        else
+                        {
+                            message.Deserialize(reader);
+                            Dispatcher.RunOnMainThread(() => globalMsgCallback(message));
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        message.Deserialize(reader);
-                        Dispatcher.RunOnMainThread(() => globalMsgCallback(message));
+                        Debug.LogError(ex);
                     }
+                    
 
 
                 }

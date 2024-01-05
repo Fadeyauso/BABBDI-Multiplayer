@@ -16,7 +16,7 @@ public class BadassServer : MonoBehaviour
 
     public void Init()
     {
-        TCP = new TcpListener(System.Net.IPAddress.Any, 24726);
+        TCP = new TcpListener(IPAddress.Any, 24726);
         UDP = new UdpClient();
 
         TCP.Start();
