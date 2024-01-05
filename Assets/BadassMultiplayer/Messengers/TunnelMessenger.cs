@@ -26,6 +26,8 @@ public class TunnelMessenger : IKNetworkMessenger
         {
             for (; ; )
             {
+                if (KNetworkManager.killswitch)
+                    return;
                 var available = TCP.Available;
                 if (available > 0)
                 {
@@ -36,6 +38,7 @@ public class TunnelMessenger : IKNetworkMessenger
                         TCP.Client.Receive(bfr);
                         var stream = new MemoryStream(bfr);
                         var reader = new BinaryReader(stream);
+                        Debug.Log(Encoding.UTF8.GetString(stream.ToArray()));
                         var typeName = reader.ReadString();
                         var type = Type.GetType(typeName);
                         var message = Activator.CreateInstance(type) as KNetworkMessage;

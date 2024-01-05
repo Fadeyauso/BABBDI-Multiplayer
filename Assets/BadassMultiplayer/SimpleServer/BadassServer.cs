@@ -12,8 +12,11 @@ public class BadassServer : MonoBehaviour
 
     public List<TcpClient> tcpClients = new List<TcpClient>();
     public List<UdpClient> udpClients = new List<UdpClient>();
-    
 
+    private void OnApplicationQuit()
+    {
+        KNetworkManager.killswitch = true;
+    }
     public void Init()
     {
         TCP = new TcpListener(IPAddress.Any, 24726);
@@ -24,6 +27,8 @@ public class BadassServer : MonoBehaviour
         {
             for (; ; )
             {
+                if (KNetworkManager.killswitch)
+                    return;
                 if (TCP.Pending())
                 {
                     var newClient = TCP.AcceptTcpClient();

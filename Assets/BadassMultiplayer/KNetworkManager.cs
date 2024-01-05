@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class KNetworkManager : MonoBehaviour
 {
+    public static bool killswitch = false;
     public const int PLAYER_ID_START = 10000;
     public static KNetworkManager instance;
 
@@ -28,6 +29,10 @@ public class KNetworkManager : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
+    }
+    private void OnApplicationQuit()
+    {
+        killswitch = true;
     }
     public void Init()
     {
