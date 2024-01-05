@@ -31,6 +31,11 @@ public class Climber : MonoBehaviour
         
     }
 
+    [KNetMessageHandler(typeof(OnItemUsedMessage))]
+    public void OnPickaxeUsed(OnItemUsedMessage message)
+    {
+        Debug.Log("Pickaxe used");
+    }
     // Update is called once per frame
     void Update()
     {
@@ -39,6 +44,7 @@ public class Climber : MonoBehaviour
         timer -= Time.deltaTime;
         if (Input.GetButtonDown("Jump") && trigger)
         {
+
             pick = false;
             timer = 0.2f;
             trigger = false;
@@ -49,8 +55,6 @@ public class Climber : MonoBehaviour
         if (!Input.GetButton("Fire1") && !player.GetComponent<FirstPersonController>().pause)
         {
             trigger = false;
-
-            
         }
 
         if (Input.GetButtonDown("Fire1") && !player.GetComponent<FirstPersonController>().pause)
@@ -58,6 +62,7 @@ public class Climber : MonoBehaviour
             timer = 0f;
             hitb = true;
             pick = true;
+
         }
 
         if (GetComponent<InteractObject>().extended && timer > 0 && timer < 0.05f)

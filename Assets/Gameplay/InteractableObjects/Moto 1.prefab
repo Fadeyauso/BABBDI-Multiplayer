@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2896923537395855426}
   - component: {fileID: 2896923537395855427}
   - component: {fileID: 870049868}
+  - component: {fileID: -3072055771337086117}
   m_Layer: 14
   m_Name: Moto 1
   m_TagString: Untagged
@@ -194,6 +195,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.0422468, y: 1.5302379, z: 0.52937216}
   m_Center: {x: 0.032486796, y: 0.7577425, z: 0.0011701875}
+--- !u!114 &-3072055771337086117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2662358873661873262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f56d4fd760df9d468bda0093bae452b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectId:
+    uid: 0
 --- !u!1 &4868007707446919377
 GameObject:
   m_ObjectHideFlags: 0

@@ -122,85 +122,106 @@ public class PickupItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (g.pickup)
         {
             g.pickup = false;
+
+            KNetworkManager.instance.messenger.SendGlobalMessage(new ItemPickedUpMessage() { playerId = KNetworkManager.instance.localPlayerId, objectId = g.itemToPickup.GetNetObject().objectId.uid });
+
             if (g.item == 0) 
             {
-                GameObject obj = Instantiate(soap, GameObject.Find("ObjectPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
-                obj.GetComponent<InteractObject>().inHands = true;
+                g.itemToPickup.transform.position = GameObject.Find("ObjectPos").transform.position;
+                g.itemToPickup.transform.parent = GameObject.Find("Main Camera").transform;
+                g.itemToPickup.inHands = true;
             }
             if (g.item == 1) 
             {
-                GameObject obj = Instantiate(club, GameObject.Find("ObjectPos2").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
-                obj.GetComponent<InteractObject>().inHands = true;
-                GameObject.Find("Player").GetComponent<FirstPersonController>().club = obj;
+                g.itemToPickup.transform.position = GameObject.Find("ObjectPos2").transform.position;
+                g.itemToPickup.transform.parent = GameObject.Find("Main Camera").transform;
+                g.itemToPickup.inHands = true;
+                GameObject.Find("Player").GetComponent<FirstPersonController>().club = g.itemToPickup.gameObject;
             }
             if (g.item == 2) 
             {
-                GameObject obj = Instantiate(climber, GameObject.Find("Pickaxe01").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
-                obj.GetComponent<InteractObject>().inHands = true;
-                GameObject.Find("Player").GetComponent<FirstPersonController>().climber = obj;
+
+                g.itemToPickup.transform.position = GameObject.Find("Pickaxe01").transform.position;
+                g.itemToPickup.transform.parent = GameObject.Find("Main Camera").transform;
+                g.itemToPickup.inHands = true;
+                GameObject.Find("Player").GetComponent<FirstPersonController>().climber = g.itemToPickup.gameObject;
             }
             if (g.item == 4) 
             {
-                GameObject obj = Instantiate(flashlight, GameObject.Find("LightPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
-                obj.GetComponent<InteractObject>().inHands = true;
+                g.itemToPickup.transform.position = GameObject.Find("LightPos").transform.position;
+                g.itemToPickup.transform.parent = GameObject.Find("Main Camera").transform;
+                g.itemToPickup.inHands = true;
             }
             if (g.item == 5) 
             {
-                GameObject obj = Instantiate(propeller, GameObject.Find("PropellerPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
-                obj.GetComponent<InteractObject>().inHands = true;
-                GameObject.Find("Player").GetComponent<FirstPersonController>().propeller = obj;
+                g.itemToPickup.transform.position = GameObject.Find("PropellerPos").transform.position;
+                g.itemToPickup.transform.parent = GameObject.Find("Main Camera").transform;
+                g.itemToPickup.inHands = true;
+
+                GameObject.Find("Player").GetComponent<FirstPersonController>().propeller = g.itemToPickup.gameObject;
             }
             if (g.item == 6) 
             {
-                GameObject obj = Instantiate(blower, GameObject.Find("BlowerPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
-                obj.GetComponent<InteractObject>().inHands = true;
-                GameObject.Find("Player").GetComponent<FirstPersonController>().blower = obj;
+                g.itemToPickup.transform.position = GameObject.Find("BlowerPos").transform.position;
+                g.itemToPickup.transform.parent = GameObject.Find("Main Camera").transform;
+                g.itemToPickup.inHands = true;
+                GameObject.Find("Player").GetComponent<FirstPersonController>().blower = g.itemToPickup.gameObject;
             }
             if (g.item == 7) 
             {
-                GameObject obj = Instantiate(ball, GameObject.Find("ObjectPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
-                obj.GetComponent<InteractObject>().inHands = true;
+                g.itemToPickup.transform.position = GameObject.Find("ObjectPos").transform.position;
+                g.itemToPickup.transform.parent = GameObject.Find("Main Camera").transform;
+                g.itemToPickup.inHands = true;
             }
             if (g.item == 8) 
             {
-                GameObject obj = Instantiate(bigball, GameObject.Find("BigBallPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
-                obj.GetComponent<InteractObject>().inHands = true;
+                g.itemToPickup.transform.position = GameObject.Find("BigBallPos").transform.position;
+                g.itemToPickup.transform.parent = GameObject.Find("Main Camera").transform;
+                g.itemToPickup.inHands = true;
             }
             if (g.item == 9) 
             {
-                GameObject obj = Instantiate(stick, GameObject.Find("StickPos01").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
-                obj.GetComponent<InteractObject>().inHands = true;
+                g.itemToPickup.transform.position = GameObject.Find("StickPos01").transform.position;
+                g.itemToPickup.transform.parent = GameObject.Find("Main Camera").transform;
+                g.itemToPickup.inHands = true;
             }
             if (g.item == 10) 
             {
-                GameObject obj = Instantiate(grabber, GameObject.Find("GrabberPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
-                obj.GetComponent<InteractObject>().inHands = true;
-                GameObject.Find("Player").GetComponent<FirstPersonController>().grabber = obj;
+                g.itemToPickup.transform.position = GameObject.Find("GrabberPos").transform.position;
+                g.itemToPickup.transform.parent = GameObject.Find("Main Camera").transform;
+                g.itemToPickup.inHands = true;
+                GameObject.Find("Player").GetComponent<FirstPersonController>().grabber = g.itemToPickup.gameObject;
             }
             if (g.item == 11) 
             {
-                GameObject obj = Instantiate(motorBike, GameObject.Find("MotoPos").transform.position, Quaternion.identity, GameObject.Find("Player").transform);
-                obj.GetComponent<InteractObject>().inHands = true;
-                GameObject.Find("Player").GetComponent<FirstPersonController>().motorBike = obj;
+                g.itemToPickup.transform.position = GameObject.Find("MotoPos").transform.position;
+                g.itemToPickup.transform.parent = GameObject.Find("Main Camera").transform;
+                g.itemToPickup.inHands = true;
+                GameObject.Find("Player").GetComponent<FirstPersonController>().motorBike = g.itemToPickup.gameObject;
             }
             if (g.item == 12) 
             {
-                GameObject obj = Instantiate(compass, GameObject.Find("CompassPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
-                obj.GetComponent<InteractObject>().inHands = true;
+                g.itemToPickup.transform.position = GameObject.Find("CompassPos").transform.position;
+                g.itemToPickup.transform.parent = GameObject.Find("Main Camera").transform;
+                g.itemToPickup.inHands = true;
             }
             if (g.item == 13) 
             {
-                GameObject obj = Instantiate(trumpet, GameObject.Find("TrumpetPos00").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
-                obj.GetComponent<InteractObject>().inHands = true;
+                g.itemToPickup.transform.position = GameObject.Find("TrumpetPos00").transform.position;
+                g.itemToPickup.transform.parent = GameObject.Find("Main Camera").transform;
+                g.itemToPickup.inHands = true;
             }
             if (g.item == 16) 
             {
-                GameObject obj = Instantiate(secretfinder, GameObject.Find("SecretFinderPos").transform.position, Quaternion.identity, GameObject.Find("Main Camera").transform);
-                obj.GetComponent<InteractObject>().inHands = true;
+                g.itemToPickup.transform.position = GameObject.Find("SecretFinderPos").transform.position;
+                g.itemToPickup.transform.parent = GameObject.Find("Main Camera").transform;
+                g.itemToPickup.inHands = true;
             }
+            
             
         }
     }

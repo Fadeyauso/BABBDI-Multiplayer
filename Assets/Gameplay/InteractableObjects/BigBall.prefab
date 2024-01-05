@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6143136128502822144}
   - component: {fileID: 6143136128502822146}
   - component: {fileID: 2898987526393491704}
+  - component: {fileID: -5146549300767674943}
   m_Layer: 11
   m_Name: BigBall
   m_TagString: Object/Wood
@@ -166,3 +167,17 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-5146549300767674943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6143136128502822149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f56d4fd760df9d468bda0093bae452b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectId:
+    uid: 0

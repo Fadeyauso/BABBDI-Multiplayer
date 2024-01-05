@@ -475,6 +475,7 @@ GameObject:
   - component: {fileID: 2726434965888799176}
   - component: {fileID: 9128256878204351193}
   - component: {fileID: 488600665}
+  - component: {fileID: 3024369025859509306}
   m_Layer: 7
   m_Name: Propeller
   m_TagString: Untagged
@@ -668,3 +669,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.14, y: 1.9795214, z: 0.13}
   m_Center: {x: -0.003123673, y: -0.5062237, z: -0.0031287575}
+--- !u!114 &3024369025859509306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4327537369094118176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f56d4fd760df9d468bda0093bae452b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectId:
+    uid: 0

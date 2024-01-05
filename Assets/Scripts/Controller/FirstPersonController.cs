@@ -327,7 +327,19 @@ public class FirstPersonController : MonoBehaviour
         initialRotation = playerCamera.transform.rotation;
     }
 
-    
+
+
+    private void FixedUpdate()
+    {
+        if(KNetworkManager.instance.localPlayerId!=-1)
+        {
+            var msg = new PlayerPositionSyncMessage();
+            msg.playerId = KNetworkManager.instance.localPlayerId;
+            msg.position = transform.position;
+            msg.rotation = transform.eulerAngles;
+            KNetworkManager.instance.messenger.SendGlobalMessage(msg);
+        }
+    }
 
 
     void Start(){

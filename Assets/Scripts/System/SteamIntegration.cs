@@ -1,3 +1,4 @@
+using Steamworks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,7 @@ public class SteamIntegration : MonoBehaviour
         try
         {
 
+            SteamAPI.Init();
             //Steamworks.SteamClient.Init(2240530);
             PrintYourName();
             connected = true;

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1751994052887972633}
   - component: {fileID: 1751994052887972635}
   - component: {fileID: 2555521659523034163}
+  - component: {fileID: 6778614970674033621}
   m_Layer: 11
   m_Name: Compass
   m_TagString: Object/Wood
@@ -166,3 +167,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3089751, y: 0.17106628, z: 0.5599601}
   m_Center: {x: -0.0018712506, y: 0.024932861, z: 0.07047212}
+--- !u!114 &6778614970674033621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751994052887972636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f56d4fd760df9d468bda0093bae452b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectId:
+    uid: 0

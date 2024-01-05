@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour, ISaveable
     public int maxNpc;
     [HideInInspector] public bool pickup;
     [HideInInspector] public int item;
+    [HideInInspector] public InteractObject itemToPickup;
     [HideInInspector] public bool inActivatedLift;
     [HideInInspector] public bool secretPopup;
     [HideInInspector] public bool mapPopup;

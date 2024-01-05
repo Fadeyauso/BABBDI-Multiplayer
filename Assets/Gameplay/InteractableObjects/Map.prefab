@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3256234497327333427}
   - component: {fileID: 5385853466932290670}
   - component: {fileID: 3142154583775165659}
+  - component: {fileID: -5643437115804027763}
   m_Layer: 7
   m_Name: Map
   m_TagString: DontThrow
@@ -166,3 +167,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.69856894, y: 0.052233778, z: 0.6807061}
   m_Center: {x: -0.0123927, y: 0.029505245, z: -0.000057429083}
+--- !u!114 &-5643437115804027763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272320931436324546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f56d4fd760df9d468bda0093bae452b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectId:
+    uid: 0

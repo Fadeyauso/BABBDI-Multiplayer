@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 8935998254836586068}
   - component: {fileID: 3884441225172641045}
   - component: {fileID: 3884441225172641046}
+  - component: {fileID: 4105842158836085694}
   m_Layer: 7
   m_Name: Moto
   m_TagString: Untagged
@@ -342,3 +343,17 @@ MonoBehaviour:
   tiltSpeed: 7
   idle: {fileID: 0}
   run: {fileID: 0}
+--- !u!114 &4105842158836085694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8595361496982867180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f56d4fd760df9d468bda0093bae452b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectId:
+    uid: 0

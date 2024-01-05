@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5827894912679754332}
   - component: {fileID: 4780663158137708538}
   - component: {fileID: 6266015423782073459}
+  - component: {fileID: -4922147090007500925}
   m_Layer: 7
   m_Name: Blower
   m_TagString: Untagged
@@ -154,6 +155,8 @@ MonoBehaviour:
   origin: {fileID: 0}
   power: 30
   isActive: 0
+  battery: 0
+  batteryMax: 2
   motorClip: {fileID: 8300000, guid: 2fefc9a530da0814bb201ae06cee723a, type: 3}
   endClip: {fileID: 8300000, guid: 420c1af1d91c49c44b9f1fd979dde9d7, type: 3}
   blowMovement: {x: 0, y: 0, z: 0}
@@ -187,3 +190,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2487040322718625212, guid: bf18076fd78b05642b66cd8f4641cd63, type: 3}
+--- !u!114 &-4922147090007500925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132271906163460838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f56d4fd760df9d468bda0093bae452b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectId:
+    uid: 0

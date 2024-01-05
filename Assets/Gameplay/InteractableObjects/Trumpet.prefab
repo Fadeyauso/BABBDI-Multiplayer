@@ -83,6 +83,7 @@ GameObject:
   - component: {fileID: 54330120706433034}
   - component: {fileID: 54330120706433036}
   - component: {fileID: 54330120706433035}
+  - component: {fileID: 1510347258277971006}
   m_Layer: 7
   m_Name: Trumpet
   m_TagString: Object/Wood
@@ -383,3 +384,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1472614519720423332, guid: c6eed1bba7c3d4e4d9c02ba425fab521, type: 3}
+--- !u!114 &1510347258277971006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4454581915306619782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f56d4fd760df9d468bda0093bae452b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectId:
+    uid: 0

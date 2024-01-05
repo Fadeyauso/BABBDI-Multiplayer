@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 594761223}
   - component: {fileID: 594761222}
   - component: {fileID: 594761221}
+  - component: {fileID: 1425800563019089390}
   m_Layer: 13
   m_Name: FlashLightCollider
   m_TagString: Untagged
@@ -345,6 +346,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   light: {fileID: 0}
+--- !u!114 &1425800563019089390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5798783749600678523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f56d4fd760df9d468bda0093bae452b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectId:
+    uid: 0
 --- !u!1 &8490211037589452862
 GameObject:
   m_ObjectHideFlags: 0

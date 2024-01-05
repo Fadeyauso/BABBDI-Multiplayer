@@ -63,8 +63,9 @@ public class InteractObject : Interactable
 
                 GameObject.Find("GameManager").GetComponent<GameManager>().pickup = true;
                 GameObject.Find("GameManager").GetComponent<GameManager>().item = GetComponent<ItemProperties>().id;
-                if (gameObject.tag == "guidon") Destroy(transform.parent.gameObject);
-                Destroy(gameObject);
+                GameObject.Find("GameManager").GetComponent<GameManager>().itemToPickup = this;
+                //if (gameObject.tag == "guidon") Destroy(transform.parent.gameObject);
+                //Destroy(gameObject);
             
             }
 
@@ -158,6 +159,7 @@ public class InteractObject : Interactable
                     collider.isTrigger = true;
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1") || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
                     {
+                        KNetworkManager.instance.messenger.SendGlobalMessage(new ItemDroppedMessage() { playerId = KNetworkManager.instance.localPlayerId, objectId = this.GetNetObject().objectId.uid });
                         throwObject = true;
                         inHands = false;
                     }
@@ -194,7 +196,9 @@ public class InteractObject : Interactable
                     
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
                         {
-                            throwObject = true;
+                        KNetworkManager.instance.messenger.SendGlobalMessage(new ItemDroppedMessage() { playerId = KNetworkManager.instance.localPlayerId, objectId = this.GetNetObject().objectId.uid });
+
+                        throwObject = true;
                             inHands = false;
                         }
 
@@ -243,6 +247,8 @@ public class InteractObject : Interactable
                     {
                         if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && GetComponent<Climber>().trigger == false && !player.GetComponent<EnterZone>().inLift) 
                         {
+                            KNetworkManager.instance.messenger.SendGlobalMessage(new ItemDroppedMessage() { playerId = KNetworkManager.instance.localPlayerId, objectId = this.GetNetObject().objectId.uid });
+
                             throwObject = true;
                             inHands = false;
                         }
@@ -295,6 +301,8 @@ public class InteractObject : Interactable
                     collider.isTrigger = true;
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
+                        KNetworkManager.instance.messenger.SendGlobalMessage(new ItemDroppedMessage() { playerId = KNetworkManager.instance.localPlayerId, objectId = this.GetNetObject().objectId.uid });
+
                         throwObject = true;
                         inHands = false;
                     }
@@ -330,6 +338,8 @@ public class InteractObject : Interactable
                     collider.isTrigger = true;
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
+                        KNetworkManager.instance.messenger.SendGlobalMessage(new ItemDroppedMessage() { playerId = KNetworkManager.instance.localPlayerId, objectId = this.GetNetObject().objectId.uid });
+
                         throwObject = true;
                         inHands = false;
                     }
@@ -363,6 +373,8 @@ public class InteractObject : Interactable
                     collider.isTrigger = true;
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
+                        KNetworkManager.instance.messenger.SendGlobalMessage(new ItemDroppedMessage() { playerId = KNetworkManager.instance.localPlayerId, objectId = this.GetNetObject().objectId.uid });
+
                         throwObject = true;
                         inHands = false;
                     }
@@ -396,6 +408,8 @@ public class InteractObject : Interactable
                     collider.isTrigger = true;
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
+                        KNetworkManager.instance.messenger.SendGlobalMessage(new ItemDroppedMessage() { playerId = KNetworkManager.instance.localPlayerId, objectId = this.GetNetObject().objectId.uid });
+
                         throwObject = true;
                         inHands = false;
                     }
@@ -434,7 +448,9 @@ public class InteractObject : Interactable
                     rb.velocity = new Vector3(0,0,0);
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
                         {
-                            throwObject = true;
+                        KNetworkManager.instance.messenger.SendGlobalMessage(new ItemDroppedMessage() { playerId = KNetworkManager.instance.localPlayerId, objectId = this.GetNetObject().objectId.uid });
+
+                        throwObject = true;
                             inHands = false;
                         }
 
@@ -474,6 +490,8 @@ public class InteractObject : Interactable
                     GameObject.Find("GameManager").GetComponent<GameManager>().grabber = 1;
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
+                        KNetworkManager.instance.messenger.SendGlobalMessage(new ItemDroppedMessage() { playerId = KNetworkManager.instance.localPlayerId, objectId = this.GetNetObject().objectId.uid });
+
                         throwObject = true;
                         inHands = false;
                     }
@@ -509,7 +527,9 @@ public class InteractObject : Interactable
                     //rb.velocity = new Vector3(0,0,0);
                     if (((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) && (GameObject.Find("GameManager").GetComponent<GameManager>().secondPart == 0 || GameObject.Find("GameManager").GetComponent<GameManager>().haveTicket == 1)) 
                         {
-                            throwObject = true;
+                        KNetworkManager.instance.messenger.SendGlobalMessage(new ItemDroppedMessage() { playerId = KNetworkManager.instance.localPlayerId, objectId = this.GetNetObject().objectId.uid });
+
+                        throwObject = true;
                             inHands = false;
                         }
 
@@ -560,6 +580,8 @@ public class InteractObject : Interactable
                     collider.isTrigger = true;
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
+                        KNetworkManager.instance.messenger.SendGlobalMessage(new ItemDroppedMessage() { playerId = KNetworkManager.instance.localPlayerId, objectId = this.GetNetObject().objectId.uid });
+
                         throwObject = true;
                         inHands = false;
                     }
@@ -598,7 +620,9 @@ public class InteractObject : Interactable
                     //rb.velocity = new Vector3(0,0,0);
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow && !player.GetComponent<EnterZone>().inLift) 
                         {
-                            throwObject = true;
+                        KNetworkManager.instance.messenger.SendGlobalMessage(new ItemDroppedMessage() { playerId = KNetworkManager.instance.localPlayerId, objectId = this.GetNetObject().objectId.uid });
+
+                        throwObject = true;
                             inHands = false;
                         }
 
@@ -640,6 +664,8 @@ public class InteractObject : Interactable
                     collider.isTrigger = true;
                     if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Interact")) && player.GetComponent<FirstPersonController>().canThrow  && timer < 0 && !player.GetComponent<EnterZone>().inLift) 
                     {
+                        KNetworkManager.instance.messenger.SendGlobalMessage(new ItemDroppedMessage() { playerId = KNetworkManager.instance.localPlayerId, objectId = this.GetNetObject().objectId.uid });
+
                         throwObject = true;
                         inHands = false;
                     }
