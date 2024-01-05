@@ -333,6 +333,7 @@ public class FirstPersonController : MonoBehaviour
     {
         if(KNetworkManager.instance.localPlayerId!=-1)
         {
+               
             var msg = new PlayerPositionSyncMessage();
             msg.playerId = KNetworkManager.instance.localPlayerId;
             msg.position = transform.position;

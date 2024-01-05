@@ -42,6 +42,11 @@ public class KNetworkManager : MonoBehaviour
         messenger.RegisterGlobalMessageCallback(OnGlobalMessageReceived);
         messenger.RegisterObjectMessageCallback(OnObjectMessageReceived);
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+            killswitch = true;
+    }
 
 
     void OnGlobalMessageReceived(KNetworkMessage message)

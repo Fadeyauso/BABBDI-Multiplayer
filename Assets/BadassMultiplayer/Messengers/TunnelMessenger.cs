@@ -1,10 +1,11 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class TunnelMessenger : IKNetworkMessenger
         TCP = new TcpClient();
         UDP = new UdpClient();
         TCP.Connect(IPAddress.Parse(DebugMenu.IP), 24726);
-        UDP.Connect(IPAddress.Parse(DebugMenu.IP), 24726);
+        UDP.Connect(IPAddress.Parse(DebugMenu.IP), (TCP.Client.RemoteEndPoint as IPEndPoint).Port);
         new Thread(() =>
         {
             for (; ; )
@@ -60,14 +61,74 @@ public class TunnelMessenger : IKNetworkMessenger
                     {
                         Debug.LogError(ex);
                     }
-                    
+                    //if(UDP.Available>0)
+                    {
+                        //IPEndPoint sender = new IPEndPoint(IPAddress.Any, 0);
+                        //var data = UDP.Receive(ref sender);
+                        //Debug.Log(Encoding.UTF8.GetString(data));
+                    }
 
 
                 }
             }
         }).Start();
-    }
 
+        new Thread(() =>
+        {
+            for(; ; )
+            {
+                if (KNetworkManager.killswitch)
+                    return;
+                IPEndPoint remoteEP;
+                byte[] buffer;
+
+                remoteEP = null;
+                buffer = UDP.Receive(ref remoteEP);
+
+                if (buffer != null && buffer.Length > 0)
+                {
+                    Debug.Log("Client UDP: " + Encoding.ASCII.GetString(buffer));
+                }
+            }
+        }).Start();
+    }
+    /*
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⢀⣴⡛⠉⢯⣒⢤⡀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡖⢡⡐⡄⢀⡀⠈⢙⢮⡳⡄⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠣⠀⠂⠀⠈⠀⠀⠈⣈⠷⢉⠃⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡰⠋⡐⡀⠀⠀⠀⠀⠀⣐⠼⢁⡞⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠣⢁⠐⠈⠆⣀⡈⠀⠲⢃⢠⠎⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡅⠂⠄⠂⠈⠐⢠⠓⢢⠱⣨⠃⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⠤⣤⢤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠗⠀⠀⠀⠀⠂⠈⠀⠈⠄⣼⠁⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⡟⣬⠛⣭⢫⡍⣶⢳⣦⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡞⠂⠀⠀⠀⠀⢢⠀⠀⠀⠀⣾⠃⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡓⠤⠁⠎⠱⡈⡜⢥⢻⣹⢻⠷⡶⣶⡶⢶⣶⣦⣤⡀⣴⠟⠀⠀⠀⠀⠀⠀⠀⠐⠠⢩⠏⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣼⡧⠙⢢⠁⡈⠀⠀⠈⠀⠁⠋⠄⢊⠑⠄⠘⡀⢎⡝⣿⡟⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢀⣾⡿⢤⡁⢂⠡⠀⠀⠀⠀⠀⠀⡈⠁⢁⠊⠴⠓⠁⡜⣾⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢀⣴⣿⢟⡽⣂⠖⡄⢂⢀⣴⠼⡞⡿⣛⡝⠛⠛⠾⣦⣤⣾⣽⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠂⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢠⣾⣏⠳⢎⣖⠹⣎⡜⣧⡿⠡⢎⠱⠑⠨⠈⠁⠀⠀⠈⠉⣻⡏⠐⡀⠀⠀⠀⠀⠀⠀⠀⠀⢐⣺⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢸⡗⡮⣙⠦⡸⡙⣼⡿⢋⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡟⠠⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢸⣇⡳⡵⣊⠕⣩⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡾⠁⠁⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⣲⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢸⣿⣟⣡⢦⣽⡟⠐⠁⠀⢀⠠⠀⠀⠀⠀⠀⠀⠀⠀⢠⡇⠘⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⢸⠃⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢸⡿⠏⡉⣤⣿⠡⢈⠤⢁⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⣞⢡⠀⢀⠀⠀⠀⠀⠀⠀⠀⣴⢋⣿⠾⠃⠒⠘⠳⣶⣄⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢠⣞⣵⠶⣿⣿⢁⡞⠤⠒⠠⠁⠂⠀⠀⠀⠀⠀⠀⠀⢰⡏⢆⠂⠄⠀⠀⠀⠀⠀⠀⠩⢄⣿⠋⠁⠀⠀⠁⠁⠡⡘⣿⠀⠀⠀⠀⠀⠀
+⠀⣰⣿⡟⢡⣾⢿⣌⠳⡘⠤⠉⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⡾⡑⠌⡐⠈⠄⠀⠂⢁⠐⢌⢂⣿⢃⠉⠀⠀⠠⢈⠠⡑⢆⢽⠀⠀⠀⠀⠀⠀
+⢀⣿⡟⢡⣿⡟⢮⢌⢣⠐⠄⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⢏⠱⠈⠄⠡⠀⠌⡐⢀⠋⢤⣫⠇⠂⠀⠀⠀⠁⡀⠤⠱⣈⡟⠀⠀⠀⠀⠀⠀
+⢸⣿⣇⣳⡯⡝⢮⡘⢄⠃⠌⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⠏⡌⠢⠁⠌⠠⢁⠂⠔⡈⠜⣲⠏⠀⠀⠀⠀⠠⠁⢀⢀⠂⣵⡷⠤⢤⡤⣀⠀⠀
+⢸⣿⣟⡶⡹⣍⠦⡑⡈⠄⠀⠀⠀⠀⠀⠀⠀⠀⠤⣹⠣⡘⠠⠁⠌⠀⡁⢂⠌⡠⢉⣼⠇⠀⠀⠀⠀⠀⠂⢈⠀⡠⠘⣴⠏⠈⠀⠈⠺⢵⡆
+⢸⣿⣿⢶⡹⢆⠳⠄⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠠⠁⠄⡁⠌⠀⠐⠄⠊⠤⡁⢧⡾⠁⠀⠀⠀⠀⠀⠀⠄⠐⠠⢹⡏⠀⠀⡀⠄⡑⢠⡇
+⠸⣿⣿⣏⡳⢍⡚⢀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⢀⠂⣁⠂⠀⠀⠀⠌⡐⢉⠐⡌⢺⡇⠀⠀⠀⠀⠀⠀⠀⠀⠊⢰⡟⠀⠀⠀⠀⢂⠐⢯⡜
+⠀⢻⣿⣯⣗⡪⢐⠂⠄⡀⠀⠀⢀⠀⠄⡀⠠⠐⠠⡈⠄⠌⡐⠀⠐⠠⠈⠄⢂⠜⣹⠄⠀⠐⠀⠀⣀⠁⢂⠐⢠⡿⠀⠀⠀⠀⡀⠌⡈⠵⡇
+⠀⢸⣿⣿⣿⣷⡠⢌⡐⢀⠁⠄⠂⠌⡀⠀⠀⠄⠡⢐⠨⠐⠀⡐⠈⠄⠡⢈⠆⡹⢜⡀⠂⠀⠀⡐⠠⠈⢃⠀⣾⠀⠀⠀⠀⠀⠠⢀⠓⡸⡇
+⠀⠈⣿⣿⣿⣿⣿⣶⣌⣦⡘⡬⣑⢢⠐⡀⠂⠌⡠⠁⠂⠁⠄⠄⠁⠌⡐⢂⠬⡑⢆⠀⠠⢀⠂⠡⢀⠂⠌⣸⠧⠀⠀⠀⠠⢀⠁⢢⠘⣼⠁
+⠀⠀⢿⣿⣿⣿⣿⣿⣿⡼⣧⢧⣣⠜⣄⠣⡘⠤⡠⠀⠀⠘⡀⠀⠄⣀⢃⡘⢤⠛⠄⠘⠠⢄⠃⠤⠀⠄⡀⣿⠀⠀⠀⠠⠀⠀⡘⠄⣻⢻⠀
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣯⣿⣳⢿⣤⡓⡜⡐⠀⠀⡄⢃⠄⠠⡀⢄⠢⢜⢢⡉⡐⢈⠐⡈⡘⠤⢉⡐⢡⠏⡐⠠⠁⠂⡀⠡⢐⢨⢴⠏⠀
+⠀⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣷⣯⣟⣿⣽⣳⣍⢶⣱⣌⠂⠌⢁⠰⣈⠲⣍⠢⡐⠁⠀⠀⠐⠀⢀⠂⢄⠣⡘⠠⢁⠂⡐⠠⢁⢢⢎⡿⠀⠀
+⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣾⣿⣿⣿⣿⣿⣾⣿⣶⣮⣶⣼⢳⣎⡱⢌⠢⡁⠄⣁⠀⠂⢌⠂⢆⠁⠂⠄⡂⠥⢑⡈⢲⡾⠃⠀⠀
+⠀⠀⠀⠀⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣾⣵⣯⣶⣝⡲⢌⡘⢡⠂⢍⠠⠌⡐⠠⠘⡄⢣⢼⡿⠁⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠉⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣿⣽⣶⣭⢦⣉⠦⡘⢄⠢⣑⢣⡜⣱⠞⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣽⣯⣷⣻⢯⣟⣿⣿⣷⣟⣾⣵⣮⣵⣺⣦⠿⠃⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠿⠿⠿⠿⠿⠿⠿⠿⠛⠋⠙⠛⠛⠛⠻⠿⠿⠿⣿⣿⣿⣿⡿⠟⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀
+      */
     public void RegisterGlobalMessageCallback(Action<KNetworkMessage> callback)
     {
         globalMsgCallback = callback;
@@ -80,6 +141,7 @@ public class TunnelMessenger : IKNetworkMessenger
 
     public void SendGlobalMessage(KNetworkMessage message, bool reliable = true)
     {
+        SendUdpTest();
         //globalMsgCallback(message);
         var stream = new MemoryStream();
         var writer = new BinaryWriter(stream);
@@ -92,7 +154,11 @@ public class TunnelMessenger : IKNetworkMessenger
     }
     public void SendUdpTest()
     {
-        UDP.Client.Send(Encoding.ASCII.GetBytes("test"));
+        Debug.Log("Send UDP");
+        var data = Encoding.UTF8.GetBytes("test");
+        var endPoint = new IPEndPoint(IPAddress.Parse(DebugMenu.IP),24726);
+        UDP.Send(data,data.Length);
+        //UDP.Client.SendTo(data, data.Length,SocketFlags.None, endPoint);
     }
 
     public void SendObjectMessage(KNetworkObjectMessage message, bool reliable = true)

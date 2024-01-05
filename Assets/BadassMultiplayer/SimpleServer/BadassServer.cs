@@ -1,9 +1,13 @@
+using GameServer;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.tvOS;
 
 public class BadassServer : MonoBehaviour
 {
@@ -20,9 +24,10 @@ public class BadassServer : MonoBehaviour
     public void Init()
     {
         TCP = new TcpListener(IPAddress.Any, 24726);
-        UDP = new UdpClient();
+        UDP = new UdpClient(new IPEndPoint(IPAddress.Any, 24726));
 
         TCP.Start();
+        
         var thread = new Thread(() =>
         {
             for (; ; )
@@ -36,7 +41,7 @@ public class BadassServer : MonoBehaviour
                     Dispatcher.RunOnMainThread(() =>
                     {
 
-                        KNetworkManager.instance.messenger.SendGlobalMessage(new OnPlayerConnectedMessage() { newPlayerId=tcpClients.Count-1});
+                        KNetworkManager.instance.messenger.SendGlobalMessage(new OnPlayerConnectedMessage() { newPlayerId = tcpClients.Count - 1 });
                     });
                 }
                 foreach (var client in tcpClients)
@@ -55,13 +60,29 @@ public class BadassServer : MonoBehaviour
                         }
                     }
                 }
-                if(UDP.Available>0)
-                {
-                    var result = UDP.ReceiveAsync();
-                    result.Wait();
-                }
+                
+
+                
             }
         });
         thread.Start();
+        var udpThread = new Thread(() =>
+        {
+            for(; ; )
+            {
+                IPEndPoint remoteEP;
+                byte[] buffer;
+
+                remoteEP = null;
+                buffer = UDP.Receive(ref remoteEP);
+
+                if (buffer != null && buffer.Length > 0)
+                {
+                    Debug.Log("UDP: " + Encoding.ASCII.GetString(buffer));
+                    UDP.Client.SendTo(buffer, remoteEP);
+                }
+            }
+        });
+        udpThread.Start();
     }
 }
