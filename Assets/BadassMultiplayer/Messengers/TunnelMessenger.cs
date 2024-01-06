@@ -91,7 +91,6 @@ public class TunnelMessenger : IKNetworkMessenger
                 {
                     var stream = new MemoryStream(buffer);
                     var reader = new BinaryReader(stream);
-                    Debug.Log(Encoding.UTF8.GetString(stream.ToArray()));
                     var typeName = reader.ReadString();
                     var type = Type.GetType(typeName);
                     var message = Activator.CreateInstance(type) as KNetworkMessage;
