@@ -7,15 +7,14 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using UnityEngine;
-using UnityEngine.tvOS;
 
 public class BadassServer : MonoBehaviour
 {
     public TcpListener TCP;
     public UdpClient UDP;
 
-    public List<TcpClient> tcpClients = new List<TcpClient>();
-    public List<UdpClient> udpClients = new List<UdpClient>();
+    public Dictionary<int,TcpClient> tcpClients = new Dictionary<int, TcpClient>();
+    public Dictionary<int, EndPoint> udpClients = new Dictionary<int, EndPoint>();
 
     private void OnApplicationQuit()
     {
@@ -37,25 +36,25 @@ public class BadassServer : MonoBehaviour
                 if (TCP.Pending())
                 {
                     var newClient = TCP.AcceptTcpClient();
-                    tcpClients.Add(newClient);
+                    tcpClients.Add(tcpClients.Count,newClient);
                     Dispatcher.RunOnMainThread(() =>
                     {
 
-                        KNetworkManager.instance.messenger.SendGlobalMessage(new OnPlayerConnectedMessage() { newPlayerId = tcpClients.Count - 1 });
+                        KNetworkManager.instance.messenger.SendGlobalMessage(new OnPlayerConnectedMessage() { newPlayerId = tcpClients.Count });
                     });
                 }
                 foreach (var client in tcpClients)
                 {
-                    var available = client.Available;
+                    var available = client.Value.Available;
                     if (available > 0)
                     {
                         byte[] data = new byte[available];
-                        client.Client.Receive(data);
+                        client.Value.Client.Receive(data);
                         foreach (var subClient in tcpClients)
                         {
                             //if(subClient!=client)
                             {
-                                subClient.Client.Send(data);
+                                subClient.Value.Client.Send(data);
                             }
                         }
                     }
@@ -78,8 +77,23 @@ public class BadassServer : MonoBehaviour
 
                 if (buffer != null && buffer.Length > 0)
                 {
-                    Debug.Log("UDP: " + Encoding.ASCII.GetString(buffer));
-                    UDP.Client.SendTo(buffer, remoteEP);
+                    if (buffer[0] == 0x47 &&
+                    buffer[1] == 0x41 &&
+                    buffer[2] == 0x59)
+                    {
+                        Debug.Log("Registering new client with id "+(udpClients.Count));
+                        udpClients.Add(udpClients.Count, remoteEP);
+                    }
+                    else
+                    {
+                        foreach (var subClient in udpClients)
+                        {
+                            UDP.Client.SendTo(buffer, subClient.Value);
+                        }
+                    }
+
+                    //UDP.Client.SendTo(buffer, tcpClients[0].Client.RemoteEndPoint);
+                    
                 }
             }
         });

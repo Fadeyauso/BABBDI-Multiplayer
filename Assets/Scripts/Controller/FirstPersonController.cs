@@ -338,7 +338,7 @@ public class FirstPersonController : MonoBehaviour
             msg.playerId = KNetworkManager.instance.localPlayerId;
             msg.position = transform.position;
             msg.rotation = transform.eulerAngles;
-            KNetworkManager.instance.messenger.SendGlobalMessage(msg);
+            KNetworkManager.instance.messenger.SendGlobalMessage(msg,false);
         }
     }
 

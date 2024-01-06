@@ -39,7 +39,6 @@ public class TunnelMessenger : IKNetworkMessenger
                         TCP.Client.Receive(bfr);
                         var stream = new MemoryStream(bfr);
                         var reader = new BinaryReader(stream);
-                        Debug.Log(Encoding.UTF8.GetString(stream.ToArray()));
                         var typeName = reader.ReadString();
                         var type = Type.GetType(typeName);
                         var message = Activator.CreateInstance(type) as KNetworkMessage;
@@ -75,7 +74,10 @@ public class TunnelMessenger : IKNetworkMessenger
 
         new Thread(() =>
         {
-            for(; ; )
+            var data = new byte[] { 0x47, 0x41, 0x59 };
+            var endPoint = new IPEndPoint(IPAddress.Parse(DebugMenu.IP), 24726);
+            UDP.Send(data, data.Length);
+            for (; ; )
             {
                 if (KNetworkManager.killswitch)
                     return;
@@ -87,7 +89,25 @@ public class TunnelMessenger : IKNetworkMessenger
 
                 if (buffer != null && buffer.Length > 0)
                 {
-                    Debug.Log("Client UDP: " + Encoding.ASCII.GetString(buffer));
+                    var stream = new MemoryStream(buffer);
+                    var reader = new BinaryReader(stream);
+                    Debug.Log(Encoding.UTF8.GetString(stream.ToArray()));
+                    var typeName = reader.ReadString();
+                    var type = Type.GetType(typeName);
+                    var message = Activator.CreateInstance(type) as KNetworkMessage;
+                    if (message is KNetworkObjectMessage objMsg)
+                    {
+                        objMsg.objectId = new KNetworkId(reader.ReadUInt64());
+                        message.Deserialize(reader);
+                        Dispatcher.RunOnMainThread(() => objectMsgCallback(objMsg));
+
+
+                    }
+                    else
+                    {
+                        message.Deserialize(reader);
+                        Dispatcher.RunOnMainThread(() => globalMsgCallback(message));
+                    }
                 }
             }
         }).Start();
@@ -141,25 +161,19 @@ public class TunnelMessenger : IKNetworkMessenger
 
     public void SendGlobalMessage(KNetworkMessage message, bool reliable = true)
     {
-        SendUdpTest();
         //globalMsgCallback(message);
         var stream = new MemoryStream();
         var writer = new BinaryWriter(stream);
         writer.Write(message.GetType().AssemblyQualifiedName);
         message.Serialize(writer);
         writer.Flush();
-        TCP.Client.Send(stream.ToArray());
+        if(reliable)
+            TCP.Client.Send(stream.ToArray());
+        else UDP.Client.Send(stream.ToArray());
         
 
     }
-    public void SendUdpTest()
-    {
-        Debug.Log("Send UDP");
-        var data = Encoding.UTF8.GetBytes("test");
-        var endPoint = new IPEndPoint(IPAddress.Parse(DebugMenu.IP),24726);
-        UDP.Send(data,data.Length);
-        //UDP.Client.SendTo(data, data.Length,SocketFlags.None, endPoint);
-    }
+   
 
     public void SendObjectMessage(KNetworkObjectMessage message, bool reliable = true)
     {
@@ -169,6 +183,8 @@ public class TunnelMessenger : IKNetworkMessenger
         writer.Write(message.objectId.uid);
         message.Serialize(writer);
         writer.Flush();
-        TCP.Client.Send(stream.ToArray());
+        if (reliable)
+            TCP.Client.Send(stream.ToArray());
+        else UDP.Client.Send(stream.ToArray());
     }
 }
