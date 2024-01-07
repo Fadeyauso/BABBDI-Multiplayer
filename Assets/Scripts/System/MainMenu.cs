@@ -33,7 +33,14 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        GameObject.Find("SavingOptions").GetComponent<SaveLoadSystem>().Load();
+        if(SceneManager.GetActiveScene().name == "TestMPMenu") 
+        {
+            Debug.Log("ne babbdi");
+        }
+        else
+        {
+            GameObject.Find("SavingOptions").GetComponent<SaveLoadSystem>().Load();
+        }
     }
 
     public void MultiplayerClicked()
