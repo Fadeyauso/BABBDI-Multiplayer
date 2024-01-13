@@ -28,6 +28,12 @@ TagManager:
   - guidon
   - Dog
   - Zone
+  - Footsteps/Water
+  - Footsteps/Metal
+  - Footsteps/Sand
+  - Footsteps/Concrete
+  - Footsteps/Grass
+  - Footsteps/Dirt
   layers:
   - Default
   - TransparentFX
@@ -48,7 +54,7 @@ TagManager:
   - inHands
   - noInHands
   - Zone
-  - 
+  - localPlayer
   - 
   - 
   - 

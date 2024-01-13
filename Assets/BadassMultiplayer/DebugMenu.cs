@@ -12,6 +12,7 @@ public class DebugMenu : MonoBehaviour
     public UnityEngine.UI.Toggle hostToggle;
     public BadassServer badassServer;
     public TMP_InputField ipTextField;
+    public TextMeshProUGUI localServerText;
     public static string IP;
     public void ConnectClicked()
     {
@@ -34,6 +35,13 @@ public class DebugMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(ipTextField.text == "127.0.0.1")
+        {
+            localServerText.gameObject.SetActive(true);
+        }
+        else
+        {
+            localServerText.gameObject.SetActive(false);
+        }
     }
 }
